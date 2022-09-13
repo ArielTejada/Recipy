@@ -14,6 +14,18 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-recipy-recipyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-recipy-recipyTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		51EB4E1D8449475CB53074B4 /* BethEllen-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4D8E3F4C22954032B81F90A4 /* BethEllen-Regular.ttf */; };
+		CDD94C8305424F459B28186E /* Cookie-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B6CE3BE282274E23885966F0 /* Cookie-Regular.ttf */; };
+		418FFED1B97F4E3BAD75140A /* Courgette-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1165D9B5D5A54A9CABCC0C09 /* Courgette-Regular.ttf */; };
+		344AFC5D441644848CF7B6FF /* DancingScript-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DB58DE9AEA7348369A8F6A4A /* DancingScript-Bold.ttf */; };
+		C74EBFE281184205A927301C /* DancingScript-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C0D9BED6703C4DAAA8880C93 /* DancingScript-Medium.ttf */; };
+		CA655939E6804003B1349755 /* DancingScript-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76F68AA343034A1E9400E51C /* DancingScript-Regular.ttf */; };
+		C912B76DE6AC43CD982BF12D /* DancingScript-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 24A21C5839D24898B996CAA2 /* DancingScript-SemiBold.ttf */; };
+		3351C3862A6842DC9C8E08C2 /* DancingScript-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43457A1919E149268E061A8E /* DancingScript-VariableFont_wght.ttf */; };
+		F42E16989B6348F38DFDF4DC /* GrandHotel-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F8B9E6846E3142889A93C6F2 /* GrandHotel-Regular.ttf */; };
+		C851887FCF574E10881FF83F /* HomemadeApple-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B52ABD3D312C477DA45DEFBA /* HomemadeApple-Regular.ttf */; };
+		F9542E72B0A44A1BB07D4D47 /* McLaren-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E0EA3021AC74482BF43FC46 /* McLaren-Regular.ttf */; };
+		73A8CF5D287C4454B9949221 /* Satisfy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E622BBC904245F29B990FF0 /* Satisfy-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +56,18 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = recipy/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-recipy-recipyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-recipy-recipyTests.release.xcconfig"; path = "Target Support Files/Pods-recipy-recipyTests/Pods-recipy-recipyTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		4D8E3F4C22954032B81F90A4 /* BethEllen-Regular.ttf */ = {isa = PBXFileReference; name = "BethEllen-Regular.ttf"; path = "../fonts/BethEllen-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B6CE3BE282274E23885966F0 /* Cookie-Regular.ttf */ = {isa = PBXFileReference; name = "Cookie-Regular.ttf"; path = "../fonts/Cookie-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1165D9B5D5A54A9CABCC0C09 /* Courgette-Regular.ttf */ = {isa = PBXFileReference; name = "Courgette-Regular.ttf"; path = "../fonts/Courgette-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DB58DE9AEA7348369A8F6A4A /* DancingScript-Bold.ttf */ = {isa = PBXFileReference; name = "DancingScript-Bold.ttf"; path = "../fonts/DancingScript-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C0D9BED6703C4DAAA8880C93 /* DancingScript-Medium.ttf */ = {isa = PBXFileReference; name = "DancingScript-Medium.ttf"; path = "../fonts/DancingScript-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		76F68AA343034A1E9400E51C /* DancingScript-Regular.ttf */ = {isa = PBXFileReference; name = "DancingScript-Regular.ttf"; path = "../fonts/DancingScript-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		24A21C5839D24898B996CAA2 /* DancingScript-SemiBold.ttf */ = {isa = PBXFileReference; name = "DancingScript-SemiBold.ttf"; path = "../fonts/DancingScript-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		43457A1919E149268E061A8E /* DancingScript-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "DancingScript-VariableFont_wght.ttf"; path = "../fonts/DancingScript-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F8B9E6846E3142889A93C6F2 /* GrandHotel-Regular.ttf */ = {isa = PBXFileReference; name = "GrandHotel-Regular.ttf"; path = "../fonts/GrandHotel-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		B52ABD3D312C477DA45DEFBA /* HomemadeApple-Regular.ttf */ = {isa = PBXFileReference; name = "HomemadeApple-Regular.ttf"; path = "../fonts/HomemadeApple-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9E0EA3021AC74482BF43FC46 /* McLaren-Regular.ttf */ = {isa = PBXFileReference; name = "McLaren-Regular.ttf"; path = "../fonts/McLaren-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5E622BBC904245F29B990FF0 /* Satisfy-Regular.ttf */ = {isa = PBXFileReference; name = "Satisfy-Regular.ttf"; path = "../fonts/Satisfy-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +146,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				357E3B1B44FA4A2AA6F22ABB /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +172,26 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		357E3B1B44FA4A2AA6F22ABB /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				4D8E3F4C22954032B81F90A4 /* BethEllen-Regular.ttf */,
+				B6CE3BE282274E23885966F0 /* Cookie-Regular.ttf */,
+				1165D9B5D5A54A9CABCC0C09 /* Courgette-Regular.ttf */,
+				DB58DE9AEA7348369A8F6A4A /* DancingScript-Bold.ttf */,
+				C0D9BED6703C4DAAA8880C93 /* DancingScript-Medium.ttf */,
+				76F68AA343034A1E9400E51C /* DancingScript-Regular.ttf */,
+				24A21C5839D24898B996CAA2 /* DancingScript-SemiBold.ttf */,
+				43457A1919E149268E061A8E /* DancingScript-VariableFont_wght.ttf */,
+				F8B9E6846E3142889A93C6F2 /* GrandHotel-Regular.ttf */,
+				B52ABD3D312C477DA45DEFBA /* HomemadeApple-Regular.ttf */,
+				9E0EA3021AC74482BF43FC46 /* McLaren-Regular.ttf */,
+				5E622BBC904245F29B990FF0 /* Satisfy-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -244,6 +289,18 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				51EB4E1D8449475CB53074B4 /* BethEllen-Regular.ttf in Resources */,
+				CDD94C8305424F459B28186E /* Cookie-Regular.ttf in Resources */,
+				418FFED1B97F4E3BAD75140A /* Courgette-Regular.ttf in Resources */,
+				344AFC5D441644848CF7B6FF /* DancingScript-Bold.ttf in Resources */,
+				C74EBFE281184205A927301C /* DancingScript-Medium.ttf in Resources */,
+				CA655939E6804003B1349755 /* DancingScript-Regular.ttf in Resources */,
+				C912B76DE6AC43CD982BF12D /* DancingScript-SemiBold.ttf in Resources */,
+				3351C3862A6842DC9C8E08C2 /* DancingScript-VariableFont_wght.ttf in Resources */,
+				F42E16989B6348F38DFDF4DC /* GrandHotel-Regular.ttf in Resources */,
+				C851887FCF574E10881FF83F /* HomemadeApple-Regular.ttf in Resources */,
+				F9542E72B0A44A1BB07D4D47 /* McLaren-Regular.ttf in Resources */,
+				73A8CF5D287C4454B9949221 /* Satisfy-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

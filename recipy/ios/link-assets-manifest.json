@@ -1,0 +1,53 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "fonts/BethEllen-Regular.ttf",
+      "sha1": "8c0b83fe09d04c9d1a28a76a4f8be4f3df7d1b62"
+    },
+    {
+      "path": "fonts/Cookie-Regular.ttf",
+      "sha1": "815acb8ae7f98dd13cd0a1334b80ec2ec51cb339"
+    },
+    {
+      "path": "fonts/Courgette-Regular.ttf",
+      "sha1": "0e6826b92f8f80fe2eb803bdef7d81355845e283"
+    },
+    {
+      "path": "fonts/DancingScript-Bold.ttf",
+      "sha1": "42858229a137c5188a859df102afff145200114d"
+    },
+    {
+      "path": "fonts/DancingScript-Medium.ttf",
+      "sha1": "30711d9cdbed046fef8128082c6cc1a9287dbc7c"
+    },
+    {
+      "path": "fonts/DancingScript-Regular.ttf",
+      "sha1": "b52e869bd47b6e98fd907ae00b1828916451b3b0"
+    },
+    {
+      "path": "fonts/DancingScript-SemiBold.ttf",
+      "sha1": "b5e71ddbaca9b4d5953f0c5e45bf326fb7df35ba"
+    },
+    {
+      "path": "fonts/DancingScript-VariableFont_wght.ttf",
+      "sha1": "f6ef1641594430e8367d9c26819a900c879b8f35"
+    },
+    {
+      "path": "fonts/GrandHotel-Regular.ttf",
+      "sha1": "988bb8ace520a7853f114ff36f040e22b8b24b80"
+    },
+    {
+      "path": "fonts/HomemadeApple-Regular.ttf",
+      "sha1": "88dc81aaf3c0ead0e40fb1d8295de879ef2e19ed"
+    },
+    {
+      "path": "fonts/McLaren-Regular.ttf",
+      "sha1": "32c336f4c80aa8f418127005128b60ad6618730f"
+    },
+    {
+      "path": "fonts/Satisfy-Regular.ttf",
+      "sha1": "fd2f096e9d0cd82b9f8e191d7f73167176d0f729"
+    }
+  ]
+}
