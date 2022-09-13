@@ -1,11 +1,16 @@
-import React from "react"
-import {Text, View} from "react-native"
+import React, {useState} from "react";
+import {Text, View} from "react-native";
+import {AppLoading} from 'expo'
+import Home from './screens/home';
 
 export default function App() {
 
-  return (
-    <View>
-      <Text>Testing ReciPy</Text>
-    </View>
-  );
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  
+    return (
+      <View>
+        <Home />
+      </View>
+    );
+
 }
