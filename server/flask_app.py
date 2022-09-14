@@ -7,7 +7,7 @@ def index():
    return render_template('testApp.html')
 
 @app.route('/search/<string:query>')
-async def search(query):
+def search(query):
    print(query)
    results =recipy.query_sites_dict(query)
    return jsonify(results)
