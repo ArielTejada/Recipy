@@ -166,24 +166,24 @@ def query_sites(query):
             ingredients[i]=ingredients[i].text
         Recipe_INGREDIENTS.append(ingredients)
         finish_time = time.time()
-        #selector val: .checklist dropdownwrapper
-        directions = sub_test.html.find(".checkList__line")
+        #selector val: .paragraph
+        directions = sub_test.html.find(".paragraph")
         for i in range(len(directions)):
             #direction stores all information
             directions[i]=directions[i].text
         Recipe_DIRECTIONS.append(directions)
         print("Took:"+str((finish_time-start_time))+" seconds")
 
-        RECIPE_data = {}
-        RECIPE_data["TITLES"] =Recipe_TITLES      
-        RECIPE_data["DESCRIPTION"] =Recipe_DESCRIPTION 
-        RECIPE_data["LINK"] =Recipe_LINK 
-        RECIPE_data["INGREDIENTS"] =Recipe_INGREDIENTS 
-        RECIPE_data["DIRECTIONS"] =Recipe_DIRECTIONS 
+    RECIPE_data = {}
+    RECIPE_data["TITLES"] =Recipe_TITLES      
+    RECIPE_data["DESCRIPTION"] =Recipe_DESCRIPTION 
+    RECIPE_data["LINK"] =Recipe_LINK 
+    RECIPE_data["INGREDIENTS"] =Recipe_INGREDIENTS 
+    RECIPE_data["DIRECTIONS"] =Recipe_DIRECTIONS 
 
-        RECIPE_data = pd.DataFrame(RECIPE_data)
-        csv_Title=query+ str("_results") 
-        RECIPE_data.to_csv(csv_Title)
+    RECIPE_data = pd.DataFrame(RECIPE_data)
+    csv_Title=query+ str("_results") 
+    RECIPE_data.to_csv(csv_Title)
     
 def query_sites_dict(query):
     session = HTMLSession()
@@ -247,24 +247,24 @@ def query_sites_dict(query):
             ingredients[i]=ingredients[i].text
         Recipe_INGREDIENTS.append(ingredients)
         finish_time = time.time()
-        #selector val: .checklist dropdownwrapper
-        directions = sub_test.html.find(".checkList__line")
+        #selector val: ".paragraph
+        directions = sub_test.html.find(".paragraph")
         for i in range(len(directions)):
             #direction stores all information
             directions[i]=directions[i].text
         Recipe_DIRECTIONS.append(directions)
         print("Took:"+str((finish_time-start_time))+" seconds")
 
-        RECIPE_data = {}
-        RECIPE_data["TITLES"] =Recipe_TITLES      
-        RECIPE_data["DESCRIPTION"] =Recipe_DESCRIPTION 
-        RECIPE_data["LINK"] =Recipe_LINK 
-        RECIPE_data["INGREDIENTS"] =Recipe_INGREDIENTS 
-        RECIPE_data["DIRECTIONS"] =Recipe_DIRECTIONS 
-        """
-        # Don't Make into csv... we only want dictionary
-        RECIPE_data = pd.DataFrame(RECIPE_data)
-        csv_Title=query+ str("_results") 
-        RECIPE_data.to_csv(csv_Title)"""
-        return RECIPE_data
+    RECIPE_data = {}
+    RECIPE_data["TITLES"] =Recipe_TITLES      
+    RECIPE_data["DESCRIPTION"] =Recipe_DESCRIPTION 
+    RECIPE_data["LINK"] =Recipe_LINK 
+    RECIPE_data["INGREDIENTS"] =Recipe_INGREDIENTS 
+    RECIPE_data["DIRECTIONS"] =Recipe_DIRECTIONS 
+    """
+    # Don't Make into csv... we only want dictionary
+    RECIPE_data = pd.DataFrame(RECIPE_data)
+    csv_Title=query+ str("_results") 
+    RECIPE_data.to_csv(csv_Title)"""
+    return RECIPE_data
         

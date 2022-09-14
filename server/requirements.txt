@@ -9,3 +9,4 @@ qpsolvers
 scipy
 sortedcontainers
 requests_html
+aioflask
