@@ -97,7 +97,7 @@ def parse_sites():
         print(ingredients)
         finish_time = time.time()
         #selector val: .checklist dropdownwrapper
-        directions = sub_test.html.find(".{true: 'checkList__item'}[true]")
+        directions = sub_test.html.find(".ingredients-item")
         for i in range(len(directions)):
             #direction stores all information
             directions[i]=directions[i].text
@@ -165,14 +165,16 @@ def query_sites(query):
             #ingredients stores all information
             ingredients[i]=ingredients[i].text
         Recipe_INGREDIENTS.append(ingredients)
-        finish_time = time.time()
+
+        """ Uncomment Finish and  Start"""
+        #finish_time = time.time()
         #selector val: .paragraph
         directions = sub_test.html.find(".paragraph")
         for i in range(len(directions)):
             #direction stores all information
             directions[i]=directions[i].text
         Recipe_DIRECTIONS.append(directions)
-        print("Took:"+str((finish_time-start_time))+" seconds")
+        #print("Took:"+str((finish_time-start_time))+" seconds")
 
     RECIPE_data = {}
     RECIPE_data["TITLES"] =Recipe_TITLES      
