@@ -10,6 +10,7 @@ Guide: https://www.digitalocean.com/community/tutorials/how-to-make-a-web-applic
 
 # Run on ubuntu for safety reasons: 
 source venv/Scripts/activate
+
 python3 flask.py
 
 ## Resources:
@@ -21,6 +22,6 @@ python -m venv myproject
 Selecting Python interpeter path -> From Command Palette
 
 ### Making Flask Api
-#https://nordicapis.com/how-to-create-an-api-using-the-flask-framework/
+https://nordicapis.com/how-to-create-an-api-using-the-flask-framework/
 
 
