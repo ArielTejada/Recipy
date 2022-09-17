@@ -10,4 +10,9 @@ import recipy
 #Enter Search Entry Here:
 ingredients ="onion,chicken"
 dict =recipy.query_sites(ingredients)
-#
+
+
+## Filter Testing ##
+#  Filters out ingredients from ingredient portion
+def filter_out_ingredients():
+    return

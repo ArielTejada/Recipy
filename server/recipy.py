@@ -104,9 +104,14 @@ def parse_sites():
         print(directions)
         print("Took:"+str((finish_time-start_time))+" seconds")
 
+"""
+query_sites(): Builds link of given type's search
+@param query: List of comma sererated recipes
+@return: dictionary of results for search resultes
+"""
 def query_sites(query):
     session = HTMLSession()
-    print("Recipes should include what? Separate each ingredient with commas")
+    #print("Recipes should include what? Separate each ingredient with commas")
     ingredients = query
     ingredients = ingredients.split(sep=",")
 
@@ -186,7 +191,12 @@ def query_sites(query):
     RECIPE_data = pd.DataFrame(RECIPE_data)
     csv_Title=query+ str("_results") 
     RECIPE_data.to_csv(csv_Title)
-    
+
+"""
+query_sites(): Builds link of given type's search
+@param query: List of comma sererated recipes
+@return: dictionary of results for search resultes; *Will be used for actual implementation*
+"""    
 def query_sites_dict(query):
     session = HTMLSession()
     print("Recipes should include what? Separate each ingredient with commas")
