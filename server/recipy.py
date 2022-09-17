@@ -38,7 +38,21 @@ def build_link(ingredients_list,type="allrecipes",):
             ingredients_list[i] = "IngIncl=" + ingredients_list[i]
             if i<len(ingredients_list)-1:
                 ingredients_list[i]+="&"
-            link+=ingredients_list[i]    
+            link+=ingredients_list[i]
+    elif(type=="simplyrecipes"):
+        #Simplyrecipes = 'https://www.simplyrecipes.com/search?q=?'
+        #Example Link: https://www.simplyrecipes.com/search?q=onion
+        #
+        #  Structure of Search
+        # "https://www.simplyrecipes.com/search?q=" + query 
+        #
+        #  Builds link by adding each ingredient to search
+        link +='https://www.simplyrecipes.com/search?q='
+        for i in range(len(ingredients_list)):
+            ingredients_list[i] = "IngIncl=" + ingredients_list[i]
+            if i<len(ingredients_list)-1:
+                ingredients_list[i]+=","
+            link+=ingredients_list[i]
     return link
 
 
@@ -124,6 +138,9 @@ def query_sites(query):
     #  Structure of Search
     # "https://www.allrecipes.com/search/results/?" + "IngIncl=" + query "&" + "IngIncl=" + query2 "&" + 
     #
+    
+    # AllRecipe.com Exploitation 
+
     allrecipes_searchLink = build_link(ingredients,type="allrecipes",)
     print(allrecipes_searchLink)
     #Inlude ingredients exploitation
@@ -180,6 +197,15 @@ def query_sites(query):
             directions[i]=directions[i].text
         Recipe_DIRECTIONS.append(directions)
         #print("Took:"+str((finish_time-start_time))+" seconds")
+
+    #Simplyrecipes = 'https://www.simplyrecipes.com/search?q=?'
+    #Example Link: https://www.simplyrecipes.com/search?q=onion
+    #
+    #  Structure of Search
+    # "https://www.simplyrecipes.com/search?q=" + query 
+    #
+    
+    # Simplyrecipes.com Exploitation [INSERT UNDERHERE]
 
     RECIPE_data = {}
     RECIPE_data["TITLES"] =Recipe_TITLES      

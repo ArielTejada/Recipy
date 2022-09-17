@@ -19,5 +19,17 @@ def search(query):
    print("Time taken to retrieve:")
    print(end_time-start_time)
    return jsonify(results)
+
+@app.route('/search_and_export/<string:query>')
+def search(query):
+   print("Query:")
+   print(query)
+   #Timing
+   start_time = time.time()
+   results =recipy.query_sites(query)
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
+   return jsonify(results)  
 if __name__ == '__main__':
    app.run()
