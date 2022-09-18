@@ -49,7 +49,7 @@ def build_link(ingredients_list,type="allrecipes",):
         #  Builds link by adding each ingredient to search
         link +='https://www.simplyrecipes.com/search?q='
         for i in range(len(ingredients_list)):
-            ingredients_list[i] = "IngIncl=" + ingredients_list[i]
+            #ingredients_list[i] = "IngIncl=" + ingredients_list[i]
             if i<len(ingredients_list)-1:
                 ingredients_list[i]+=","
             link+=ingredients_list[i]
@@ -188,7 +188,7 @@ def query_sites(query):
             ingredients[i]=ingredients[i].text
         Recipe_INGREDIENTS.append(ingredients)
 
-        """ Uncomment Finish and  Start"""
+        """ Uncomment Finish and  Start to track time"""
         #finish_time = time.time()
         #selector val: .paragraph
         directions = sub_test.html.find(".paragraph")
