@@ -38,7 +38,7 @@ source venv/Scripts/activate
 
 python3 flask.py
 
-## Resources/ Refrences:
+## Resources/ References:
 https://reactjs.org/docs/add-react-to-a-website.html
 
 https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3
