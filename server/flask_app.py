@@ -21,7 +21,7 @@ def search(query):
    return jsonify(results)
 
 @app.route('/search_and_export/<string:query>')
-def search(query):
+def search2(query):
    print("Query:")
    print(query)
    #Timing
