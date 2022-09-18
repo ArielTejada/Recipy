@@ -3,7 +3,7 @@
 These python files are the implementation of the opperations defined at the endpoints of the webapp.
 To run the server locally you will need to run the flask_app.py file. If you have all dependencies as
 listed in requirements.txt it should run. Open the link it provides you with to test server... follow structure of
-code for enpoints
+code for endpoints
 
 Examples:
 
