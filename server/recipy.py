@@ -11,6 +11,7 @@ from requests_html import AsyncHTMLSession
 #https://requests.readthedocs.io/projects/requests-html/en/latest/
 
 """
+Code attempts to follow javadoc style
 This is a javadoc style.
 
 @param param1: this is a first param
@@ -18,6 +19,8 @@ This is a javadoc style.
 @return: this is a description of what is returned
 @raise keyError: raises an exception
 """
+
+
 """
 build_link(): Builds link of given type's search
 @param ingredients_list: list of ingredients you want included in recipe
@@ -313,6 +316,13 @@ User Management Functions:
 These functions are called to manipulate userdata subfolders
 
 """
+# NOTE: File structure for user data
+#                 /user_data/userName/
+#                                    /password              : password to authenticatate entryy
+#                                    /past_searches         : past search queries
+#                                    /liked_recipes.csv     : recipe data that has been liked by user
+#                                    /panty.csv             : List of items contained in pantry
+# Each user will have the above allowing it to be conviently refrenced on some login protocol 
 
 def build_userdata():
     

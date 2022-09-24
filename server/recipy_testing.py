@@ -8,7 +8,15 @@ import time
 # cd server
 # Run with py recipy_testing.py
 
+"""
+Code attempts to follow javadoc style
+This is a javadoc style.
 
+@param param1: this is a first param
+@param param2: this is a second param
+@return: this is a description of what is returned
+@raise keyError: raises an exception
+"""
 
 ## Filter Testing ##
 #  Filters out ingredients from ingredient portion
