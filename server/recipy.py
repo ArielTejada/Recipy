@@ -321,7 +321,7 @@ These functions are called to manipulate userdata subfolders
 #                                    /password              : password to authenticatate entryy
 #                                    /past_searches         : past search queries
 #                                    /liked_recipes.csv     : recipe data that has been liked by user
-#                                    /panty.csv             : List of items contained in pantry
+#                                    /pantry.csv             : List of items contained in pantry
 # Each user will have the above allowing it to be conviently refrenced on some login protocol 
 
 def build_userdata():

@@ -63,8 +63,8 @@ search2(query): preforms webscraping search on recipy database and exports searc
 @param: search query to be used
 @return: json of search results
 """
-@app.route('/search_export/<string:query>')
-def search2(query):
+@app.route('/search_export/<string:user>/<string:query>')
+def search2(user,query):
    print("Query:")
    print(query)
    #Timing
@@ -75,6 +75,16 @@ def search2(query):
    print(end_time-start_time)
    return jsonify(results)
 
+
+"""
+user_search(query): preforms webscraping search on recipy database and exports search data to user history.
+                    logs query under past_searches
+@param: search query to be used
+@return: json of search results
+"""
+@app.route('/user_search/<string:query>')
+def user_search(query):
+   return
 """
 search2(query): preforms webscraping search on recipy database and exports search data
 @param: search query to be used
@@ -102,20 +112,8 @@ def show_recipe_database(user):
    print("Time taken to retrieve:")
    print(end_time-start_time)
 
-   return jsonify(results)    
+   return jsonify(results)
+
 if __name__ == '__main__':
    app.run()
 
-@app.route('/search_and_export/<string:query>')
-def search2(query):
-   print("Query:")
-   print(query)
-   #Timing
-   start_time = time.time()
-   results =recipy.query_sites(query)
-   end_time = time.time()
-   print("Time taken to retrieve:")
-   print(end_time-start_time)
-   return jsonify(results)    
-if __name__ == '__main__':
-   app.run()
