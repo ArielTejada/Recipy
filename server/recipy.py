@@ -1,6 +1,7 @@
 from distutils.command.build import build
 import time
 import urllib
+import os
 import pandas as pd
 from requests_html import HTML
 from requests_html import HTMLSession
@@ -305,4 +306,59 @@ def query_sites_dict(query):
     csv_Title=query+ str("_results") 
     RECIPE_data.to_csv(csv_Title)"""
     return RECIPE_data
+
+"""
+User Management Functions:
+
+These functions are called to manipulate userdata subfolders
+
+"""
+
+def build_userdata():
+    
+    if(os.path.isdir("user_data")):
+        # Directory exists
+        print("userdata dir")
+    else:
+        os.mkdir("user_data")
+    
+
+
+def build_user_path(user, DIRECTORY ="user_data"):
+
+    file =user
+    path =os.path.join(DIRECTORY,file)
+    return path
+
+"""
+acess_userdata(user): Attempts to acess a user's directory in their file.
+@param user: username associated with user
+@return True if user is acessed
+        False if user doesn't exist
+"""   
+def access_userdata(user):
+    path =build_user_path(user)
+    # User Authentication
+    # If a user exists then they will have a directory under user_data
+
+    if(os.path.exists(path)):
+        print("Welcome "+user)            
+        return True
+    else:
+        #print(file+" doesn't exist.")
+        #os.mkdir(path)
+        return False
+"""
+show_userdata(user): Shows userdata. Will return None if user directory doesn't exist
+@param user: username associated with user
+@return User Directory Files to be interperted by server
+        Will return None if user directory doesn't exist
+""" 
+def show_userdata(user):
+    if(access_userdata):
+        path =build_user_path(user)
+        return os.listdir(path)
+
+
+
         

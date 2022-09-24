@@ -49,9 +49,10 @@ def search2(query):
 def show_recipe_database(user):
    print("Acessing User")
    print(user)
-   directory ="user_data"
+   recipy.access_userdata()
+   DIRECTORY ="user_data"
    file =user
-   path =os.path.join(directory,file)
+   path =os.path.join(DIRECTORY,file)
    
    # User Authentication
 
@@ -69,7 +70,7 @@ def show_recipe_database(user):
    print("Time taken to retrieve:")
    print(end_time-start_time)
 
-   # NOTE: Add ser file structure where containing the following
+   # NOTE: Add server file structure where containing the following
    # File structure: /user_data/userName/
    #                                    /password              : password to authenticatate entryy
    #                                    /past_searches         : past search queries
