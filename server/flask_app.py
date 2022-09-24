@@ -69,7 +69,9 @@ def search2(user,query):
    print(query)
    #Timing
    start_time = time.time()
+
    results =recipy.query_sites(query)
+   
    end_time = time.time()
    print("Time taken to retrieve:")
    print(end_time-start_time)
