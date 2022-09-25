@@ -340,9 +340,9 @@ build_user(user): Creates files in user subdirectory associated with it
 @param user: username associated with user
 """ 
 def build_user(user):
-    path = build_user_path(user)
-    os.mkdir(path)
-    USER_SUBFOLDERS = ['password','past_searches','liked_recipes.csv','pantry.csv']
+    DIRECTORY ="user_data"
+    os.mkdir(user) #Some thing is wrong about how the directory is being made
+    USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
     for sub in USER_SUBFOLDERS:
         new_file = open(sub,'a')
         new_file.close()
@@ -377,7 +377,7 @@ def access_userdata(user):
         #os.mkdir(path)
         return False
 """
-show_userdata(user): Shows userdata. Will return None if user directory doesn't exist
+get_userdata(user): Shows userdata. Will return None if user directory doesn't exist
 @param user: username associated with user
 @return User Directory Files to be interperted by server
         Will return None if user directory doesn't exist

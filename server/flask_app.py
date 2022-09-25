@@ -43,7 +43,7 @@ def index():
    return render_template('testApp.html')
 
 """
-search(query): preforms webscraping search on recipy database
+search(query): preforms webscraping search saving nothing
 @param: search query to be used
 @return: json of search results
 """
@@ -58,25 +58,6 @@ def search(query):
    print("Time taken to retrieve:")
    print(end_time-start_time)
    #Save Data Under results for user
-   return jsonify(results)
-
-"""
-search2(query): preforms webscraping search on recipy database and exports search data
-@param: search query to be used
-@return: json of search results
-"""
-@app.route('/search_export/<string:user>/<string:query>')
-def search2(user,query):
-   print("Query:")
-   print(query)
-   #Timing
-   start_time = time.time()
-
-   results =recipy.query_sites(query)
-   
-   end_time = time.time()
-   print("Time taken to retrieve:")
-   print(end_time-start_time)
    return jsonify(results)
 
 """
@@ -103,15 +84,33 @@ def add_user(user):
       recipy.build_user(user)
 
 """
-user_search(query): preforms webscraping search on recipy database and exports search data to user history.
-                    logs query under past_searches
+search2(query): preforms webscraping search on recipy database and exports search data. Saves query under a users past search a data
+@param: user to save data under
 @param: search query to be used
 @return: json of search results
 """
-@app.route('/user_search/<string:query>')
-def user_search(query):
-   return
+@app.route('/search_export/<string:user>/<string:query>')
+def search2(user,query):
+   print("Query:")
+   print(query)
+   
+   #Timing
+   start_time = time.time()
+
+   #Adds to user search history by updating past_searches
+   print(recipy.get_userdata(user)) 
+
+   
+
+   results =recipy.query_sites(query)
+   #Timing
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
+   return jsonify(results)
+
 """
+
 show_favorite_history(user): Gets users favorited recipes
 @param: search query to be used
 @return: json of search results
