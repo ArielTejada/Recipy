@@ -324,16 +324,34 @@ These functions are called to manipulate userdata subfolders
 #                                    /pantry.csv             : List of items contained in pantry
 # Each user will have the above allowing it to be conviently refrenced on some login protocol 
 
-def build_userdata():
-    
+# Functions for ensuring that the userdata folder is always a folder
+
+def userdata_exists():
     if(os.path.isdir("user_data")):
         # Directory exists
-        print("userdata dir")
-    else:
+        return True
+
+def build_userdata(): 
+    if(not userdata_exists()): 
         os.mkdir("user_data")
-    
 
+"""
+build_user(user): Creates files in user subdirectory associated with it
+@param user: username associated with user
+""" 
+def build_user(user):
+    path = build_user_path(user)
+    os.mkdir(path)
+    USER_SUBFOLDERS = ['password','past_searches','liked_recipes.csv','pantry.csv']
+    for sub in USER_SUBFOLDERS:
+        new_file = open(sub,'a')
+        new_file.close()
 
+"""
+access_userdata(user): Builds path to user directory
+@param user: username associated with user
+@return Path of user in specified directory.
+"""   
 def build_user_path(user, DIRECTORY ="user_data"):
 
     file =user
@@ -341,9 +359,9 @@ def build_user_path(user, DIRECTORY ="user_data"):
     return path
 
 """
-acess_userdata(user): Attempts to acess a user's directory in their file.
+access_userdata(user): Attempts to acess a user's directory in their file.
 @param user: username associated with user
-@return True if user is acessed
+@return True if user is accessed
         False if user doesn't exist
 """   
 def access_userdata(user):
@@ -364,8 +382,8 @@ show_userdata(user): Shows userdata. Will return None if user directory doesn't 
 @return User Directory Files to be interperted by server
         Will return None if user directory doesn't exist
 """ 
-def show_userdata(user):
-    if(access_userdata):
+def get_userdata(user):
+    if(access_userdata(user)):
         path =build_user_path(user)
         return os.listdir(path)
 

@@ -1,8 +1,10 @@
+from distutils.log import error
 from sqlite3 import Time
 from flask import Flask,render_template,jsonify
 import time
 import recipy
 import os
+
 
 app = Flask(__name__)
 
@@ -77,6 +79,28 @@ def search2(user,query):
    print(end_time-start_time)
    return jsonify(results)
 
+"""
+
+User Management - Server Side Functions
+
+"""
+
+"""
+add_new_user(user): Adds new user to user_data
+@param: username 
+@return: 
+"""
+@app.route('/signup/<string:user>')
+def add_user(user):
+   if(recipy.access_userdata(user)):
+      print(user)
+      print("is the name of another user. Please pick another username")
+      error_message = user + str(" is the name of another user. Please pick another username")
+      error =  jsonify({"message": error_message})
+      return error
+            
+   else:
+      recipy.build_user(user)
 
 """
 user_search(query): preforms webscraping search on recipy database and exports search data to user history.
@@ -88,29 +112,33 @@ user_search(query): preforms webscraping search on recipy database and exports s
 def user_search(query):
    return
 """
-search2(query): preforms webscraping search on recipy database and exports search data
+show_favorite_history(user): Gets users favorited recipes
 @param: search query to be used
 @return: json of search results
 """
 @app.route('/showdata/<string:user>')
-def show_recipe_database(user):
+def show_favorite_history(user):
 
    # Timing Start
    start_time = time.time()
-
-   results =recipy.show_userdata(user) # Will show user files structure to be later described
-
-   # NOTE: Add server file structure where containing the following
-   # File structure: /user_data/userName/
-   #                                    /password              : password to authenticatate entryy
-   #                                    /past_searches         : past search queries
-   #                                    /liked_recipes.csv     : recipe data that has been liked by user
-   #                                    /pantry.csv             : List of items contained in pantry
-   # Each user will have the above allowing it to be conviently refrenced on some login protocol 
+   # Always check if user can be acessed as there is no distinction between None being returned as a
+   # result of their being no history for a user and None being returned a result of the user not existing.
    
+   if(recipy.access_userdata(user)): 
+      results =recipy.get_userdata(user) # Will get user files structure
+      # NOTE:
+      # File structure: /user_data/userName/
+      #                                    /password              : password to authenticatate entryy
+      #                                    /past_searches         : past search queries
+      #                                    /liked_recipes.csv     : recipe data that has been liked by user
+      #                                    /pantry.csv             : List of items contained in pantry
+      # Each user will have the above allowing it to be conveniently refrenced here.
+   else:
+      print(user)
+      print("Does not exist")
+      results= None   
    # Timing End
    end_time = time.time()
-
    print("Time taken to retrieve:")
    print(end_time-start_time)
 
