@@ -111,7 +111,8 @@ def simplyRecipes(query):
         #print("Took:"+str((finish_time-start_time))+" seconds")
 
 #Enter Search Entry Here:
-ingredients ="onion,chicken"
+#ingredients ="onion,chicken"
 #dict =recipy.query_sites(ingredients)
 
-simplyRecipes(ingredients)
+#simplyRecipes(ingredients)
+print(recipy.build_user_path('Chris'))

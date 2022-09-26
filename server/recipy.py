@@ -340,11 +340,14 @@ build_user(user): Creates files in user subdirectory associated with it
 @param user: username associated with user
 """ 
 def build_user(user):
-    DIRECTORY ="user_data"
-    os.mkdir(user) #Some thing is wrong about how the directory is being made
+    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
+    path=os.path.join(current_directory,build_user_path(user))
+    print(os.getcwd())
+    print(os.listdir(os.getcwd()))
+    os.mkdir(path) #Some thing is wrong about how the directory is being made
     USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
     for sub in USER_SUBFOLDERS:
-        new_file = open(sub,'a')
+        new_file = open(os.path.join(path,sub),'a')
         new_file.close()
 
 """
@@ -353,9 +356,11 @@ access_userdata(user): Builds path to user directory
 @return Path of user in specified directory.
 """   
 def build_user_path(user, DIRECTORY ="user_data"):
-
-    file =user
-    path =os.path.join(DIRECTORY,file)
+    cwd = os.getcwd()
+    if 'server' in os.listdir(cwd):
+        cwd =os.path.join(cwd,'server')
+    path =os.path.join(cwd,DIRECTORY)
+    path =os.path.join(path,user)
     return path
 
 """
