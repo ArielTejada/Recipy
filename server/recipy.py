@@ -336,19 +336,34 @@ def build_userdata():
         os.mkdir("user_data")
 
 """
-build_user(user): Creates files in user subdirectory associated with it
+build_user(user,password): Creates files in user subdirectory associated with it
 @param user: username associated with user
+@param password: password associated with user
 """ 
-def build_user(user):
+def build_user(user,password):
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(user))
     print(os.getcwd())
     print(os.listdir(os.getcwd()))
-    os.mkdir(path) #Some thing is wrong about how the directory is being made
+    os.mkdir(path) 
     USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
     for sub in USER_SUBFOLDERS:
         new_file = open(os.path.join(path,sub),'a')
+        if sub == 'password':
+            new_file = open(os.path.join(path,sub),'a')
+            new_file.write(password)
         new_file.close()
+
+def get_password(user):
+    path =build_user_path(user)
+    path =os.path.join(path,'password')
+    file =open(path,'r')
+    password =file.read()
+    return password
+
+def login(user,password):
+    real_password = get_password(user)
+    return (password==real_password)
 
 """
 access_userdata(user): Builds path to user directory

@@ -115,4 +115,16 @@ def simplyRecipes(query):
 #dict =recipy.query_sites(ingredients)
 
 #simplyRecipes(ingredients)
-print(recipy.build_user_path('Chris'))
+
+# User Creation Testing
+
+user='Chris'
+password ='test'
+print(recipy.build_user_path(user))
+recipy.build_user(user,password) #Error if user already exists
+print("User Created?")
+print(recipy.access_userdata(user))
+print("Should be true")
+print(recipy.login(user,password))
+print("Should be false")
+print(recipy.login(user,'password'))

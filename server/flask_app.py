@@ -68,20 +68,52 @@ User Management - Server Side Functions
 
 """
 add_new_user(user): Adds new user to user_data
-@param: username 
+@param: username
+@param: password  
 @return: 
 """
-@app.route('/signup/<string:user>')
-def add_user(user):
+@app.route('/signup/<string:user>/<string:password>')
+def add_user(user,password):
+   # Only way to authenticate is by sending password in request
+   # https://security.stackexchange.com/questions/33793/handling-passwords-in-a-web-application
    if(recipy.access_userdata(user)):
       print(user)
       print("is the name of another user. Please pick another username")
-      error_message = user + str(" is the name of another user. Please pick another username")
+      error_message = user + str(" is the name of another user. Please pick another username or login")
       error =  jsonify({"message": error_message})
       return error
             
    else:
-      recipy.build_user(user)
+      recipy.build_user(user,password)
+
+"""
+load_user(user): loads user and returns user_data
+@param: username
+@param: password 
+@returns: returns error json if user doesn't exist or if password is invalid
+          
+"""
+@app.route('/signup/<string:user>/<string:password>')
+def load_user(user,password):
+   # Only way to authenticate is by sending password in request
+   # https://security.stackexchange.com/questions/33793/handling-passwords-in-a-web-application
+   if(recipy.access_userdata(user)):
+      # LOGIN USER AFTER AUTHENTICATION AGAINST PASSWORD
+      if recipy.login(user,password):
+         print("Welcome"+str(user)) 
+         return recipy.get_userdata(user) 
+      else:
+         print(user)
+         print(" INVALID PASSWORD")
+         error_message = user + str("INVALID PASSWORD")
+         error =  jsonify({"message": error_message})
+         return error
+   else:
+      print(user)
+      print(" doesn't exist.")
+      error_message = user + str(" doesn't exist. Please signup as new user.")
+      error =  jsonify({"message": error_message})
+      return error
 
 """
 search2(query): preforms webscraping search on recipy database and exports search data. Saves query under a users past search a data
