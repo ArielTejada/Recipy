@@ -1,6 +1,8 @@
 import recipy
 from requests_html import HTMLSession
 import time
+import os
+import pandas as pd
 # REMEMBER INSTALL DEPENDENCIES : pip install -r requirements.txt
 
 # Use this file for testing calls of recipy functions.
@@ -116,7 +118,76 @@ def simplyRecipes(query):
 
 #simplyRecipes(ingredients)
 
+
+
 # User Creation Testing
+
+# Access User Data
+# 
+# Using the Known File structure these functions
+# can access user data.
+# 
+
+def get_liked_recipes(user):
+    userdata = recipy.get_userdata(user)
+    liked_recipes = os.path.join(recipy.build_user_path(user),file)
+    liked_recipes = pd.read_csv(liked_recipes)
+    return liked_recipes
+
+def initialize_user_data(index):
+    # Initalizes user data based on catagory of data
+    # 0 - liked_recipes.csv
+    # 1 - pantry.csv
+    # 2 - password
+    # 3 - past_searches.csv
+    if index==0:
+        data = {
+            'TITLES' : [],
+            'DESCRIPTION' : [],
+            'LINK' : [],
+            'INGREDIENTS' : [],
+            'DIRECTIONS' : []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('liked_recipes.csv')
+    elif index==1:
+        # Saves pantry as name of ingredients
+        data = {
+            'name' : [],
+            'expiration_date': []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('pantry.csv')
+    elif index==2:
+        # Saves pantry as name of ingredients
+        data = {
+            'name' : [],
+            'expiration_date': []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('pantry.csv')
+    elif index==3:
+        data = {
+            'name' : [],
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('past_searches.csv')
+    return data
+
+
+def get_userdata(user,index):
+    # Gets user data index
+    # 0 - liked_recipes.csv
+    # 1 - pantry.csv
+    # 2 - password
+    # 3 - past_searches.csv
+
+    file = recipy.get_userdata(user)[index]
+    data = os.path.join(recipy.build_user_path(user),file)
+    if os.path.getsize(data)>0:
+        data = pd.read_csv(data)
+    data = initialize_user_data(index)
+    return data   
 
 user='Chris'
 password ='test'
@@ -129,3 +200,11 @@ print("Should be true")
 print(recipy.login(user,password))
 print("Should be false")
 print(recipy.login(user,'password'))
+userdata=recipy.get_userdata(user)
+
+#Paths to user data files
+for file in userdata:
+    print(os.path.join(recipy.build_user_path(user),file))
+for i in range(3):
+    print(get_userdata(user,i))
+

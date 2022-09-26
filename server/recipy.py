@@ -405,7 +405,8 @@ get_userdata(user): Shows userdata. Will return None if user directory doesn't e
 def get_userdata(user):
     if(access_userdata(user)):
         path =build_user_path(user)
-        return os.listdir(path)
+        user_data = os.listdir(path)
+        return user_data
 
 
 
