@@ -120,8 +120,9 @@ def simplyRecipes(query):
 
 user='Chris'
 password ='test'
-print(recipy.build_user_path(user))
-recipy.build_user(user,password) #Error if user already exists
+if not recipy.access_userdata(user):
+    print(recipy.build_user_path(user))
+    recipy.build_user(user,password) #Error if user already exists
 print("User Created?")
 print(recipy.access_userdata(user))
 print("Should be true")
