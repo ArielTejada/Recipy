@@ -408,6 +408,59 @@ def get_userdata(user):
         user_data = os.listdir(path)
         return user_data
 
+def initialize_user_data(index):
+    # Initalizes user data based on catagory of data
+    # 0 - liked_recipes.csv
+    # 1 - pantry.csv
+    # 2 - password
+    # 3 - past_searches.csv
+    if index==0:
+        data = {
+            'TITLES' : [],
+            'DESCRIPTION' : [],
+            'LINK' : [],
+            'INGREDIENTS' : [],
+            'DIRECTIONS' : []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('liked_recipes.csv')
+    elif index==1:
+        # Saves pantry as name of ingredients
+        data = {
+            'name' : [],
+            'expiration_date': []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('pantry.csv')
+    elif index==2:
+        # Saves pantry as name of ingredients
+        data = {
+            'name' : [],
+            'expiration_date': []
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('pantry.csv')
+    elif index==3:
+        data = {
+            'name' : [],
+        }
+        data = pd.DataFrame(data)
+        data.to_csv('past_searches.csv')
+    return data
 
+
+def get_userdata(user,index):
+    # Gets user data index
+    # 0 - liked_recipes.csv
+    # 1 - pantry.csv
+    # 2 - password
+    # 3 - past_searches.csv
+
+    file = get_userdata(user)[index]
+    data = os.path.join(build_user_path(user),file)
+    if os.path.getsize(data)>0:
+        data = pd.read_csv(data)
+    data = initialize_user_data(index)
+    return data 
 
         
