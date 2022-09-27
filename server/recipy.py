@@ -407,7 +407,12 @@ def get_userdata(user):
         path =build_user_path(user)
         user_data = os.listdir(path)
         return user_data
-
+"""
+initialize_user_data(index): Initializes the data associated with a file in userdata
+@param index: username associated with user
+@return User Directory Files to be interperted by server
+        Will return None if user directory doesn't exist
+""" 
 def initialize_user_data(index):
     # Initalizes user data based on catagory of data
     # 0 - liked_recipes.csv
@@ -461,6 +466,11 @@ def get_userdata(user,index):
     if os.path.getsize(data)>0:
         data = pd.read_csv(data)
     data = initialize_user_data(index)
-    return data 
+    return data
+
+def add_to_liked_recipes(user,recipe_name):
+     # Implement this function that looks up a recipe in the recipe database and adds it to the user's 'liked_recipe.csv
+     # returns nothing.
+     return
 
         

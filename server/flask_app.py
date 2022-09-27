@@ -67,7 +67,7 @@ User Management - Server Side Functions
 """
 
 """
-add_new_user(user): Adds new user to user_data
+add_new_user(user,password): Adds new user to user_data
 @param: username
 @param: password  
 @return: 
@@ -87,7 +87,7 @@ def add_user(user,password):
       recipy.build_user(user,password)
 
 """
-load_user(user): loads user and returns user_data
+load_user(user,password): loads user and returns user_data
 @param: username
 @param: password 
 @returns: returns error json if user doesn't exist or if password is invalid
@@ -142,7 +142,23 @@ def search2(user,query):
    return jsonify(results)
 
 """
+show_favorite_history(user): Gets users favorited recipes
+@param: search query to be used
+@return: json of search results
+"""
+@app.route('/favorite/<string:user>/<string:recipe_name>')
+def favorite(user,recipe_name):
+   # Timing Start
+   start_time = time.time()
 
+   recipy.add_to_liked_recipes(user,recipe_name)
+
+   # Timing End
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
+
+"""
 show_favorite_history(user): Gets users favorited recipes
 @param: search query to be used
 @return: json of search results
@@ -156,18 +172,21 @@ def show_favorite_history(user):
    # result of their being no history for a user and None being returned a result of the user not existing.
    
    if(recipy.access_userdata(user)): 
-      results =recipy.get_userdata(user) # Will get user files structure
+      results =recipy.get_userdata(user,0) 
+      return jsonify(results.to_dict())# Will return json of all recipes in users favorited.
       # NOTE:
-      # File structure: /user_data/userName/
-      #                                    /password              : password to authenticatate entryy
-      #                                    /past_searches         : past search queries
-      #                                    /liked_recipes.csv     : recipe data that has been liked by user
-      #                                    /pantry.csv             : List of items contained in pantry
-      # Each user will have the above allowing it to be conveniently refrenced here.
+      # Initalizes user data based on catagory of data
+      # 0 - liked_recipes.csv
+      # 1 - pantry.csv
+      # 2 - password
+      # 3 - past_searches.csv
+
+
    else:
       print(user)
       print("Does not exist")
-      results= None   
+      results= None 
+
    # Timing End
    end_time = time.time()
    print("Time taken to retrieve:")
