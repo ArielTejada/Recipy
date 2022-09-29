@@ -10,9 +10,17 @@ export default StyleSheet.create({
         margin: 10,
         marginLeft: 10
     },
+    banner: {
+        fontFamily: 'GrandHotel-Regular',
+        fontSize: 40,
+        padding: 10,
+        alignItems:'center',
+        justifyContent:'center',
+        backgroundColor: '#43a1c9',
+    },
     input : {
         backgroundColor: 'white',
-        width: width -= 80,
+        width: width -= 246,
         height: 50,
         fontSize: 20
     },

@@ -1,10 +1,19 @@
 import React, { useState } from "react";
-import {Text, View, Image, TouchableWithoutFeedback, Keyboard} from "react-native"
-import styles from '../styles/home-styles'
+import {Text, View, Image, TouchableWithoutFeedback, Keyboard, Button} from "react-native";
+import styles from '../styles/home-styles';
+import AddStack from "../navigation/addStack";
 
 import SearchBar from "../components/searchBar";
+import AddIngredient from "./addIngredient";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function Home() {
+const Stack = createStackNavigator();
+
+export default function Home({navigation}) {
+
+  const addHandler = () => {
+    navigation.navigate('AddIngredient');
+  }
 
   return (
     <TouchableWithoutFeedback 
@@ -14,11 +23,15 @@ export default function Home() {
       <View>
         <Image
           source={require('../img/banner2.png')}
-          style={{ width: 410, height: 210 }}
+          style={{ 
+            width: 410, 
+            height: 210 
+          }}
         />
-        <SearchBar
-        />
-        
+        <Button
+          title='add indgredient'
+          onPress={addHandler}
+        />      
       </View>
     </TouchableWithoutFeedback> 
   );
