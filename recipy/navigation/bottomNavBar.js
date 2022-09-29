@@ -6,6 +6,7 @@ import Home from "../screens/home";
 import Settings from '../screens/settings'
 import Favorite from '../screens/favorite'
 import Pantry from '../screens/pantry'
+import AddStack from "./addStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const BottomNavBar = () => {
         }}>
             <Tab.Screen 
                 name="Home" 
-                component={Home} 
+                component={AddStack} 
                 options={{
                 tabBarIcon: ({focused}) => (
                     <View>
@@ -35,10 +36,10 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#43a1c9' : 'black'
+                                tintColor: focused ? '#2196F3' : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#43a1c9' : 'black'}}>Home</Text>
+                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Home</Text>
                     </View>
                 )
             }}/>
@@ -56,10 +57,10 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#43a1c9' : 'black'
+                                tintColor: focused ? '#2196F3' : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#43a1c9' : 'black'}}>Pantry</Text>
+                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Pantry</Text>
                     </View>
                 )
             }}/>
@@ -77,10 +78,10 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#43a1c9' : 'black'
+                                tintColor: focused ? '#2196F3' : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#43a1c9' : 'black'}}>Favorite</Text>
+                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Favorite</Text>
                     </View>
                 )
             }}/>
@@ -98,26 +99,16 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#43a1c9' : 'black'
+                                tintColor: focused ? '#2196F3' : 'black'
                             }}
                         />
                         <Text 
-                            style={{color: focused ? '#43a1c9' : 'black'}}>Settings</Text>
+                            style={{color: focused ? '#2196F3' : 'black'}}>Settings</Text>
                     </View>
                 )
             }}/>
         </Tab.Navigator>
     );
 }
-
-// const styles = StyleSheet.create({
-//     menuItem: {
-//         width: 25,
-//         height: 25,
-//         justifyContent: 'center',
-//         alignSelf: 'center',
-//         tintColor: focused ? '#43a1c9' : 'black'
-//     }
-// })
 
 export default BottomNavBar;
