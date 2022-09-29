@@ -9,5 +9,20 @@ export default StyleSheet.create({
         alignItems:'center',
         justifyContent:'center',
         backgroundColor: '#43a1c9',
+    },
+    accountIcon : {
+        width: 40,
+        height: 40,
+        top: 10, 
+        left: 10,
+
+    },
+    banner: {
+        width: 410, 
+        height: 210,
+        zIndex: 0
+    },
+    absolute: {
+        position: 'absolute' 
     }
 })
