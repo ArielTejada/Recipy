@@ -395,8 +395,8 @@ def build_user(user,password):
 def get_password(user):
     path =build_user_path(user)
     path =os.path.join(path,'users.csv')
-    file =open(path,'r')
-    password =file.read()
+    user_df =pd.read_csv('users.csv')
+    password =user_df.loc[user_df['username']==user] # Incomplete
     return password
 
 def login(user,password):
@@ -414,17 +414,16 @@ def build_user_path(user, DIRECTORY ="user_data"):
         cwd =os.path.join(cwd,'server')
     path =os.path.join(cwd,DIRECTORY)
     return path
-
-"""
+""" 
 access_userdata(user): Attempts to acess a user's directory in their file.
 @param user: username associated with user
 @return True if user is accessed
         False if user doesn't exist
-"""   
+ """
 def access_userdata(user):
     path =build_user_path(user)
     # User Authentication
-    # If a user exists in user
+    # If a user exists in userdata base
 
     if(os.path.exists(path)):
         print("Welcome "+user)            
@@ -433,6 +432,27 @@ def access_userdata(user):
         #print(file+" doesn't exist.")
         #os.mkdir(path)
         return False
+"""
+DEPRECIATED
+
+access_userdata(user): Attempts to acess a user's directory in their file.
+@param user: username associated with user
+@return True if user is accessed
+        False if user doesn't exist
+  
+def access_userdata(user):
+    path =build_user_path(user)
+    # User Authentication
+    # If a user exists in userdata base
+
+    if(os.path.exists(path)):
+        print("Welcome "+user)            
+        return True
+    else:
+        #print(file+" doesn't exist.")
+        #os.mkdir(path)
+        return False
+""" 
 """
 get_userdata(user): Shows userdata. Will return None if user directory doesn't exist
 @param user: username associated with user
