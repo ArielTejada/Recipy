@@ -36,12 +36,20 @@ def list_files(Directory, print_query='yes',ending="_results.csv"):
     return usable_files
 
 """
-index(): renders defualt page
+index(): renders default page. Will not be used. 
 """
 @app.route('/')
 def index():
    return render_template('testApp.html')
 
+############################## 
+#      Basic Functions       # 
+##############################
+#
+# Functions not based on user 
+# data
+#
+# # # # # # # # # # # # # # # 
 """
 search(query): preforms webscraping search saving nothing
 @param: search query to be used
@@ -60,11 +68,12 @@ def search(query):
    #Save Data Under results for user
    return jsonify(results)
 
-"""
 
-User Management - Server Side Functions
 
-"""
+##################################################### 
+#      User Management - Server Side Functions      # 
+#####################################################
+
 
 """
 add_new_user(user,password): Adds new user to user_data
@@ -114,6 +123,14 @@ def load_user(user,password):
       error_message = user + str(" doesn't exist. Please signup as new user.")
       error =  jsonify({"message": error_message})
       return error
+
+##################################################### 
+#    User Based Functions - Server Side Functions   # 
+#####################################################
+#
+#  Functions here rely on user data for their 
+#  functionalities.
+#
 
 """
 search2(query): preforms webscraping search on recipy database and exports search data. Saves query under a users past search a data

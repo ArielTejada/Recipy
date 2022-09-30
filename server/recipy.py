@@ -335,17 +335,33 @@ def build_userdata():
     if(not userdata_exists()): 
         os.mkdir("user_data")
 
+def build_userdatabase():
+    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
+    path=os.path.join(current_directory,build_user_path(""))
+    USERDATA_SUBFOLDERS = ['users.csv','past_searches.csv','liked_recipes.csv','pantry.csv']
+    for sub in USERDATA_SUBFOLDERS:
+        new_file = open(os.path.join(path,sub),'a')
+        if sub == 'users.csv':
+            new_file = open(os.path.join(path,sub),'a')
+            initialize_user_data(2)
+            #new_file.write(password)
+        new_file.close()
+
+
 """
+DEPRECIATED
+
 build_user(user,password): Creates files in user subdirectory associated with it
 @param user: username associated with user
 @param password: password associated with user
-""" 
+
 def build_user(user,password):
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(user))
     print(os.getcwd())
     print(os.listdir(os.getcwd()))
     os.mkdir(path) 
+    # Make change to this to add to a central data base
     USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
     for sub in USER_SUBFOLDERS:
         new_file = open(os.path.join(path,sub),'a')
@@ -353,10 +369,32 @@ def build_user(user,password):
             new_file = open(os.path.join(path,sub),'a')
             new_file.write(password)
         new_file.close()
+""" 
+"""
+DEPRECIATED
 
+build_user(user,password): Creates files in user subdirectory associated with it
+@param user: username associated with user
+@param password: password associated with user
+
+def build_user(user,password):
+    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
+    path=os.path.join(current_directory,build_user_path(user))
+    print(os.getcwd())
+    print(os.listdir(os.getcwd()))
+    os.mkdir(path) 
+    # Make change to this to add to a central data base
+    USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
+    for sub in USER_SUBFOLDERS:
+        new_file = open(os.path.join(path,sub),'a')
+        if sub == 'password':
+            new_file = open(os.path.join(path,sub),'a')
+            new_file.write(password)
+        new_file.close()
+""" 
 def get_password(user):
     path =build_user_path(user)
-    path =os.path.join(path,'password')
+    path =os.path.join(path,'users.csv')
     file =open(path,'r')
     password =file.read()
     return password
@@ -366,7 +404,7 @@ def login(user,password):
     return (password==real_password)
 
 """
-access_userdata(user): Builds path to user directory
+access_userdata(user): Builds path to userdata directory
 @param user: username associated with user
 @return Path of user in specified directory.
 """   
@@ -375,7 +413,6 @@ def build_user_path(user, DIRECTORY ="user_data"):
     if 'server' in os.listdir(cwd):
         cwd =os.path.join(cwd,'server')
     path =os.path.join(cwd,DIRECTORY)
-    path =os.path.join(path,user)
     return path
 
 """
@@ -387,7 +424,7 @@ access_userdata(user): Attempts to acess a user's directory in their file.
 def access_userdata(user):
     path =build_user_path(user)
     # User Authentication
-    # If a user exists then they will have a directory under user_data
+    # If a user exists in user
 
     if(os.path.exists(path)):
         print("Welcome "+user)            
@@ -440,11 +477,11 @@ def initialize_user_data(index):
     elif index==2:
         # Saves pantry as name of ingredients
         data = {
-            'name' : [],
-            'expiration_date': []
+            'username' : [],
+            'password': []
         }
         data = pd.DataFrame(data)
-        data.to_csv('pantry.csv')
+        data.to_csv('user.csv')
     elif index==3:
         data = {
             'name' : [],
@@ -470,6 +507,9 @@ def get_userdata(user,index):
 
 def add_to_liked_recipes(user,recipe_name):
      # Implement this function that looks up a recipe in the recipe database and adds it to the user's 'liked_recipe.csv
+     # 
+     # Looks up recipe_name in recipe database with .loc and adds it to "liked_recipe.csv"
+     #
      # returns nothing.
      return
 
