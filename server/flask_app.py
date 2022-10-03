@@ -4,6 +4,7 @@ from flask import Flask,render_template,jsonify
 import time
 import recipy
 import os
+import pandas as pd
 
 
 app = Flask(__name__)
@@ -174,6 +175,28 @@ def favorite(user,recipe_name):
    end_time = time.time()
    print("Time taken to retrieve:")
    print(end_time-start_time)
+
+"""
+load_ingredients(): Gets ingredients from database
+@param: search query to be used
+@return: json of search results
+"""
+@app.route('/load_ingredients')
+def load_ingredients():
+   # Timing Start
+   start_time = time.time()
+   path=os.getcwd()
+   path=os.path.join(path,'datasets')
+   path=os.path.join(path,'Manually Combined Dataset.csv')
+   print(path)
+   ingredients= pd.read_csv(path)
+   ingredients=ingredients.to_dict()
+   # Timing End
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
+   print(ingredients)
+   return jsonify(ingredients)
 
 """
 show_favorite_history(user): Gets users favorited recipes

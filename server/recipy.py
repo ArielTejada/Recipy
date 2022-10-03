@@ -6,6 +6,7 @@ import pandas as pd
 from requests_html import HTML
 from requests_html import HTMLSession
 from requests_html import AsyncHTMLSession
+import bcrypt
 
 #https://practicaldatascience.co.uk/data-science/how-to-scrape-google-search-results-using-python
 #https://requests.readthedocs.io/projects/requests-html/en/latest/
@@ -327,25 +328,29 @@ These functions are called to manipulate userdata subfolders
 # Functions for ensuring that the userdata folder is always a folder
 
 def userdata_exists():
-    if(os.path.isdir("user_data")):
+    current_directory = os.getcwd()
+    current_directory = os.path.join(current_directory,'server')
+    current_directory = os.path.join(current_directory,'user_data')
+    if(os.path.exists(current_directory)):
         # Directory exists
         return True
+    else:
+        return False
 
-def build_userdata(): 
-    if(not userdata_exists()): 
-        os.mkdir("user_data")
-
-def build_userdatabase():
+def build_userdata():
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(""))
+    os.mkdir(path)
     USERDATA_SUBFOLDERS = ['users.csv','past_searches.csv','liked_recipes.csv','pantry.csv']
     for sub in USERDATA_SUBFOLDERS:
         new_file = open(os.path.join(path,sub),'a')
         if sub == 'users.csv':
             new_file = open(os.path.join(path,sub),'a')
-            initialize_user_data(2)
+            df=initialize_user_data(2)
+            df.to_clipboard('users.csv')
             #new_file.write(password)
         new_file.close()
+    
 
 
 """
@@ -391,20 +396,46 @@ def build_user(user,password):
             new_file = open(os.path.join(path,sub),'a')
             new_file.write(password)
         new_file.close()
-""" 
+"""
+
+def encrypt_password(password):
+    # https://www.geeksforgeeks.org/hashing-passwords-in-python-with-bcrypt/
+    password = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed = bcrypt.hashpw(password,salt)
+    return hashed
+
+def add_user(user,password):
+    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
+    path=os.path.join(current_directory,build_user_path(user))
+    path =os.path.join(path,'users.csv')
+    user_df=initialize_user_data(2)
+
+    password = encrypt_password(password)
+
+    user_df.loc[len(user_df.index)] = [user,password]
+    print(user_df)
+    user_df.to_csv(path)
+    return user_df
+
 def get_password(user):
     path =build_user_path(user)
     path =os.path.join(path,'users.csv')
-    user_df =pd.read_csv('users.csv')
-    password =user_df.loc[user_df['username']==user] # Incomplete
+    user_df =pd.read_csv(path)
+    user_df = user_df.loc[user_df['username']==user]
+    #https://stackoverflow.com/questions/16729574/how-can-i-get-a-value-from-a-cell-of-a-dataframe
+    password =user_df.iloc[0]['password'] # Should work?
     return password
 
 def login(user,password):
-    real_password = get_password(user)
-    return (password==real_password)
+    # https://gist.github.com/amelieykw/20a64653d7f05f5575876bc0af59e0f1
+    password = password.encode('utf-8')
+    hashed_password = get_password(user)[2:].encode('utf-8')
+    check = bcrypt.checkpw(password,hashed_password)# https://stackoverflow.com/questions/34548846/flask-bcrypt-valueerror-invalid-salt
+    return check
 
 """
-access_userdata(user): Builds path to userdata directory
+build_user_path (): Builds path to userdata directory
 @param user: username associated with user
 @return Path of user in specified directory.
 """   
@@ -424,9 +455,12 @@ def access_userdata(user):
     path =build_user_path(user)
     # User Authentication
     # If a user exists in userdata base
-
-    if(os.path.exists(path)):
-        print("Welcome "+user)            
+    path =os.path.join(path,'users.csv')
+    if os.path.getsize(path)>0:
+        user_df =pd.read_csv(path)
+    else:
+        return False
+    if(user_df.loc[user_df['username']==user].size>0):      
         return True
     else:
         #print(file+" doesn't exist.")
@@ -501,7 +535,7 @@ def initialize_user_data(index):
             'password': []
         }
         data = pd.DataFrame(data)
-        data.to_csv('user.csv')
+        data.to_csv('users.csv')
     elif index==3:
         data = {
             'name' : [],
@@ -526,9 +560,9 @@ def get_userdata(user,index):
     return data
 
 def add_to_liked_recipes(user,recipe_name):
-     # Implement this function that looks up a recipe in the recipe database and adds it to the user's 'liked_recipe.csv
+     # Implement this function that looks up a recipe in the recipe database and adds it to the user's 'liked_recipes.csv
      # 
-     # Looks up recipe_name in recipe database with .loc and adds it to "liked_recipe.csv"
+     # Looks up recipe_name in recipe database with .loc and adds it to "liked_recipes.csv"
      #
      # returns nothing.
      return
