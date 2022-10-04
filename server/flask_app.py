@@ -5,6 +5,7 @@ import time
 import recipy
 import os
 import pandas as pd
+import json
 
 
 app = Flask(__name__)
@@ -187,10 +188,10 @@ def load_ingredients():
    start_time = time.time()
    path=os.getcwd()
    path=os.path.join(path,'datasets')
-   path=os.path.join(path,'Manually Combined Dataset.csv')
-   print(path)
-   ingredients= pd.read_csv(path)
-   ingredients=ingredients.to_dict()
+   path=os.path.join(path,'ingredient_data.json')
+   path=open(path)
+   #ingredients= pd.read_csv(path,encoding='latin-1')
+   ingredients= json.load(path)
    # Timing End
    end_time = time.time()
    print("Time taken to retrieve:")

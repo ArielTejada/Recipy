@@ -120,6 +120,10 @@ def simplyRecipes(query):
 #simplyRecipes(ingredients)
 
 
+"""
+Password Validation
+"""
+
 user='Jane Smith'
 password ='test'
 """# https://www.makeuseof.com/encrypt-password-in-python-bcrypt/
@@ -132,7 +136,7 @@ if not recipy.access_userdata(user): # Check if user exists indata base
     
 print("User Created?")
 print(recipy.access_userdata(user))
-"""
+
 
 print(recipy.get_password(user))
 
@@ -141,7 +145,7 @@ print(recipy.login(user,password))
 print("Password Check inValid Attempt")
 print(recipy.login(user,"password"))
 
-"""print("Should be true")
+print("Should be true")
 print(recipy.login(user,password))
 print("Should be false")
 print(recipy.login(user,'password'))
@@ -152,4 +156,19 @@ for file in userdata:
     print(os.path.join(recipy.build_user_path(user),file))
 for i in range(3):
     print(get_userdata(user,i))"""
+
+
+# Timing Start
+start_time = time.time()
+path=os.getcwd()
+path=os.path.join(path,'datasets')
+path=os.path.join(path,'Manually Combined Dataset.csv')
+path= open(path)
+#ingredients= pd.read_csv(path,encoding='latin-1')
+#ingredients=ingredients.to_dict()
+# Timing End
+end_time = time.time()
+print("Time taken to retrieve:")
+print(end_time-start_time)
+print(path)
 
