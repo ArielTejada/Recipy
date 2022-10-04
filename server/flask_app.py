@@ -188,7 +188,7 @@ def load_ingredients():
    start_time = time.time()
    path=os.getcwd()
    path=os.path.join(path,'datasets')
-   path=os.path.join(path,'ingredient_data.json')
+   path=os.path.join(path,'ingredient_data2.json')
    path=open(path)
    #ingredients= pd.read_csv(path,encoding='latin-1')
    ingredients= json.load(path)
@@ -196,7 +196,6 @@ def load_ingredients():
    end_time = time.time()
    print("Time taken to retrieve:")
    print(end_time-start_time)
-   print(ingredients)
    return jsonify(ingredients)
 
 """

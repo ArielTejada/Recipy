@@ -1,9 +1,12 @@
+from flask import jsonify
 import recipy
 from requests_html import HTMLSession
 import time
 import os
 import pandas as pd
 import bcrypt
+import json
+
 # REMEMBER INSTALL DEPENDENCIES : pip install -r requirements.txt
 
 # Use this file for testing calls of recipy functions.
@@ -158,17 +161,25 @@ for i in range(3):
     print(get_userdata(user,i))"""
 
 
+""" Loads Json data and converts it"""
 # Timing Start
 start_time = time.time()
 path=os.getcwd()
 path=os.path.join(path,'datasets')
-path=os.path.join(path,'Manually Combined Dataset.csv')
+path=os.path.join(path,'ingredient_data2.json')
 path= open(path)
+ingredients= json.load(path)
+
 #ingredients= pd.read_csv(path,encoding='latin-1')
 #ingredients=ingredients.to_dict()
 # Timing End
 end_time = time.time()
 print("Time taken to retrieve:")
 print(end_time-start_time)
-print(path)
 
+newdict = dict()
+for ingredient in ingredients["Sheet1"]:
+    newdict[ingredient['name'].strip()]= ingredient
+
+with open("ingredient_data.json2", "w") as outfile:
+    json.dump(newdict, outfile)
