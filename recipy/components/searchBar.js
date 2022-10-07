@@ -1,45 +1,14 @@
 import { View, TextInput, Text, TouchableOpacity, Image, FlatList, Button, Pressable, Keyboard } from "react-native";
 import React, { useState } from "react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 import styles from '../styles/add-styles'
 import AddIngredient from "../screens/addIngredient";
+import matchFunction from "./matchFunction";
 
 const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
 
-    const testArr = [
-        {name: 'apple', key: '1'},
-        {name: 'banana', key: '2'},
-        {name: 'pear', key: '3'},
-        {name: 'apple cider', key: '4'},
-        {name: 'mango', key: '5'},
-        {name: 'peach', key: '7'},
-        {name: 'coconut', key: '8'},
-        {name: 'apricot', key: '9'},
-        {name: 'pickle', key: '10'},
-        {name: 'plum', key: '11'},
-        {name: 'prune', key: '12'},
-        {name: 'bison', key: '13'},
-        {name: 'berry', key: '14'},
-    ]
-
-    const match = (ingredient, list) => {
-        let result = [];
-        let check = false;
-        for(let i = 0; i < list.length; i++){
-            for(let j = 0; j < ingredient.length; j++){
-                if(ingredient[j] != list[i].name[j]){
-                    check = false;
-                    break;
-                } else {
-                    check = true;
-                }
-            }
-            if(check){
-               result.push(list[i]); 
-               check = false; 
-            }
-        }
-        return result;
-    }
+    const ingredients = useStoreState(state => state.ingredients);
+    const match = matchFunction;
 
     const [searchText, setSearchText] = useState('');
     const [searching, setSearching] = useState(false);
@@ -49,13 +18,13 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
     const pressHandler = (name, key) => {
         if(selectedIngredients.find(ingredient => ingredient.name === name)) {
             return;
-          }
+        }
         let newList = selectedIngredients;
         newList.push({name: name, key: key});
         setSelectedIngredients(newList);
         setSearchText('');
         setSearching(false);
-        Keyboard.dismiss();     
+        Keyboard.dismiss();    
     }
 
     return (
@@ -68,7 +37,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     onChangeText={(text) => {
                         setSearchText(text);
                         text === '' ? setSearching(false) : setSearching(true);
-                        text != '' ? setFilteredArray(match(text.toLowerCase(), testArr)) : setFilteredArray([]);
+                        text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
                         
                     }}
                     searchText={searchText}
@@ -103,7 +72,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     )}
                 /> : <Text></Text>}
                 {/* <FlatList
-                    data={selectedIngredients}
+                    data={ingredients}
                     renderItem={({ item }) => (
                         <View>                            
                             <Text>{item.name}</Text>                

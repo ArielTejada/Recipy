@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity, Image, FlatList, Button, Pressable, Keyboard } from "react-native";
-import styles from '../styles/pantry-styles'
+import styles from '../styles/pantry-styles';
+import matchFunction from "../components/matchFunction";
 
 import { SearchBar } from "react-native-screens";
+import { useStoreState } from "easy-peasy";
 
 export default function Pantry() {
 
   const [searchText, setSearchText] = useState('');
   const [searching, setSearching] = useState(false);
   const [filteredArray, setFilteredArray] = useState([]);
+  const match = matchFunction;
+  const ingredients = useStoreState(state => state.ingredients);
 
   return (
     <View>
@@ -26,7 +30,7 @@ export default function Pantry() {
                     onChangeText={(text) => {
                         setSearchText(text);
                         text === '' ? setSearching(false) : setSearching(true);
-                        text != '' ? setFilteredArray(match(text.toLowerCase(), testArr)) : setFilteredArray([]);
+                        text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
                         
                     }}
                     searchText={searchText}
