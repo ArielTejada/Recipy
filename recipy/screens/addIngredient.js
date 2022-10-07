@@ -1,14 +1,19 @@
-import React, { useState } from "react";
-import {Text, View, StyleSheet, Button, TouchableWithoutFeedback, TouchableOpacity, Keyboard} from "react-native";
+import React, { useState, useEffect } from "react";
+import {Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, Keyboard} from "react-native";
 import styles from '../styles/add-styles';
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 import SearchBar from "../components/searchBar"
 import { FlatList } from "react-native-gesture-handler";
 
 export default function AddIngredient({navigation}) {
 
-const [selectedIngredients, setSelectedIngredients] = useState([]);
-const [refresh, setRefresh] = useState(false);
+// const [selectedIngredients, setSelectedIngredients] = useState([]);
+const selectedIngredients = useStoreState(state => state.selectedIngredients);
+const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+// const [refresh, setRefresh] = useState(false);
+const refresh = useStoreState(state => state.refresh);
+const setRefresh = useStoreActions(actions => actions.setRefresh);
 
   return (
     <TouchableOpacity 
@@ -33,13 +38,13 @@ const [refresh, setRefresh] = useState(false);
           <Text style={styles.font20}>Selected Ingredients</Text>
           <Text></Text>
           <FlatList
-                    data={selectedIngredients}
-                    renderItem={({ item }) => (
-                        <View>                            
-                            <Text style={styles.font20}>{item.name}</Text>                
-                        </View>             
-                    )}
-                />
+              data={selectedIngredients}
+              renderItem={({ item }) => (
+                  <View>                            
+                      <Text style={styles.font20}>{item.name}</Text>                
+                  </View>             
+              )}
+          />
         </View>
       </View>
     </TouchableOpacity>
