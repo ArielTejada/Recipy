@@ -1,0 +1,12 @@
+matplotlib
+networkx
+numpy
+opencv-python
+pandas
+pillow
+pytest-cov
+qpsolvers
+scipy
+sortedcontainers
+requests_html
+aioflask
