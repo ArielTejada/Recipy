@@ -347,7 +347,7 @@ def build_userdata():
         if sub == 'users.csv':
             new_file = open(os.path.join(path,sub),'a')
             df=initialize_user_data(2)
-            df.to_clipboard('users.csv')
+            df.to_csv('users.csv')
             #new_file.write(password)
         new_file.close()
     
@@ -410,13 +410,23 @@ def add_user(user,password):
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(user))
     path =os.path.join(path,'users.csv')
-    user_df=initialize_user_data(2)
+
+    if(os.path.exists(path)) and os.path.getsize(path)>0:
+        user_df=pd.read_csv(path)
+    else:
+        user_df=initialize_user_data(2)
 
     password = encrypt_password(password)
 
     #user_df.loc[len(user_df.index)] = [user,password]
-    newENTRY =pd.DataFrame([user,password])
-    pd.concat(user_df,newENTRY)
+    newENTRY={'username':[user],"password":[password]}
+    newENTRY=pd.DataFrame(newENTRY)
+    print("PRE-UPDATE")
+    print(newENTRY)
+    user_df=pd.concat([user_df,newENTRY], axis = 0)
+    print("POST-UPDATE")
+    user_df=user_df.drop(['Unnamed: 0'], axis=1)
+    user_df=user_df.reset_index(drop=True)
     print(user_df)
     user_df.to_csv(path)
     return user_df
