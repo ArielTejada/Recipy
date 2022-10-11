@@ -403,6 +403,7 @@ def encrypt_password(password):
     password = password.encode('utf-8')
     salt = bcrypt.gensalt()
     hashed = bcrypt.hashpw(password,salt)
+    hashed= hashed.decode('utf-8')
     return hashed
 
 def add_user(user,password):
@@ -413,7 +414,9 @@ def add_user(user,password):
 
     password = encrypt_password(password)
 
-    user_df.loc[len(user_df.index)] = [user,password]
+    #user_df.loc[len(user_df.index)] = [user,password]
+    newENTRY =pd.DataFrame([user,password])
+    pd.concat(user_df,newENTRY)
     print(user_df)
     user_df.to_csv(path)
     return user_df
@@ -430,13 +433,15 @@ def get_password(user):
 def login(user,password):
     # https://gist.github.com/amelieykw/20a64653d7f05f5575876bc0af59e0f1
     password = password.encode('utf-8')
-    hashed_password = get_password(user)[2:].encode('utf-8')
+    hashed_password = get_password(user).encode('utf-8')
     check = bcrypt.checkpw(password,hashed_password)# https://stackoverflow.com/questions/34548846/flask-bcrypt-valueerror-invalid-salt
+    print("login ")
     return check
 
 """
-build_user_path (): Builds path to userdata directory
-@param user: username associated with user
+build_user_path (): Builds path to userdata directory. 
+As a result of shift to central user database this function needs no parameters
+@param user: username associated with user. DOES NOTHING... SHOULD BE REMOVED
 @return Path of user in specified directory.
 """   
 def build_user_path(user, DIRECTORY ="user_data"):
@@ -455,7 +460,10 @@ def access_userdata(user):
     path =build_user_path(user)
     # User Authentication
     # If a user exists in userdata base
+    
     path =os.path.join(path,'users.csv')
+    
+    # Check if userdata has been created yet.
     if os.path.getsize(path)>0:
         user_df =pd.read_csv(path)
     else:
@@ -544,18 +552,20 @@ def initialize_user_data(index):
         data.to_csv('past_searches.csv')
     return data
 
-
 def get_userdata(user,index):
     # Gets user data index
     # 0 - liked_recipes.csv
     # 1 - pantry.csv
-    # 2 - password
+    # 2 - users.csv
     # 3 - past_searches.csv
 
-    file = get_userdata(user)[index]
+    CENTRAL_FILES = ["liked_recipes.csv","pantry.csv","users.csv","past_searches.csv"]
+    file = CENTRAL_FILES[index]
     data = os.path.join(build_user_path(user),file)
+
     if os.path.getsize(data)>0:
         data = pd.read_csv(data)
+        return data
     data = initialize_user_data(index)
     return data
 

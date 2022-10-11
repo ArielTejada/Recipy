@@ -78,11 +78,14 @@ def search(query):
 
 
 """
+
+DEPRECIATED
+
 add_new_user(user,password): Adds new user to user_data
 @param: username
 @param: password  
 @return: 
-"""
+
 @app.route('/signup/<string:user>/<string:password>')
 def add_user(user,password):
    # Only way to authenticate is by sending password in request
@@ -96,14 +99,16 @@ def add_user(user,password):
             
    else:
       recipy.build_user(user,password)
-
 """
+"""
+DEPRECIATED
+
 load_user(user,password): loads user and returns user_data
 @param: username
 @param: password 
 @returns: returns error json if user doesn't exist or if password is invalid
           
-"""
+
 @app.route('/signup/<string:user>/<string:password>')
 def load_user(user,password):
    # Only way to authenticate is by sending password in request
@@ -125,7 +130,7 @@ def load_user(user,password):
       error_message = user + str(" doesn't exist. Please signup as new user.")
       error =  jsonify({"message": error_message})
       return error
-
+"""
 ##################################################### 
 #    User Based Functions - Server Side Functions   # 
 #####################################################
@@ -160,22 +165,6 @@ def search2(user,query):
    print(end_time-start_time)
    return jsonify(results)
 
-"""
-show_favorite_history(user): Gets users favorited recipes
-@param: search query to be used
-@return: json of search results
-"""
-@app.route('/favorite/<string:user>/<string:recipe_name>')
-def favorite(user,recipe_name):
-   # Timing Start
-   start_time = time.time()
-
-   recipy.add_to_liked_recipes(user,recipe_name)
-
-   # Timing End
-   end_time = time.time()
-   print("Time taken to retrieve:")
-   print(end_time-start_time)
 
 """
 load_ingredients(): Gets ingredients from database
@@ -197,6 +186,61 @@ def load_ingredients():
    print("Time taken to retrieve:")
    print(end_time-start_time)
    return jsonify(ingredients)
+"""
+
+"""
+@app.route('/signup/<string:user>/<string:password>')
+def signup(user,password):
+   if not recipy.userdata_exists():
+      recipy.build_userdata()
+   if not recipy.access_userdata(user): # Check if user exists indata base
+      recipy.add_user(user,password)
+   return login(user,password)
+
+@app.route('/login/<string:user>/<string:password>')
+def login(user,password):
+   if recipy.access_userdata(user):
+      if recipy.login(user,password):
+         # CASE 1: Sucessful Login
+         message_CONTENT = user + str(" has successfully logged in.")
+         message ={}
+         message['message'] = message_CONTENT
+         message['loggedIN?'] =True
+         message =  jsonify(message) # Return login message
+         return message
+      else:
+         # CASE 2: INCORRECT PASSWORD
+         message_CONTENT = str(" Incorrect Password")
+         message ={}
+         message['message'] = message_CONTENT
+         message['loggedIN?'] =False
+         message =  jsonify(message) # Return login message
+         return message
+   # CASE 3: User does not exist
+   message_CONTENT = user + str(" does not exist")
+   message ={}
+   message['message'] = message_CONTENT
+   message['loggedIN?'] =False
+    # Return login message
+   return jsonify(message)
+   
+
+"""
+favorite(user): Gets users favorited recipes
+@param: search query to be used
+@return: json of search results
+"""
+@app.route('/favorite/<string:user>/<string:recipe_name>')
+def favorite(user,recipe_name):
+   # Timing Start
+   start_time = time.time()
+
+   recipy.add_to_liked_recipes(user,recipe_name)
+
+   # Timing End
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
 
 """
 show_favorite_history(user): Gets users favorited recipes

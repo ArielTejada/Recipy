@@ -123,13 +123,44 @@ def simplyRecipes(query):
 #simplyRecipes(ingredients)
 
 
-"""
-Password Validation
-"""
+#########################
+##  Password Validation ##
+#########################
 
+# Test with  this sample user Jane Smith
 user='Jane Smith'
 password ='test'
-"""# https://www.makeuseof.com/encrypt-password-in-python-bcrypt/
+
+# Test 1  Creates salt encrypted password. Decodes the hash. 
+# Saves to a file. Run Read portion to read.
+
+# WRITE PORTION
+"""salt =bcrypt.gensalt()
+
+encryted_pass = bcrypt.hashpw(password.encode('utf-8'),salt)
+print(encryted_pass)
+
+# decode as string and then encode
+encryted_pass = encryted_pass.decode('utf-8')
+
+# save as file in decoded form
+with open("test.txt",'w') as f:
+    f.write(encryted_pass)"""
+
+# READ PORTION
+"""
+encryted_pass = open("test.txt",'r').read()
+encryted_pass = encryted_pass.encode('utf-8')
+
+# 
+print("Password Check Valid Attempt")
+print(bcrypt.checkpw(password.encode('utf-8'),encryted_pass))
+print("Password Check Invalid Attempt")
+print(bcrypt.checkpw("password".encode('utf-8'),encryted_pass))
+"""
+
+# https://www.makeuseof.com/encrypt-password-in-python-bcrypt/
+
 print("userdata exists?")
 print(recipy.userdata_exists())
 if not recipy.userdata_exists():
@@ -152,17 +183,23 @@ print("Should be true")
 print(recipy.login(user,password))
 print("Should be false")
 print(recipy.login(user,'password'))
-userdata=recipy.get_userdata(user)
+userdata=recipy.get_userdata(user,2)
+print(userdata)
 
+"""
 #Paths to user data files
 for file in userdata:
     print(os.path.join(recipy.build_user_path(user),file))
 for i in range(3):
-    print(get_userdata(user,i))"""
+    print(get_userdata(user,i))
+"""
+#########################################
+###  Loads Json data and converts it  ###
+#########################################
 
+# Ingredient Json loader
 
-""" Loads Json data and converts it"""
-# Timing Start
+"""# Timing Start
 start_time = time.time()
 path=os.getcwd()
 path=os.path.join(path,'datasets')
@@ -182,4 +219,4 @@ for ingredient in ingredients["Sheet1"]:
     newdict[ingredient['name'].strip()]= ingredient
 
 with open("ingredient_data.json2", "w") as outfile:
-    json.dump(newdict, outfile)
+    json.dump(newdict, outfile)"""
