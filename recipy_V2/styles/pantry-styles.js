@@ -5,48 +5,44 @@ import {StyleSheet, Dimensions} from "react-native";
 const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
-    container : {
+    container: {
         flexDirection: 'row',
-        alignSelf: 'stretch',
-        margin: 10,
-        marginLeft: 10
+        marginHorizontal: width/40,
     },
-    banner: {
+    header: {
         fontFamily: 'Festive-Regular',
-        fontSize: 40,
-        padding: 10,
-        alignItems:'center',
-        justifyContent:'center',
-        backgroundColor: '#43a1c9',
+        fontSize: RFPercentage(7),
+        width: width,
+        height: height/8.5,
+        textAlign: 'center',
+        backgroundColor: '#2196F3',
     },
     input : {
         backgroundColor: 'white',
-        // width: width -= 246,
-        height: 50,
-        fontSize: 20
-    },
-    icon: {
-        width: 30,
-        height: 30,
-        alignSelf: 'center'
+        width: width/2.5,
+        height: height/15,
+        fontSize: RFPercentage(3),
+        display: 'flex'
     },
     button: {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
         backgroundColor: '#2196f3',
-        width: 60
+        width: width/6.6,
+        borderWidth: 1,
+        borderRadius: 5,
     },
     searchResult: {
-        height: 40,
+        height: height/20,
     },
-    text: {
-        fontSize: 18,
-        color: 'white'
+    clear: {
+        fontSize: RFPercentage(3),
+        color: 'white',
     },
     margins: {
-        marginVertical: 5,
-        marginHorizontal: 10,
+        marginVertical: height/300,
+        marginHorizontal: width/40,
     },
     outline: {
         borderWidth: 1,
@@ -60,10 +56,13 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignSelf: 'stretch',
     },
-    selected: {
-        height: 'auto'
+    fontSmall: {
+        fontSize: RFPercentage(3)
     },
-    font20: {
-        fontSize: 20
+    fontMedium: {
+        fontSize: RFPercentage(4)
+    },
+    fontLarge: {
+        fontSize: RFPercentage(5)
     }
 })

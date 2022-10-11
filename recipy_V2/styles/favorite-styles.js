@@ -5,12 +5,12 @@ import {StyleSheet, Dimensions} from "react-native";
 const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
-    container: {
+    header: {
         fontFamily: 'Festive-Regular',
-        fontSize: 40,
-        padding: 10,
-        alignItems:'center',
-        justifyContent:'center',
-        backgroundColor: '#43a1c9',
+        fontSize: RFPercentage(7),
+        width: width,
+        height: height/8.5,
+        textAlign: 'center',
+        backgroundColor: '#2196F3',
     }
 })

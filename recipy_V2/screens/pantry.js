@@ -17,14 +17,14 @@ export default function Pantry() {
   return (
     <View>
       <View >
-        <Text style={styles.banner}>Pantry</Text>
-        <Text style={[styles.font20, styles.margins]}>Add ingredients to your pantry:</Text>
+        <Text style={styles.header}>Pantry</Text>
+        <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
         <SearchBar/>
       </View>
       <View>    
             <View style={styles.container}>
                 <TextInput
-                    placeholder='add ingredient'
+                    placeholder=' add ingredient'
                     style={[styles.input, styles.outline]}
                     value={searchText}
                     onChangeText={(text) => {
@@ -37,7 +37,7 @@ export default function Pantry() {
                     setSearchText={setSearchText}
                 />
                 <TextInput
-                  placeholder="add expiration"
+                  placeholder=" add expiration"
                   style={[styles.input, styles.outline]}
                 />
                 <Pressable 
@@ -47,7 +47,7 @@ export default function Pantry() {
                         setSearching(false);
                     }}
                 >
-                    <Text style={styles.text}>clear</Text>
+                    <Text style={styles.clear}>clear</Text>
                 </Pressable>
             </View>
             <View>
@@ -63,7 +63,7 @@ export default function Pantry() {
                                     pressHandler(item.name, item.key);
                                 }}
                             >
-                               <Text style={[styles.searchResult, styles.window, styles.outline, styles.textCenter, styles.margins, styles.font20]}>{item.name}</Text> 
+                               <Text style={[styles.searchResult, styles.window, styles.outline, styles.textCenter, styles.margins, styles.fontSmall]}>{item.name}</Text> 
                             </TouchableOpacity>
                         </View>             
                     )}

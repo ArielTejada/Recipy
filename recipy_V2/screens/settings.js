@@ -6,7 +6,7 @@ export default function Settings() {
 
   return (
     <View>
-      <Text style={styles.container}>Settings</Text>
+      <Text style={styles.header}>Settings</Text>
     </View>
   );
 }
