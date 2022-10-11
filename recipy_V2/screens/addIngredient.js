@@ -34,14 +34,14 @@ const setRefresh = useStoreActions(actions => actions.setRefresh);
           selectedIngredients={selectedIngredients}
           setSelectedIngredients={setSelectedIngredients}
         />
-        <View style={[styles.margins, styles.outline, styles.selected, styles.font20]}>
-          <Text style={styles.font20}>Selected Ingredients</Text>
+        <View style={[styles.margins, styles.outline, styles.selected, styles.fontSmall]}>
+          <Text style={styles.fontSmall}>Selected Ingredients</Text>
           <Text></Text>
           <FlatList
               data={selectedIngredients}
               renderItem={({ item }) => (
                   <View>                            
-                      <Text style={styles.font20}>{item.name}</Text>                
+                      <Text style={styles.fontSmall}>{item.name}</Text>                
                   </View>             
               )}
           />
