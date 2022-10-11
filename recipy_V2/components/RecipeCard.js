@@ -11,9 +11,9 @@ export default function RecipeCard({image, name}) {
             style={[styles.card]}
         />
         <View style={styles.tag}>
-          <Text style={[styles.font30, styles.title]}>{name}</Text>
+          <Text style={[styles.fontMedium, styles.title]}>{name}</Text>
           <TouchableOpacity>
-            <Text style={[styles.font20, styles.button]}>Get This Recipe!</Text>
+            <Text style={[styles.fontSmall, styles.button]}>Get This Recipe!</Text>
           </TouchableOpacity>
         </View>
         

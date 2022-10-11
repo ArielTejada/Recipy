@@ -12,5 +12,14 @@ export default StyleSheet.create({
         height: height/8.5,
         textAlign: 'center',
         backgroundColor: '#2196F3',
+    },
+    fontSmall: {
+        fontSize: RFPercentage(3)
+    },
+    fontMedium: {
+        fontSize: RFPercentage(4)
+    },
+    fontLarge: {
+        fontSize: RFPercentage(5)
     }
 })

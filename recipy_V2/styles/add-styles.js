@@ -55,7 +55,13 @@ export default StyleSheet.create({
     selected: {
         height: 'auto'
     },
-    font20: {
-        fontSize: 20
+    fontSmall: {
+        fontSize: RFPercentage(3)
+    },
+    fontMedium: {
+        fontSize: RFPercentage(4)
+    },
+    fontLarge: {
+        fontSize: RFPercentage(5)
     }
 })

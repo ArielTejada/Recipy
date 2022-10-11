@@ -27,11 +27,14 @@ export default StyleSheet.create({
     absolute: {
         position: 'absolute' 
     },
-    font20: {
+    fontSmall: {
+        fontSize: RFPercentage(3)
+    },
+    fontMedium: {
         fontSize: RFPercentage(4)
     },
-    font30 : {
-        fontSize: RFPercentage(4.5),
+    fontLarge: {
+        fontSize: RFPercentage(5)
     },
     button: {
         width: wp('50%'),

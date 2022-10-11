@@ -55,10 +55,10 @@ export default function Home({navigation}) {
           style={[styles.center]}
         >
           <Text 
-            style={[styles.button, styles.font30]}
+            style={[styles.button, styles.fontMedium]}
           >Add Ingredient</Text>
         </TouchableOpacity>
-        <Text style={styles.font30}>Results</Text> 
+        <Text style={styles.fontMedium}>Results</Text> 
             
       <RecipeCard
         image={require('../img/caesar-salad.jpg')}
