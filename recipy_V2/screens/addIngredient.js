@@ -41,6 +41,8 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
   return (
+    <View style={{flex:1}}>
+      {shouldShow ? null:
     <TouchableOpacity 
       keyboardShouldPersistTaps='always'
       onPress={() => {
@@ -59,13 +61,7 @@ const onPress = () => {
           selectedIngredients={selectedIngredients}
           setSelectedIngredients={setSelectedIngredients}
         />
-        <Button title = "Barcode Scanner" onPress={() => setShouldShow(!shouldShow)}/>
-        {shouldShow ?
-      <BarCodeScanner
-      onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-      style = {StyleSheet.absoluteFillObject}
-      />:null}
-      {scanned && <Button title = {'Tap to Return'} onPress ={onPress}/>}
+    <Button title = "Barcode Scanner" onPress={() => setShouldShow(!shouldShow)}/>
         <View style={[styles.margins, styles.outline, styles.selected, styles.fontSmall]}>
           <Text style={styles.fontSmall}>Selected Ingredients</Text>
           <Text></Text>
@@ -79,6 +75,13 @@ const onPress = () => {
           />
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableOpacity>}
+      {shouldShow ?
+      <BarCodeScanner
+      onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+      style = {StyleSheet.absoluteFillObject}
+      />:null}
+      {scanned && <Button title = {'Tap to Return'} onPress ={onPress}/>}
+    </View>
   );
 }
