@@ -6,6 +6,8 @@ import matchFunction from "../components/matchFunction";
 import { SearchBar } from "react-native-screens";
 import { useStoreState } from "easy-peasy";
 
+import { BarCodeScanner } from 'expo-barcode-scanner';
+
 export default function Pantry() {
 
   const [searchText, setSearchText] = useState('');
