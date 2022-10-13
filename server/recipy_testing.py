@@ -170,24 +170,86 @@ def allRecipes(query):
         if directions:
             recipes.append(page)
     print(recipes)
+    
+    #Preform Scrape on all recipes
+    data = []
+    for r in recipes:
+        data.append(scrape(r,"allrecipes"))
+    return pd.DataFrame(data)
+
+def scrape(link,type):
+    # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+    title =""
+    description=""
+    #link
+    ingredients=""
+    directions =""
+    macros = ""
+    if type == 'allrecipes':
+        session = HTMLSession()
+        response =session.get(link) 
+        results =response.html.find("h1")
+        if results:
+            title +=(results[0].text)
+        results =response.html.find(".recipe__steps")
+        # Short Description
+        results =response.html.find("h2")
+        if results:
+            description +=(results[0].text)
+
+        # Link
+        # Directions
+        results =response.html.find(".recipe__steps")
+        if results:
+            directions+=(results[0].text)
+        # MACROS
+        results =response.html.find(".mntl-nutrition-facts-summary__table-row")
+        if results:
+            for i in range(len(results)):
+                macros+=str(results[i].text)+","
+        #print("\nIngredients\n") 
+        results =response.html.find(".mntl-structured-ingredients__list-item") # Ingredients
+        if results:
+            for i in range(len(results)):
+                ingredients+=str(results[i].text)+","
+    return {"TITLE":title,"DESCRIPTION":link,"LINK":link,"INGREDIENTS":ingredients,"DIRECTIONS":directions}
+    
 
 #########################################
 ###             DRIVER AREA           ###
 #########################################
 query ="onion"    
-allRecipes(query)
+print(allRecipes(query))
 
 #Figuring out selectors for relevant data
+
+# Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
 """session = HTMLSession()
-response =session.get("https://www.allrecipes.com/recipe/82659/old-fashioned-onion-rings/")
+response =session.get("https://www.allrecipes.com/recipe/82659/old-fashioned-onion-rings/") # Directions
+results =response.html.find("h1")
+if results:
+    print(results[0].text)
+results =response.html.find(".recipe__steps")
+# Short Description
+print("Description")
+results =response.html.find("h2")
+if results:
+    print(results[0].text)
+
+# Link
+print("https://www.allrecipes.com/recipe/82659/old-fashioned-onion-rings/")
 results =response.html.find(".recipe__steps")
 if results:
     print(results[0].text)
-response =session.get("https://www.allrecipes.com/recipe/16531/blooming-onion/") 
-results =response.html.find(".recipe__steps")
+response =session.get("https://www.allrecipes.com/recipe/16531/blooming-onion/")  # Calories
+results =response.html.find(".mntl-nutrition-facts-summary__table-row")
 if results:
-    print(results[0].text)"""
-
+    print(results[0].text)
+print("\nIngredients\n") 
+results =response.html.find(".mntl-structured-ingredients__list-item") # Ingredients
+if results:
+    for i in range(len(results)):
+        print(results[i].text)"""
 #########################################
 ###  Loads Json data and converts it  ###
 #########################################
