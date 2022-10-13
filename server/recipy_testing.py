@@ -7,6 +7,8 @@ import pandas as pd
 import bcrypt
 import json
 
+
+
 # REMEMBER INSTALL DEPENDENCIES : pip install -r requirements.txt
 
 # Use this file for testing calls of recipy functions.
@@ -116,83 +118,76 @@ def simplyRecipes(query):
         Recipe_DIRECTIONS.append(directions)"""
         #print("Took:"+str((finish_time-start_time))+" seconds")
 
-#Enter Search Entry Here:
-#ingredients ="onion,chicken"
-#dict =recipy.query_sites(ingredients)
+def build_link(ingredient,type="allrecipes",):
+    link=""
+    if(type=="allrecipes"):
+        #allrecipes = 'https://www.allrecipes.com/search/results/?'
+        #Example Link: https://www.allrecipes.com/search/results/?IngIncl=onion&IngIncl=garlic
+        #
+        #  Structure of Search
+        # "https://www.allrecipes.com/search?" + "q=" + query
+        #
+        #   Builds link by adding each ingredient to include
+        link +='https://www.allrecipes.com/search?'
+        link += 'q='+str(ingredient)
+        return link
 
-#simplyRecipes(ingredients)
+def allRecipes(query):
 
-
-#########################
-##  Password Validation ##
-#########################
-
-# Test with  this sample user Jane Smith
-user='Jane Smith'
-password ='test'
-
-# Test 1  Creates salt encrypted password. Decodes the hash. 
-# Saves to a file. Run Read portion to read.
-
-# WRITE PORTION
-"""salt =bcrypt.gensalt()
-
-encryted_pass = bcrypt.hashpw(password.encode('utf-8'),salt)
-print(encryted_pass)
-
-# decode as string and then encode
-encryted_pass = encryted_pass.decode('utf-8')
-
-# save as file in decoded form
-with open("test.txt",'w') as f:
-    f.write(encryted_pass)"""
-
-# READ PORTION
-"""
-encryted_pass = open("test.txt",'r').read()
-encryted_pass = encryted_pass.encode('utf-8')
-
-# 
-print("Password Check Valid Attempt")
-print(bcrypt.checkpw(password.encode('utf-8'),encryted_pass))
-print("Password Check Invalid Attempt")
-print(bcrypt.checkpw("password".encode('utf-8'),encryted_pass))
-"""
-
-# https://www.makeuseof.com/encrypt-password-in-python-bcrypt/
-
-print("userdata exists?")
-print(recipy.userdata_exists())
-if not recipy.userdata_exists():
-    recipy.build_userdata()
-if not recipy.access_userdata(user): # Check if user exists indata base
-    recipy.add_user(user,password)
+    session = HTMLSession()
+    #Simplyrecipes = 'https://www.simplyrecipes.com/search?q=?'
+    #Example Link: https://www.simplyrecipes.com/search?q=onion
+    #
+    #  Structure of Search
+    # "https://www.simplyrecipes.com/search?q=" + query 
+    #
     
-print("User Created?")
-print(recipy.access_userdata(user))
+    # Simplyrecipes.com Exploitation [INSERT UNDERHERE]
+
+    ingredients = query
+    allRecipes_searchLink = build_link(ingredients,type="allrecipes")
+    print(allRecipes_searchLink)
+    
+
+    #get html
+    response=session.get(allRecipes_searchLink)
+    search_results = response.html.links
+    potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+    #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
 
 
-print(recipy.get_password(user))
+    potential_recipe_pages = list(potential_recipe_pages)
+    print(potential_recipe_pages)
 
-print("Password Check Valid Attempt")
-print(recipy.login(user,password))
-print("Password Check inValid Attempt")
-print(recipy.login(user,"password"))
+    # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+    # If we find a recipe name then the rest of the data should be there
+    recipes = []
+    for page in potential_recipe_pages:
+        potential_recipe=session.get(page)
+        print(page)
+        directions =potential_recipe.html.find(".recipe__steps")
+        print(directions)
+        if directions:
+            recipes.append(page)
+    print(recipes)
 
-print("Should be true")
-print(recipy.login(user,password))
-print("Should be false")
-print(recipy.login(user,'password'))
-userdata=recipy.get_userdata(user,2)
-print(userdata)
+#########################################
+###             DRIVER AREA           ###
+#########################################
+query ="onion"    
+allRecipes(query)
 
-"""
-#Paths to user data files
-for file in userdata:
-    print(os.path.join(recipy.build_user_path(user),file))
-for i in range(3):
-    print(get_userdata(user,i))
-"""
+#Figuring out selectors for relevant data
+"""session = HTMLSession()
+response =session.get("https://www.allrecipes.com/recipe/82659/old-fashioned-onion-rings/")
+results =response.html.find(".recipe__steps")
+if results:
+    print(results[0].text)
+response =session.get("https://www.allrecipes.com/recipe/16531/blooming-onion/") 
+results =response.html.find(".recipe__steps")
+if results:
+    print(results[0].text)"""
+
 #########################################
 ###  Loads Json data and converts it  ###
 #########################################
