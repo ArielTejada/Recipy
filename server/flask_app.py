@@ -60,10 +60,21 @@ search(query): preforms webscraping search saving nothing
 @app.route('/search/<string:query>')
 def search(query):
    print("Query:")
-   print(query)
    #Timing
    start_time = time.time()
-   results =recipy.query_sites_dict(query)
+   print(query)
+   if(query.find(',')):
+      query=query.split(',')
+      results=pd.DataFrame(recipy.query_sites_dict(query[0]))
+      for q in range(len(query)):
+         if q>=1:
+            results=recipy.query_sites_dict(query[q])
+         
+
+
+   else:
+      results =recipy.query_sites_dict(query)
+
    end_time = time.time()
    print("Time taken to retrieve:")
    print(end_time-start_time)
@@ -72,65 +83,6 @@ def search(query):
 
 
 
-##################################################### 
-#      User Management - Server Side Functions      # 
-#####################################################
-
-
-"""
-
-DEPRECIATED
-
-add_new_user(user,password): Adds new user to user_data
-@param: username
-@param: password  
-@return: 
-
-@app.route('/signup/<string:user>/<string:password>')
-def add_user(user,password):
-   # Only way to authenticate is by sending password in request
-   # https://security.stackexchange.com/questions/33793/handling-passwords-in-a-web-application
-   if(recipy.access_userdata(user)):
-      print(user)
-      print("is the name of another user. Please pick another username")
-      error_message = user + str(" is the name of another user. Please pick another username or login")
-      error =  jsonify({"message": error_message})
-      return error
-            
-   else:
-      recipy.build_user(user,password)
-"""
-"""
-DEPRECIATED
-
-load_user(user,password): loads user and returns user_data
-@param: username
-@param: password 
-@returns: returns error json if user doesn't exist or if password is invalid
-          
-
-@app.route('/signup/<string:user>/<string:password>')
-def load_user(user,password):
-   # Only way to authenticate is by sending password in request
-   # https://security.stackexchange.com/questions/33793/handling-passwords-in-a-web-application
-   if(recipy.access_userdata(user)):
-      # LOGIN USER AFTER AUTHENTICATION AGAINST PASSWORD
-      if recipy.login(user,password):
-         print("Welcome"+str(user)) 
-         return recipy.get_userdata(user) 
-      else:
-         print(user)
-         print(" INVALID PASSWORD")
-         error_message = user + str("INVALID PASSWORD")
-         error =  jsonify({"message": error_message})
-         return error
-   else:
-      print(user)
-      print(" doesn't exist.")
-      error_message = user + str(" doesn't exist. Please signup as new user.")
-      error =  jsonify({"message": error_message})
-      return error
-"""
 ##################################################### 
 #    User Based Functions - Server Side Functions   # 
 #####################################################
@@ -264,8 +216,6 @@ def show_favorite_history(user):
       # 1 - pantry.csv
       # 2 - password
       # 3 - past_searches.csv
-
-
    else:
       print(user)
       print("Does not exist")

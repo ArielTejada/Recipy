@@ -38,9 +38,9 @@ def build_link(ingredients_list,type="allrecipes",):
         # "https://www.allrecipes.com/search/results/?" + "IngIncl=" + query "&" + "IngIncl=" + query2 "&" + 
         #
         #   Builds link by adding each ingredient to include
-        link +='https://www.allrecipes.com/search/results/?'
+        link +='https://www.allrecipes.com/search?'
         for i in range(len(ingredients_list)):
-            ingredients_list[i] = "IngIncl=" + ingredients_list[i]
+            ingredients_list[i] = "q=" + ingredients_list[i]
             if i<len(ingredients_list)-1:
                 ingredients_list[i]+="&"
             link+=ingredients_list[i]
@@ -326,7 +326,9 @@ These functions are called to manipulate userdata subfolders
 # Each user will have the above allowing it to be conviently refrenced on some login protocol 
 
 # Functions for ensuring that the userdata folder is always a folder
-
+"""
+userdata_exists(): checks if userdata directory has been created
+"""
 def userdata_exists():
     current_directory = os.getcwd()
     current_directory = os.path.join(current_directory,'server')
@@ -336,7 +338,9 @@ def userdata_exists():
         return True
     else:
         return False
-
+"""
+build_userdata(): builds userdata directory 
+"""
 def build_userdata():
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(""))
@@ -351,53 +355,10 @@ def build_userdata():
             #new_file.write(password)
         new_file.close()
     
-
-
 """
-DEPRECIATED
-
-build_user(user,password): Creates files in user subdirectory associated with it
-@param user: username associated with user
+encrypt_password(password): Encrypts a password with bcrypt
 @param password: password associated with user
-
-def build_user(user,password):
-    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
-    path=os.path.join(current_directory,build_user_path(user))
-    print(os.getcwd())
-    print(os.listdir(os.getcwd()))
-    os.mkdir(path) 
-    # Make change to this to add to a central data base
-    USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
-    for sub in USER_SUBFOLDERS:
-        new_file = open(os.path.join(path,sub),'a')
-        if sub == 'password':
-            new_file = open(os.path.join(path,sub),'a')
-            new_file.write(password)
-        new_file.close()
-""" 
 """
-DEPRECIATED
-
-build_user(user,password): Creates files in user subdirectory associated with it
-@param user: username associated with user
-@param password: password associated with user
-
-def build_user(user,password):
-    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
-    path=os.path.join(current_directory,build_user_path(user))
-    print(os.getcwd())
-    print(os.listdir(os.getcwd()))
-    os.mkdir(path) 
-    # Make change to this to add to a central data base
-    USER_SUBFOLDERS = ['password','past_searches.csv','liked_recipes.csv','pantry.csv']
-    for sub in USER_SUBFOLDERS:
-        new_file = open(os.path.join(path,sub),'a')
-        if sub == 'password':
-            new_file = open(os.path.join(path,sub),'a')
-            new_file.write(password)
-        new_file.close()
-"""
-
 def encrypt_password(password):
     # https://www.geeksforgeeks.org/hashing-passwords-in-python-with-bcrypt/
     password = password.encode('utf-8')
@@ -405,8 +366,13 @@ def encrypt_password(password):
     hashed = bcrypt.hashpw(password,salt)
     hashed= hashed.decode('utf-8')
     return hashed
-
+"""
+add_user(user,password): Adds new user to database
+@param user: username associated with user
+@param password: password associated with user
+"""
 def add_user(user,password):
+    
     current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
     path=os.path.join(current_directory,build_user_path(user))
     path =os.path.join(path,'users.csv')
@@ -431,6 +397,11 @@ def add_user(user,password):
     user_df.to_csv(path)
     return user_df
 
+"""
+get_password(user): Gets hashed password to be compared against in login
+@param user: username associated with user
+@param password: password associated with user
+"""
 def get_password(user):
     path =build_user_path(user)
     path =os.path.join(path,'users.csv')
@@ -440,6 +411,11 @@ def get_password(user):
     password =user_df.iloc[0]['password'] # Should work?
     return password
 
+"""
+login(user,password): Authenticates a user
+@param user: username associated with user
+@param password: password associated with user
+"""
 def login(user,password):
     # https://gist.github.com/amelieykw/20a64653d7f05f5575876bc0af59e0f1
     password = password.encode('utf-8')
@@ -484,27 +460,7 @@ def access_userdata(user):
         #print(file+" doesn't exist.")
         #os.mkdir(path)
         return False
-"""
-DEPRECIATED
 
-access_userdata(user): Attempts to acess a user's directory in their file.
-@param user: username associated with user
-@return True if user is accessed
-        False if user doesn't exist
-  
-def access_userdata(user):
-    path =build_user_path(user)
-    # User Authentication
-    # If a user exists in userdata base
-
-    if(os.path.exists(path)):
-        print("Welcome "+user)            
-        return True
-    else:
-        #print(file+" doesn't exist.")
-        #os.mkdir(path)
-        return False
-""" 
 """
 get_userdata(user): Shows userdata. Will return None if user directory doesn't exist
 @param user: username associated with user
@@ -518,6 +474,10 @@ def get_userdata(user):
         return user_data
 """
 initialize_user_data(index): Initializes the data associated with a file in userdata
+# 0 - liked_recipes.csv
+# 1 - pantry.csv
+# 2 - users.csv
+# 3 - past_searches.csv
 @param index: username associated with user
 @return User Directory Files to be interperted by server
         Will return None if user directory doesn't exist
@@ -561,7 +521,16 @@ def initialize_user_data(index):
         data = pd.DataFrame(data)
         data.to_csv('past_searches.csv')
     return data
+"""
+get_userdata(user,index): Initializes the data associated with a file in userdata
+@param index: username associated with user
+# 0 - liked_recipes.csv
+# 1 - pantry.csv
+# 2 - users.csv
+# 3 - past_searches.csv
 
+@return data corresponding to index
+""" 
 def get_userdata(user,index):
     # Gets user data index
     # 0 - liked_recipes.csv
@@ -579,12 +548,27 @@ def get_userdata(user,index):
     data = initialize_user_data(index)
     return data
 
+"""
+add_to_central_recipe_database(recipes): adds recipes to central recipe_database.csv
+@param recipes: recipe data to be added to the recipedata base
+"""
+def add_to_central_recipe_database(recipes):
+    #In Progress
+    return
+
+"""
+add_to_liked_recipes(user,recipe_name):
+@param user: username associated with user
+@param recipe_name: recipe_name to be added from central recipe database
+"""
 def add_to_liked_recipes(user,recipe_name):
      # Implement this function that looks up a recipe in the recipe database and adds it to the user's 'liked_recipes.csv
      # 
      # Looks up recipe_name in recipe database with .loc and adds it to "liked_recipes.csv"
      #
      # returns nothing.
+     liked_recipes= get_userdata(user,0)
+     liked_recipes= get_userdata(user,0)
      return
 
         

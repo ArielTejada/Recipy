@@ -7,6 +7,8 @@ import pandas as pd
 import bcrypt
 import json
 
+
+
 # REMEMBER INSTALL DEPENDENCIES : pip install -r requirements.txt
 
 # Use this file for testing calls of recipy functions.
@@ -35,6 +37,31 @@ def load_query():
     return
 
 
+def build_link(ingredient,type="allrecipes",):
+    link=""
+    if(type=="allRecipes"):
+        #allrecipes = 'https://www.allrecipes.com/search/results/?'
+        #Example Link: https://www.allrecipes.com/search/results/?IngIncl=onion&IngIncl=garlic
+        #
+        #  Structure of Search
+        # "https://www.allrecipes.com/search?" + "q=" + query
+        #
+        #   Builds link by adding each ingredient to include
+        link +='https://www.allrecipes.com/search?'
+        link += 'q='+str(ingredient)
+        return link
+    if(type=="simplyRecipes"):
+        #allrecipes = 'https://www.allrecipes.com/search/results/?'
+        #Example Link: https://www.allrecipes.com/search/results/?IngIncl=onion&IngIncl=garlic
+        #
+        #  Structure of Search
+        # "https://www.allrecipes.com/search?" + "q=" + query
+        #
+        #   Builds link by adding each ingredient to include
+        link +='https://www.simplyrecipes.com/search?'
+        link += 'q='+str(ingredient)
+        return link
+    
 
 def simplyRecipes(query):
 
@@ -49,150 +76,303 @@ def simplyRecipes(query):
     # Simplyrecipes.com Exploitation [INSERT UNDERHERE]
 
     ingredients = query
-    ingredients = ingredients.split(sep=",")
-    simplyRecipes_searchLink = recipy.build_link(ingredients,type="simplyrecipes")
+    simplyRecipes_searchLink = build_link(ingredients,type="simplyRecipes")
     print(simplyRecipes_searchLink)
-    #Inlude ingredients exploitation
-
-
-    #test = session.get('https://www.simplyrecipes.com/search?q=onion')
-
-    #print(test.html.links) 
-    #prints all the links on a webpage
-
-    test = session.get(simplyRecipes_searchLink)
-
-    #recipe with lowercase is html element. 
-    #Recipe with uppercase is data value.
-    #  
     
-    recipe_titles =test.html.find('.card__content') # List of recipe short titles
-    print(len(recipe_titles))
-    print(recipe_titles)
-    recipe_descriptions =[""]*len(recipe_titles) # List of recipe short decriptions [NOT GIVEN IN Simplyrecipes.com]
-    print(len(recipe_descriptions))
-    print(recipe_descriptions)
-    recipe_link =test.html.find('.comp card') # List of recipe links
-    print(recipe_link)
-    print("Break?")
-    Recipe_TITLES = list()
-    Recipe_DESCRIPTION = list()
-    Recipe_LINK = list()
-    Recipe_INGREDIENTS= list()
-    Recipe_DIRECTIONS= list()
-    #Tests list from allrecipe.com
+
+    #get html
+    response=session.get(simplyRecipes_searchLink)
+    search_results = response.html.links
+    potential_recipe_pages = filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)
+    #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+    potential_recipe_pages = list(potential_recipe_pages)
+    print(potential_recipe_pages)
+
+    # RE DO THis portion based on simply recipes
+
+    # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+    # If we find a recipe name then the rest of the data should be there
+    recipes = []
+    for page in potential_recipe_pages:
+        potential_recipe=session.get(page)
+        print(page)
+        directions =potential_recipe.html.find(".recipe__steps")
+        print(directions)
+        if directions:
+            recipes.append(page)
+    print(recipes)
     
-    for i in range(len(recipe_titles)):
-        start_time= time.time()
-        #print("RECIPE TITLE")
-        Recipe_TITLES.append(recipe_titles[i].text)
-        #print("RECIPE DESCRIPTION")
-        Recipe_DESCRIPTION.append(recipe_descriptions[i])
-        #print("RECIPE LINK")
-        Recipe_LINK.append(str(recipe_link[i].links)[2:-2])
-        #print("INGREDIENTS")
-        
-        print(recipe_titles[i].text)
-        print(recipe_descriptions[i])
-        print((recipe_link[i].links)[2:-2]) 
+    #Preform Scrape on all recipes
+    data = []
+    for r in recipes:
+        data.append(scrape(r,"simplyRecipes"))
+    return pd.DataFrame(data)
 
-        """#Enters a the website page that stores the websites
-        sub_test=session.get(str(recipe_link[i].links)[2:-2]) 
-        
-        #Uses selector to parse out each ingredient with ".ingredients-item" class 
-        ingredients = sub_test.html.find(".ingredients-item")
-        for i in range(len(ingredients)):
-            #ingredients stores all information
-            ingredients[i]=ingredients[i].text
-        Recipe_INGREDIENTS.append(ingredients)
+def allRecipes(query):
 
+    session = HTMLSession()
+    #Simplyrecipes = 'https://www.allrecipes.com/search?q=?'
+    #Example Link: https://www.allrecipes.com/search?q=onion
+    #
+    #  Structure of Search
+    # "https://www.allrecipes.com/search?q=" + query 
+    #
+    
+    # allrecipes.com.com Exploitation [INSERT UNDERHERE]
+
+    ingredients = query
+    allRecipes_searchLink = build_link(ingredients,type="allRecipes")
+    #print(allRecipes_searchLink)
+    
+
+    #get html
+    response=session.get(allRecipes_searchLink)
+    search_results = response.html.links
+    potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+    #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+    potential_recipe_pages = list(potential_recipe_pages)
+    #print(potential_recipe_pages)
+
+    # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+    # If we find a recipe name then the rest of the data should be there
+    recipes = []
+    for page in potential_recipe_pages:
+        potential_recipe=session.get(page)
+        #print(page)
+        directions =potential_recipe.html.find(".recipe__steps")
+        #print(directions)
+        if directions:
+            recipes.append(page)
+    #print(recipes)
+    
+    #Preform Scrape on all recipes
+    data = []
+    for r in recipes:
+        data.append(scrape(r,"allrecipes"))
+    
+    # For pages 2-5
+    
+    allRecipes_searchLink_pages =increment_page(query,"allrecipes")
+    for page in allRecipes_searchLink_pages:
+        # Need to preform same functions on this
+        #get html
+        response=session.get(page)
+        search_results = response.html.links
+        potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+        #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+        potential_recipe_pages = list(potential_recipe_pages)
+        #print(potential_recipe_pages)
+
+        # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+        # If we find a recipe name then the rest of the data should be there
+        recipes = []
+        for page in potential_recipe_pages:
+            potential_recipe=session.get(page)
+            #print(page)
+            directions =potential_recipe.html.find(".recipe__steps")
+            #print(directions)
+            if directions:
+                recipes.append(page)
+        #print(recipes)
+        
+        #Preform Scrape on all recipes
+        for r in recipes:
+            data.append(scrape(r,"allrecipes"))
+
+    return pd.DataFrame(data)
+
+def increment_page(query,type):
+    links =[]
+    ingredients = query
+    if(type=="allrecipes"):
+        for i in range(2,6):
+            offset = (i-1)*24
+            link ='https://www.allrecipes.com/search?'
+            link += str(ingredients)+'='+str(ingredients)+"&offset"+str(offset)+"&q="+ingredients
+            links.append(link)
+    elif(type=="simplyRecipes"):
+        #https://www.simplyrecipes.com/search?q=tomato&offset=24
+        for i in range(2,6):
+            offset = (i-1)*24
+            link ='https://www.simplyrecipes.com/search?'
+            link += 'q='+str(ingredients)+"&offset"+str(offset)
+            links.append(link)
+    return links
+
+
+
+
+def scrape(link,type):
+    # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+    title =""
+    description=""
+    #link
+    ingredients=""
+    directions =""
+    macros = ""
+    if type == 'allrecipes':
+        session = HTMLSession()
+        response =session.get(link) 
+        results =response.html.find("h1")
+        if results:
+            title +=(results[0].text)
+        results =response.html.find(".recipe__steps")
+        # Short Description
+        results =response.html.find("h2")
+        if results:
+            description +=(results[0].text)
+
+        # Link
+        # Directions
+        results =response.html.find(".recipe__steps")
+        if results:
+            directions+=(results[0].text)
+        # MACROS
+        results =response.html.find(".mntl-nutrition-facts-summary__table-row")
+        if results:
+            for i in range(len(results)):
+                macros+=str(results[i].text)+","
+        #print("\nIngredients\n") 
+        results =response.html.find(".mntl-structured-ingredients__list-item") # Ingredients
+        if results:
+            for i in range(len(results)):
+                ingredients+=str(results[i].text)+","
+    elif type =='simplyRecipes':
+        # Simplyrecipes
+        # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+
+        # Title
+        session = HTMLSession()
+        response =session.get(link) 
+        results =response.html.find("h1")
+        if results:
+           title =(results[0].text)
+
+        # Short Description
+        results =response.html.find("h2.heading__subtitle")
+        if results:
+            description =(results[0].text)
+
+        # Link
+        #print(link)
+
+        # Ingredients
+        results =response.html.find(".structured-ingredients__list-item")
+        if results:
+            print("INGREDIENTS FOUND")
+            for i in range(len(results)):
+                ingredients+=str(results[i].text)+","
+                
+        # Directions
+        results =response.html.find("#structured-project__steps_1-0")
+        if results:
+            directions=(results[0].text)
+
+        # Macros
+        results = response.html.find(".nutrition-info__table--row")
+        if results:
+            for i in range(len(results)):
+                macros +=(results[i].text)+","
+    return {"TITLE":title,"DESCRIPTION":description,"LINK":link,"INGREDIENTS":ingredients,"DIRECTIONS":directions,"MACROS":macros}
+    
+
+#########################################
+###             DRIVER AREA           ###
+#########################################
+# Formal Scrape Test
+#print(scrape("https://www.simplyrecipes.com/recipes/caramelized_onion_dip/","simplyRecipes"))
+
+#Formal allrecipes (5pg scrape)
+"""query ="onion"  
+onion_recipe_data=allRecipes(query)
+onion_recipe_data.to_csv("onion_recipe_data.csv")"""
+print(pd.read_csv("onion_recipe_data.csv"))
+#All recipes increment page test
+
+"""potential_recipe_pages =[]
+query ="onion"    
+pages =(increment_page(query,"allrecipes"))
+session = HTMLSession()
+for page in pages:
+    response=session.get(page)
+    search_results = response.html.links
+    potential_recipe_pages.extend(list(filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)))
+    
+    
+print(potential_recipe_pages)
+print(len(potential_recipe_pages))"""
+
+# Parse and Scrape Test
+
+"""potential_recipe_pages =[]
+query ="onion"    
+pages =(increment_page(query,"simplyRecipes"))
+session = HTMLSession()
+for page in pages:
+    response=session.get(page)
+    search_results = response.html.links
+    potential_recipe_pages.extend(list(filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)))
+print(potential_recipe_pages)
+print(scrape(potential_recipe_pages[0],"simplyRecipes"))"""
+
+
+"""session = HTMLSession()
+link = "https://www.simplyrecipes.com/recipes/caramelized_onion_dip/"
+response =session.get(link) # Directions"""
+
+# Simplyrecipes
+# Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+
+"""# Title
+results =response.html.find("h1")
+if results:
+    print(results[0].text)
+print("\nDescription\n")
+
+# Short Description
+results =response.html.find("h2.heading__subtitle")
+if results:
+    print(results[0].text)
+
+# Link
+print(link)
+
+# Ingredients
+results =response.html.find(".structured-ingredients__list-item")
+if results:
+    for i in range(len(results)):
+        print(results[i].text)
        
-        #finish_time = time.time()
-        #selector val: .paragraph
-        directions = sub_test.html.find(".paragraph")
-        for i in range(len(directions)):
-            #direction stores all information
-            directions[i]=directions[i].text
-        Recipe_DIRECTIONS.append(directions)"""
-        #print("Took:"+str((finish_time-start_time))+" seconds")
+# Directions
+results =response.html.find("#structured-project__steps_1-0")
+if results:
+    print(results[0].text)
 
-#Enter Search Entry Here:
-#ingredients ="onion,chicken"
-#dict =recipy.query_sites(ingredients)
-
-#simplyRecipes(ingredients)
-
-
-#########################
-##  Password Validation ##
-#########################
-
-# Test with  this sample user Jane Smith
-user='Jane Smith'
-password ='test'
-
-# Test 1  Creates salt encrypted password. Decodes the hash. 
-# Saves to a file. Run Read portion to read.
-
-# WRITE PORTION
-"""salt =bcrypt.gensalt()
-
-encryted_pass = bcrypt.hashpw(password.encode('utf-8'),salt)
-print(encryted_pass)
-
-# decode as string and then encode
-encryted_pass = encryted_pass.decode('utf-8')
-
-# save as file in decoded form
-with open("test.txt",'w') as f:
-    f.write(encryted_pass)"""
-
-# READ PORTION
-"""
-encryted_pass = open("test.txt",'r').read()
-encryted_pass = encryted_pass.encode('utf-8')
-
-# 
-print("Password Check Valid Attempt")
-print(bcrypt.checkpw(password.encode('utf-8'),encryted_pass))
-print("Password Check Invalid Attempt")
-print(bcrypt.checkpw("password".encode('utf-8'),encryted_pass))
+# Macros
+results = response.html.find(".nutrition-info__table--row")
+if results:
+    for i in range(len(results)):
+        print(results[i].text)
 """
 
-# https://www.makeuseof.com/encrypt-password-in-python-bcrypt/
 
-print("userdata exists?")
-print(recipy.userdata_exists())
-if not recipy.userdata_exists():
-    recipy.build_userdata()
-if not recipy.access_userdata(user): # Check if user exists indata base
-    recipy.add_user(user,password)
-    
-print("User Created?")
-print(recipy.access_userdata(user))
-
-
-print(recipy.get_password(user))
-
-print("Password Check Valid Attempt")
-print(recipy.login(user,password))
-print("Password Check inValid Attempt")
-print(recipy.login(user,"password"))
-
-print("Should be true")
-print(recipy.login(user,password))
-print("Should be false")
-print(recipy.login(user,'password'))
-userdata=recipy.get_userdata(user,2)
-print(userdata)
 
 """
-#Paths to user data files
-for file in userdata:
-    print(os.path.join(recipy.build_user_path(user),file))
-for i in range(3):
-    print(get_userdata(user,i))
-"""
+response =session.get("https://www.allrecipes.com/recipe/16531/blooming-onion/")  # Calories
+results =response.html.find(".mntl-nutrition-facts-summary__table-row")
+if results:
+    print(results[0].text)
+print("\nIngredients\n") 
+results =response.html.find(".mntl-structured-ingredients__list-item") # Ingredients
+if results:
+    for i in range(len(results)):
+        print(results[i].text)"""
 #########################################
 ###  Loads Json data and converts it  ###
 #########################################
