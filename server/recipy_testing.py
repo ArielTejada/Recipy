@@ -107,7 +107,7 @@ def simplyRecipes(query):
     #Preform Scrape on all recipes
     data = []
     for r in recipes:
-        data.append(scrape(r,"allrecipes"))
+        data.append(scrape(r,"simplyRecipes"))
     return pd.DataFrame(data)
 
 def allRecipes(query):
@@ -124,7 +124,7 @@ def allRecipes(query):
 
     ingredients = query
     allRecipes_searchLink = build_link(ingredients,type="allRecipes")
-    print(allRecipes_searchLink)
+    #print(allRecipes_searchLink)
     
 
     #get html
@@ -135,19 +135,19 @@ def allRecipes(query):
 
 
     potential_recipe_pages = list(potential_recipe_pages)
-    print(potential_recipe_pages)
+    #print(potential_recipe_pages)
 
     # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
     # If we find a recipe name then the rest of the data should be there
     recipes = []
     for page in potential_recipe_pages:
         potential_recipe=session.get(page)
-        print(page)
+        #print(page)
         directions =potential_recipe.html.find(".recipe__steps")
-        print(directions)
+        #print(directions)
         if directions:
             recipes.append(page)
-    print(recipes)
+    #print(recipes)
     
     #Preform Scrape on all recipes
     data = []
@@ -157,6 +157,34 @@ def allRecipes(query):
     # For pages 2-5
     
     allRecipes_searchLink_pages =increment_page(query,"allrecipes")
+    for page in allRecipes_searchLink_pages:
+        # Need to preform same functions on this
+        #get html
+        response=session.get(page)
+        search_results = response.html.links
+        potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+        #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+        potential_recipe_pages = list(potential_recipe_pages)
+        #print(potential_recipe_pages)
+
+        # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+        # If we find a recipe name then the rest of the data should be there
+        recipes = []
+        for page in potential_recipe_pages:
+            potential_recipe=session.get(page)
+            #print(page)
+            directions =potential_recipe.html.find(".recipe__steps")
+            #print(directions)
+            if directions:
+                recipes.append(page)
+        #print(recipes)
+        
+        #Preform Scrape on all recipes
+        for r in recipes:
+            data.append(scrape(r,"allrecipes"))
+
     return pd.DataFrame(data)
 
 def increment_page(query,type):
@@ -232,7 +260,7 @@ def scrape(link,type):
             description =(results[0].text)
 
         # Link
-        print(link)
+        #print(link)
 
         # Ingredients
         results =response.html.find(".structured-ingredients__list-item")
@@ -257,7 +285,14 @@ def scrape(link,type):
 #########################################
 ###             DRIVER AREA           ###
 #########################################
+# Formal Scrape Test
+#print(scrape("https://www.simplyrecipes.com/recipes/caramelized_onion_dip/","simplyRecipes"))
 
+#Formal allrecipes (5pg scrape)
+"""query ="onion"  
+onion_recipe_data=allRecipes(query)
+onion_recipe_data.to_csv("onion_recipe_data.csv")"""
+print(pd.read_csv("onion_recipe_data.csv"))
 #All recipes increment page test
 
 """potential_recipe_pages =[]
@@ -286,8 +321,6 @@ for page in pages:
 print(potential_recipe_pages)
 print(scrape(potential_recipe_pages[0],"simplyRecipes"))"""
 
-# Formal Scrape Test
-print(scrape("https://www.simplyrecipes.com/recipes/caramelized_onion_dip/","simplyRecipes"))
 
 """session = HTMLSession()
 link = "https://www.simplyrecipes.com/recipes/caramelized_onion_dip/"
