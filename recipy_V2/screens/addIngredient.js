@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Text, View, Button, TouchableWithoutFeedback, TouchableOpacity, Keyboard} from "react-native";
+import {Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground} from "react-native";
 import styles from '../styles/add-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
 
@@ -23,28 +23,40 @@ const setRefresh = useStoreActions(actions => actions.setRefresh);
       setRefresh(!refresh);
     }}>
       <View>
-        <Button
-            title='Go Back'
-            style={styles.button}
+      <View style={styles.pushDown}></View> 
+          <TouchableOpacity
             onPress={() => {
               navigation.navigate('HomeScreen');
             }}
-          />   
+            style={[styles.backButtonSection]}
+          >
+            <Image
+              source={require('../icons/go-back.png')}
+              style={styles.icon}
+            />
+          </TouchableOpacity>
         <SearchBar
           selectedIngredients={selectedIngredients}
           setSelectedIngredients={setSelectedIngredients}
         />
-        <View style={[styles.margins, styles.outline, styles.selected, styles.fontSmall]}>
-          <Text style={styles.fontSmall}>Selected Ingredients</Text>
-          <Text></Text>
-          <FlatList
-              data={selectedIngredients}
-              renderItem={({ item }) => (
-                  <View>                            
-                      <Text style={styles.fontSmall}>{item.name}</Text>                
-                  </View>             
-              )}
-          />
+        <View style={[styles.margins, styles.selected, styles.fontSmall]}>
+          <ImageBackground
+            source={require('../img/searchItems.png')}
+            style={styles.sidesImage}
+            resizeMode='contain'
+          >
+          <Text 
+            style={[styles.fontSmall, styles.textCenter, styles.outline, styles.halfWidth]}
+          >Selected Ingredients</Text>
+          <ScrollView>
+          {selectedIngredients.map((ingredient) => {
+            return (
+            <View>
+              <Text>{ingredient.name}</Text>
+            </View>)
+          })}
+          </ScrollView>
+          </ImageBackground>
         </View>
       </View>
     </TouchableOpacity>

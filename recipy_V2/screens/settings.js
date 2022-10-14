@@ -6,6 +6,7 @@ export default function Settings() {
 
   return (
     <View>
+      <View style={styles.pushDown}></View>
       <Text style={styles.header}>Settings</Text>
     </View>
   );
