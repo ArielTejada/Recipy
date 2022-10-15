@@ -34,6 +34,11 @@ const setRefresh = useStoreActions(actions => actions.setRefresh);
               source={require('../icons/go-back.png')}
               style={styles.icon}
             />
+            <Image
+              source={require('../img/banner1.png')}
+              style={styles.banner}
+              
+            />
           </TouchableOpacity>
         <SearchBar
           selectedIngredients={selectedIngredients}

@@ -71,8 +71,8 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                         </View>             
                     )}
                 /> : <Text></Text>} */}
-
-                <ScrollView>
+                {searching ? 
+                <ScrollView style={[styles.transparent]}>
                     {filteredArray.map((ingredient) => {
                         return (
                             <TouchableOpacity
@@ -84,11 +84,10 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                             >
                                <Text 
                                     style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontSmall]}
-                                    
                                 >{ingredient.name}</Text> 
                             </TouchableOpacity>)
                         })}
-                </ScrollView>
+                </ScrollView> : <Text></Text>}       
             </View>
         </View>
     );
