@@ -33,7 +33,7 @@ export default StyleSheet.create({
     },
     backButtonSection: {
         width: width,
-        height: 'auto',
+        height: height/14,
         backgroundColor: '#2196F3',
     },
 
@@ -41,10 +41,16 @@ export default StyleSheet.create({
     icon: {
         width: RFPercentage(7),
         height: RFPercentage(7),
+        tintColor: 'white'
     },
     sidesImage: {
         width: width,
         height: height - RFPercentage(28),
+    },
+    banner: {
+        width: width,
+        height: height/8,
+        top: RFPercentage(-11)
     },
 
     /* -------------- Position --------------*/
@@ -87,6 +93,11 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
     },
+    transparent: {
+        position: 'absolute',
+        zIndex: 1,
+        left: RFPercentage(18)
+    },
     
     /* -------------- Custom  --------------*/
     input : {
@@ -103,9 +114,10 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
-        width: width/2,
+        width: width/2.3,
         height: height/20,
         marginLeft: 'auto',
-        marginRight: 'auto'
+        marginRight: 'auto',
+        backgroundColor: 'white'
     },
 })
