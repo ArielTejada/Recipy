@@ -50,7 +50,7 @@ def build_link(ingredient,type="allrecipes",):
         link +='https://www.allrecipes.com/search?'
         link += 'q='+str(ingredient)
         return link
-    if(type=="simplyRecipes"):
+    if(type=="simplyrecipes"):
         #allrecipes = 'https://www.allrecipes.com/search/results/?'
         #Example Link: https://www.allrecipes.com/search/results/?IngIncl=onion&IngIncl=garlic
         #
@@ -61,7 +61,9 @@ def build_link(ingredient,type="allrecipes",):
         link +='https://www.simplyrecipes.com/search?'
         link += 'q='+str(ingredient)
         return link
-    
+# Scraper functions.
+# These functions each scrape the website of their namesake and return a dataframe with all the scraped results
+# They leave columns blank if data is not found.    
 
 def simplyRecipes(query):
 
@@ -76,8 +78,8 @@ def simplyRecipes(query):
     # Simplyrecipes.com Exploitation [INSERT UNDERHERE]
 
     ingredients = query
-    simplyRecipes_searchLink = build_link(ingredients,type="simplyRecipes")
-    print(simplyRecipes_searchLink)
+    simplyRecipes_searchLink = build_link(ingredients,type="simplyrecipes")
+    #print(simplyRecipes_searchLink)
     
 
     #get html
@@ -88,7 +90,7 @@ def simplyRecipes(query):
 
 
     potential_recipe_pages = list(potential_recipe_pages)
-    print(potential_recipe_pages)
+    #print(potential_recipe_pages)
 
     # RE DO THis portion based on simply recipes
 
@@ -97,17 +99,48 @@ def simplyRecipes(query):
     recipes = []
     for page in potential_recipe_pages:
         potential_recipe=session.get(page)
-        print(page)
-        directions =potential_recipe.html.find(".recipe__steps")
-        print(directions)
+        #print(page)
+        directions =potential_recipe.html.find("#structured-project__steps_1-0")
+        #print(directions)
         if directions:
             recipes.append(page)
-    print(recipes)
+    #print(recipes)
     
     #Preform Scrape on all recipes
     data = []
     for r in recipes:
-        data.append(scrape(r,"simplyRecipes"))
+        data.append(scrape(r,"simplyrecipes"))
+
+    # For pages 2-5
+    
+    simplyRecipes_searchLink_pages =increment_page(query,"simplyrecipes")
+    for page in simplyRecipes_searchLink_pages:
+        # Need to preform same functions on this
+        #get html
+        response=session.get(page)
+        search_results = response.html.links
+        potential_recipe_pages = filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)
+        #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+        potential_recipe_pages = list(potential_recipe_pages)
+        #print(potential_recipe_pages)
+
+        # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+        # If we find a recipe name then the rest of the data should be there
+        recipes = []
+        for page in potential_recipe_pages:
+            potential_recipe=session.get(page)
+            #print(page)
+            directions =potential_recipe.html.find(".recipe__steps")
+            #print(directions)
+            if directions:
+                recipes.append(page)
+        #print(recipes)
+        
+        #Preform Scrape on all recipes
+        for r in recipes:
+            data.append(scrape(r,"simplyrecipes"))
     return pd.DataFrame(data)
 
 def allRecipes(query):
@@ -196,7 +229,7 @@ def increment_page(query,type):
             link ='https://www.allrecipes.com/search?'
             link += str(ingredients)+'='+str(ingredients)+"&offset"+str(offset)+"&q="+ingredients
             links.append(link)
-    elif(type=="simplyRecipes"):
+    elif(type=="simplyrecipes"):
         #https://www.simplyrecipes.com/search?q=tomato&offset=24
         for i in range(2,6):
             offset = (i-1)*24
@@ -243,7 +276,7 @@ def scrape(link,type):
         if results:
             for i in range(len(results)):
                 ingredients+=str(results[i].text)+","
-    elif type =='simplyRecipes':
+    elif type =='simplyrecipes':
         # Simplyrecipes
         # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
 
@@ -265,14 +298,16 @@ def scrape(link,type):
         # Ingredients
         results =response.html.find(".structured-ingredients__list-item")
         if results:
-            print("INGREDIENTS FOUND")
+            #print("INGREDIENTS FOUND")
             for i in range(len(results)):
                 ingredients+=str(results[i].text)+","
                 
         # Directions
         results =response.html.find("#structured-project__steps_1-0")
         if results:
-            directions=(results[0].text)
+            for i in range(len(results)):
+                 directions +=(results[i].text)+";"
+            
 
         # Macros
         results = response.html.find(".nutrition-info__table--row")
@@ -285,14 +320,55 @@ def scrape(link,type):
 #########################################
 ###             DRIVER AREA           ###
 #########################################
-# Formal Scrape Test
-#print(scrape("https://www.simplyrecipes.com/recipes/caramelized_onion_dip/","simplyRecipes"))
 
-#Formal allrecipes (5pg scrape)
-"""query ="onion"  
-onion_recipe_data=allRecipes(query)
-onion_recipe_data.to_csv("onion_recipe_data.csv")"""
-print(pd.read_csv("onion_recipe_data.csv"))
+
+# Recipe Database Builder
+path_to_cwd =(os.getcwd())
+path_to_datasets= os.path.join(path_to_cwd,"datasets")
+
+path_to_ingredient_data= os.path.join(path_to_datasets,"Manually Combined Dataset.csv")
+
+path_to_server= os.path.join(path_to_cwd,"server")
+path_to_recipe_data = os.path.join(path_to_server,"recipe_data")
+path_to_central_recipe_data = os.path.join(path_to_recipe_data,"central_recipe_data.csv")
+#print(path_to_central_recipe_data)
+
+# Ingredient Data
+ingredient_data = pd.read_csv(path_to_ingredient_data,encoding='latin-1')
+ingredient_data = (ingredient_data['name'].to_list())
+recipe_data = pd.read_csv("onion_recipe_data.csv")
+recipe_data=recipe_data.drop(['Unnamed: 0'], axis=1)
+#print(recipe_data)
+recipe_data.to_csv(path_to_central_recipe_data)
+starting_index = 0 # IMPORTANT: Change this value to start later.
+for i in range(starting_index, len(ingredient_data)):
+    query = ingredient_data[i]
+    print(" "+str(i)+" : "+query) #Tracks what index we are on
+    if query!="onion": #Skipping onion as that was already done
+
+        allrecipes_recipe_data=allRecipes(query)
+        simplyRecipes_recipe_data=simplyRecipes(query)
+        new_recipe_data = pd.concat([simplyRecipes_recipe_data,allrecipes_recipe_data], axis = 0)
+        
+        new_recipe_data=new_recipe_data.reset_index(drop=True)
+        recipe_data = pd.concat([recipe_data,new_recipe_data], axis = 0)
+        recipe_data=recipe_data.reset_index(drop=True)
+        recipe_data.to_csv(path_to_central_recipe_data)
+
+# Run each ingredient in ingredient database through  
+"""
+recipe_data=simplyRecipes(query)
+recipe_data.to_csv(str(query)+"_recipe_data.csv")"""
+
+#test print of onion data
+
+"""recipe_data=pd.read_csv("onion_recipe_data2.csv")
+recipe_data =pd.read_csv("onion_recipe_data.csv")
+recipe_data=recipe_data.drop(['Unnamed: 0.1'], axis=1)
+recipe_data=recipe_data.drop(['Unnamed: 0'], axis=1)
+recipe_data=recipe_data.reset_index(drop=True)
+print(recipe_data)
+recipe_data.to_csv("onion_recipe_data.csv")"""
 #All recipes increment page test
 
 """potential_recipe_pages =[]
@@ -312,21 +388,21 @@ print(len(potential_recipe_pages))"""
 
 """potential_recipe_pages =[]
 query ="onion"    
-pages =(increment_page(query,"simplyRecipes"))
+pages =(increment_page(query,"simplyrecipes"))
 session = HTMLSession()
 for page in pages:
     response=session.get(page)
     search_results = response.html.links
     potential_recipe_pages.extend(list(filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)))
 print(potential_recipe_pages)
-print(scrape(potential_recipe_pages[0],"simplyRecipes"))"""
+print(scrape(potential_recipe_pages[0],"simplyrecipes"))"""
 
 
 """session = HTMLSession()
 link = "https://www.simplyrecipes.com/recipes/caramelized_onion_dip/"
 response =session.get(link) # Directions"""
 
-# Simplyrecipes
+# simplyrecipes
 # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
 
 """# Title
