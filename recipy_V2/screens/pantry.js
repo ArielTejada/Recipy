@@ -16,6 +16,7 @@ export default function Pantry() {
 
   return (
     <View>
+      <View style={styles.pushDown}></View>
       <View >
         <Text style={styles.header}>Pantry</Text>
         <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>

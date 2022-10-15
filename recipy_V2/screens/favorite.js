@@ -6,6 +6,7 @@ export default function Favorite() {
 
   return (
     <View>
+      <View style={styles.pushDown}></View>
       <Text style={styles.header}>Favorite Ingredients</Text>
     </View>
   );

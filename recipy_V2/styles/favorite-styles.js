@@ -5,14 +5,8 @@ import {StyleSheet, Dimensions} from "react-native";
 const {height, width} = Dimensions.get('window');
 
 export default StyleSheet.create({
-    header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
-        width: width,
-        height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
-    },
+
+    /* -------------- Typography --------------*/
     fontSmall: {
         fontSize: RFPercentage(3)
     },
@@ -21,5 +15,34 @@ export default StyleSheet.create({
     },
     fontLarge: {
         fontSize: RFPercentage(5)
-    }
+    },
+
+    /* -------------- Headers --------------*/
+    header: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        width: width,
+        height: height/8.5,
+        textAlign: 'center',
+        backgroundColor: '#2196F3',
+    },
+    pushDown: {
+        width: width,
+        height: height/25,
+        backgroundColor: '#2196F3',
+    },
+
+    /* -------------- Position --------------*/
+    center: {
+        marginLeft: 'auto',
+        marginRight: 'auto'
+    },
+    
+    /* -------------- Styling --------------*/
+    outline: {
+        borderWidth: 1,
+        borderRadius: 5,
+    },
+
+    /* -------------- Custom  --------------*/
 })
