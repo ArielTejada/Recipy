@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Text, View, Image, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground} from "react-native";
+import {Text, View, Image, StyleSheet, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import styles from '../styles/home-styles';
