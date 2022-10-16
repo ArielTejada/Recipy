@@ -341,7 +341,7 @@ recipe_data=recipe_data.drop(['Unnamed: 0'], axis=1)
 #print(recipe_data)
 recipe_data.to_csv(path_to_central_recipe_data)
 
-starting_index = 10 # IMPORTANT: Change this value to start later. Currently at 10. You need to note the index when you stop running program
+starting_index = 226 # IMPORTANT: Change this value to start later. You need to note the index when you stop running program
 
 for i in range(starting_index, len(ingredient_data)):
     query = ingredient_data[i]
