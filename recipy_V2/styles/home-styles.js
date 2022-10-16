@@ -19,8 +19,9 @@ export default StyleSheet.create({
     categoryText : {
         color: 'white',
         textAlign: 'center',
-        fontSize: RFPercentage(4.4),
+        fontSize: RFPercentage(4),
         fontFamily: 'Festive-Regular',
+        textAlignVertical: 'center'
     },
 
     /* -------------- Images --------------*/
@@ -38,7 +39,7 @@ export default StyleSheet.create({
     caterories: {
         flex: 1,
         width: width,
-        height: width,
+        height: width/1.1,
     },
 
     /* -------------- Position --------------*/
@@ -46,8 +47,7 @@ export default StyleSheet.create({
         alignItems: 'center'
     },
     margins: {
-        marginHorizontal: RFPercentage(1),
-        marginTop: RFPercentage(1)
+        marginVertical: height/80
     },
     tag: {
         top: -90, 
@@ -74,40 +74,40 @@ export default StyleSheet.create({
     /* -------------- Ingredient Categories --------------*/
     category1: {
         position: 'absolute',
-        top: RFPercentage(13),
-        left: width/23
+        top: width/6,
+        left: width/18
     },
     category2: {
         position: 'absolute',
-        top: RFPercentage(13),
-        left: width/2.7
+        top: width/6,
+        left: width/2.6
     },
     category3: {
         position: 'absolute',
-        top: RFPercentage(13),
-        left: width/1.42
+        top: width/6,
+        left: width/1.4
     },
     category4: {
         position: 'absolute',
-        top: RFPercentage(42),
-        left: width/23
+        top: width/1.6,
+        left: width/18
     },
     category5: {
         position: 'absolute',
-        top: RFPercentage(42),
-        left: width/2.7
+        top: width/1.6,
+        left: width/2.6
     },
     category6: {
         position: 'absolute',
-        top: RFPercentage(42),
-        left: width/1.42
+        top: width/1.6,
+        left: width/1.4
     },
     
     /* -------------- Buttons --------------*/
     button: {
         width: wp('50%'),
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 30,
         backgroundColor: '#2196F3',
         color: 'white',
         textAlign: 'center',
@@ -115,9 +115,8 @@ export default StyleSheet.create({
     },
     categoryButton: {
         borderWidth: 2,
-        borderRadius: 20,
-        width: RFPercentage(16),
-        height: RFPercentage(7),
+        width: width/4.3,
+        height: width/9,
         textAlign: 'center',
         backgroundColor: '#2196F3',
     },

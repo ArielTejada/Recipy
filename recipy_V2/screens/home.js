@@ -64,19 +64,12 @@ export default function Home({navigation}) {
               style={[styles.button, styles.fontMedium]}
             >Add Ingredient</Text>
           </TouchableOpacity>
-          {/* <Text style={styles.fontMedium}>Results</Text>  */}
-              
-        {/* <RecipeCard
-          image={require('../img/caesar-salad.jpg')}
-          name={'caesar salad'}
-          style={styles.banner}
-        /> */}
 
-          <View style={styles.container}>
+          <View>
             <ImageBackground
               source={require('../img/categories.jpg')}
               resizeMode='contain'
-              style={styles.caterories}
+              style={[styles.caterories]}
             >
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category1]}
@@ -104,7 +97,7 @@ export default function Home({navigation}) {
                 onPress={categoryPressHandler}
                 category='vegetable'
               >
-                <Text style={[styles.categoryText]}>Vegetables</Text>
+                <Text style={[styles.categoryText]}>Veggies</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category5]}
