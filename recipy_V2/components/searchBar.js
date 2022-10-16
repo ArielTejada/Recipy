@@ -48,6 +48,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     onPress={() => {
                         setSearchText('');
                         setSearching(false);
+                        Keyboard.dismiss();   
                     }}
                 >
                     <Text style={styles.text}>clear</Text>
@@ -55,22 +56,6 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
             </View>
             <View>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
-                {/* {searching ? 
-                <FlatList
-                    keyboardShouldPersistTaps='always'
-                    data={filteredArray}
-                    renderItem={({ item }) => (
-                        <View>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    pressHandler(item.name, item.key);
-                                }}
-                            >
-                               <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontSmall]}>{item.name}</Text> 
-                            </TouchableOpacity>
-                        </View>             
-                    )}
-                /> : <Text></Text>} */}
                 {searching ? 
                 <ScrollView style={[styles.transparent]}>
                     {filteredArray.map((ingredient) => {
