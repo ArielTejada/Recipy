@@ -10,6 +10,9 @@ const store = createStore(model);
 let customFonts = {
   'GrandHotel-Regular': require('./fonts/GrandHotel-Regular.ttf'),
   'Festive-Regular': require('./fonts/Festive-Regular.ttf'),
+  'AmaticSC-Regular': require('./fonts/AmaticSC-Regular.ttf'),
+  'AmaticSC-Bold': require('./fonts/AmaticSC-Bold.ttf'),
+  'Courgette-Regular': require('./fonts/Courgette-Regular.ttf'),
 };
 
 export default class App extends React.Component {

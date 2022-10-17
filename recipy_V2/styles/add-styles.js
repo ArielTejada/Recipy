@@ -87,6 +87,9 @@ export default StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto'
     },
+    flex: {
+        display: 'flex'
+    },
 
     /* -------------- Styling --------------*/
     outline: {
@@ -97,6 +100,15 @@ export default StyleSheet.create({
         position: 'absolute',
         zIndex: 1,
         left: RFPercentage(18)
+    },
+    roundBTN: {
+        borderWidth: 2,
+        borderRadius: 15,
+        borderColor: '#2196f3',
+        marginHorizontal: 5,
+        paddingHorizontal: 3,
+        marginTop: 2,
+        height: width/12,
     },
     
     /* -------------- Custom  --------------*/
@@ -114,10 +126,23 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
+        fontFamily: 'AmaticSC-Bold',
         width: width/2.3,
         height: height/20,
         marginLeft: 'auto',
         marginRight: 'auto',
         backgroundColor: 'white'
+    },
+    notfocused: {
+        backgroundColor: 'white'
+    },
+    focused: {
+        backgroundColor: '#2196f3',
+    },
+    selectedIngredients : {
+        width: width - RFPercentage(1),
+        height: width / 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
     },
 })

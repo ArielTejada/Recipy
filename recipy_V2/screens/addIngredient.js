@@ -1,23 +1,24 @@
 import React, { useState, useEffect } from "react";
-import {StyleSheet, Button, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground} from "react-native";
+import {StyleSheet, Button, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground, Pressable} from "react-native";
 import styles from '../styles/add-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
 
+/* -------------------- Components -------------------- */
 import SearchBar from "../components/searchBar"
-import { FlatList } from "react-native-gesture-handler";
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function AddIngredient({navigation}) {
 
+/* -------------------- State Variables -------------------- */
 const selectedIngredients = useStoreState(state => state.selectedIngredients);
 const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
-
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 const [hasPermission, setHasPermission] = useState(null);
 const [scanned, setScanned] = useState(false);
 const [shouldShow, setShouldShow] = useState(false);
 
+/* -------------------- Handler Functions -------------------- */
 useEffect(() => {
   const getBarCodeScannerPermissions = async() => {
     const {status} = await BarCodeScanner.requestPermissionsAsync();
@@ -44,64 +45,64 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
 
+/* -------------------- Render Method -------------------- */
   return (
     <View style={{flex:1}}>
       {shouldShow ? null:
-    <TouchableOpacity 
-      keyboardShouldPersistTaps='always'
-      onPress={() => {
-      Keyboard.dismiss();
-      setRefresh(!refresh);
-    }}>
-
-      <View style={styles.pushDown}></View> 
-      <TouchableOpacity
+      <TouchableOpacity 
+        keyboardShouldPersistTaps='always'
         onPress={() => {
-          navigation.navigate('HomeScreen');
-        }}
-        style={[styles.backButtonSection]}
-      >
-        <Image
-          source={require('../icons/go-back.png')}
-          style={styles.icon}
-        />
-        <Image
-          source={require('../img/banner1.png')}
-          style={styles.banner}
-          
-        />
-      </TouchableOpacity>
-    <SearchBar
-      selectedIngredients={selectedIngredients}
-      setSelectedIngredients={setSelectedIngredients}
-    />
+        Keyboard.dismiss();
+        setRefresh(!refresh);
+      }}>
 
-    <Button 
-      title = "Barcode Scanner" 
-      onPress={() => setShouldShow(!shouldShow)}
-    />
-    
-    <View style={[styles.margins, styles.selected, styles.fontSmall]}>
-      <ImageBackground
-        source={require('../img/searchItems.png')}
-        style={styles.sidesImage}
-        resizeMode='contain'
-      >
-      <Text 
-        style={[styles.fontSmall, styles.textCenter, styles.outline, styles.halfWidth]}
-      >Selected Ingredients</Text>
-      <ScrollView>
-      {selectedIngredients.map((ingredient) => {
-        return (
-        <View>
-          <Text>{ingredient.name}</Text>
-        </View>)
-      })}
-      </ScrollView>
-      </ImageBackground>
+        <View style={styles.pushDown}></View> 
+        <TouchableOpacity
+          onPress={() => {navigation.navigate('HomeScreen')}}
+          style={[styles.backButtonSection]}
+        >
+          <Image
+            source={require('../icons/go-back.png')}
+            style={styles.icon}
+          />
+          <Image
+            source={require('../img/banner1.png')}
+            style={styles.banner}
+          />
+        </TouchableOpacity>
 
-    </View>
-    </TouchableOpacity>}
+      <SearchBar
+        selectedIngredients={selectedIngredients}
+        setSelectedIngredients={setSelectedIngredients}
+      />
+
+      <Button 
+        title = "Barcode Scanner" 
+        onPress={() => setShouldShow(!shouldShow)}
+      />
+      
+      <View style={[styles.margins, styles.selected, styles.fontSmall]}>
+        <ImageBackground
+          source={require('../img/searchItems.png')}
+          style={styles.sidesImage}
+          resizeMode='contain'
+        >
+          <View style={[styles.selectedIngredients, styles.outline]}>
+            <ScrollView horizontal={true}>
+              {selectedIngredients.map((ingredient) => {
+                return (
+                <Pressable 
+                  key={ingredient.key}
+                  style={[styles.roundBTN, styles.flex]}>
+                  <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name}</Text>
+                </Pressable>)
+              })}
+            </ScrollView>
+          </View>
+        </ImageBackground>
+      </View>
+      
+      </TouchableOpacity>}
       {shouldShow ?
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}

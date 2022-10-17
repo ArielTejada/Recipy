@@ -20,7 +20,7 @@ export default StyleSheet.create({
         color: 'white',
         textAlign: 'center',
         fontSize: RFPercentage(4),
-        fontFamily: 'Festive-Regular',
+        fontFamily: 'AmaticSC-Regular',
         textAlignVertical: 'center'
     },
 
@@ -104,14 +104,14 @@ export default StyleSheet.create({
     },
     
     /* -------------- Buttons --------------*/
-    button: {
+    addButton: {
         width: wp('50%'),
         borderWidth: 1,
         borderRadius: 30,
         backgroundColor: '#2196F3',
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'Festive-Regular',
+        fontFamily: 'AmaticSC-Regular',
     },
     categoryButton: {
         borderWidth: 2,

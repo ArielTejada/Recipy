@@ -61,7 +61,7 @@ export default function Home({navigation}) {
             style={[styles.center, styles.margins]}
           >
             <Text 
-              style={[styles.button, styles.fontMedium]}
+              style={[styles.addButton, styles.fontMedium]}
             >Add Ingredient</Text>
           </TouchableOpacity>
 
