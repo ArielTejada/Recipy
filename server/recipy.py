@@ -3,6 +3,7 @@ import time
 import urllib
 import os
 import pandas as pd
+import requests_html  
 from requests_html import HTML
 from requests_html import HTMLSession
 from requests_html import AsyncHTMLSession
@@ -10,6 +11,287 @@ import bcrypt
 
 #https://practicaldatascience.co.uk/data-science/how-to-scrape-google-search-results-using-python
 #https://requests.readthedocs.io/projects/requests-html/en/latest/
+
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+#               Scraper functions
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+#
+# These functions each scrape the website of their namesake and return a dataframe with all the scraped results
+# They leave columns blank if data is not found.
+#
+#
+ 
+"""
+def simplyRecipes(query):
+@param query: query to search www.simplyrecipes.com
+@returns: a dataframe with scraped data
+
+"""
+def simplyRecipes(query):
+
+    session = HTMLSession()
+    #Simplyrecipes = 'https://www.simplyrecipes.com/search?q=?'
+    #Example Link: https://www.simplyrecipes.com/search?q=onion
+    #
+    #  Structure of Search
+    # "https://www.simplyrecipes.com/search?q=" + query 
+    #
+    
+    # Simplyrecipes.com Exploitation [INSERT UNDERHERE]
+
+    ingredients = query
+    simplyRecipes_searchLink = build_link(ingredients,type="simplyrecipes")
+    #print(simplyRecipes_searchLink)
+    
+
+    #get html
+    response=session.get(simplyRecipes_searchLink)
+    search_results = response.html.links
+    potential_recipe_pages = filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)
+    #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+    potential_recipe_pages = list(potential_recipe_pages)
+    #print(potential_recipe_pages)
+
+    # RE DO THis portion based on simply recipes
+
+    # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+    # If we find a recipe name then the rest of the data should be there
+    recipes = []
+    for page in potential_recipe_pages:
+        potential_recipe=session.get(page)
+        #print(page)
+        directions =potential_recipe.html.find("#structured-project__steps_1-0")
+        #print(directions)
+        if directions:
+            recipes.append(page)
+    #print(recipes)
+    
+    #Preform Scrape on all recipes
+    data = []
+    for r in recipes:
+        data.append(scrape(r,"simplyrecipes"))
+
+    # For pages 2-5
+    
+    simplyRecipes_searchLink_pages =increment_page(query,"simplyrecipes")
+    for page in simplyRecipes_searchLink_pages:
+        # Need to preform same functions on this
+        #get html
+        response=session.get(page)
+        search_results = response.html.links
+        potential_recipe_pages = filter(lambda link: link.find("https://www.simplyrecipes.com/recipes/")>=0,search_results)
+        #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+        potential_recipe_pages = list(potential_recipe_pages)
+        #print(potential_recipe_pages)
+
+        # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+        # If we find a recipe name then the rest of the data should be there
+        recipes = []
+        for page in potential_recipe_pages:
+            potential_recipe=session.get(page)
+            #print(page)
+            directions =potential_recipe.html.find(".recipe__steps")
+            #print(directions)
+            if directions:
+                recipes.append(page)
+        #print(recipes)
+        
+        #Preform Scrape on all recipes
+        for r in recipes:
+            data.append(scrape(r,"simplyrecipes"))
+    return pd.DataFrame(data)
+
+"""
+def allRecipes(query): preforms search and webscrape on query returning all 5 pages of search results as a dataframe
+@param query: query to search www.allrecipes.com
+@returns: a dataframe with scraped data
+"""
+def allRecipes(query):
+
+    session = HTMLSession()
+    #Simplyrecipes = 'https://www.allrecipes.com/search?q=?'
+    #Example Link: https://www.allrecipes.com/search?q=onion
+    #
+    #  Structure of Search
+    # "https://www.allrecipes.com/search?q=" + query 
+    #
+    
+    # allrecipes.com.com Exploitation [INSERT UNDERHERE]
+
+    ingredients = query
+    allRecipes_searchLink = build_link(ingredients,type="allRecipes")
+    #print(allRecipes_searchLink)
+    
+
+    #get html
+    response=session.get(allRecipes_searchLink)
+    search_results = response.html.links
+    potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+    #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+    potential_recipe_pages = list(potential_recipe_pages)
+    #print(potential_recipe_pages)
+
+    # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+    # If we find a recipe name then the rest of the data should be there
+    recipes = []
+    for page in potential_recipe_pages:
+        potential_recipe=session.get(page)
+        #print(page)
+        directions =potential_recipe.html.find(".recipe__steps")
+        #print(directions)
+        if directions:
+            recipes.append(page)
+    #print(recipes)
+    
+    #Preform Scrape on all recipes
+    data = []
+    for r in recipes:
+        data.append(scrape(r,"allrecipes"))
+    
+    # For pages 2-5
+    
+    allRecipes_searchLink_pages =increment_page(query,"allrecipes")
+    for page in allRecipes_searchLink_pages:
+        # Need to preform same functions on this
+        #get html
+        response=session.get(page)
+        search_results = response.html.links
+        potential_recipe_pages = filter(lambda link: link.find("https://www.allrecipes.com/recipe/")>=0,search_results)
+        #"Gallery Pages - Pages that may contain links to recipes" Most of our links will be this.
+
+
+        potential_recipe_pages = list(potential_recipe_pages)
+        #print(potential_recipe_pages)
+
+        # Pages that may contain standard Formatted recipe data. They are likely to but not guarenteed so we preform a search for the recipe's directions'.
+        # If we find a recipe name then the rest of the data should be there
+        recipes = []
+        for page in potential_recipe_pages:
+            potential_recipe=session.get(page)
+            #print(page)
+            directions =potential_recipe.html.find(".recipe__steps")
+            #print(directions)
+            if directions:
+                recipes.append(page)
+        #print(recipes)
+        
+        #Preform Scrape on all recipes
+        for r in recipes:
+            data.append(scrape(r,"allrecipes"))
+
+    return pd.DataFrame(data)
+
+"""
+def increment_page(query,type): increments page to search multiple pages of search results
+@param query: query to search
+@param type: type of recipe site
+"""
+def increment_page(query,type):
+    links =[]
+    ingredients = query
+    if(type=="allrecipes"):
+        for i in range(2,6):
+            offset = (i-1)*24
+            link ='https://www.allrecipes.com/search?'
+            link += str(ingredients)+'='+str(ingredients)+"&offset"+str(offset)+"&q="+ingredients
+            links.append(link)
+    elif(type=="simplyrecipes"):
+        #https://www.simplyrecipes.com/search?q=tomato&offset=24
+        for i in range(2,6):
+            offset = (i-1)*24
+            link ='https://www.simplyrecipes.com/search?'
+            link += 'q='+str(ingredients)+"&offset"+str(offset)
+            links.append(link)
+    return links
+
+
+
+"""
+def scrape(query,type):
+@param link: link to preform scrape on
+@param type: type of recipe site
+"""
+def scrape(link,type):
+    # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+    title =""
+    description=""
+    #link
+    ingredients=""
+    directions =""
+    macros = ""
+    if type == 'allrecipes':
+        session = HTMLSession()
+        response =session.get(link) 
+        results =response.html.find("h1")
+        if results:
+            title +=(results[0].text)
+        results =response.html.find(".recipe__steps")
+        # Short Description
+        results =response.html.find("h2")
+        if results:
+            description +=(results[0].text)
+
+        # Link
+        # Directions
+        results =response.html.find(".recipe__steps")
+        if results:
+            directions+=(results[0].text)
+        # MACROS
+        results =response.html.find(".mntl-nutrition-facts-summary__table-row")
+        if results:
+            for i in range(len(results)):
+                macros+=str(results[i].text)+","
+        #print("\nIngredients\n") 
+        results =response.html.find(".mntl-structured-ingredients__list-item") # Ingredients
+        if results:
+            for i in range(len(results)):
+                ingredients+=str(results[i].text)+","
+    elif type =='simplyrecipes':
+        # Simplyrecipes
+        # Data Needed: ,TITLE,DESCRIPTION,LINK,INGREDIENTS,DIRECTIONS
+
+        # Title
+        session = HTMLSession()
+        response =session.get(link) 
+        results =response.html.find("h1")
+        if results:
+           title =(results[0].text)
+
+        # Short Description
+        results =response.html.find("h2.heading__subtitle")
+        if results:
+            description =(results[0].text)
+
+        # Link
+        #print(link)
+
+        # Ingredients
+        results =response.html.find(".structured-ingredients__list-item")
+        if results:
+            #print("INGREDIENTS FOUND")
+            for i in range(len(results)):
+                ingredients+=str(results[i].text)+","
+                
+        # Directions
+        results =response.html.find("#structured-project__steps_1-0")
+        if results:
+            for i in range(len(results)):
+                 directions +=(results[i].text)+";"
+            
+
+        # Macros
+        results = response.html.find(".nutrition-info__table--row")
+        if results:
+            for i in range(len(results)):
+                macros +=(results[i].text)+","
+    return {"TITLE":title,"DESCRIPTION":description,"LINK":link,"INGREDIENTS":ingredients,"DIRECTIONS":directions,"MACROS":macros}
+    
 
 """
 Code attempts to follow javadoc style

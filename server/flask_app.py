@@ -54,7 +54,7 @@ def index():
 # # # # # # # # # # # # # # # 
 """
 search(query): preforms webscraping search saving nothing
-@param: search query to be used
+@param query: search query to be used
 @return: json of search results
 """
 @app.route('/search/<string:query>')
@@ -93,8 +93,8 @@ def search(query):
 
 """
 search2(query): preforms webscraping search on recipy database and exports search data. Saves query under a users past search a data
-@param: user to save data under
-@param: search query to be used
+@param user: user to save data under
+@param query: search query to be used
 @return: json of search results
 """
 @app.route('/search_export/<string:user>/<string:query>')
@@ -106,7 +106,7 @@ def search2(user,query):
    start_time = time.time()
 
    #Adds to user search history by updating past_searches
-   print(recipy.get_userdata(user)) 
+   print(recipy.get_userdata(user,3)) 
 
    
 
@@ -120,7 +120,6 @@ def search2(user,query):
 
 """
 load_ingredients(): Gets ingredients from database
-@param: search query to be used
 @return: json of search results
 """
 @app.route('/load_ingredients')
@@ -139,7 +138,14 @@ def load_ingredients():
    print(end_time-start_time)
    return jsonify(ingredients)
 """
-
+signup(user,password): Signs up new user and password
+@param user: username
+@param password: password
+@return: json of login results
+{
+   message: user + str(" has successfully logged in.";
+   'loggedIN?': bool;
+}
 """
 @app.route('/signup/<string:user>/<string:password>')
 def signup(user,password):
@@ -148,7 +154,17 @@ def signup(user,password):
    if not recipy.access_userdata(user): # Check if user exists indata base
       recipy.add_user(user,password)
    return login(user,password)
+"""
+login(user,password): Signs up new user and password
+@param user: username
+@param password: password
+@return: json of login results
+{
+   message: user + str(" has successfully logged in.";
+   'loggedIN?': bool;
+}
 
+"""
 @app.route('/login/<string:user>/<string:password>')
 def login(user,password):
    if recipy.access_userdata(user):
@@ -179,8 +195,12 @@ def login(user,password):
 
 """
 favorite(user): Gets users favorited recipes
-@param: search query to be used
-@return: json of search results
+@param user: search query to be used
+@return: json of favorite results
+@return: json of login results
+{
+   message: recipe_name + str(" has been successfully favorited.");
+}
 """
 @app.route('/favorite/<string:user>/<string:recipe_name>')
 def favorite(user,recipe_name):
@@ -193,10 +213,15 @@ def favorite(user,recipe_name):
    end_time = time.time()
    print("Time taken to retrieve:")
    print(end_time-start_time)
+   message_CONTENT = recipe_name + str(" has been successfully favorited.")
+   message ={}
+   message['message'] = message_CONTENT
+   message =  jsonify(message) # Return favorite message
+   return message
 
 """
 show_favorite_history(user): Gets users favorited recipes
-@param: search query to be used
+@param user: username
 @return: json of search results
 """
 @app.route('/showdata/<string:user>')
