@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View, Image } from "react-native";
 
-// Screens
+/* -------------------- Screens -------------------- */
 import Home from "../screens/home";
 import Settings from '../screens/settings'
 import Favorite from '../screens/favorite'

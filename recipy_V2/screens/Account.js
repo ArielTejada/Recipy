@@ -4,6 +4,7 @@ import styles from '../styles/account-styles'
 
 export default function Account({navigation}) {
 
+/* -------------------- Render Method -------------------- */
   return (
     <View>
       <View style={styles.pushDown}></View>

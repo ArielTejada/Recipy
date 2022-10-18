@@ -4,6 +4,7 @@ import styles from '../styles/favorite-styles'
 
 export default function Favorite() {
 
+/* -------------------- Render Method -------------------- */
   return (
     <View>
       <View style={styles.pushDown}></View>

@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 
 export default {
 
-    // State Variables
+    /* -------------------- State Variables -------------------- */
     ingredients: [
         {
             "id": "1",
@@ -5633,7 +5633,7 @@ export default {
     pantryItems: [],
     refresh: false,
     
-    // Actions
+    /* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
         state.selectedIngredients = list;
     }),

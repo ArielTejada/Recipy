@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity, Image, FlatList, Button, Pressable, Keyboard } from "react-native";
 import styles from '../styles/pantry-styles';
 import matchFunction from "../components/matchFunction";
-
-import { SearchBar } from "react-native-screens";
 import { useStoreState } from "easy-peasy";
+
+/* -------------------- Components -------------------- */
+import { SearchBar } from "react-native-screens";
 
 export default function Pantry() {
 
+/* -------------------- Local State Variables -------------------- */
   const [searchText, setSearchText] = useState('');
   const [searching, setSearching] = useState(false);
   const [filteredArray, setFilteredArray] = useState([]);
   const match = matchFunction;
+
+/* -------------------- Redux State Variables -------------------- */
   const ingredients = useStoreState(state => state.ingredients);
 
   return (
@@ -32,7 +36,6 @@ export default function Pantry() {
                         setSearchText(text);
                         text === '' ? setSearching(false) : setSearching(true);
                         text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
-                        
                     }}
                     searchText={searchText}
                     setSearchText={setSearchText}
@@ -72,7 +75,5 @@ export default function Pantry() {
             </View>
         </View>
     </View>
-    
-    
   );
 }

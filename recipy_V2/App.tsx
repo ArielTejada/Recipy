@@ -7,7 +7,7 @@ import * as Font from 'expo-font';
 
 const store = createStore(model);
 
-let customFonts = {
+let importedFonts = {
   'GrandHotel-Regular': require('./fonts/GrandHotel-Regular.ttf'),
   'Festive-Regular': require('./fonts/Festive-Regular.ttf'),
   'AmaticSC-Regular': require('./fonts/AmaticSC-Regular.ttf'),
@@ -16,19 +16,18 @@ let customFonts = {
 };
 
 export default class App extends React.Component {
-  state = {
-    fontsLoaded: false,
-  };
+
+/* -------------------- Async Font Loading -------------------- */
+  state = {fontsLoaded: false};
 
   async _loadFontsAsync() {
-    await Font.loadAsync(customFonts);
+    await Font.loadAsync(importedFonts);
     this.setState({ fontsLoaded: true });
   }
 
-  componentDidMount() {
-    this._loadFontsAsync();
-  }
+  componentDidMount() {this._loadFontsAsync()}
 
+/* -------------------- Render Method -------------------- */
   render() {
     if (!this.state.fontsLoaded) {
       return null;
@@ -41,6 +40,5 @@ export default class App extends React.Component {
         </NavigationContainer>
       </StoreProvider>
     );
-
-}
+  }
 }

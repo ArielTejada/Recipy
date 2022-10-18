@@ -23,6 +23,15 @@ export default StyleSheet.create({
         fontFamily: 'AmaticSC-Regular',
         textAlignVertical: 'center'
     },
+    title: {
+        width: width/2.5,
+        borderWidth: 1,
+        borderRadius: 20,
+        backgroundColor: '#2196F3',
+        color: 'white',
+        textAlign: 'center',
+        fontFamily: 'Festive-Regular',
+    },
 
     /* -------------- Images --------------*/
     banner: {
@@ -127,14 +136,5 @@ export default StyleSheet.create({
         height: height/4,
         marginVertical: RFValue(8),
         marginHorizontal: RFValue(8)
-    },
-    title: {
-        width: width/2.5,
-        borderWidth: 1,
-        borderRadius: 20,
-        backgroundColor: '#2196F3',
-        color: 'white',
-        textAlign: 'center',
-        fontFamily: 'Festive-Regular',
     },
 })

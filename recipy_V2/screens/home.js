@@ -4,36 +4,23 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import styles from '../styles/home-styles';
 
-// Components
-import AddStack from "../navigation/addStack";
-import SearchBar from "../components/searchBar";
-import RecipeCard from "../components/RecipeCard";
-
-// Screens
-import AddIngredient from "./addIngredient";
-
-const Stack = createStackNavigator();
-
 export default function Home({navigation}) {
 
-  const addIngredientHandler = () => {
-    navigation.navigate('AddIngredient');
-  }
+/* -------------------- Handler Functions -------------------- */
+  const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
 
-  const profilePressHandler = () => {
-    navigation.navigate('Account');
-  }
+  const profilePressHandler = () => {navigation.navigate('Account')}
 
-  const categoryPressHandler = () => {
-    navigation.navigate('Category');
-  }
+  const categoryPressHandler = () => {navigation.navigate('Category')}
 
+/* -------------------- Test Data -------------------- */
   const recipes = [
     {image: '../img/caesar-salad.jpg', name: 'Caesar Salad'},
     {image: '../img/chicken-chow-mein.jpg',name: 'Chicken Chow Mein'},
     {image: '../img/swedish-meatballs.jpeg',name: 'Swedish Meatballs'},
   ];
 
+/* -------------------- Render Method -------------------- */
   return (
     <ScrollView>
       <TouchableWithoutFeedback 

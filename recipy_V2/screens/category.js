@@ -4,6 +4,7 @@ import styles from '../styles/category-styles'
 
 export default function Category({navigation}) {
 
+/* -------------------- Render Method -------------------- */
   return (
     <View>
       <View style={styles.pushDown}></View>

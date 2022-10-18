@@ -9,14 +9,16 @@ import { BarCodeScanner } from 'expo-barcode-scanner';
 
 export default function AddIngredient({navigation}) {
 
-/* -------------------- State Variables -------------------- */
+/* -------------------- Local State Variables -------------------- */
+const [hasPermission, setHasPermission] = useState(null);
+const [scanned, setScanned] = useState(false);
+const [shouldShow, setShouldShow] = useState(false);
+
+/* -------------------- Redux State Variables -------------------- */
 const selectedIngredients = useStoreState(state => state.selectedIngredients);
 const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
-const [hasPermission, setHasPermission] = useState(null);
-const [scanned, setScanned] = useState(false);
-const [shouldShow, setShouldShow] = useState(false);
 
 /* -------------------- Handler Functions -------------------- */
 useEffect(() => {
