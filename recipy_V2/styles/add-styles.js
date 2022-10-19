@@ -26,6 +26,14 @@ export default StyleSheet.create({
     },
 
     /* -------------- Headers --------------*/
+    header: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        width: width,
+        height: height/8.5,
+        textAlign: 'center',
+        backgroundColor: '#2196F3',
+    },
     pushDown: {
         width: width,
         height: height/25,
@@ -38,10 +46,15 @@ export default StyleSheet.create({
     },
 
     /* -------------- Images --------------*/
-    icon: {
-        width: RFPercentage(7),
-        height: RFPercentage(7),
-        tintColor: 'white'
+    backIcon: {
+        width: width/9,
+        height: width/9,
+        tintColor: 'white',
+        top: width/15
+    },
+    backIconTouch: {
+        width: width/9,
+        height: width/5,
     },
     sidesImage: {
         width: width,
@@ -50,7 +63,7 @@ export default StyleSheet.create({
     banner: {
         width: width,
         height: height/8,
-        top: RFPercentage(-11)
+        top: RFPercentage(-4),
     },
 
     /* -------------- Position --------------*/

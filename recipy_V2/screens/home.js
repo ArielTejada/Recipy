@@ -1,17 +1,53 @@
 import React, { useState } from "react";
-import {Text, View, Image, StyleSheet, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground} from "react-native";
+import {Text, View, Image, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 import styles from '../styles/home-styles';
 
 export default function Home({navigation}) {
+
+/* -------------------- Redux State Variables -------------------- */
+  const category = useStoreState(state => state.category);
+  const setCategory = useStoreActions(actions => actions.setCategory);  
 
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
 
   const profilePressHandler = () => {navigation.navigate('Account')}
 
-  const categoryPressHandler = () => {navigation.navigate('Category')}
+  const categoryPressHandler = () => {
+    navigation.navigate('Category');
+  }
+
+  const pressFruit = () => {
+    setCategory('Fruit');
+    categoryPressHandler();
+  }
+
+  const pressProtein = () => {
+    setCategory('Protein');
+    categoryPressHandler();
+  }
+
+  const pressDairy = () => {
+    setCategory('Dairy');
+    categoryPressHandler();
+  }
+
+  const pressVeggies = () => {
+    setCategory('Veggies');
+    categoryPressHandler();
+  }
+
+  const pressGrain = () => {
+    setCategory('Grain');
+    categoryPressHandler();
+  }
+  const pressOil = () => {
+    setCategory('Oil');
+    categoryPressHandler();
+  }
 
 /* -------------------- Test Data -------------------- */
   const recipes = [
@@ -43,14 +79,14 @@ export default function Home({navigation}) {
               />
             </TouchableOpacity>
           </ImageBackground>
-          <TouchableOpacity
+          <Pressable
             onPress={addIngredientHandler}
             style={[styles.center, styles.margins]}
           >
             <Text 
               style={[styles.addButton, styles.fontMedium]}
             >Add Ingredient</Text>
-          </TouchableOpacity>
+          </Pressable>
 
           <View>
             <ImageBackground
@@ -60,43 +96,37 @@ export default function Home({navigation}) {
             >
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category1]}
-                onPress={categoryPressHandler}
-                category='fruit'
+                onPress={pressFruit}
               >
                 <Text style={[styles.categoryText]}>Fruits</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category2]}
-                onPress={categoryPressHandler}
-                category='protein'
+                onPress={pressProtein}
               >
                 <Text style={[styles.categoryText]}>Protein</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category3]}
-                onPress={categoryPressHandler}
-                category='dairy'
+                onPress={pressDairy}
               >
                 <Text style={[styles.categoryText]}>Dairy</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category4]}
-                onPress={categoryPressHandler}
-                category='vegetable'
+                onPress={pressVeggies}
               >
                 <Text style={[styles.categoryText]}>Veggies</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category5]}
-                onPress={categoryPressHandler}
-                category='grains'
+                onPress={pressGrain}
               >
                 <Text style={[styles.categoryText]}>Grain</Text>
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category6]}
-                onPress={categoryPressHandler}
-                category='oil'
+                onPress={pressOil}
               >
                 <Text style={[styles.categoryText]}>Oil</Text>
               </TouchableOpacity>

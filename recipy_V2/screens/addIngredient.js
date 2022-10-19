@@ -47,6 +47,13 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
 
+const selectedListPress = (key) => {
+  console.log(`clicked ${key}`);
+  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key)
+  console.log(newList)
+  setSelectedIngredients(newList)
+}
+
 /* -------------------- Render Method -------------------- */
   return (
     <View style={{flex:1}}>
@@ -59,19 +66,22 @@ const onPress = () => {
       }}>
 
         <View style={styles.pushDown}></View> 
-        <TouchableOpacity
-          onPress={() => {navigation.navigate('HomeScreen')}}
-          style={[styles.backButtonSection]}
-        >
-          <Image
-            source={require('../icons/go-back.png')}
-            style={styles.icon}
-          />
-          <Image
+        <View style={[styles.backButtonSection]}>
+          <ImageBackground
             source={require('../img/banner1.png')}
             style={styles.banner}
-          />
-        </TouchableOpacity>
+          >
+            <TouchableOpacity
+            onPress={() => {navigation.navigate('HomeScreen')}}
+            style={[styles.backIconTouch]}
+          >
+            <Image
+              source={require('../icons/go-back.png')}
+              style={styles.backIcon}
+            />
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
 
       <SearchBar
         selectedIngredients={selectedIngredients}
@@ -95,7 +105,9 @@ const onPress = () => {
                 return (
                 <Pressable 
                   key={ingredient.key}
-                  style={[styles.roundBTN, styles.flex]}>
+                  style={[styles.roundBTN, styles.flex]}
+                  onPress={() => selectedListPress(ingredient.key)}
+                >
                   <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name}</Text>
                 </Pressable>)
               })}

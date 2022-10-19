@@ -5632,6 +5632,7 @@ export default {
     categoryList: [],
     pantryItems: [],
     refresh: false,
+    category: '',
     
     /* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
@@ -5645,5 +5646,8 @@ export default {
     }),
     addPantryItem: action((state, item) => {
         state.pantryItems = state.pantryItems.push(item);
+    }),
+    setCategory: action((state, category) => {
+        state.category = category;
     }),
 }

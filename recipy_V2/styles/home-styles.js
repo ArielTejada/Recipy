@@ -116,7 +116,7 @@ export default StyleSheet.create({
     addButton: {
         width: wp('50%'),
         borderWidth: 1,
-        borderRadius: 30,
+        borderRadius: 20,
         backgroundColor: '#2196F3',
         color: 'white',
         textAlign: 'center',
