@@ -47,6 +47,13 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
 
+const selectedListPress = (key) => {
+  console.log(`clicked ${key}`);
+  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key)
+  console.log(newList)
+  setSelectedIngredients(newList)
+}
+
 /* -------------------- Render Method -------------------- */
   return (
     <View style={{flex:1}}>
@@ -98,7 +105,9 @@ const onPress = () => {
                 return (
                 <Pressable 
                   key={ingredient.key}
-                  style={[styles.roundBTN, styles.flex]}>
+                  style={[styles.roundBTN, styles.flex]}
+                  onPress={() => selectedListPress(ingredient.key)}
+                >
                   <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name}</Text>
                 </Pressable>)
               })}
