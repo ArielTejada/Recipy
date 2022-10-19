@@ -59,19 +59,22 @@ const onPress = () => {
       }}>
 
         <View style={styles.pushDown}></View> 
-        <TouchableOpacity
-          onPress={() => {navigation.navigate('HomeScreen')}}
-          style={[styles.backButtonSection]}
-        >
-          <Image
-            source={require('../icons/go-back.png')}
-            style={styles.icon}
-          />
-          <Image
+        <View style={[styles.backButtonSection]}>
+          <ImageBackground
             source={require('../img/banner1.png')}
             style={styles.banner}
-          />
-        </TouchableOpacity>
+          >
+            <TouchableOpacity
+            onPress={() => {navigation.navigate('HomeScreen')}}
+            style={[styles.backIconTouch]}
+          >
+            <Image
+              source={require('../icons/go-back.png')}
+              style={styles.backIcon}
+            />
+            </TouchableOpacity>
+          </ImageBackground>
+        </View>
 
       <SearchBar
         selectedIngredients={selectedIngredients}
