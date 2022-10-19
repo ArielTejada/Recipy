@@ -22,7 +22,7 @@ import bcrypt
 #
  
 """
-def simplyRecipes(query):
+def simplyRecipes(query): searches and scrapes 5 pgs of data
 @param query: query to search www.simplyrecipes.com
 @returns: a dataframe with scraped data
 

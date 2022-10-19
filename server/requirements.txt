@@ -10,3 +10,4 @@ scipy
 sortedcontainers
 requests_html
 aioflask
+bcrypt
