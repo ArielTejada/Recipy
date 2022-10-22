@@ -643,6 +643,7 @@ encrypt_password(password): Encrypts a password with bcrypt
 """
 def encrypt_password(password):
     # https://www.geeksforgeeks.org/hashing-passwords-in-python-with-bcrypt/
+    # History: https://gist.github.com/amelieykw/20a64653d7f05f5575876bc0af59e0f1
     password = password.encode('utf-8')
     salt = bcrypt.gensalt()
     hashed = bcrypt.hashpw(password,salt)
