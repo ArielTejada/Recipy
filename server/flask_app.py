@@ -3,6 +3,7 @@ from sqlite3 import Time
 from flask import Flask,render_template,jsonify
 import time
 import recipy
+import database_testing
 import os
 import pandas as pd
 import json
@@ -59,7 +60,9 @@ search(query): preforms webscraping search saving nothing
 """
 @app.route('/search/<string:query>')
 def search(query):
-   print("Query:")
+   data = database_testing.query_recipe_data(query)
+   return jsonify(data.to_dict())
+   """print("Query:")
    #Timing
    start_time = time.time()
    print(query)
@@ -69,7 +72,7 @@ def search(query):
       for q in range(len(query)):
          if q>=1:
             results=recipy.query_sites_dict(query[q])
-         
+     
 
 
    else:
@@ -79,7 +82,7 @@ def search(query):
    print("Time taken to retrieve:")
    print(end_time-start_time)
    #Save Data Under results for user
-   return jsonify(results)
+   return jsonify(results)"""    
 
 
 
@@ -99,11 +102,12 @@ search2(query): preforms webscraping search on recipy database and exports searc
 """
 @app.route('/search_export/<string:user>/<string:query>')
 def search2(user,query):
-   print("Query:")
-   print(query)
-   
-   #Timing
-   start_time = time.time()
+
+
+   data = database_testing.query_recipe_data(query)
+
+   #Adds to user search history by updating past_searches
+   return jsonify(data.to_dict())
 
    #Adds to user search history by updating past_searches
    print(recipy.get_userdata(user,3)) 
@@ -206,7 +210,7 @@ favorite(user): Gets users favorited recipes
 def favorite(user,recipe_name):
    # Timing Start
    start_time = time.time()
-
+   print(recipe_name)
    recipy.add_to_liked_recipes(user,recipe_name)
 
    # Timing End

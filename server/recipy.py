@@ -1,6 +1,4 @@
-from distutils.command.build import build
 import time
-import urllib
 import os
 import pandas as pd
 import requests_html  
@@ -8,6 +6,7 @@ from requests_html import HTML
 from requests_html import HTMLSession
 from requests_html import AsyncHTMLSession
 import bcrypt
+import database_testing
 
 #https://practicaldatascience.co.uk/data-science/how-to-scrape-google-search-results-using-python
 #https://requests.readthedocs.io/projects/requests-html/en/latest/
@@ -670,10 +669,10 @@ def add_user(user,password):
     #user_df.loc[len(user_df.index)] = [user,password]
     newENTRY={'username':[user],"password":[password]}
     newENTRY=pd.DataFrame(newENTRY)
-    print("PRE-UPDATE")
-    print(newENTRY)
+    #print("PRE-UPDATE")
+    #print(newENTRY)
     user_df=pd.concat([user_df,newENTRY], axis = 0)
-    print("POST-UPDATE")
+    #print("POST-UPDATE")
     user_df=user_df.drop(['Unnamed: 0'], axis=1)
     user_df=user_df.reset_index(drop=True)
     print(user_df)
@@ -850,8 +849,31 @@ def add_to_liked_recipes(user,recipe_name):
      # Looks up recipe_name in recipe database with .loc and adds it to "liked_recipes.csv"
      #
      # returns nothing.
-     liked_recipes= get_userdata(user,0)
-     liked_recipes= get_userdata(user,0)
-     return
+    current_directory = os.getcwd() # NOTE: Directory Begins in root of github files
+    path=os.path.join(current_directory,build_user_path(user))
+    path =os.path.join(path,'liked_recipes.csv')
+
+      #user_df.loc[len(user_df.index)] = [user,password]
+    data =database_testing.load_recipe_data()
+    recipe_ID = data.loc[data['TITLE']==recipe_name,['Unnamed: 0']]
+    
+    #To acquire a data point we transform into np array and index the np array
+    recipe_ID = recipe_ID.values[0]
+
+    newENTRY={'username':[user],"Recipe_ID":[recipe_ID]}
+    newENTRY=pd.DataFrame(newENTRY)
+    #print("PRE-UPDATE")
+    print(newENTRY)
+    favorites_df=get_userdata(user,0)
+    favorites_df=pd.concat([favorites_df,newENTRY], axis = 0)
+    #print("POST-UPDATE")
+    favorites_df=favorites_df.reset_index(drop=True)
+    print(favorites_df)
+    favorites_df.to_csv(path)
+    return favorites_df
+
+    liked_recipes= get_userdata(user,0)
+    liked_recipes= get_userdata(user,0)
+    return
 
         

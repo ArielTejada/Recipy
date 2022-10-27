@@ -11,3 +11,4 @@ sortedcontainers
 requests_html
 aioflask
 bcrypt
+sklearn
