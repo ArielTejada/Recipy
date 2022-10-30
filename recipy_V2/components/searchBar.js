@@ -6,6 +6,10 @@ import matchFunction from "./matchFunction";
 
 const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
 
+/* -------------------- Redux State Variables -------------------- */
+    const refresh = useStoreState(state => state.refresh);
+    const setRefresh = useStoreActions(actions => actions.setRefresh);
+
 /* -------------------- State Variables -------------------- */
     const ingredients = useStoreState(state => state.ingredients);
     const match = matchFunction;
@@ -14,8 +18,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
     const [filteredArray, setFilteredArray] = useState([]);
 
 /* -------------------- Handler Functions -------------------- */
-    const pressHandler = (name, key) => {
-        Keyboard.dismiss();    
+    const pressHandler = (name, key) => {  
         if(selectedIngredients.find(ingredient => ingredient.name === name)) {
             return;
         }
@@ -24,6 +27,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
         setSelectedIngredients(newList);
         setSearchText('');
         setSearching(false);
+        setRefresh(!refresh);
     }
 
     return (
