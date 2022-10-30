@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 
 export default {
 
-    /* -------------------- State Variables -------------------- */
+/* -------------------- State Variables -------------------- */
     ingredients: [
         {
             "id": "1",
@@ -5629,12 +5629,12 @@ export default {
         }
     ],
     selectedIngredients: [],
+    refresh: false,
     categoryList: [],
     pantryItems: [],
-    refresh: false,
     category: '',
     
-    /* -------------------- Actions -------------------- */
+/* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
         state.selectedIngredients = list;
     }),
@@ -5650,4 +5650,40 @@ export default {
     setCategory: action((state, category) => {
         state.category = category;
     }),
+
+/* -------------------- Display Settings -------------------- */
+halloweenEnabled: false,
+darkEnabled: false,
+lightEnabled: true,
+
+setLightEnabled: action((state) => {
+    state.lightEnabled = !state.lightEnabled
+    if(state.darkEnabled == true){
+        state.darkEnabled = false
+    }
+    if(state.halloweenEnabled == true){
+        state.halloweenEnabled = false
+    }
+}),
+
+setDarkEnabled: action((state) => {
+    state.darkEnabled = !state.darkEnabled
+    if(state.lightEnabled == true){
+        state.lightEnabled = false
+    }
+    if(state.halloweenEnabled == true){
+        state.halloweenEnabled = false
+    }
+}),
+
+setHalloweenEnabled: action((state) => {
+    state.halloweenEnabled = !state.halloweenEnabled
+    if(state.darkEnabled == true){
+        state.darkEnabled = false
+    }
+    if(state.lightEnabled == true){
+        state.lightEnabled = false
+    }
+}),
+
 }

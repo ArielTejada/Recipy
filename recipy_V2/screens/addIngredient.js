@@ -49,9 +49,9 @@ const onPress = () => {
 
 const selectedListPress = (key) => {
   console.log(`clicked ${key}`);
-  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key)
-  console.log(newList)
-  setSelectedIngredients(newList)
+  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
+  console.log(newList);
+  setSelectedIngredients(newList);
 }
 
 /* -------------------- Render Method -------------------- */

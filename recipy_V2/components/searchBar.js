@@ -15,6 +15,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
 
 /* -------------------- Handler Functions -------------------- */
     const pressHandler = (name, key) => {
+        Keyboard.dismiss();    
         if(selectedIngredients.find(ingredient => ingredient.name === name)) {
             return;
         }
@@ -23,7 +24,6 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
         setSelectedIngredients(newList);
         setSearchText('');
         setSearching(false);
-        Keyboard.dismiss();    
     }
 
     return (
@@ -56,12 +56,15 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
             <View>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
-                <ScrollView style={[styles.transparent]}>
+                <ScrollView 
+                    style={[styles.transparent]} 
+                    keyboardShouldPersistTaps='handled'
+                >
                     {filteredArray.map((ingredient) => {
                         return (
                             <View key={ingredient.id}>
                                 <TouchableOpacity onPress={() => {pressHandler(ingredient.name, ingredient.id)}}>
-                                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontMedium]}>{ingredient.name}</Text>  
+                                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
                                 </TouchableOpacity>
                             </View>         
                         )})}

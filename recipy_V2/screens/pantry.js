@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, TextInput, Text, TouchableOpacity, Image, FlatList, Button, Pressable, Keyboard } from "react-native";
 import styles from '../styles/pantry-styles';
 import matchFunction from "../components/matchFunction";
-import { useStoreState } from "easy-peasy";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 /* -------------------- Components -------------------- */
 import { SearchBar } from "react-native-screens";
@@ -18,11 +18,34 @@ export default function Pantry() {
 /* -------------------- Redux State Variables -------------------- */
   const ingredients = useStoreState(state => state.ingredients);
 
+  const lightEnabled = useStoreState(state => state.lightEnabled);
+  const darkEnabled = useStoreState(state => state.darkEnabled);
+  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
+
   return (
-    <View>
-      <View style={styles.pushDown}></View>
+    <View style={[
+        styles.wholeScreen, 
+        lightEnabled ? {backgroundColor: 'white'} :
+        darkEnabled ? {backgroundColor: '#A4A9AD'} :
+        halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
+    ]}>
+
+      <View style={[
+        styles.pushDown, 
+        lightEnabled ? {backgroundColor: '#2196F3'} :
+        darkEnabled ? {backgroundColor: '#4A576F'} :
+        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+      ]}></View>
+
       <View >
-        <Text style={styles.header}>Pantry</Text>
+
+      <Text style={[
+        styles.header, 
+        lightEnabled ? {backgroundColor: '#2196F3'} :
+        darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
+        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+      ]}>Pantry</Text>
+
         <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
         <SearchBar/>
       </View>

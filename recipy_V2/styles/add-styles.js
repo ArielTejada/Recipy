@@ -55,6 +55,7 @@ export default StyleSheet.create({
     backIconTouch: {
         width: width/9,
         height: width/5,
+        zIndex: 5
     },
     sidesImage: {
         width: width,
@@ -65,6 +66,10 @@ export default StyleSheet.create({
         height: height/8,
         top: RFPercentage(-4),
     },
+    fridgeImage: {
+        width: width,
+        height: 1009 * (width/678),  // actual height x (width / actual width)
+    },
 
     /* -------------- Position --------------*/
     center: {
@@ -74,6 +79,15 @@ export default StyleSheet.create({
     margins: {
         marginVertical: 5,
         marginHorizontal: 10,
+    },
+    fridgeMargins: {
+        marginTop: height/10,
+        top: -height/10
+    },
+    ingredientMargins :{
+        marginLeft: width/10,
+        marginRight: width/8,
+        top: height/15
     },
     window: {
         flexDirection: 'row',
@@ -102,6 +116,14 @@ export default StyleSheet.create({
     },
     flex: {
         display: 'flex'
+    },
+    flexRow:{
+        flexDirection:"row",
+        flexWrap:"wrap",
+    },
+    absolute: {
+        position: 'absolute',
+        top: height/3.5
     },
 
     /* -------------- Styling --------------*/

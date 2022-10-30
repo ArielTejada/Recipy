@@ -9,7 +9,13 @@ export default function Home({navigation}) {
 
 /* -------------------- Redux State Variables -------------------- */
   const category = useStoreState(state => state.category);
+  const ingredients = useStoreState(state => state.ingredients)
   const setCategory = useStoreActions(actions => actions.setCategory);  
+  const setCategoryList = useStoreActions(actions => actions.setCategoryList); 
+
+  const lightEnabled = useStoreState(state => state.lightEnabled);
+  const darkEnabled = useStoreState(state => state.darkEnabled);
+  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
 
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
@@ -22,30 +28,36 @@ export default function Home({navigation}) {
 
   const pressFruit = () => {
     setCategory('Fruit');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'fruit')));
     categoryPressHandler();
   }
 
   const pressProtein = () => {
     setCategory('Protein');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'meat' || ingredient['type'] == 'fish')));
     categoryPressHandler();
   }
 
   const pressDairy = () => {
     setCategory('Dairy');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'dairy')));
     categoryPressHandler();
   }
 
   const pressVeggies = () => {
     setCategory('Veggies');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'vegetable')));
     categoryPressHandler();
   }
 
   const pressGrain = () => {
     setCategory('Grain');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'grains')));
     categoryPressHandler();
   }
   const pressOil = () => {
-    setCategory('Oil');
+    setCategory('Herbs');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'herbs' || ingredient['type'] == 'nuts')));
     categoryPressHandler();
   }
 
@@ -58,13 +70,27 @@ export default function Home({navigation}) {
 
 /* -------------------- Render Method -------------------- */
   return (
+    <View style={[
+      styles.wholeScreen, 
+      lightEnabled ? {backgroundColor: 'white'} :
+      darkEnabled ? {backgroundColor: '#A4A9AD'} :
+      halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
+  ]}>
+
     <ScrollView>
       <TouchableWithoutFeedback 
         onPress={() => {
         Keyboard.dismiss();
       }}>
         <View>
-        <View style={styles.pushDown}></View>
+
+        <View style={[
+          styles.pushDown,
+          lightEnabled ? {backgroundColor: '#2196F3'} :
+          darkEnabled ? {backgroundColor: '#4A576F'} :
+          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        ]}></View>
+
           <ImageBackground
             source={require('../img/banner2.png')}
             style={styles.banner}
@@ -90,7 +116,7 @@ export default function Home({navigation}) {
 
           <View>
             <ImageBackground
-              source={require('../img/categories.jpg')}
+              source={require('../img/categories.png')}
               resizeMode='contain'
               style={[styles.caterories]}
             >
@@ -128,12 +154,13 @@ export default function Home({navigation}) {
                 style={[styles.categoryButton, styles.category6]}
                 onPress={pressOil}
               >
-                <Text style={[styles.categoryText]}>Oil</Text>
+                <Text style={[styles.categoryText]}>Herbs</Text>
               </TouchableOpacity>
             </ImageBackground>
           </View>
         </View>
       </TouchableWithoutFeedback> 
     </ScrollView>
+    </View>
   );
 }

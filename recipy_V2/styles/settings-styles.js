@@ -16,9 +16,12 @@ export default StyleSheet.create({
     fontLarge: {
         fontSize: RFPercentage(5)
     },
+    font1: {
+        fontFamily: 'AmaticSC-Regular',
+    },
     textCenter: {
-        textAlignVertical: 'center',
-        textAlign: 'center',
+        justifyContent: 'center',
+        paddingLeft: width/30
     },
 
     /* -------------- Headers --------------*/
@@ -41,12 +44,46 @@ export default StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto'
     },
+    centerItems: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    inline: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    smallMargins: {
+        marginHorizontal: width/30,
+        marginVertical: height/60
+    },
 
     /* -------------- Styling --------------*/
     outline: {
         borderWidth: 1,
         borderRadius: 5,
     },
+    pageColor: {
+        backgroundColor: 'white',
+        height: height
+    },
 
+    /* -------------- Size --------------*/
+    width70: {
+        width: width * .7,
+        height: height/10
+    },
+    width30: {
+        width: width * .3,
+        height: height/10.
+    },
+    switch: {
+        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
+    },
+    wholeScreen: {
+        width: width,
+        height: height
+    },
+    
     /* -------------- Custom  --------------*/
+
 })

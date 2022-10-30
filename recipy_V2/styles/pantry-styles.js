@@ -60,6 +60,12 @@ export default StyleSheet.create({
         borderRadius: 5,
     },
     
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
+    },
+    
     /* -------------- Custom  --------------*/
     input : {
         backgroundColor: 'white',

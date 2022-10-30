@@ -80,6 +80,12 @@ export default StyleSheet.create({
         borderRadius: 5,
     },
 
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
+    },
+
     /* -------------- Ingredient Categories --------------*/
     category1: {
         position: 'absolute',
