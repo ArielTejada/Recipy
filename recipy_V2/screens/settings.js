@@ -25,21 +25,21 @@ export default function Settings() {
       styles.wholeScreen, 
       lightEnabled ? {backgroundColor: 'white'} :
       darkEnabled ? {backgroundColor: '#A4A9AD'} :
-      halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
+      halloweenEnabled ? {backgroundColor: '#FD9702'} : {backgroundColor: '#2196F3'}
     ]}>
 
       <View style={[
         styles.pushDown, 
         lightEnabled ? {backgroundColor: '#2196F3'} :
         darkEnabled ? {backgroundColor: '#4A576F'} :
-        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        halloweenEnabled ? {backgroundColor: '#FF7100'} : {backgroundColor: '#2196F3'}
       ]}></View>
 
       <Text style={[
         styles.header, 
         lightEnabled ? {backgroundColor: '#2196F3'} :
         darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        halloweenEnabled ? {backgroundColor: '#FF7100'} : {backgroundColor: '#2196F3'}
       ]}>Settings</Text>
       
       <View style={[styles.outline, styles.smallMargins, styles.settingOption, styles.centerItems]}>
@@ -83,7 +83,7 @@ export default function Settings() {
         <View style={[styles.width30, styles.centerItems]}>
           <Switch
             trackColor={{ false: "#CCCCCC", true: "#CCCCCC" }}
-            thumbColor={halloweenEnabled ? '#2196F3' : 'gray'}
+            thumbColor={halloweenEnabled ? '#09FF00' : 'gray'}
             onValueChange={halloweenSwitch}
             value={halloweenEnabled}
             style={[styles.switch]}

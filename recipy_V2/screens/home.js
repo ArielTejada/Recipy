@@ -27,7 +27,7 @@ export default function Home({navigation}) {
   }
 
   const pressFruit = () => {
-    setCategory('Fruit');
+    setCategory('Fruits');
     setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'fruit')));
     categoryPressHandler();
   }
@@ -55,7 +55,7 @@ export default function Home({navigation}) {
     setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'grains')));
     categoryPressHandler();
   }
-  const pressOil = () => {
+  const pressHerbs = () => {
     setCategory('Herbs');
     setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'herbs' || ingredient['type'] == 'nuts')));
     categoryPressHandler();
@@ -152,7 +152,7 @@ export default function Home({navigation}) {
               </TouchableOpacity>
               <TouchableOpacity 
                 style={[styles.categoryButton, styles.category6]}
-                onPress={pressOil}
+                onPress={pressHerbs}
               >
                 <Text style={[styles.categoryText]}>Herbs</Text>
               </TouchableOpacity>

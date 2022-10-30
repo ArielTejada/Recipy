@@ -1,5 +1,5 @@
 import React from "react"
-import {Text, View, TouchableOpacity, Image, ImageBackground, ScrollView, Pressable} from "react-native"
+import {Text, View, TouchableOpacity, Image, ImageBackground, ScrollView, Pressable, Animated} from "react-native"
 import styles from '../styles/category-styles'
 import { useStoreState, useStoreActions } from "easy-peasy";
 
@@ -10,6 +10,9 @@ export default function Category({navigation}) {
   const categoryList = useStoreState(state => state.categoryList);  
   const selectedIngredients = useStoreState(state => state.selectedIngredients);
   const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+
+  const refresh = useStoreState(state => state.refresh);
+  const setRefresh = useStoreActions(actions => actions.setRefresh);
 
   const lightEnabled = useStoreState(state => state.lightEnabled);
   const darkEnabled = useStoreState(state => state.darkEnabled);
@@ -30,7 +33,31 @@ export default function Category({navigation}) {
     let newList = selectedIngredients;
     newList.push({name: name, key: key});
     setSelectedIngredients(newList);
+    setRefresh(!refresh);
 }
+
+  const refreshPage = () => {
+    setRefresh();
+  }
+
+/* -------------------- Pressable Animations -------------------- */
+
+  const animated = new Animated.Value(1);
+    const fadeIn = () => {
+      Animated.timing(animated, {
+        toValue: 0.4,
+        duration: 100,
+        useNativeDriver: true,
+      }).start();
+    };
+    
+    const fadeOut = () => {
+      Animated.timing(animated, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    };
 
 /* -------------------- Render Method -------------------- */
   return (
@@ -73,16 +100,16 @@ export default function Category({navigation}) {
       </View>
 
       <View>
-      <Text style={[
-        styles.header, 
-        lightEnabled ? {backgroundColor: '#2196F3'} :
-        darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
-      ]}>{category}</Text>
+        <Text style={[
+          styles.header,
+          lightEnabled ? {backgroundColor: '#2196F3'} :
+          darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
+          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        ]}>Category: {category}</Text>
       </View>
       
 
-      <View style={[styles.selectedIngredients, styles.outline]}>
+      <View style={[styles.selectedIngredients, styles.outline, styles.margins]}>
         <ScrollView horizontal={true}>
           {selectedIngredients.map((ingredient) => {
             return (
@@ -91,7 +118,7 @@ export default function Category({navigation}) {
               style={[styles.roundBTN, styles.flex]}
               onPress={() => selectedListPress(ingredient.key)}
             >
-              <Text style={[styles.fontSmall, styles.textCenter, { color: 'white'}]}>{ingredient.name.replace('_', ' ')}</Text>
+              <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.name.replace('_', ' ')}</Text>
             </Pressable>)
           })}
         </ScrollView>
@@ -99,23 +126,25 @@ export default function Category({navigation}) {
 
       <View style={[styles.absolute]}>
         <ImageBackground
-          source={require('../img/fridge.png')}
-          style={[styles.fridgeImage]}
+          source={require('../img/searchItems.png')}
+          style={[styles.backImage]}
           resizeMode='contain'
           ></ImageBackground>
       </View>
 
         <ScrollView style={[styles.ingredientMargins]}>
-          <View style={[styles.flexRow]}>
+          <View style={[styles.flexRow, styles.centerItems]}>
             {categoryList.map((ingredient) => {
               return (
-              <Pressable 
+              <TouchableOpacity 
                 key={ingredient.id}
                 style={[styles.roundBTN]}
                 onPress={() => {pressHandler(ingredient.name, ingredient.id)}}
+                onPressIn={() => fadeIn}
+                onPressOut={() => fadeOut}
               >
-                <Text style={[styles.fontSmall, styles.textCenter, { color: 'white'}]}>{ingredient.name.replace('_', ' ')}</Text>
-              </Pressable>)
+                <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.name.replace('_', ' ')}</Text>
+              </TouchableOpacity>)
             })}
           </View>
         </ScrollView>

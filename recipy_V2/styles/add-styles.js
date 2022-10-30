@@ -145,6 +145,12 @@ export default StyleSheet.create({
         marginTop: 2,
         height: width/12,
     },
+
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
+    },
     
     /* -------------- Custom  --------------*/
     input : {

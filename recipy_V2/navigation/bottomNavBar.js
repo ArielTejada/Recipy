@@ -11,6 +11,14 @@ import AddStack from "./addStack";
 
 const Tab = createBottomTabNavigator();
 
+/* -------------------- Colors -------------------- */
+const lightNotFocused = 'black'
+const ligthFocused = 'white'
+const darkNotFocused = 'black'
+const darkFocused = '#A4A9AD'
+const halloweenNotFocused = 'black'
+const halloweenFocused = '#09FF00'
+
 const BottomNavBar = () => {
 
 /* -------------------- Redux State Variables -------------------- */
@@ -30,7 +38,7 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                 borderTopEndRadius: 10,
                 borderTopStartRadius: 10,
                 backgroundColor: 
-                    halloweenEnabled ? '#FF7739' : 
+                    halloweenEnabled ? '#FF7100' : 
                     darkEnabled ? '#4A576F' : 
                     lightEnabled ? '#2196F3' : 'white'
             }
@@ -49,15 +57,16 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused & halloweenEnabled ? 'white' : 
-                                focused & darkEnabled ? '#A4A9AD': 
-                                focused & lightEnabled ? 'white' : 'black'
+                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: focused & halloweenEnabled ? 'white' : 
-                            focused & darkEnabled ? '#A4A9AD': 
-                            focused & lightEnabled ? 'white' : 'black'}}>Home</Text>
+                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                        }}>Home</Text>
                     </View>
                 )
             }}/>
@@ -75,15 +84,16 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused & halloweenEnabled ? 'white' : 
-                                focused & darkEnabled ? '#A4A9AD': 
-                                focused & lightEnabled ? 'white' : 'black'
+                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: focused & halloweenEnabled ? 'white' : 
-                            focused & darkEnabled ? '#A4A9AD': 
-                            focused & lightEnabled ? 'white' : 'black'}}>Pantry</Text>
+                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                        }}>Pantry</Text>
                     </View>
                 )
             }}/>
@@ -101,15 +111,16 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused & halloweenEnabled ? 'white' : 
-                                focused & darkEnabled ? '#A4A9AD': 
-                                focused & lightEnabled ? 'white' : 'black'
+                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: focused & halloweenEnabled ? 'white' : 
-                            focused & darkEnabled ? '#A4A9AD': 
-                            focused & lightEnabled ? 'white' : 'black'}}>Favorite</Text>
+                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                        }}>Favorite</Text>
                     </View>
                 )
             }}/>
@@ -127,16 +138,16 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused & halloweenEnabled ? 'white' : 
-                                focused & darkEnabled ? '#A4A9AD': 
-                                focused & lightEnabled ? 'white' : 'black'
+                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
                             }}
                         />
                         <Text 
                             style={{
-                                color: focused & halloweenEnabled ? 'white' : 
-                                focused & darkEnabled ? '#A4A9AD': 
-                                focused & lightEnabled ? 'white' : 'black'
+                                color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
+                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
+                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
                             }}>Settings</Text>
                     </View>
                 )

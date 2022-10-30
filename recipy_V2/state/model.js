@@ -5657,33 +5657,27 @@ darkEnabled: false,
 lightEnabled: true,
 
 setLightEnabled: action((state) => {
-    state.lightEnabled = !state.lightEnabled
-    if(state.darkEnabled == true){
-        state.darkEnabled = false
+    if(state.lightEnabled == true & state.darkEnabled == false & state.halloweenEnabled == false){
+        state.lightEnabled = true;
+        return;
     }
-    if(state.halloweenEnabled == true){
-        state.halloweenEnabled = false
-    }
+    state.lightEnabled = !state.lightEnabled;
+    if(state.darkEnabled == true) {state.darkEnabled = false}
+    if(state.halloweenEnabled == true) {state.halloweenEnabled = false}
 }),
 
 setDarkEnabled: action((state) => {
-    state.darkEnabled = !state.darkEnabled
-    if(state.lightEnabled == true){
-        state.lightEnabled = false
-    }
-    if(state.halloweenEnabled == true){
-        state.halloweenEnabled = false
-    }
+    state.darkEnabled = !state.darkEnabled;
+    if(state.lightEnabled == true) {state.lightEnabled = false}
+    if(state.halloweenEnabled == true) {state.halloweenEnabled = false}
+    if(state.darkEnabled == false & state.halloweenEnabled == false) {state.lightEnabled = true}
 }),
 
 setHalloweenEnabled: action((state) => {
-    state.halloweenEnabled = !state.halloweenEnabled
-    if(state.darkEnabled == true){
-        state.darkEnabled = false
-    }
-    if(state.lightEnabled == true){
-        state.lightEnabled = false
-    }
+    state.halloweenEnabled = !state.halloweenEnabled;
+    if(state.darkEnabled == true) {state.darkEnabled = false}
+    if(state.lightEnabled == true) {state.lightEnabled = false}
+    if(state.darkEnabled == false & state.halloweenEnabled == false) {state.lightEnabled = true}
 }),
 
 }

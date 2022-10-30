@@ -20,6 +20,10 @@ const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIng
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 
+const lightEnabled = useStoreState(state => state.lightEnabled);
+const darkEnabled = useStoreState(state => state.darkEnabled);
+const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
+
 /* -------------------- Handler Functions -------------------- */
 useEffect(() => {
   const getBarCodeScannerPermissions = async() => {
@@ -56,7 +60,13 @@ const selectedListPress = (key) => {
 
 /* -------------------- Render Method -------------------- */
   return (
-    <View style={{flex:1}}>
+    <View style={[
+      {flex:1}, styles.wholeScreen, 
+      lightEnabled ? {backgroundColor: 'white'} :
+      darkEnabled ? {backgroundColor: '#A4A9AD'} :
+      halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
+      ]}>
+
       {shouldShow ? null:
       <TouchableOpacity 
         keyboardShouldPersistTaps='always'
@@ -65,8 +75,20 @@ const selectedListPress = (key) => {
         setRefresh(!refresh);
       }}>
 
-        <View style={styles.pushDown}></View> 
-        <View style={[styles.backButtonSection]}>
+        <View style={[
+          styles.pushDown, 
+          lightEnabled ? {backgroundColor: '#2196F3'} :
+          darkEnabled ? {backgroundColor: '#4A576F'} :
+          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        ]}></View>
+
+        <View style={[
+          styles.backButtonSection,
+          lightEnabled ? {backgroundColor: '#2196F3'} :
+          darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
+          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        ]}>
+
           <ImageBackground
             source={require('../img/banner1.png')}
             style={styles.banner}

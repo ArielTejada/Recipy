@@ -68,6 +68,10 @@ export default StyleSheet.create({
     },
 
     /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
+    },
     width70: {
         width: width * .7,
         height: height/10
@@ -78,10 +82,6 @@ export default StyleSheet.create({
     },
     switch: {
         transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
-    },
-    wholeScreen: {
-        width: width,
-        height: height
     },
     
     /* -------------- Custom  --------------*/

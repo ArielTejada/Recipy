@@ -123,7 +123,7 @@ export default StyleSheet.create({
         width: wp('50%'),
         borderWidth: 1,
         borderRadius: 20,
-        backgroundColor: '#2196F3',
+        backgroundColor: '#19647E',
         color: 'white',
         textAlign: 'center',
         fontFamily: 'AmaticSC-Regular',
@@ -133,7 +133,7 @@ export default StyleSheet.create({
         width: width/4.3,
         height: width/9,
         textAlign: 'center',
-        backgroundColor: '#2196F3',
+        backgroundColor: '#19647E',
     },
     
     /* -------------- Custom  --------------*/

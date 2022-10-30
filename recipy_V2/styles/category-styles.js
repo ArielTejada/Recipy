@@ -43,6 +43,7 @@ export default StyleSheet.create({
         width: width,
         height: height/14,
         backgroundColor: '#2196F3',
+        zIndex: 1
     },
 
     /* -------------- Images --------------*/
@@ -63,18 +64,23 @@ export default StyleSheet.create({
     },
     banner: {
         width: width,
-        height: height/8,
-        top: RFPercentage(-4),
+        height: 334 * (width/1442), 
+        top: -height/25,
     },
-    fridgeImage: {
+    backImage: {
         width: width,
-        height: 1009 * (width/678),  // actual height x (width / actual width)
+        height: 1060 * (width/1060),  // actual height x (width / actual width)
+        top: height/50
     },
 
     /* -------------- Position --------------*/
     center: {
         marginLeft: 'auto',
         marginRight: 'auto'
+    },
+    centerItems: {
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     margins: {
         marginVertical: 5,
@@ -85,9 +91,8 @@ export default StyleSheet.create({
         top: -height/10
     },
     ingredientMargins :{
-        marginLeft: width/10,
-        marginRight: width/8,
-        top: height/15
+        marginHorizontal: width/40,
+        marginVertical: height/60
     },
     window: {
         flexDirection: 'row',
@@ -139,12 +144,13 @@ export default StyleSheet.create({
     roundBTN: {
         borderWidth: 2,
         borderRadius: 15,
-        borderColor: '#2196f3',
-        marginHorizontal: 5,
-        paddingHorizontal: 3,
+        borderColor: 'black',
+        marginHorizontal: width/150,
+        marginVertical: height/200,
+        paddingHorizontal: width/50,
         marginTop: 2,
         height: width/12,
-        backgroundColor: 'skyblue',
+        backgroundColor: 'white',
     },
     
     /* -------------- Custom  --------------*/
