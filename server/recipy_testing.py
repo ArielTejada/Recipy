@@ -16,6 +16,7 @@ import json
 # cd server
 # Run with py recipy_testing.py
 
+
 """
 Code attempts to follow javadoc style
 This is a javadoc style.
@@ -61,9 +62,16 @@ def build_link(ingredient,type="allrecipes",):
         link +='https://www.simplyrecipes.com/search?'
         link += 'q='+str(ingredient)
         return link
-# Scraper functions.
+
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+#               Scraper functions
+# # # # # # # # # # # # # # # # # # # # # # # # # #
+#
 # These functions each scrape the website of their namesake and return a dataframe with all the scraped results
-# They leave columns blank if data is not found.    
+# They leave columns blank if data is not found.
+#
+#
+ 
 
 def simplyRecipes(query):
 
