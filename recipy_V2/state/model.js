@@ -5652,6 +5652,7 @@ export default {
     }),
 
 /* -------------------- Display Settings -------------------- */
+
 halloweenEnabled: false,
 darkEnabled: false,
 lightEnabled: true,
@@ -5680,4 +5681,27 @@ setHalloweenEnabled: action((state) => {
     if(state.darkEnabled == false & state.halloweenEnabled == false) {state.lightEnabled = true}
 }),
 
+/* -------------------- Display Colors -------------------- */
+navLight: '#2196F3',
+navDark: '#4A576F',
+navHalloween: '#FF7100',
+
+navIconLightFocused: 'white',
+navIconLightNotFocused: 'black',
+navIconDarkFocused: '#A4A9AD',
+navIconDarkNotFocused: 'black',
+navIconHalloweenFocused: '#09FF00',
+navIconHalloweenNotFocused: 'black',
+
+headerLight: '#2196F3',
+headerDark: '#4A576F',
+headerHalloween: '#FF7100',
+
+pageLight: 'white',
+pageDark: '#A4A9AD',
+pageHalloween: '#FD9702',
+
+bannerLight: '#2196F3',
+bannerDark: '#4A576F',
+bannerHalloween: '#09FF00',
 }

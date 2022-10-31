@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Text, View, Image } from "react-native";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
 /* -------------------- Screens -------------------- */
@@ -11,20 +11,23 @@ import AddStack from "./addStack";
 
 const Tab = createBottomTabNavigator();
 
-/* -------------------- Colors -------------------- */
-const lightNotFocused = 'black'
-const ligthFocused = 'white'
-const darkNotFocused = 'black'
-const darkFocused = '#A4A9AD'
-const halloweenNotFocused = 'black'
-const halloweenFocused = '#09FF00'
-
 const BottomNavBar = () => {
 
 /* -------------------- Redux State Variables -------------------- */
 const lightEnabled = useStoreState(state => state.lightEnabled);
 const darkEnabled = useStoreState(state => state.darkEnabled);
 const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
+
+const navLight = useStoreState(state => state.navLight);
+const navDark = useStoreState(state => state.navDark);
+const navHalloween = useStoreState(state => state.navHalloween);
+
+const navIconLightFocused = useStoreState(state => state.navIconLightFocused);
+const navIconLightNotFocused = useStoreState(state => state.navIconLightNotFocused);
+const navIconDarkFocused = useStoreState(state => state.navIconDarkFocused);
+const navIconDarkNotFocused = useStoreState(state => state.navIconDarkNotFocused);
+const navIconHalloweenFocused = useStoreState(state => state.navIconHalloweenFocused);
+const navIconHalloweenNotFocused = useStoreState(state => state.navIconHalloweenNotFocused);
 
     return (
         <Tab.Navigator screenOptions={{
@@ -38,9 +41,9 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                 borderTopEndRadius: 10,
                 borderTopStartRadius: 10,
                 backgroundColor: 
-                    halloweenEnabled ? '#FF7100' : 
-                    darkEnabled ? '#4A576F' : 
-                    lightEnabled ? '#2196F3' : 'white'
+                    halloweenEnabled ? navHalloween : 
+                    darkEnabled ? navDark : 
+                    lightEnabled ? navLight : 'white'
             }
         }}>
             <Tab.Screen 
@@ -57,15 +60,15 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                         }}>Home</Text>
                     </View>
                 )
@@ -84,15 +87,15 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                         }}>Pantry</Text>
                     </View>
                 )
@@ -111,15 +114,15 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
                         <Text style={{
-                            color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                            !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                            !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                         }}>Favorite</Text>
                     </View>
                 )
@@ -138,16 +141,16 @@ const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
                         <Text 
                             style={{
-                                color: !focused & halloweenEnabled ? halloweenNotFocused : focused & halloweenEnabled ? halloweenFocused : 
-                                !focused & darkEnabled ? darkNotFocused : focused & darkEnabled ? darkFocused: 
-                                !focused & lightEnabled ? lightNotFocused : focused & lightEnabled ? ligthFocused : 'black'
+                                color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}>Settings</Text>
                     </View>
                 )

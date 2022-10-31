@@ -50,6 +50,12 @@ export default StyleSheet.create({
         width: width,
         height: width/1.1,
     },
+    logo: {
+        width: width/2.8,
+        height: 666 * ((width/2.8)/1200),
+        top: height/9.5,
+        left: width/3.5
+    },
 
     /* -------------- Position --------------*/
     center : {

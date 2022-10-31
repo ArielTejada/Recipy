@@ -22,33 +22,43 @@ export default function Pantry() {
   const darkEnabled = useStoreState(state => state.darkEnabled);
   const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
 
+  /* -------------------- Redux State Colors -------------------- */
+  const headerLight = useStoreState(state => state.headerLight);
+  const headerDark = useStoreState(state => state.headerDark);
+  const headerHalloween = useStoreState(state => state.headerHalloween);
+  const pageLight = useStoreState(state => state.pageLight);
+  const pageDark = useStoreState(state => state.pageDark);
+  const pageHalloween = useStoreState(state => state.pageHalloween);
+
+  /* -------------------- Render Method -------------------- */
+
   return (
     <View style={[
-        styles.wholeScreen, 
-        lightEnabled ? {backgroundColor: 'white'} :
-        darkEnabled ? {backgroundColor: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
+      styles.wholeScreen, 
+      lightEnabled ? {backgroundColor: pageLight} :
+      darkEnabled ? {backgroundColor: pageDark} :
+      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
     ]}>
 
       <View style={[
         styles.pushDown, 
-        lightEnabled ? {backgroundColor: '#2196F3'} :
-        darkEnabled ? {backgroundColor: '#4A576F'} :
-        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+        lightEnabled ? {backgroundColor: headerLight} :
+        darkEnabled ? {backgroundColor: headerDark} :
+        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
       ]}></View>
 
       <View >
-
-      <Text style={[
-        styles.header, 
-        lightEnabled ? {backgroundColor: '#2196F3'} :
-        darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
-      ]}>Pantry</Text>
+        <Text style={[
+          styles.header, 
+          lightEnabled ? {backgroundColor: headerLight} :
+          darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
+          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
+        ]}>Pantry</Text>
 
         <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
         <SearchBar/>
       </View>
+
       <View>    
             <View style={styles.container}>
                 <TextInput

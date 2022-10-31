@@ -17,6 +17,17 @@ export default function Home({navigation}) {
   const darkEnabled = useStoreState(state => state.darkEnabled);
   const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
 
+  /* -------------------- Redux State Colors -------------------- */
+  const headerLight = useStoreState(state => state.headerLight);
+  const headerDark = useStoreState(state => state.headerDark);
+  const headerHalloween = useStoreState(state => state.headerHalloween);
+  const pageLight = useStoreState(state => state.pageLight);
+  const pageDark = useStoreState(state => state.pageDark);
+  const pageHalloween = useStoreState(state => state.pageHalloween);
+  const bannerLight = useStoreState(state => state.bannerLight);
+  const bannerDark = useStoreState(state => state.bannerDark);
+  const bannerHalloween = useStoreState(state => state.bannerHalloween);
+
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
 
@@ -72,10 +83,10 @@ export default function Home({navigation}) {
   return (
     <View style={[
       styles.wholeScreen, 
-      lightEnabled ? {backgroundColor: 'white'} :
-      darkEnabled ? {backgroundColor: '#A4A9AD'} :
-      halloweenEnabled ? {backgroundColor: '#FFB703'} : {backgroundColor: '#2196F3'}
-  ]}>
+      lightEnabled ? {backgroundColor: pageLight} :
+      darkEnabled ? {backgroundColor: pageDark} :
+      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
+    ]}>
 
     <ScrollView>
       <TouchableWithoutFeedback 
@@ -85,16 +96,25 @@ export default function Home({navigation}) {
         <View>
 
         <View style={[
-          styles.pushDown,
-          lightEnabled ? {backgroundColor: '#2196F3'} :
-          darkEnabled ? {backgroundColor: '#4A576F'} :
-          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
+          styles.pushDown, 
+          lightEnabled ? {backgroundColor: headerLight} :
+          darkEnabled ? {backgroundColor: headerDark} :
+          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
         ]}></View>
 
           <ImageBackground
-            source={require('../img/banner2.png')}
-            style={styles.banner}
+            source={require('../img/banner3.png')}
+            style={[styles.banner]}
+            imageStyle={[
+              lightEnabled ? {tintColor: bannerLight} :
+              darkEnabled ? {tintColor: bannerDark} :
+              halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
+            ]}
           >
+            <Image
+              source={require('../img/recipylogo.png')}
+              style={[styles.logo]}
+            />
             <TouchableOpacity 
             onPress={profilePressHandler}
             style={[styles.absolute]}
