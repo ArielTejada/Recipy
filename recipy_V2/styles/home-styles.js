@@ -17,10 +17,10 @@ export default StyleSheet.create({
         fontSize: RFPercentage(5)
     },
     categoryText : {
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
         fontSize: RFPercentage(4),
-        fontFamily: 'AmaticSC-Regular',
+        fontFamily: 'AmaticSC-Bold',
         textAlignVertical: 'center'
     },
     title: {
@@ -123,17 +123,18 @@ export default StyleSheet.create({
         width: wp('50%'),
         borderWidth: 1,
         borderRadius: 20,
-        backgroundColor: '#19647E',
-        color: 'white',
+        backgroundColor: '#4BABF4',
+        color: 'black',
         textAlign: 'center',
-        fontFamily: 'AmaticSC-Regular',
+        fontFamily: 'AmaticSC-Bold',
     },
     categoryButton: {
-        borderWidth: 2,
+        borderWidth: 1,
+        borderRadius: 6,
         width: width/4.3,
         height: width/9,
         textAlign: 'center',
-        backgroundColor: '#19647E',
+        backgroundColor: '#4BABF4',
     },
     
     /* -------------- Custom  --------------*/

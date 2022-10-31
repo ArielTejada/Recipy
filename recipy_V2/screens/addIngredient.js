@@ -68,12 +68,10 @@ const selectedListPress = (key) => {
       ]}>
 
       {shouldShow ? null:
-      <TouchableOpacity 
+      <Pressable 
         keyboardShouldPersistTaps='always'
-        onPress={() => {
-        Keyboard.dismiss();
-        setRefresh(!refresh);
-      }}>
+        onPress={() => {Keyboard.dismiss();}}
+      >
 
         <View style={[
           styles.pushDown, 
@@ -103,6 +101,7 @@ const selectedListPress = (key) => {
             />
             </TouchableOpacity>
           </ImageBackground>
+          
         </View>
 
       <SearchBar
@@ -138,7 +137,7 @@ const selectedListPress = (key) => {
         </ImageBackground>
       </View>
       
-      </TouchableOpacity>}
+      </Pressable>}
       {shouldShow ?
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
