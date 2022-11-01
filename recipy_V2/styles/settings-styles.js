@@ -23,15 +23,16 @@ export default StyleSheet.create({
         justifyContent: 'center',
         paddingLeft: width/30
     },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        textAlign: 'center',
+    },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,

@@ -25,6 +25,9 @@ export default function Category({navigation}) {
   const pageLight = useStoreState(state => state.pageLight);
   const pageDark = useStoreState(state => state.pageDark);
   const pageHalloween = useStoreState(state => state.pageHalloween);
+  const bannerLight = useStoreState(state => state.bannerLight);
+  const bannerDark = useStoreState(state => state.bannerDark);
+  const bannerHalloween = useStoreState(state => state.bannerHalloween);
 
 /* -------------------- Handler Functions -------------------- */
   const selectedListPress = (key) => {
@@ -90,30 +93,41 @@ export default function Category({navigation}) {
         halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
       ]}>
 
-        <ImageBackground
-          source={require('../img/banner1.png')}
-          style={styles.banner}
-        >
+          <ImageBackground
+            source={require('../img/banner1.png')}
+            style={[styles.banner, {overflow: 'hidden'}, styles.outline, {borderColor: 'white'},]}
+            resizeMode='contain'
+            imageStyle={[
+              lightEnabled ? {tintColor: 'white'} :
+              darkEnabled ? {tintColor: bannerDark} :
+              halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
+            ]}
+          >
           <TouchableOpacity
           onPress={() => {navigation.navigate('HomeScreen')}}
           style={[styles.backIconTouch]}
         >
           <Image
-            source={require('../icons/go-back.png')}
-            style={styles.backIcon}
-          />
+              source={require('../icons/go-back.png')}
+              style={[
+                styles.backIcon,
+                lightEnabled ? {tintColor: 'white'} :
+                darkEnabled ? {tintColor: bannerDark} :
+                halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
+              ]}
+            />
           </TouchableOpacity>
         </ImageBackground>
 
       </View>
 
-      <View>
-        <Text style={[
-          styles.header,
+      <View style={[
+          styles.header, 
           lightEnabled ? {backgroundColor: '#2196F3'} :
           darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
           halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
-        ]}>Category: {category}</Text>
+        ]}>
+        <Text style={[styles.headerText]}>Category: {category}</Text>
       </View>
       
 
@@ -137,6 +151,11 @@ export default function Category({navigation}) {
           source={require('../img/searchItems.png')}
           style={[styles.backImage]}
           resizeMode='contain'
+          imageStyle={[
+            lightEnabled ? {tintColor: '#2196F3'} :
+            darkEnabled ? {tintColor: bannerDark} :
+            halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
+          ]}
           ></ImageBackground>
       </View>
 

@@ -57,18 +57,18 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     <Text style={styles.text}>clear</Text>
                 </Pressable>
             </View>
-            <View>
+            <View style={[{alignItems: 'center', zIndex: 2}]}>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
                 <ScrollView 
-                    style={[styles.transparent]} 
+                    style={[styles.searchBar]} 
                     keyboardShouldPersistTaps='handled'
                 >
                     {filteredArray.map((ingredient) => {
                         return (
-                            <View key={ingredient.id}>
+                            <View key={ingredient.id} style={[styles.searchResult, styles.outline]}>
                                 <TouchableOpacity onPress={() => {pressHandler(ingredient.name, ingredient.id)}}>
-                                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
+                                    <Text style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}>{ingredient.name.replace('_', ' ')}</Text>  
                                 </TouchableOpacity>
                             </View>         
                         )})}

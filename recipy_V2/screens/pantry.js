@@ -40,6 +40,12 @@ export default function Pantry() {
       halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
     ]}>
 
+      <Pressable 
+        keyboardShouldPersistTaps='always'
+        onPress={() => {Keyboard.dismiss();}}
+        style={[styles.wholeScreen]}
+      >
+
       <View style={[
         styles.pushDown, 
         lightEnabled ? {backgroundColor: headerLight} :
@@ -47,17 +53,21 @@ export default function Pantry() {
         halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
       ]}></View>
 
-      <View >
-        <Text style={[
+      <View style={[
           styles.header, 
           lightEnabled ? {backgroundColor: headerLight} :
           darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
           halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-        ]}>Pantry</Text>
+      ]}>
+        <Image
+          source={require('../img/banner71.png')}
+          style={[styles.banner,]}
+        />
+        <Text style={[styles.headerText]}>Pantry</Text>
+      </View>
 
         <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
         <SearchBar/>
-      </View>
 
       <View>    
             <View style={styles.container}>
@@ -107,6 +117,7 @@ export default function Pantry() {
                 /> : <Text></Text>}
             </View>
         </View>
+        </Pressable>
     </View>
   );
 }

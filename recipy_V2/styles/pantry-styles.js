@@ -24,15 +24,16 @@ export default StyleSheet.create({
         flexDirection: 'row',
         marginHorizontal: width/40,
     },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        textAlign: 'center',
+    },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,
@@ -54,6 +55,13 @@ export default StyleSheet.create({
         marginHorizontal: width/40,
     },
     
+    /* -------------- Images --------------*/
+    banner: {
+        width: width,
+        height: 190 * (width/1200),
+        position: 'absolute'
+    },
+
     /* -------------- Styling --------------*/
     outline: {
         borderWidth: 1,

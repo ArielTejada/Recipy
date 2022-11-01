@@ -125,14 +125,16 @@ export default function Home({navigation}) {
               />
             </TouchableOpacity>
           </ImageBackground>
+          <View style={[styles.center]}>
           <Pressable
             onPress={addIngredientHandler}
-            style={[styles.center, styles.margins]}
+            style={[styles.addButton]}
           >
             <Text 
-              style={[styles.addButton, styles.fontMedium]}
+              style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}
             >Add Ingredient</Text>
           </Pressable>
+          </View>
 
           <View>
             <ImageBackground

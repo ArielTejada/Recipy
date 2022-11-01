@@ -126,13 +126,13 @@ export default StyleSheet.create({
     
     /* -------------- Buttons --------------*/
     addButton: {
+        marginVertical: height/80,
         width: wp('50%'),
         borderWidth: 1,
         borderRadius: 20,
         backgroundColor: '#4BABF4',
         color: 'black',
-        textAlign: 'center',
-        fontFamily: 'AmaticSC-Bold',
+        alignItems: 'center',
     },
     categoryButton: {
         borderWidth: 1,

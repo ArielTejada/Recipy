@@ -64,7 +64,7 @@ export default StyleSheet.create({
     banner: {
         width: width,
         height: height/8,
-        top: RFPercentage(-4),
+        top: -height/23,
     },
     fridgeImage: {
         width: width,
@@ -131,11 +131,6 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
     },
-    transparent: {
-        position: 'absolute',
-        zIndex: 1,
-        left: RFPercentage(18)
-    },
     roundBTN: {
         borderWidth: 2,
         borderRadius: 15,
@@ -144,6 +139,9 @@ export default StyleSheet.create({
         paddingHorizontal: 3,
         marginTop: 2,
         height: width/12,
+    },
+    searchBar: {
+        position: 'absolute',
     },
 
     /* -------------- Size --------------*/
@@ -167,12 +165,10 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
-        fontFamily: 'AmaticSC-Bold',
+        alignItems: 'center',
         width: width/2.3,
         height: height/20,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     notfocused: {
         backgroundColor: 'white'

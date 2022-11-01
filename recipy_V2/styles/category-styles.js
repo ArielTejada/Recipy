@@ -24,15 +24,16 @@ export default StyleSheet.create({
         fontSize: 18,
         color: 'white'
     },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        textAlign: 'center',
+    },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,
@@ -64,7 +65,7 @@ export default StyleSheet.create({
     },
     banner: {
         width: width,
-        height: 334 * (width/1442), 
+        height: 280 * (width/1442), 
         top: -height/25,
     },
     backImage: {

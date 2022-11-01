@@ -43,12 +43,14 @@ export default function Settings() {
         halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
       ]}></View>
 
-      <Text style={[
-        styles.header, 
-        lightEnabled ? {backgroundColor: headerLight} :
-        darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}>Settings</Text>
+      <View style={[
+          styles.header, 
+          lightEnabled ? {backgroundColor: headerLight} :
+          darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
+          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
+        ]}>
+        <Text style={[styles.headerText]}>Settings</Text>
+      </View>
       
       <View style={[styles.outline, styles.smallMargins, styles.settingOption, styles.centerItems]}>
         <Text style={[styles.font1, styles.fontLarge]}>Display Settings</Text>

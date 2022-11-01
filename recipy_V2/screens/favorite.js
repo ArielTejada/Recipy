@@ -34,12 +34,14 @@ const pageHalloween = useStoreState(state => state.pageHalloween);
         halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
       ]}></View>
 
-      <Text style={[
-        styles.header, 
-        lightEnabled ? {backgroundColor: headerLight} :
-        darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}>Favorites</Text>
+      <View style={[
+          styles.header, 
+          lightEnabled ? {backgroundColor: headerLight} :
+          darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
+          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
+        ]}>
+        <Text style={[styles.headerText]}>Favorites</Text>
+      </View>
 
     </View>
   );
