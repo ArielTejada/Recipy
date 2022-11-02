@@ -8,25 +8,14 @@ import styles from '../styles/home-styles';
 export default function Home({navigation}) {
 
 /* -------------------- Redux State Variables -------------------- */
-  const category = useStoreState(state => state.category);
   const ingredients = useStoreState(state => state.ingredients)
   const setCategory = useStoreActions(actions => actions.setCategory);  
   const setCategoryList = useStoreActions(actions => actions.setCategoryList); 
 
-  const lightEnabled = useStoreState(state => state.lightEnabled);
-  const darkEnabled = useStoreState(state => state.darkEnabled);
-  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
-
-  /* -------------------- Redux State Colors -------------------- */
-  const headerLight = useStoreState(state => state.headerLight);
-  const headerDark = useStoreState(state => state.headerDark);
-  const headerHalloween = useStoreState(state => state.headerHalloween);
-  const pageLight = useStoreState(state => state.pageLight);
-  const pageDark = useStoreState(state => state.pageDark);
-  const pageHalloween = useStoreState(state => state.pageHalloween);
-  const bannerLight = useStoreState(state => state.bannerLight);
-  const bannerDark = useStoreState(state => state.bannerDark);
-  const bannerHalloween = useStoreState(state => state.bannerHalloween);
+/* -------------------- Redux State Colors -------------------- */
+  const headerColor = useStoreState(state => state.headerColor);
+  const pageColor = useStoreState(state => state.pageColor);
+  const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
@@ -81,12 +70,7 @@ export default function Home({navigation}) {
 
 /* -------------------- Render Method -------------------- */
   return (
-    <View style={[
-      styles.wholeScreen, 
-      lightEnabled ? {backgroundColor: pageLight} :
-      darkEnabled ? {backgroundColor: pageDark} :
-      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
-    ]}>
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
     <ScrollView>
       <TouchableWithoutFeedback 
@@ -95,21 +79,12 @@ export default function Home({navigation}) {
       }}>
         <View>
 
-        <View style={[
-          styles.pushDown, 
-          lightEnabled ? {backgroundColor: headerLight} :
-          darkEnabled ? {backgroundColor: headerDark} :
-          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-        ]}></View>
+        <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
           <ImageBackground
             source={require('../img/banner3.png')}
             style={[styles.banner]}
-            imageStyle={[
-              lightEnabled ? {tintColor: bannerLight} :
-              darkEnabled ? {tintColor: bannerDark} :
-              halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-            ]}
+            imageStyle={[{tintColor: bannerColor}]}
           >
             <Image
               source={require('../img/recipylogo.png')}
@@ -128,7 +103,7 @@ export default function Home({navigation}) {
           <View style={[styles.center]}>
           <Pressable
             onPress={addIngredientHandler}
-            style={[styles.addButton]}
+            style={[styles.addButton, {backgroundColor: bannerColor}]}
           >
             <Text 
               style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}
@@ -143,37 +118,37 @@ export default function Home({navigation}) {
               style={[styles.caterories]}
             >
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category1]}
+                style={[styles.categoryButton, styles.category1, {backgroundColor: bannerColor}]}
                 onPress={pressFruit}
               >
                 <Text style={[styles.categoryText]}>Fruits</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category2]}
+                style={[styles.categoryButton, styles.category2, {backgroundColor: bannerColor}]}
                 onPress={pressProtein}
               >
                 <Text style={[styles.categoryText]}>Protein</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category3]}
+                style={[styles.categoryButton, styles.category3, {backgroundColor: bannerColor}]}
                 onPress={pressDairy}
               >
                 <Text style={[styles.categoryText]}>Dairy</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category4]}
+                style={[styles.categoryButton, styles.category4, {backgroundColor: bannerColor}]}
                 onPress={pressVeggies}
               >
                 <Text style={[styles.categoryText]}>Veggies</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category5]}
+                style={[styles.categoryButton, styles.category5, {backgroundColor: bannerColor}]}
                 onPress={pressGrain}
               >
                 <Text style={[styles.categoryText]}>Grain</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category6]}
+                style={[styles.categoryButton, styles.category6, {backgroundColor: bannerColor}]}
                 onPress={pressHerbs}
               >
                 <Text style={[styles.categoryText]}>Herbs</Text>

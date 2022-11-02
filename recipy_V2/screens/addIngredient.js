@@ -20,20 +20,10 @@ const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIng
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 
-const lightEnabled = useStoreState(state => state.lightEnabled);
-const darkEnabled = useStoreState(state => state.darkEnabled);
-const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
-
 /* -------------------- Redux State Colors -------------------- */
-const headerLight = useStoreState(state => state.headerLight);
-const headerDark = useStoreState(state => state.headerDark);
-const headerHalloween = useStoreState(state => state.headerHalloween);
-const pageLight = useStoreState(state => state.pageLight);
-const pageDark = useStoreState(state => state.pageDark);
-const pageHalloween = useStoreState(state => state.pageHalloween);
-const bannerLight = useStoreState(state => state.bannerLight);
-const bannerDark = useStoreState(state => state.bannerDark);
-const bannerHalloween = useStoreState(state => state.bannerHalloween);
+const headerColor = useStoreState(state => state.headerColor);
+const pageColor = useStoreState(state => state.pageColor);
+const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
 useEffect(() => {
@@ -71,12 +61,7 @@ const selectedListPress = (key) => {
 
 /* -------------------- Render Method -------------------- */
   return (
-    <View style={[
-      {flex:1}, styles.wholeScreen, 
-      lightEnabled ? {backgroundColor: pageLight} :
-      darkEnabled ? {backgroundColor: pageDark} :
-      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
-    ]}>
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
       {shouldShow ? null:
       <Pressable 
@@ -84,29 +69,15 @@ const selectedListPress = (key) => {
         onPress={() => {Keyboard.dismiss();}}
       >
 
-        <View style={[
-          styles.pushDown, 
-          lightEnabled ? {backgroundColor: headerLight} :
-          darkEnabled ? {backgroundColor: headerDark} :
-          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-        ]}></View>
+      <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
-        <View style={[
-          styles.backButtonSection,
-          lightEnabled ? {backgroundColor: headerLight} :
-          darkEnabled ? {backgroundColor: headerDark} :
-          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-        ]}>
+        <View style={[styles.backButtonSection, {backgroundColor: headerColor}]}>
 
           <ImageBackground
             source={require('../img/banner1.png')}
             style={[styles.banner, {overflow: 'hidden'}]}
             resizeMode='contain'
-            imageStyle={[
-              lightEnabled ? {tintColor: 'white'} :
-              darkEnabled ? {tintColor: bannerDark} :
-              halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-            ]}
+            imageStyle={[{tintColor: bannerColor}]}
           >
             <TouchableOpacity
             onPress={() => {navigation.navigate('HomeScreen')}}
@@ -114,12 +85,7 @@ const selectedListPress = (key) => {
           >
             <Image
               source={require('../icons/go-back.png')}
-              style={[
-                styles.backIcon,
-                lightEnabled ? {tintColor: 'white'} :
-                darkEnabled ? {tintColor: bannerDark} :
-                halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-              ]}
+              style={[styles.backIcon, {tintColor: bannerColor}]}
             />
             </TouchableOpacity>
           </ImageBackground>
@@ -141,11 +107,7 @@ const selectedListPress = (key) => {
           source={require('../img/searchItems.png')}
           style={styles.sidesImage}
           resizeMode='contain'
-          imageStyle={[
-            lightEnabled ? {tintColor: '#2196F3'} :
-            darkEnabled ? {tintColor: bannerDark} :
-            halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-          ]}
+          imageStyle={[{tintColor: bannerColor}]}
         >
           <View style={[styles.selectedIngredients, styles.outline]}>
             <ScrollView horizontal={true}>

@@ -26,17 +26,10 @@ export default function Pantry() {
   const pantryItems = useStoreState(state => state.pantryItems);
   const setPantryItems = useStoreActions(actions => actions.setPantryItems);
 
-  const lightEnabled = useStoreState(state => state.lightEnabled);
-  const darkEnabled = useStoreState(state => state.darkEnabled);
-  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
-
-  /* -------------------- Redux State Colors -------------------- */
-  const headerLight = useStoreState(state => state.headerLight);
-  const headerDark = useStoreState(state => state.headerDark);
-  const headerHalloween = useStoreState(state => state.headerHalloween);
-  const pageLight = useStoreState(state => state.pageLight);
-  const pageDark = useStoreState(state => state.pageDark);
-  const pageHalloween = useStoreState(state => state.pageHalloween);
+/* -------------------- Redux State Colors -------------------- */
+  const headerColor = useStoreState(state => state.headerColor);
+  const pageColor = useStoreState(state => state.pageColor);
+  const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
   const ingredientPressHandler = (name, key) => {  
@@ -56,15 +49,15 @@ export default function Pantry() {
     addDate = null;
   }
 
+  const pantryPressHandler = (key) => {
+    let newPantryList = pantryItems.filter((ingredient) => ingredient.key != key);
+    setPantryItems(newPantryList);
+  }
+
   /* -------------------- Render Method -------------------- */
 
   return (
-    <View style={[
-      styles.wholeScreen, 
-      lightEnabled ? {backgroundColor: pageLight} :
-      darkEnabled ? {backgroundColor: pageDark} :
-      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
-    ]}>
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
       <Pressable 
         keyboardShouldPersistTaps='always'
@@ -72,22 +65,12 @@ export default function Pantry() {
         style={[styles.wholeScreen]}
       >
 
-      <View style={[
-        styles.pushDown, 
-        lightEnabled ? {backgroundColor: headerLight} :
-        darkEnabled ? {backgroundColor: headerDark} :
-        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}></View>
+      <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
-      <View style={[
-          styles.header, {borderWidth: 1, borderColor: 'white'},
-          lightEnabled ? {backgroundColor: headerLight} :
-          darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
-          halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}>
+      <View style={[styles.header, {backgroundColor: headerColor}]}>
         <Image
           source={require('../img/bakeryV2.png')}
-          style={[styles.banner, {tintColor: 'white'}]}
+          style={[styles.banner, {tintColor: bannerColor}]}
         />
         <Text style={[styles.headerText]}>Pantry</Text>
       </View>
@@ -149,30 +132,31 @@ export default function Pantry() {
         </View>
 
         <View>
+
           <ImageBackground
             source={require('../img/pantry.png')}
             style={[styles.pantryImage]}
           >
+
             <ScrollView style={[styles.jarsMargin]}>
-              <View style={[]}>
+              <View style={[{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}]}>
                 {pantryItems.map((ingredient) => {
                   return (
-                  <ImageBackground
-                    source={require('../img/glassjar.png')}
-                    style={[styles.jar]}
-                  >
-                    <TouchableOpacity 
-                      key={ingredient.id}
-                      style={[styles.jarLabel, styles.outline]}
+                  <TouchableOpacity style={[styles.jar]} key={ingredient.key} onPress={() => {pantryPressHandler(ingredient.key)}}>
+                    <ImageBackground
+                      source={require('../img/glassjar.png')}
+                      style={[styles.jar]}
                     >
-                      <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.name.replace('_', ' ')}</Text>
-                      <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.date.replace('_', ' ')}</Text>
-                    </TouchableOpacity>
-                  </ImageBackground>)
+                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.name.replace('_', ' ')}</Text>
+                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.date.replace('_', ' ')}</Text>
+                    </ImageBackground>
+                  </TouchableOpacity>)
                 })}
               </View>
             </ScrollView>
+
           </ImageBackground>
+
         </View>
 
         </Pressable>

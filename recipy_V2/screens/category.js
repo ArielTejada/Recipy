@@ -18,16 +18,11 @@ export default function Category({navigation}) {
   const darkEnabled = useStoreState(state => state.darkEnabled);
   const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
 
-  /* -------------------- Redux State Colors -------------------- */
-  const headerLight = useStoreState(state => state.headerLight);
-  const headerDark = useStoreState(state => state.headerDark);
-  const headerHalloween = useStoreState(state => state.headerHalloween);
-  const pageLight = useStoreState(state => state.pageLight);
-  const pageDark = useStoreState(state => state.pageDark);
-  const pageHalloween = useStoreState(state => state.pageHalloween);
-  const bannerLight = useStoreState(state => state.bannerLight);
-  const bannerDark = useStoreState(state => state.bannerDark);
-  const bannerHalloween = useStoreState(state => state.bannerHalloween);
+/* -------------------- Redux State Colors -------------------- */
+  const headerColor = useStoreState(state => state.headerColor);
+  const pageColor = useStoreState(state => state.pageColor);
+  const bannerColor = useStoreState(state => state.bannerColor);
+
 
 /* -------------------- Handler Functions -------------------- */
   const selectedListPress = (key) => {
@@ -72,49 +67,25 @@ export default function Category({navigation}) {
 
 /* -------------------- Render Method -------------------- */
   return (
-    <View style={[
-      styles.wholeScreen, 
-      lightEnabled ? {backgroundColor: pageLight} :
-      darkEnabled ? {backgroundColor: pageDark} :
-      halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
-    ]}>
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
-      <View style={[
-        styles.pushDown, 
-        lightEnabled ? {backgroundColor: headerLight} :
-        darkEnabled ? {backgroundColor: headerDark} :
-        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}></View>
+      <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
-      <View style={[
-        styles.backButtonSection,
-        lightEnabled ? {backgroundColor: headerLight} :
-        darkEnabled ? {backgroundColor: headerDark, color: '#A4A9AD'} :
-        halloweenEnabled ? {backgroundColor: headerHalloween} : {backgroundColor: headerLight}
-      ]}>
+      <View style={[styles.backButtonSection, {backgroundColor: headerColor}]}>
 
-          <ImageBackground
-            source={require('../img/banner1.png')}
-            style={[styles.banner, {overflow: 'hidden'}, styles.outline, {borderColor: 'white'},]}
-            resizeMode='contain'
-            imageStyle={[
-              lightEnabled ? {tintColor: 'white'} :
-              darkEnabled ? {tintColor: bannerDark} :
-              halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-            ]}
-          >
+        <ImageBackground
+          source={require('../img/banner1.png')}
+          style={[styles.banner, {overflow: 'hidden'}, styles.outline, {borderColor: 'white'},]}
+          resizeMode='contain'
+          imageStyle={[{tintColor: bannerColor}]}
+        >
           <TouchableOpacity
           onPress={() => {navigation.navigate('HomeScreen')}}
           style={[styles.backIconTouch]}
-        >
-          <Image
-              source={require('../icons/go-back.png')}
-              style={[
-                styles.backIcon,
-                lightEnabled ? {tintColor: 'white'} :
-                darkEnabled ? {tintColor: bannerDark} :
-                halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-              ]}
+          >
+            <Image
+                source={require('../icons/go-back.png')}
+                style={[styles.backIcon, {tintColor: bannerColor}]}
             />
           </TouchableOpacity>
         </ImageBackground>
@@ -151,11 +122,7 @@ export default function Category({navigation}) {
           source={require('../img/searchItems.png')}
           style={[styles.backImage]}
           resizeMode='contain'
-          imageStyle={[
-            lightEnabled ? {tintColor: '#2196F3'} :
-            darkEnabled ? {tintColor: bannerDark} :
-            halloweenEnabled ? {tintColor: bannerHalloween} : {tintColor: bannerLight}
-          ]}
+          imageStyle={[{tintColor: bannerColor}]}
           ></ImageBackground>
       </View>
 
