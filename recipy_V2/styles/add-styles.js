@@ -24,6 +24,9 @@ export default StyleSheet.create({
         fontSize: 18,
         color: 'white'
     },
+    AmaticSCRegular: {
+        fontFamily: 'AmaticSC-Regular'
+    },
 
     /* -------------- Headers --------------*/
     header: {
@@ -65,10 +68,6 @@ export default StyleSheet.create({
         width: width,
         height: height/8,
         top: -height/23,
-    },
-    fridgeImage: {
-        width: width,
-        height: 1009 * (width/678),  // actual height x (width / actual width)
     },
 
     /* -------------- Position --------------*/
@@ -141,7 +140,7 @@ export default StyleSheet.create({
         height: width/12,
     },
     searchBar: {
-        position: 'absolute',
+        position: 'absolute'
     },
 
     /* -------------- Size --------------*/
@@ -165,7 +164,6 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
-        alignItems: 'center',
         width: width/2.3,
         height: height/20,
         backgroundColor: 'white',

@@ -76,7 +76,7 @@ const selectedListPress = (key) => {
       lightEnabled ? {backgroundColor: pageLight} :
       darkEnabled ? {backgroundColor: pageDark} :
       halloweenEnabled ? {backgroundColor: pageHalloween} : {backgroundColor: pageLight}
-      ]}>
+    ]}>
 
       {shouldShow ? null:
       <Pressable 

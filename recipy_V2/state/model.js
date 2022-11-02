@@ -5631,7 +5631,7 @@ export default {
     selectedIngredients: [],
     refresh: false,
     categoryList: [],
-    pantryItems: [],
+    pantryItems: [{name: 'apple', date: '11/1/22', key: '007'}],
     category: '',
     
 /* -------------------- Actions -------------------- */
@@ -5644,8 +5644,8 @@ export default {
     setCategoryList: action((state, list) => {
         state.categoryList = list;
     }),
-    addPantryItem: action((state, item) => {
-        state.pantryItems = state.pantryItems.push(item);
+    setPantryItems: action((state, list) => {
+        state.pantryItems = list;
     }),
     setCategory: action((state, category) => {
         state.category = category;

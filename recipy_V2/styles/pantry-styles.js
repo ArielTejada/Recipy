@@ -54,12 +54,31 @@ export default StyleSheet.create({
         marginVertical: height/300,
         marginHorizontal: width/40,
     },
+    jarsMargin: {
+        marginTop: height/17,
+        marginHorizontal: width/40
+    },
     
     /* -------------- Images --------------*/
     banner: {
         width: width,
-        height: 190 * (width/1200),
+        height: 500 * (width/2500),
         position: 'absolute'
+    },
+    pantryImage: {
+        width: width,
+        height: 1700 * (width/1500)
+    },
+    jar: {
+        width: width/4,
+        height: (580 * (width/400))/4,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    jarLabel: {
+        width: width/5,
+        height: height/11,
+        backgroundColor: '#2196F3',
     },
 
     /* -------------- Styling --------------*/
@@ -92,7 +111,11 @@ export default StyleSheet.create({
         borderRadius: 5,
     },
     searchResult: {
+        width: width/2,
         height: height/20,
+        fontFamily: 'AmaticSC-Bold',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     clear: {
         fontSize: RFPercentage(3),
