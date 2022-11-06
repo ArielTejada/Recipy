@@ -16,15 +16,16 @@ export default StyleSheet.create({
     fontLarge: {
         fontSize: RFPercentage(5)
     },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        textAlign: 'center',
+    },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,
@@ -42,6 +43,12 @@ export default StyleSheet.create({
     outline: {
         borderWidth: 1,
         borderRadius: 5,
+    },
+
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
     },
 
     /* -------------- Custom  --------------*/

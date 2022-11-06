@@ -17,10 +17,10 @@ export default StyleSheet.create({
         fontSize: RFPercentage(5)
     },
     categoryText : {
-        color: 'white',
+        color: 'black',
         textAlign: 'center',
         fontSize: RFPercentage(4),
-        fontFamily: 'AmaticSC-Regular',
+        fontFamily: 'AmaticSC-Bold',
         textAlignVertical: 'center'
     },
     title: {
@@ -50,6 +50,12 @@ export default StyleSheet.create({
         width: width,
         height: width/1.1,
     },
+    logo: {
+        width: width/2.8,
+        height: 666 * ((width/2.8)/1200),
+        top: height/9.5,
+        left: width/3.5
+    },
 
     /* -------------- Position --------------*/
     center : {
@@ -78,6 +84,12 @@ export default StyleSheet.create({
     outline: {
         borderWidth: 1,
         borderRadius: 5,
+    },
+
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
     },
 
     /* -------------- Ingredient Categories --------------*/
@@ -114,20 +126,19 @@ export default StyleSheet.create({
     
     /* -------------- Buttons --------------*/
     addButton: {
+        marginVertical: height/80,
         width: wp('50%'),
         borderWidth: 1,
         borderRadius: 20,
-        backgroundColor: '#2196F3',
-        color: 'white',
-        textAlign: 'center',
-        fontFamily: 'AmaticSC-Regular',
+        color: 'black',
+        alignItems: 'center',
     },
     categoryButton: {
-        borderWidth: 2,
+        borderWidth: 1,
+        borderRadius: 6,
         width: width/4.3,
         height: width/9,
         textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     
     /* -------------- Custom  --------------*/

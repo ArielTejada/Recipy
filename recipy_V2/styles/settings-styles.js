@@ -16,19 +16,23 @@ export default StyleSheet.create({
     fontLarge: {
         fontSize: RFPercentage(5)
     },
+    font1: {
+        fontFamily: 'AmaticSC-Regular',
+    },
     textCenter: {
-        textAlignVertical: 'center',
+        justifyContent: 'center',
+        paddingLeft: width/30
+    },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
         textAlign: 'center',
     },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,
@@ -41,12 +45,46 @@ export default StyleSheet.create({
         marginLeft: 'auto',
         marginRight: 'auto'
     },
+    centerItems: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    inline: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    smallMargins: {
+        marginHorizontal: width/30,
+        marginVertical: height/60
+    },
 
     /* -------------- Styling --------------*/
     outline: {
         borderWidth: 1,
         borderRadius: 5,
     },
+    pageColor: {
+        backgroundColor: 'white',
+        height: height
+    },
 
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
+    },
+    width70: {
+        width: width * .7,
+        height: height/10
+    },
+    width30: {
+        width: width * .3,
+        height: height/10.
+    },
+    switch: {
+        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
+    },
+    
     /* -------------- Custom  --------------*/
+
 })

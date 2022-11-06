@@ -1,10 +1,14 @@
-import { View, TextInput, Text, TouchableOpacity, Image, FlatList, Button, Pressable, Keyboard, ScrollView, TouchableHighlight } from "react-native";
+import { View, TextInput, Text, TouchableOpacity, Image, Pressable, Keyboard, ScrollView } from "react-native";
 import React, { useState } from "react";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import styles from '../styles/add-styles'
 import matchFunction from "./matchFunction";
 
 const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
+
+/* -------------------- Redux State Variables -------------------- */
+    const refresh = useStoreState(state => state.refresh);
+    const setRefresh = useStoreActions(actions => actions.setRefresh);
 
 /* -------------------- State Variables -------------------- */
     const ingredients = useStoreState(state => state.ingredients);
@@ -14,7 +18,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
     const [filteredArray, setFilteredArray] = useState([]);
 
 /* -------------------- Handler Functions -------------------- */
-    const pressHandler = (name, key) => {
+    const pressHandler = (name, key) => {  
         if(selectedIngredients.find(ingredient => ingredient.name === name)) {
             return;
         }
@@ -23,7 +27,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
         setSelectedIngredients(newList);
         setSearchText('');
         setSearching(false);
-        Keyboard.dismiss();    
+        setRefresh(!refresh);
     }
 
     return (
@@ -53,19 +57,21 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     <Text style={styles.text}>clear</Text>
                 </Pressable>
             </View>
-            <View>
+            <View style={[{alignItems: 'center', zIndex: 2}]}>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
-                <ScrollView style={[styles.transparent]}>
+                <ScrollView style={[styles.searchBar]}>
                     {filteredArray.map((ingredient) => {
                         return (
                             <View key={ingredient.id}>
-                                <TouchableOpacity onPress={() => {pressHandler(ingredient.name, ingredient.id)}}>
-                                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.fontMedium]}>{ingredient.name}</Text>  
+                                <TouchableOpacity onPress={() => {pressHandler(ingredient.name, ingredient.id)}} style={[styles.outline, styles.searchResult]}>
+                                    <Text style={[styles.AmaticSCRegular, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
                                 </TouchableOpacity>
                             </View>         
                         )})}
-                </ScrollView> : <Text></Text>}       
+                </ScrollView> : <Text></Text>}          
+                
+                  
             </View>
         </View>
     );

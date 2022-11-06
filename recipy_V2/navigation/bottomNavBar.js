@@ -1,5 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { Text, View, Image } from "react-native";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 /* -------------------- Screens -------------------- */
 import Home from "../screens/home";
@@ -11,6 +12,23 @@ import AddStack from "./addStack";
 const Tab = createBottomTabNavigator();
 
 const BottomNavBar = () => {
+
+/* -------------------- Redux State Variables -------------------- */
+const lightEnabled = useStoreState(state => state.lightEnabled);
+const darkEnabled = useStoreState(state => state.darkEnabled);
+const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
+
+const navLight = useStoreState(state => state.navLight);
+const navDark = useStoreState(state => state.navDark);
+const navHalloween = useStoreState(state => state.navHalloween);
+
+const navIconLightFocused = useStoreState(state => state.navIconLightFocused);
+const navIconLightNotFocused = useStoreState(state => state.navIconLightNotFocused);
+const navIconDarkFocused = useStoreState(state => state.navIconDarkFocused);
+const navIconDarkNotFocused = useStoreState(state => state.navIconDarkNotFocused);
+const navIconHalloweenFocused = useStoreState(state => state.navIconHalloweenFocused);
+const navIconHalloweenNotFocused = useStoreState(state => state.navIconHalloweenNotFocused);
+
     return (
         <Tab.Navigator screenOptions={{
             tabBarHideOnKeyboard: true,
@@ -19,7 +37,13 @@ const BottomNavBar = () => {
             
             tabBarStyle: {
                 position: 'absolute',
-                height: 70
+                height: 70,
+                borderTopEndRadius: 10,
+                borderTopStartRadius: 10,
+                backgroundColor: 
+                    halloweenEnabled ? navHalloween : 
+                    darkEnabled ? navDark : 
+                    lightEnabled ? navLight : 'white'
             }
         }}>
             <Tab.Screen 
@@ -36,10 +60,16 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#2196F3' : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Home</Text>
+                        <Text style={{
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
+                        }}>Home</Text>
                     </View>
                 )
             }}/>
@@ -57,10 +87,16 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#2196F3' : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Pantry</Text>
+                        <Text style={{
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
+                        }}>Pantry</Text>
                     </View>
                 )
             }}/>
@@ -78,10 +114,16 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#2196F3' : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
-                        <Text style={{color: focused ? '#2196F3' : 'black'}}>Favorite</Text>
+                        <Text style={{
+                            color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                            !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                            !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
+                        }}>Favorite</Text>
                     </View>
                 )
             }}/>
@@ -99,11 +141,17 @@ const BottomNavBar = () => {
                                 height: 25,
                                 justifyContent: 'center',
                                 alignSelf: 'center',
-                                tintColor: focused ? '#2196F3' : 'black'
+                                tintColor: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
                             }}
                         />
                         <Text 
-                            style={{color: focused ? '#2196F3' : 'black'}}>Settings</Text>
+                            style={{
+                                color: !focused & halloweenEnabled ? navIconHalloweenNotFocused : focused & halloweenEnabled ? navIconHalloweenFocused : 
+                                !focused & darkEnabled ? navIconDarkNotFocused : focused & darkEnabled ? navIconDarkFocused : 
+                                !focused & lightEnabled ? navIconLightNotFocused : focused & lightEnabled ? navIconLightFocused : 'black'
+                            }}>Settings</Text>
                     </View>
                 )
             }}/>

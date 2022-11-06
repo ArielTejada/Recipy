@@ -8,8 +8,14 @@ import styles from '../styles/home-styles';
 export default function Home({navigation}) {
 
 /* -------------------- Redux State Variables -------------------- */
-  const category = useStoreState(state => state.category);
+  const ingredients = useStoreState(state => state.ingredients)
   const setCategory = useStoreActions(actions => actions.setCategory);  
+  const setCategoryList = useStoreActions(actions => actions.setCategoryList); 
+
+/* -------------------- Redux State Colors -------------------- */
+  const headerColor = useStoreState(state => state.headerColor);
+  const pageColor = useStoreState(state => state.pageColor);
+  const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
@@ -21,31 +27,37 @@ export default function Home({navigation}) {
   }
 
   const pressFruit = () => {
-    setCategory('Fruit');
+    setCategory('Fruits');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'fruit')));
     categoryPressHandler();
   }
 
   const pressProtein = () => {
     setCategory('Protein');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'meat' || ingredient['type'] == 'fish')));
     categoryPressHandler();
   }
 
   const pressDairy = () => {
     setCategory('Dairy');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'dairy')));
     categoryPressHandler();
   }
 
   const pressVeggies = () => {
     setCategory('Veggies');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'vegetable')));
     categoryPressHandler();
   }
 
   const pressGrain = () => {
     setCategory('Grain');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'grains')));
     categoryPressHandler();
   }
-  const pressOil = () => {
-    setCategory('Oil');
+  const pressHerbs = () => {
+    setCategory('Herbs');
+    setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'herbs' || ingredient['type'] == 'nuts')));
     categoryPressHandler();
   }
 
@@ -58,17 +70,26 @@ export default function Home({navigation}) {
 
 /* -------------------- Render Method -------------------- */
   return (
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
+
     <ScrollView>
       <TouchableWithoutFeedback 
         onPress={() => {
         Keyboard.dismiss();
       }}>
         <View>
-        <View style={styles.pushDown}></View>
+
+        <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
+
           <ImageBackground
-            source={require('../img/banner2.png')}
-            style={styles.banner}
+            source={require('../img/banner3.png')}
+            style={[styles.banner]}
+            imageStyle={[{tintColor: bannerColor}]}
           >
+            <Image
+              source={require('../img/recipylogo.png')}
+              style={[styles.logo]}
+            />
             <TouchableOpacity 
             onPress={profilePressHandler}
             style={[styles.absolute]}
@@ -79,61 +100,64 @@ export default function Home({navigation}) {
               />
             </TouchableOpacity>
           </ImageBackground>
+          <View style={[styles.center]}>
           <Pressable
             onPress={addIngredientHandler}
-            style={[styles.center, styles.margins]}
+            style={[styles.addButton, {backgroundColor: bannerColor}]}
           >
             <Text 
-              style={[styles.addButton, styles.fontMedium]}
+              style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}
             >Add Ingredient</Text>
           </Pressable>
+          </View>
 
           <View>
             <ImageBackground
-              source={require('../img/categories.jpg')}
+              source={require('../img/categories.png')}
               resizeMode='contain'
               style={[styles.caterories]}
             >
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category1]}
+                style={[styles.categoryButton, styles.category1, {backgroundColor: bannerColor}]}
                 onPress={pressFruit}
               >
                 <Text style={[styles.categoryText]}>Fruits</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category2]}
+                style={[styles.categoryButton, styles.category2, {backgroundColor: bannerColor}]}
                 onPress={pressProtein}
               >
                 <Text style={[styles.categoryText]}>Protein</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category3]}
+                style={[styles.categoryButton, styles.category3, {backgroundColor: bannerColor}]}
                 onPress={pressDairy}
               >
                 <Text style={[styles.categoryText]}>Dairy</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category4]}
+                style={[styles.categoryButton, styles.category4, {backgroundColor: bannerColor}]}
                 onPress={pressVeggies}
               >
                 <Text style={[styles.categoryText]}>Veggies</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category5]}
+                style={[styles.categoryButton, styles.category5, {backgroundColor: bannerColor}]}
                 onPress={pressGrain}
               >
                 <Text style={[styles.categoryText]}>Grain</Text>
               </TouchableOpacity>
               <TouchableOpacity 
-                style={[styles.categoryButton, styles.category6]}
-                onPress={pressOil}
+                style={[styles.categoryButton, styles.category6, {backgroundColor: bannerColor}]}
+                onPress={pressHerbs}
               >
-                <Text style={[styles.categoryText]}>Oil</Text>
+                <Text style={[styles.categoryText]}>Herbs</Text>
               </TouchableOpacity>
             </ImageBackground>
           </View>
         </View>
       </TouchableWithoutFeedback> 
     </ScrollView>
+    </View>
   );
 }

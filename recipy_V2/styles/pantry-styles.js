@@ -24,15 +24,16 @@ export default StyleSheet.create({
         flexDirection: 'row',
         marginHorizontal: width/40,
     },
+    headerText: {
+        fontFamily: 'Festive-Regular',
+        fontSize: RFPercentage(7),
+        textAlign: 'center',
+    },
 
     /* -------------- Headers --------------*/
     header: {
-        fontFamily: 'Festive-Regular',
-        fontSize: RFPercentage(7),
         width: width,
         height: height/8.5,
-        textAlign: 'center',
-        backgroundColor: '#2196F3',
     },
     pushDown: {
         width: width,
@@ -53,11 +54,47 @@ export default StyleSheet.create({
         marginVertical: height/300,
         marginHorizontal: width/40,
     },
+    jarsMargin: {
+        marginTop: height/9,
+        marginHorizontal: width/40
+    },
     
+    /* -------------- Images --------------*/
+    banner: {
+        width: width,
+        height: 500 * (width/2500),
+        position: 'absolute'
+    },
+    pantryImage: {
+        width: width,
+        height: 1700 * (width/1500)
+    },
+    jar: {
+        width: width/5,
+        height: (580 * (width/400))/5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    jarLabel: {
+        width: width/6,
+        height: height/25,
+        backgroundColor: '#2196F3',
+        textAlignVertical: 'center',
+        textAlign: 'center',
+        color: 'black',
+        fontSize: RFPercentage(2.5),
+    },
+
     /* -------------- Styling --------------*/
     outline: {
         borderWidth: 1,
         borderRadius: 5,
+    },
+    
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
     },
     
     /* -------------- Custom  --------------*/
@@ -78,7 +115,11 @@ export default StyleSheet.create({
         borderRadius: 5,
     },
     searchResult: {
+        width: width/2,
         height: height/20,
+        fontFamily: 'AmaticSC-Bold',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     clear: {
         fontSize: RFPercentage(3),

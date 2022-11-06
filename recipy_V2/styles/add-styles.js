@@ -24,6 +24,9 @@ export default StyleSheet.create({
         fontSize: 18,
         color: 'white'
     },
+    AmaticSCRegular: {
+        fontFamily: 'AmaticSC-Regular'
+    },
 
     /* -------------- Headers --------------*/
     header: {
@@ -55,6 +58,7 @@ export default StyleSheet.create({
     backIconTouch: {
         width: width/9,
         height: width/5,
+        zIndex: 5
     },
     sidesImage: {
         width: width,
@@ -63,7 +67,7 @@ export default StyleSheet.create({
     banner: {
         width: width,
         height: height/8,
-        top: RFPercentage(-4),
+        top: -height/23,
     },
 
     /* -------------- Position --------------*/
@@ -74,6 +78,15 @@ export default StyleSheet.create({
     margins: {
         marginVertical: 5,
         marginHorizontal: 10,
+    },
+    fridgeMargins: {
+        marginTop: height/10,
+        top: -height/10
+    },
+    ingredientMargins :{
+        marginLeft: width/10,
+        marginRight: width/8,
+        top: height/15
     },
     window: {
         flexDirection: 'row',
@@ -103,16 +116,19 @@ export default StyleSheet.create({
     flex: {
         display: 'flex'
     },
+    flexRow:{
+        flexDirection:"row",
+        flexWrap:"wrap",
+    },
+    absolute: {
+        position: 'absolute',
+        top: height/3.5
+    },
 
     /* -------------- Styling --------------*/
     outline: {
         borderWidth: 1,
         borderRadius: 5,
-    },
-    transparent: {
-        position: 'absolute',
-        zIndex: 1,
-        left: RFPercentage(18)
     },
     roundBTN: {
         borderWidth: 2,
@@ -122,6 +138,15 @@ export default StyleSheet.create({
         paddingHorizontal: 3,
         marginTop: 2,
         height: width/12,
+    },
+    searchBar: {
+        position: 'absolute'
+    },
+
+    /* -------------- Size --------------*/
+    wholeScreen: {
+        width: width,
+        height: height
     },
     
     /* -------------- Custom  --------------*/
@@ -139,12 +164,9 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
-        fontFamily: 'AmaticSC-Bold',
         width: width/2.3,
         height: height/20,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
     },
     notfocused: {
         backgroundColor: 'white'

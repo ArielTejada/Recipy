@@ -20,6 +20,11 @@ const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIng
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 
+/* -------------------- Redux State Colors -------------------- */
+const headerColor = useStoreState(state => state.headerColor);
+const pageColor = useStoreState(state => state.pageColor);
+const bannerColor = useStoreState(state => state.bannerColor);
+
 /* -------------------- Handler Functions -------------------- */
 useEffect(() => {
   const getBarCodeScannerPermissions = async() => {
@@ -49,27 +54,30 @@ const onPress = () => {
 
 const selectedListPress = (key) => {
   console.log(`clicked ${key}`);
-  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key)
-  console.log(newList)
-  setSelectedIngredients(newList)
+  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
+  console.log(newList);
+  setSelectedIngredients(newList);
 }
 
 /* -------------------- Render Method -------------------- */
   return (
-    <View style={{flex:1}}>
-      {shouldShow ? null:
-      <TouchableOpacity 
-        keyboardShouldPersistTaps='always'
-        onPress={() => {
-        Keyboard.dismiss();
-        setRefresh(!refresh);
-      }}>
+    <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
-        <View style={styles.pushDown}></View> 
-        <View style={[styles.backButtonSection]}>
+      {shouldShow ? null:
+      <Pressable 
+        keyboardShouldPersistTaps='always'
+        onPress={() => {Keyboard.dismiss();}}
+      >
+
+      <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
+
+        <View style={[styles.backButtonSection, {backgroundColor: headerColor}]}>
+
           <ImageBackground
             source={require('../img/banner1.png')}
-            style={styles.banner}
+            style={[styles.banner, {overflow: 'hidden'}]}
+            resizeMode='contain'
+            imageStyle={[{tintColor: bannerColor}]}
           >
             <TouchableOpacity
             onPress={() => {navigation.navigate('HomeScreen')}}
@@ -77,10 +85,11 @@ const selectedListPress = (key) => {
           >
             <Image
               source={require('../icons/go-back.png')}
-              style={styles.backIcon}
+              style={[styles.backIcon, {tintColor: bannerColor}]}
             />
             </TouchableOpacity>
           </ImageBackground>
+          
         </View>
 
       <SearchBar
@@ -98,6 +107,7 @@ const selectedListPress = (key) => {
           source={require('../img/searchItems.png')}
           style={styles.sidesImage}
           resizeMode='contain'
+          imageStyle={[{tintColor: bannerColor}]}
         >
           <View style={[styles.selectedIngredients, styles.outline]}>
             <ScrollView horizontal={true}>
@@ -108,7 +118,7 @@ const selectedListPress = (key) => {
                   style={[styles.roundBTN, styles.flex]}
                   onPress={() => selectedListPress(ingredient.key)}
                 >
-                  <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name}</Text>
+                  <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name.replace('_', ' ')}</Text>
                 </Pressable>)
               })}
             </ScrollView>
@@ -116,7 +126,7 @@ const selectedListPress = (key) => {
         </ImageBackground>
       </View>
       
-      </TouchableOpacity>}
+      </Pressable>}
       {shouldShow ?
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}

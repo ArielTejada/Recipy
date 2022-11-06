@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 
 export default {
 
-    /* -------------------- State Variables -------------------- */
+/* -------------------- State Variables -------------------- */
     ingredients: [
         {
             "id": "1",
@@ -5629,12 +5629,12 @@ export default {
         }
     ],
     selectedIngredients: [],
-    categoryList: [],
-    pantryItems: [],
     refresh: false,
+    categoryList: [],
+    pantryItems: [{name: 'apple', date: '11/1/22', key: '7'}, {name: 'avacado', date: '11/2/22', key: '8'}],
     category: '',
     
-    /* -------------------- Actions -------------------- */
+/* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
         state.selectedIngredients = list;
     }),
@@ -5644,10 +5644,88 @@ export default {
     setCategoryList: action((state, list) => {
         state.categoryList = list;
     }),
-    addPantryItem: action((state, item) => {
-        state.pantryItems = state.pantryItems.push(item);
+    setPantryItems: action((state, list) => {
+        state.pantryItems = list;
     }),
     setCategory: action((state, category) => {
         state.category = category;
     }),
+
+/* -------------------- Display Settings -------------------- */
+
+halloweenEnabled: false,
+darkEnabled: false,
+lightEnabled: true,
+
+setLightEnabled: action((state) => {
+    if(state.lightEnabled == true & state.darkEnabled == false & state.halloweenEnabled == false){
+        state.lightEnabled = true;
+        return;
+    }
+    state.lightEnabled = !state.lightEnabled;
+    state.navColor = state.navLight;
+    state.navIconFocusedColor = state.navIconLightFocused;
+    state.navIconNotFocusedColor = state.navIconLightNotFocused;
+    state.headerColor = state.headerLight;
+    state.pageColor = state.pageLight;
+    state.bannerColor = state.bannerLight;
+    if(state.darkEnabled == true) {state.darkEnabled = false}
+    if(state.halloweenEnabled == true) {state.halloweenEnabled = false}
+}),
+
+setDarkEnabled: action((state) => {
+    state.darkEnabled = !state.darkEnabled;
+    state.navColor = state.navDark;
+    state.navIconFocusedColor = state.navIconDarkFocused;
+    state.navIconNotFocusedColor = state.navIconDarkNotFocused;
+    state.headerColor = state.headerDark;
+    state.pageColor = state.pageDark;
+    state.bannerColor = state.bannerDark;
+    if(state.lightEnabled == true) {state.lightEnabled = false}
+    if(state.halloweenEnabled == true) {state.halloweenEnabled = false}
+    if(state.darkEnabled == false & state.halloweenEnabled == false) {state.lightEnabled = true}
+}),
+
+setHalloweenEnabled: action((state) => {
+    state.halloweenEnabled = !state.halloweenEnabled;
+    state.navColor = state.navHalloween;
+    state.navIconFocusedColor = state.navIconHalloweenFocused;
+    state.navIconNotFocusedColor = state.navIconHalloweenNotFocused;
+    state.headerColor = state.headerHalloween;
+    state.pageColor = state.pageHalloween;
+    state.bannerColor = state.bannerHalloween;
+    if(state.darkEnabled == true) {state.darkEnabled = false}
+    if(state.lightEnabled == true) {state.lightEnabled = false}
+    if(state.darkEnabled == false & state.halloweenEnabled == false) {state.lightEnabled = true}
+}),
+
+/* -------------------- Display Colors -------------------- */
+navLight: '#2196F3',
+navDark: '#4A576F',
+navHalloween: '#FF7100',
+navColor: '#2196F3',
+
+navIconLightFocused: 'white',
+navIconLightNotFocused: 'black',
+navIconDarkFocused: '#A4A9AD',
+navIconDarkNotFocused: 'black',
+navIconHalloweenFocused: '#09FF00',
+navIconHalloweenNotFocused: 'black',
+navIconFocusedColor: 'white',
+navIconNotFocusedColor: 'black',
+
+headerLight: '#2196F3',
+headerDark: '#4A576F',
+headerHalloween: '#FF7100',
+headerColor: '#2196F3',
+
+pageLight: 'white',
+pageDark: '#A4A9AD',
+pageHalloween: '#CF9DC2',
+pageColor: 'white',
+
+bannerLight: '#2196F3',
+bannerDark: '#4A576F',
+bannerHalloween: '#09FF00',
+bannerColor: '#2196F3',
 }
