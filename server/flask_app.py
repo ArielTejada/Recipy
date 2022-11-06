@@ -257,6 +257,16 @@ def show_favorite_history(user):
 
    return jsonify(results)
 
+"""
+search(query): preforms webscraping search saving nothing
+@param query: search query to be used
+@return: json of search results
+
+@app.route('/image/<string:query>')
+def search(query):
+   img= database_testing.scape_image(query)
+   return jsonify(data.to_dict())
+"""
 if __name__ == '__main__':
    app.run()
 

@@ -3,7 +3,6 @@ from sqlite3 import Time
 from flask import Flask,render_template,jsonify
 import time
 import numpy as np
-import database_testing
 import os
 import pandas as pd
 import json
@@ -101,6 +100,39 @@ def query_recipe_data(query):
 
     # We can apply this to the original dataframe to filter it down
     return recipe_data_with_ingredient_list[filter]
+
+
+# Endpoints
+
+"""
+search(query): preforms webscraping search saving nothing
+@param query: search query to be used
+@return: json of search results
+"""
+@app.route('/search/<string:query>')
+def search(query):
+   data = query_recipe_data(query)
+   return jsonify(data.to_dict())
+
+"""
+load_ingredients(): Gets ingredients from database
+@return: json of search results
+"""
+@app.route('/load_ingredients')
+def load_ingredients():
+   # Timing Start
+   start_time = time.time()
+   path=os.getcwd()
+   path=os.path.join(path,'datasets')
+   path=os.path.join(path,'ingredient_data2.json')
+   path=open(path)
+   #ingredients= pd.read_csv(path,encoding='latin-1')
+   ingredients= json.load(path)
+   # Timing End
+   end_time = time.time()
+   print("Time taken to retrieve:")
+   print(end_time-start_time)
+   return jsonify(ingredients)
 
 if __name__ == '__main__':
    app.run()

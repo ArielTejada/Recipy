@@ -1,4 +1,7 @@
+from email.quoprimime import quote
+from tkinter import image_names
 from flask import jsonify
+from requests import session
 from sklearn.neighbors import NearestNeighbors
 from requests_html import HTMLSession
 import time
@@ -167,25 +170,57 @@ print(recipe_data.columns)
 query = "onion,bacon,garlic,bread"
 recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
 ingredient_names =ingredient_data["name"].to_list()
-print(ingredient_names)
+#print(ingredient_names)
 
 # We remove duplicates for ease
 recipe_data_with_ingredient_list = remove_duplicates(recipe_data_with_ingredient_list)
 
 
 # Filter splices queries by commas and searches with np.and
-filter = ingredient_filter(query,recipe_data_with_ingredient_list)
+#filter = ingredient_filter(query,recipe_data_with_ingredient_list)
+
+#
+# Favoriting Test
+#
 
 # We can apply this to the original dataframe to filter it down
-print(recipe_data_with_ingredient_list[filter])
+# print(recipe_data_with_ingredient_list[filter])
 
-recipe_ID = recipe_data_with_ingredient_list.loc[recipe_data_with_ingredient_list['TITLE']=="Steamed Mussels in Tomato Sauce",['Unnamed: 0']]
+# recipe_ID = recipe_data_with_ingredient_list.loc[recipe_data_with_ingredient_list['TITLE']=="Steamed Mussels in Tomato Sauce",['Unnamed: 0']]
 
-#To acquire a data point we transform into np array and index the np array
-recipe_ID = recipe_ID.values[0]
-print("ID:")
-print(recipe_ID[0])
-""""""
-
+# #To acquire a data point we transform into np array and index the np array
+# recipe_ID = recipe_ID.values[0]
+# print("ID:")
+# print(recipe_ID[0])
 
 
+# Scrape test
+def scrape_image(link):
+    session =HTMLSession()
+    image_links = []
+    site = session.get(link)
+    #Find all image divs tags
+    image_divs= site.html.find('img')
+    #Takes all Images
+    for i in range(len(image_divs)):
+        raw_tag =(image_divs[i])
+        quotes = raw_tag.html.split("\"")
+        image = quotes[1] #Grabs the link
+        image_links.append(image)
+    return image_links
+
+"""#IMage Scrape test
+# First we grab a link from the data
+query_link =recipe_data['LINK'][10]
+session =HTMLSession()
+site = session.get(query_link)
+#Find all image divs tags
+image_divs= site.html.find('img')
+#First one should be good... maybe
+first_image =(image_divs[4])
+quotes = first_image.html.split("\"")
+print(quotes[1])"""
+
+sample = recipe_data.sample(n=5)
+sample['img'] =sample['LINK'].apply(scrape_image)
+sample.to_csv("image_tests.csv")
