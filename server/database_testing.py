@@ -205,8 +205,9 @@ def scrape_image(link):
     for i in range(len(image_divs)):
         raw_tag =(image_divs[i])
         quotes = raw_tag.html.split("\"")
-        image = quotes[1] #Grabs the link
-        image_links.append(image)
+        image = quotes[1] #Grabs the link if an image ends in png or jpg
+        if(image.find("jpg")>0 or image.find(".png")>0):
+            image_links.append(image)
     return image_links
 
 """#IMage Scrape test
@@ -221,6 +222,46 @@ first_image =(image_divs[4])
 quotes = first_image.html.split("\"")
 print(quotes[1])"""
 
+
+
 sample = recipe_data.sample(n=5)
+start_time= time.time_ns()
 sample['img'] =sample['LINK'].apply(scrape_image)
-sample.to_csv("image_tests.csv")
+end_time= time.time_ns()
+print(sample)
+print("Time for 5:")
+print(end_time-start_time)
+
+##################################
+#  Scraping Images for All Data  #
+##################################
+
+#recipe_data['IMAGE_LINKS'] = recipe_data['LINK'].apply(scrape_image)
+#recipe_data.to_csv('Central_Recipe_Data_with_images.csv')
+
+#sample_data =pd.read_csv('image_tests.csv') #Start with sample... append to it with rest of data... so you can save and restart as needed
+
+#recipes need to have a macro col
+
+##################################
+#  Make Macros into Cols  #
+##################################
+sample_data = recipe_data[recipe_data.notna()]
+print(sample_data)
+# We need to extract macros
+raw_string = pd.DataFrame()
+raw_string["MACRO_LIST"] = sample_data['MACROS'].apply(lambda x : x.split("\r\n") if isinstance(x,str) else "")
+
+print(raw_string["MACRO_LIST"])
+
+# Make Macro Cols for CALORIES, FAT,Carbs,Protien
+
+sample_data['CALORIES'] = raw_string["MACRO_LIST"].apply(lambda x : x[0] if isinstance(x,list) else "")
+print(sample_data['CALORIES'])
+sample_data['FAT'] = raw_string["MACRO_LIST"].apply(lambda x : x[1].split(",")[1] if isinstance(x,list) else "")
+print(sample_data['FAT'])
+sample_data['CARBS'] = raw_string["MACRO_LIST"].apply(lambda x : x[2].split(",")[1] if isinstance(x,list) else "")
+print(sample_data['CARBS'])
+sample_data['PROTEIN'] = raw_string["MACRO_LIST"].apply(lambda x : x[3].split(",")[1] if isinstance(x,list) and len(x)>3 else 0)
+print(sample_data['PROTEIN'])
+sample_data.to_csv("Central_Data_with_Macros.csv")
