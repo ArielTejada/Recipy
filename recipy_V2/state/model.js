@@ -5633,6 +5633,11 @@ export default {
     categoryList: [],
     pantryItems: [{name: 'apple', date: '11/1/22', key: '7'}, {name: 'avacado', date: '11/2/22', key: '8'}],
     category: '',
+    haveIngredients: false,
+    generateColor: '#2196F3',
+    generateRecipes: false,
+    recentlyUsed: [],
+
     
 /* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
@@ -5649,6 +5654,24 @@ export default {
     }),
     setCategory: action((state, category) => {
         state.category = category;
+    }),
+    setHaveIngredients: action((state) => {
+        if(state.selectedIngredients.length === 0){
+            state.haveIngredients = false;
+            state.generateColor = '#2196F3'
+        } else {
+            state.haveIngredients = true;
+            state.generateColor = '#60DEF7'
+        }
+    }),
+    setGenerateRecipes: action((state) => {
+        state.generateRecipes = !state.generateRecipes;
+    }),
+    setRecentlyUsed: action((state, addedIngredient) => {
+        state.recentlyUsed.unshift(addedIngredient);
+        if(state.recentlyUsed.length >= 8){
+            state.recentlyUsed.pop();
+        }
     }),
 
 /* -------------------- Display Settings -------------------- */
@@ -5724,8 +5747,8 @@ pageDark: '#A4A9AD',
 pageHalloween: '#CF9DC2',
 pageColor: 'white',
 
-bannerLight: '#2196F3',
+bannerLight: 'white',
 bannerDark: '#4A576F',
 bannerHalloween: '#09FF00',
-bannerColor: '#2196F3',
+bannerColor: 'white',
 }

@@ -10,6 +10,7 @@ export default function Category({navigation}) {
   const categoryList = useStoreState(state => state.categoryList);  
   const selectedIngredients = useStoreState(state => state.selectedIngredients);
   const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+  const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
 
   const refresh = useStoreState(state => state.refresh);
   const setRefresh = useStoreActions(actions => actions.setRefresh);
@@ -30,6 +31,7 @@ export default function Category({navigation}) {
     let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
     console.log(newList);
     setSelectedIngredients(newList);
+    setHaveIngredients();
   }
 
   const pressHandler = (name, key) => {   
@@ -39,6 +41,7 @@ export default function Category({navigation}) {
     let newList = selectedIngredients;
     newList.push({name: name, key: key});
     setSelectedIngredients(newList);
+    setHaveIngredients();
     setRefresh(!refresh);
 }
 
