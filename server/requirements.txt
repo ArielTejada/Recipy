@@ -12,3 +12,4 @@ requests_html
 aioflask
 bcrypt
 sklearn
+flask
