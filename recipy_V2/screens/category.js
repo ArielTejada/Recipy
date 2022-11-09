@@ -34,15 +34,16 @@ export default function Category({navigation}) {
     setHaveIngredients();
   }
 
-  const pressHandler = (name, key) => {   
-    if(selectedIngredients.find(ingredient => ingredient.name === name)) {
+  const categoryPressHandler = (ingredientObj) => {   
+    if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
         return;
     }
     let newList = selectedIngredients;
-    newList.push({name: name, key: key});
+    newList.push({...ingredientObj});
     setSelectedIngredients(newList);
     setHaveIngredients();
     setRefresh(!refresh);
+    console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
 }
 
   const refreshPage = () => {
@@ -110,7 +111,7 @@ export default function Category({navigation}) {
           {selectedIngredients.map((ingredient) => {
             return (
             <Pressable 
-              key={ingredient.key}
+              key={ingredient.id}
               style={[styles.roundBTN, styles.flex]}
               onPress={() => selectedListPress(ingredient.key)}
             >
@@ -136,7 +137,7 @@ export default function Category({navigation}) {
               <TouchableOpacity 
                 key={ingredient.id}
                 style={[styles.roundBTN]}
-                onPress={() => {pressHandler(ingredient.name, ingredient.id)}}
+                onPress={() => {categoryPressHandler({...ingredient})}}
                 onPressIn={() => fadeIn}
                 onPressOut={() => fadeOut}
               >

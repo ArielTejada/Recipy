@@ -73,7 +73,7 @@ const recentPressHandler = (ingredientObj) => {
   setSelectedIngredients(newList);
   setHaveIngredients();
   setRefresh(!refresh);
-  console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`)
+  console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
 }
 
 /* -------------------- Render Method -------------------- */
