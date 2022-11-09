@@ -57,23 +57,23 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
 
-const selectedListPress = (key) => {
-  console.log(`clicked ${key}`);
-  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
-  console.log(newList);
+const selectedListPress = (ingredientObj) => {
+  let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
   setSelectedIngredients(newList);
   setHaveIngredients();
+  console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
 }
 
-const pressHandler = (name, key) => {  
-  if(selectedIngredients.find(ingredient => ingredient.name === name)) {
+const recentPressHandler = (ingredientObj) => {  
+  if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
       return;
   }
   let newList = selectedIngredients;
-  newList.push({name: name, key: key});
+  newList.push({...ingredientObj});
   setSelectedIngredients(newList);
   setHaveIngredients();
   setRefresh(!refresh);
+  console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`)
 }
 
 /* -------------------- Render Method -------------------- */
@@ -125,9 +125,9 @@ const pressHandler = (name, key) => {
               {selectedIngredients.map((ingredient) => {
                 return (
                 <Pressable 
-                  key={ingredient.key}
+                  key={ingredient.id}
                   style={[styles.roundBTN, styles.flex]}
-                  onPress={() => selectedListPress(ingredient.key)}
+                  onPress={() => selectedListPress(ingredient)}
                 >
                   <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name.replace('_', ' ')}</Text>
                 </Pressable>)
@@ -150,7 +150,7 @@ const pressHandler = (name, key) => {
                 <TouchableOpacity 
                   key={ingredient.id} 
                   style={[styles.recentlyUsed]}
-                  onPress={() => {pressHandler(ingredient.name, ingredient.id)}}
+                  onPress={() => {recentPressHandler({...ingredient})}}
                 >
                     <Text style={[styles.recentlyUsedText]}>{ingredient.name.replace('_', ' ')}</Text>  
                     <Image
