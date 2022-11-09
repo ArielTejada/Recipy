@@ -22,13 +22,12 @@ export default function Category({navigation}) {
 
 
 /* -------------------- Handler Functions -------------------- */
-  const selectedListPress = (key) => {
-    console.log(`clicked ${key}`);
-    let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
-    console.log(newList);
-    setSelectedIngredients(newList);
-    setHaveIngredients();
-  }
+const selectedListPress = (ingredientObj) => {
+  let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
+  setSelectedIngredients(newList);
+  setHaveIngredients();
+  console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
+}
 
   const categoryPressHandler = (ingredientObj) => {   
     if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
@@ -104,7 +103,7 @@ export default function Category({navigation}) {
             <Pressable 
               key={ingredient.id}
               style={[styles.roundBTN, styles.flex]}
-              onPress={() => selectedListPress(ingredient.key)}
+              onPress={() => selectedListPress(ingredient)}
             >
               <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.name.replace('_', ' ')}</Text>
             </Pressable>)
