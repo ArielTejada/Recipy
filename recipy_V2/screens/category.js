@@ -15,10 +15,6 @@ export default function Category({navigation}) {
   const refresh = useStoreState(state => state.refresh);
   const setRefresh = useStoreActions(actions => actions.setRefresh);
 
-  const lightEnabled = useStoreState(state => state.lightEnabled);
-  const darkEnabled = useStoreState(state => state.darkEnabled);
-  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
-
 /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState(state => state.headerColor);
   const pageColor = useStoreState(state => state.pageColor);
@@ -96,12 +92,7 @@ export default function Category({navigation}) {
 
       </View>
 
-      <View style={[
-          styles.header, 
-          lightEnabled ? {backgroundColor: '#2196F3'} :
-          darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
-          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
-        ]}>
+      <View style={[styles.header, {backgroundColor: headerColor}]}>
         <Text style={[styles.headerText]}>Category: {category}</Text>
       </View>
       
@@ -126,7 +117,7 @@ export default function Category({navigation}) {
           source={require('../img/searchItems.png')}
           style={[styles.backImage]}
           resizeMode='contain'
-          imageStyle={[{tintColor: bannerColor}]}
+          imageStyle={[{tintColor: headerColor}]}
           ></ImageBackground>
       </View>
 

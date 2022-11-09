@@ -5748,7 +5748,7 @@ pageHalloween: '#CF9DC2',
 pageColor: 'white',
 
 bannerLight: 'white',
-bannerDark: '#4A576F',
+bannerDark: '#A4A9AD',
 bannerHalloween: '#09FF00',
 bannerColor: 'white',
 }
