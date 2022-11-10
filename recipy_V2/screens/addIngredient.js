@@ -19,6 +19,11 @@ const selectedIngredients = useStoreState(state => state.selectedIngredients);
 const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
+const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
+const setGenerateRecipes = useStoreActions(actions => actions.setGenerateRecipes); 
+
+const recentlyUsed = useStoreState(state => state.recentlyUsed);
+const setRecentlyUsed = useStoreActions(actions => actions.setRecentlyUsed); 
 
 /* -------------------- Redux State Colors -------------------- */
 const headerColor = useStoreState(state => state.headerColor);
@@ -52,11 +57,23 @@ const onPress = () => {
   setShouldShow(!shouldShow);
 }
 
-const selectedListPress = (key) => {
-  console.log(`clicked ${key}`);
-  let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
-  console.log(newList);
+const selectedListPress = (ingredientObj) => {
+  let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
   setSelectedIngredients(newList);
+  setHaveIngredients();
+  console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
+}
+
+const recentPressHandler = (ingredientObj) => {  
+  if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
+      return;
+  }
+  let newList = selectedIngredients;
+  newList.push({...ingredientObj});
+  setSelectedIngredients(newList);
+  setHaveIngredients();
+  setRefresh(!refresh);
+  console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
 }
 
 /* -------------------- Render Method -------------------- */
@@ -103,27 +120,49 @@ const selectedListPress = (key) => {
       />
       
       <View style={[styles.margins, styles.selected, styles.fontSmall]}>
-        <ImageBackground
-          source={require('../img/searchItems.png')}
-          style={styles.sidesImage}
-          resizeMode='contain'
-          imageStyle={[{tintColor: bannerColor}]}
-        >
           <View style={[styles.selectedIngredients, styles.outline]}>
             <ScrollView horizontal={true}>
               {selectedIngredients.map((ingredient) => {
                 return (
                 <Pressable 
-                  key={ingredient.key}
+                  key={ingredient.id}
                   style={[styles.roundBTN, styles.flex]}
-                  onPress={() => selectedListPress(ingredient.key)}
+                  onPress={() => selectedListPress(ingredient)}
                 >
                   <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name.replace('_', ' ')}</Text>
                 </Pressable>)
               })}
             </ScrollView>
           </View>
+
+          <Text style={[styles.AmaticSCBold, styles.fontMedium, styles.textCenter]}>Recently Used Ingredients:</Text>
+
+        <ImageBackground
+          source={require('../img/searchItems.png')}
+          style={styles.sidesImage}
+          resizeMode='contain'
+          imageStyle={[{tintColor: headerColor}]}
+        >
+
+          <ScrollView style={[]}>
+            {recentlyUsed.map((ingredient) => {
+              return (
+                <TouchableOpacity 
+                  key={ingredient.id} 
+                  style={[styles.recentlyUsed]}
+                  onPress={() => {recentPressHandler({...ingredient})}}
+                >
+                    <Text style={[styles.recentlyUsedText]}>{ingredient.name.replace('_', ' ')}</Text>  
+                    <Image
+                      source={require('../icons/add.png')}
+                      style={[styles.addIcon]}
+                      resizeMode='contain'
+                    />
+                </TouchableOpacity>   
+              )})}
+          </ScrollView>
         </ImageBackground>
+
       </View>
       
       </Pressable>}

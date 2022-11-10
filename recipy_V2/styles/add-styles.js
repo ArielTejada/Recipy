@@ -27,6 +27,13 @@ export default StyleSheet.create({
     AmaticSCRegular: {
         fontFamily: 'AmaticSC-Regular'
     },
+    AmaticSCBold: {
+        fontFamily: 'AmaticSC-Bold'
+    },
+    recentlyUsedText: {
+        fontFamily: 'AmaticSC-Bold',
+        fontSize: RFPercentage(5),
+    },
 
     /* -------------- Headers --------------*/
     header: {
@@ -62,12 +69,22 @@ export default StyleSheet.create({
     },
     sidesImage: {
         width: width,
-        height: height - RFPercentage(28),
+        height: 1060 * (width /1060),   // actual height x (width / actual width)
+        borderWidth: 1,
+        borderRadius: 5,
+        marginTop: height/100
     },
     banner: {
         width: width,
         height: height/8,
         top: -height/23,
+    },
+    addIcon: {
+        width: '30%',
+        height: '60%',
+        position: 'absolute',
+        top: '20%',
+        left: '100%'
     },
 
     /* -------------- Position --------------*/
@@ -179,5 +196,16 @@ export default StyleSheet.create({
         height: width / 10,
         marginLeft: 'auto',
         marginRight: 'auto',
+    },
+    recentlyUsed: {
+        borderWidth: 1,
+        borderRadius: 5,
+        width: width/2.2,
+        height: height/13,
+        marginLeft: width/3.6,
+        marginTop: height/100,
+        paddingHorizontal: width/20,
+        backgroundColor: '#E8E8E8',
+        alignItems: 'flex-start',
     },
 })

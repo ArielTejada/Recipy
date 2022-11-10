@@ -24,13 +24,14 @@ export default StyleSheet.create({
         textAlignVertical: 'center'
     },
     title: {
-        width: width/2.5,
+        width: width/4,
+        height: height/20,
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 6,
         backgroundColor: '#2196F3',
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'Festive-Regular',
+        fontFamily: 'AmaticSC-Bold',
     },
 
     /* -------------- Images --------------*/
@@ -56,6 +57,10 @@ export default StyleSheet.create({
         top: height/9.5,
         left: width/3.5
     },
+    recipeImages: {
+        width: width/2,
+        height: height/5, 
+    },
 
     /* -------------- Position --------------*/
     center : {
@@ -69,7 +74,9 @@ export default StyleSheet.create({
         left: 20,
     },
     container: {
-        flex: 1
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
     absolute: {
         position: 'absolute' 
@@ -126,12 +133,14 @@ export default StyleSheet.create({
     
     /* -------------- Buttons --------------*/
     addButton: {
-        marginVertical: height/80,
-        width: wp('50%'),
+        width: wp('40%'),
         borderWidth: 1,
-        borderRadius: 20,
+        borderRadius: 6,
         color: 'black',
         alignItems: 'center',
+        marginRight: wp('2%'),
+        marginLeft: wp('2%'),
+        marginVertical: wp('2%')
     },
     categoryButton: {
         borderWidth: 1,
@@ -148,4 +157,26 @@ export default StyleSheet.create({
         marginVertical: RFValue(8),
         marginHorizontal: RFValue(8)
     },
+    selectedIngredients : {
+        width: width - RFPercentage(1),
+        height: width / 10,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+    },
+    navView: {
+        width: width,
+        height: height/8
+    },
+    recipeView: {
+        width: width - (width/25),
+        height: height/5,
+        marginHorizontal: width/50,
+        borderWidth: 2,
+        borderRadius: 5,
+    },
+    recipeText: {
+        fontFamily: 'AmaticSC-Bold',
+        marginHorizontal: width/50,
+        textAlign: 'center'
+    }
 })

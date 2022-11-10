@@ -10,13 +10,10 @@ export default function Category({navigation}) {
   const categoryList = useStoreState(state => state.categoryList);  
   const selectedIngredients = useStoreState(state => state.selectedIngredients);
   const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+  const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
 
   const refresh = useStoreState(state => state.refresh);
   const setRefresh = useStoreActions(actions => actions.setRefresh);
-
-  const lightEnabled = useStoreState(state => state.lightEnabled);
-  const darkEnabled = useStoreState(state => state.darkEnabled);
-  const halloweenEnabled = useStoreState(state => state.halloweenEnabled);
 
 /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState(state => state.headerColor);
@@ -25,21 +22,23 @@ export default function Category({navigation}) {
 
 
 /* -------------------- Handler Functions -------------------- */
-  const selectedListPress = (key) => {
-    console.log(`clicked ${key}`);
-    let newList = selectedIngredients.filter((ingredient) => ingredient.key != key);
-    console.log(newList);
-    setSelectedIngredients(newList);
-  }
+const selectedListPress = (ingredientObj) => {
+  let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
+  setSelectedIngredients(newList);
+  setHaveIngredients();
+  console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
+}
 
-  const pressHandler = (name, key) => {   
-    if(selectedIngredients.find(ingredient => ingredient.name === name)) {
+  const categoryPressHandler = (ingredientObj) => {   
+    if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
         return;
     }
     let newList = selectedIngredients;
-    newList.push({name: name, key: key});
+    newList.push({...ingredientObj});
     setSelectedIngredients(newList);
+    setHaveIngredients();
     setRefresh(!refresh);
+    console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
 }
 
   const refreshPage = () => {
@@ -92,12 +91,7 @@ export default function Category({navigation}) {
 
       </View>
 
-      <View style={[
-          styles.header, 
-          lightEnabled ? {backgroundColor: '#2196F3'} :
-          darkEnabled ? {backgroundColor: '#4A576F', color: '#A4A9AD'} :
-          halloweenEnabled ? {backgroundColor: '#FF7739'} : {backgroundColor: '#2196F3'}
-        ]}>
+      <View style={[styles.header, {backgroundColor: headerColor}]}>
         <Text style={[styles.headerText]}>Category: {category}</Text>
       </View>
       
@@ -107,9 +101,9 @@ export default function Category({navigation}) {
           {selectedIngredients.map((ingredient) => {
             return (
             <Pressable 
-              key={ingredient.key}
+              key={ingredient.id}
               style={[styles.roundBTN, styles.flex]}
-              onPress={() => selectedListPress(ingredient.key)}
+              onPress={() => selectedListPress(ingredient)}
             >
               <Text style={[styles.fontSmall, styles.textCenter, { color: 'black'}]}>{ingredient.name.replace('_', ' ')}</Text>
             </Pressable>)
@@ -122,7 +116,7 @@ export default function Category({navigation}) {
           source={require('../img/searchItems.png')}
           style={[styles.backImage]}
           resizeMode='contain'
-          imageStyle={[{tintColor: bannerColor}]}
+          imageStyle={[{tintColor: headerColor}]}
           ></ImageBackground>
       </View>
 
@@ -133,7 +127,7 @@ export default function Category({navigation}) {
               <TouchableOpacity 
                 key={ingredient.id}
                 style={[styles.roundBTN]}
-                onPress={() => {pressHandler(ingredient.name, ingredient.id)}}
+                onPress={() => {categoryPressHandler({...ingredient})}}
                 onPressIn={() => fadeIn}
                 onPressOut={() => fadeOut}
               >

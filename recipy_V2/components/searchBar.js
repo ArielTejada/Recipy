@@ -9,6 +9,11 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
 /* -------------------- Redux State Variables -------------------- */
     const refresh = useStoreState(state => state.refresh);
     const setRefresh = useStoreActions(actions => actions.setRefresh);
+    const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
+    const setGenerateRecipes = useStoreActions(actions => actions.setGenerateRecipes); 
+
+    const recentlyUsed = useStoreState(state => state.recentlyUsed);
+    const setRecentlyUsed = useStoreActions(actions => actions.setRecentlyUsed); 
 
 /* -------------------- State Variables -------------------- */
     const ingredients = useStoreState(state => state.ingredients);
@@ -18,16 +23,19 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
     const [filteredArray, setFilteredArray] = useState([]);
 
 /* -------------------- Handler Functions -------------------- */
-    const pressHandler = (name, key) => {  
-        if(selectedIngredients.find(ingredient => ingredient.name === name)) {
+    const searchPressHandler = (ingredientObj) => {  
+        if(selectedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
             return;
         }
         let newList = selectedIngredients;
-        newList.push({name: name, key: key});
+        newList.push({...ingredientObj});
         setSelectedIngredients(newList);
+        setRecentlyUsed({...ingredientObj});
+        setHaveIngredients();
         setSearchText('');
         setSearching(false);
         setRefresh(!refresh);
+        console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
     }
 
     return (
@@ -64,7 +72,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     {filteredArray.map((ingredient) => {
                         return (
                             <View key={ingredient.id}>
-                                <TouchableOpacity onPress={() => {pressHandler(ingredient.name, ingredient.id)}} style={[styles.outline, styles.searchResult]}>
+                                <TouchableOpacity onPress={() => {searchPressHandler({...ingredient})}} style={[styles.outline, styles.searchResult]}>
                                     <Text style={[styles.AmaticSCRegular, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
                                 </TouchableOpacity>
                             </View>         
