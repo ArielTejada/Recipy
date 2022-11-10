@@ -114,3 +114,14 @@ def query_recipe_data(query):
 
 print(recipe_data)
 print(recipe_data.columns)
+
+# Note every thing should be in grams
+NUMERICAL_COLS = ['CALORIES','FAT','CARBS','PROTEIN']
+print(recipe_data[NUMERICAL_COLS])
+
+# Similarity Score
+# We can score recipes by similarity awarding a point if they have: 
+# 1.indredients in common(1 for each)
+# 2.fit diet => We determine if an ingredient fits a diet based on if all of its ingredients are 'vegan', 'vegitarian', 'keto', ;diabetic, or pescaterian 
+#
+# 
