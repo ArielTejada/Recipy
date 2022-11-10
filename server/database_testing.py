@@ -177,11 +177,11 @@ recipe_data_with_ingredient_list = remove_duplicates(recipe_data_with_ingredient
 
 
 # Filter splices queries by commas and searches with np.and
-#filter = ingredient_filter(query,recipe_data_with_ingredient_list)
+# filter = ingredient_filter(query,recipe_data_with_ingredient_list)
 
-#
+"""#
 # Favoriting Test
-#
+#"""
 
 # We can apply this to the original dataframe to filter it down
 # print(recipe_data_with_ingredient_list[filter])
@@ -210,17 +210,18 @@ def scrape_image(link):
             image_links.append(image)
     return image_links
 
-"""#IMage Scrape test
-# First we grab a link from the data
-query_link =recipe_data['LINK'][10]
-session =HTMLSession()
-site = session.get(query_link)
-#Find all image divs tags
-image_divs= site.html.find('img')
-#First one should be good... maybe
-first_image =(image_divs[4])
-quotes = first_image.html.split("\"")
-print(quotes[1])"""
+"""#IMage Scrape test"""
+
+# # First we grab a link from the data
+# query_link =recipe_data['LINK'][10]
+# session =HTMLSession()
+# site = session.get(query_link)
+# # Find all image divs tags
+# image_divs= site.html.find('img')
+# #First one should be good... maybe
+# first_image =(image_divs[4])
+# quotes = first_image.html.split("\"")
+# print(quotes[1])
 
 
 
@@ -232,9 +233,9 @@ print(sample)
 print("Time for 5:")
 print(end_time-start_time)
 
-##################################
+"""##################################
 #  Scraping Images for All Data  #
-##################################
+##################################"""
 
 #recipe_data['IMAGE_LINKS'] = recipe_data['LINK'].apply(scrape_image)
 #recipe_data.to_csv('Central_Recipe_Data_with_images.csv')
@@ -243,25 +244,75 @@ print(end_time-start_time)
 
 #recipes need to have a macro col
 
-##################################
-#  Make Macros into Cols  #
-##################################
-sample_data = recipe_data[recipe_data.notna()]
-print(sample_data)
-# We need to extract macros
-raw_string = pd.DataFrame()
-raw_string["MACRO_LIST"] = sample_data['MACROS'].apply(lambda x : x.split("\r\n") if isinstance(x,str) else "")
+"""##################################
+#  Making Macros into individual Cols  #
+##################################"""
 
-print(raw_string["MACRO_LIST"])
+# sample_data = recipe_data[recipe_data.notna()]
+# print(sample_data)
+# # We need to extract macros
+# raw_string = pd.DataFrame()
+# raw_string["MACRO_LIST"] = sample_data['MACROS'].apply(lambda x : x.split("\r\n") if isinstance(x,str) else "")
 
-# Make Macro Cols for CALORIES, FAT,Carbs,Protien
+# print(raw_string["MACRO_LIST"])
 
-sample_data['CALORIES'] = raw_string["MACRO_LIST"].apply(lambda x : x[0] if isinstance(x,list) else "")
-print(sample_data['CALORIES'])
-sample_data['FAT'] = raw_string["MACRO_LIST"].apply(lambda x : x[1].split(",")[1] if isinstance(x,list) else "")
-print(sample_data['FAT'])
-sample_data['CARBS'] = raw_string["MACRO_LIST"].apply(lambda x : x[2].split(",")[1] if isinstance(x,list) else "")
-print(sample_data['CARBS'])
-sample_data['PROTEIN'] = raw_string["MACRO_LIST"].apply(lambda x : x[3].split(",")[1] if isinstance(x,list) and len(x)>3 else 0)
-print(sample_data['PROTEIN'])
-sample_data.to_csv("Central_Data_with_Macros.csv")
+# # Make Macro Cols for CALORIES, FAT,Carbs,Protien
+
+# sample_data['CALORIES'] = raw_string["MACRO_LIST"].apply(lambda x : x[0] if isinstance(x,list) else 0)
+# print(sample_data['CALORIES'])
+# sample_data['FAT'] = raw_string["MACRO_LIST"].apply(lambda x : x[1].split(",")[1] if isinstance(x,list) else 0)
+# print(sample_data['FAT'])
+# sample_data['CARBS'] = raw_string["MACRO_LIST"].apply(lambda x : x[2].split(",")[1] if isinstance(x,list) else 0)
+# print(sample_data['CARBS'])
+# sample_data['PROTEIN'] = raw_string["MACRO_LIST"].apply(lambda x : x[3].split(",")[1] if isinstance(x,list) and len(x)>3 else 0)
+# print(sample_data['PROTEIN'])
+# sample_data.to_csv("Central_Data_with_Macros.csv")
+
+
+
+"""# ######################################################
+# Making sure all our values are ints by removing units
+# ######################################################"""
+
+# recipe_data = pd.read_csv("Central_Data_with_Macros.csv") # NOTE: This assumes that we have left this data is cwd... Its supposed to be in /recipe_data.
+# cols = ["FAT","CARBS","PROTEIN"]
+# print(recipe_data[cols])
+# for col in cols:
+#     recipe_data[col] = recipe_data[col].apply(lambda x : x[0:len(x)-1] if x!='0' and isinstance(x,str) and x[-1]=="g" else int(0))
+# print(recipe_data[cols])
+# recipe_data.to_csv("Central_Data_with_Macros.csv")
+    
+
+# I need to now formally check if an ingredient exists in each recipe
+# This can be done by making a contains col for each ingredient
+
+# This can be done by writing a function that checks if every entry  is in the listed ingredients section.
+# If it is the ingredient is added to a list of ingredients for that recipe
+
+def has_ingredients(recipe,possible_ingredients):
+    ingredient_list =[] #List of all ingredients found
+    for ingredient in possible_ingredients:
+        if isinstance(recipe,float):
+            return []
+        if recipe.find(ingredient)>0:
+            ingredient_list.append(ingredient)
+    return ingredient_list
+
+recipe_data = pd.read_csv("Central_Data_with_Macros.csv") # NOTE: This assumes that we have left this data is cwd... Its supposed to be in /recipe_data.
+print(recipe_data.columns)
+print(ingredient_data)
+ingredients = ingredient_data['name'].apply(lambda x : x.replace("_"," ")) #replace underscore with space
+ingredients =ingredients.to_list()
+print(ingredients)
+
+sample_data = recipe_data.sample(5)
+# Test for sample of 5
+#print(sample_data['INGREDIENTS'].apply(lambda x: has_ingredients(x,ingredients)))
+
+recipe_data['has_ingredients'] = recipe_data['INGREDIENTS'].apply(lambda x: has_ingredients(x,ingredients))
+recipe_data.to_csv("Central_Recipe_Data_with_has_ingredients.csv")
+# MAKE A REGRESSION MODEL THAT RECCOMENDS RANGES OF FEATURES
+
+# MAKE A KMEANS MODEL
+#https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+#https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
