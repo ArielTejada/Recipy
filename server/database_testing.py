@@ -4,6 +4,7 @@ from flask import jsonify
 from requests import session
 import matplotlib.pyplot as plt
 from sklearn.neighbors import NearestNeighbors
+from sklearn.cluster import KMeans
 from requests_html import HTMLSession
 import time
 import os
@@ -117,8 +118,20 @@ print(recipe_data.columns)
 
 # Note every thing should be in grams
 NUMERICAL_COLS = ['CALORIES','FAT','CARBS','PROTEIN']
-print(recipe_data[NUMERICAL_COLS])
+data =(recipe_data[NUMERICAL_COLS])
 
+Kmean_model = KMeans(6, random_state=0).fit(data)
+centers =Kmean_model.cluster_centers_
+
+#Graphing Code
+# https://stackoverflow.com/questions/14995610/how-to-make-a-4d-plot-with-matplotlib-using-arbitrary-data
+graph = plt.figure()
+ax = graph.add_subplot(111, projection='3d')
+img =ax.scatter(recipe_data[NUMERICAL_COLS[0]], recipe_data[NUMERICAL_COLS[1]], recipe_data[NUMERICAL_COLS[2]],c=recipe_data[NUMERICAL_COLS[3]],
+            s=50, cmap=plt.hot())
+graph.colorbar(img)
+
+plt.show()
 # Similarity Score
 # We can score recipes by similarity awarding a point if they have: 
 # 1.indredients in common(1 for each)
