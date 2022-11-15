@@ -123,15 +123,44 @@ data =(recipe_data[NUMERICAL_COLS])
 Kmean_model = KMeans(6, random_state=0).fit(data)
 centers =Kmean_model.cluster_centers_
 
-#Graphing Code
-# https://stackoverflow.com/questions/14995610/how-to-make-a-4d-plot-with-matplotlib-using-arbitrary-data
+# We can make this into a function that works on arbitary samples by replacing sample_data with param
+
+sample_data = data.sample(10) # We make a sampling of data from users
+sample_model = KMeans(3, random_state=0).fit(sample_data)
+sample_data['LABEL'] = sample_model.predict(sample_data)
+COLORS = ['indigo','green','blue','purple','darkorange']
+
+#Scatter plots of sample
+#plt.scatter(sample_data[sample_data['LABEL'] == 0],)
+
+print(sample_data)
+print(sample_data['LABEL'])
 graph = plt.figure()
 ax = graph.add_subplot(111, projection='3d')
-img =ax.scatter(recipe_data[NUMERICAL_COLS[0]], recipe_data[NUMERICAL_COLS[1]], recipe_data[NUMERICAL_COLS[2]],c=recipe_data[NUMERICAL_COLS[3]],
-            s=50, cmap=plt.hot())
+img =ax.scatter(sample_data[NUMERICAL_COLS[0]], sample_data[NUMERICAL_COLS[1]], sample_data[NUMERICAL_COLS[2]],c=sample_data[NUMERICAL_COLS[3]],
+             s=50, cmap=plt.hot())
 graph.colorbar(img)
+centers = sample_model.cluster_centers_
+for center in centers:
+    img= ax.scatter(center[0],center[1],center[2],c=center[3],s=50,)
+    img= ax.text(center[0],center[1],center[2], "Center")            
+
+ax.set_xlabel('Calories')
+ax.set_ylabel('Fat (g)')
+ax.set_zlabel('Carbs (g)')
+# Add Ploted centers
 
 plt.show()
+# 4D Graphing Code
+# https://stackoverflow.com/questions/14995610/how-to-make-a-4d-plot-with-matplotlib-using-arbitrary-data
+# graph = plt.figure()
+# ax = graph.add_subplot(111, projection='3d')
+# img =ax.scatter(recipe_data[NUMERICAL_COLS[0]], recipe_data[NUMERICAL_COLS[1]], recipe_data[NUMERICAL_COLS[2]],c=recipe_data[NUMERICAL_COLS[3]],
+#             s=50, cmap=plt.hot())
+# graph.colorbar(img)
+
+
+# plt.show()
 # Similarity Score
 # We can score recipes by similarity awarding a point if they have: 
 # 1.indredients in common(1 for each)
