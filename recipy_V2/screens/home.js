@@ -2,30 +2,34 @@ import React, { useState, useEffect } from "react";
 import {Text, View, Image, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground, FlatList} from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useStoreState, useStoreActions } from "easy-peasy";
+import axios from 'axios';
 
 import styles from '../styles/home-styles';
 
 export default function Home({navigation}) {
 
 /* -------------------- Local State Variables -------------------- */
-  let Recipes = [];
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-  console.log(data);
-
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1:5000/search/apple')
-  //     .then((response) => response.json())
-  //     .then((json) => setData(json))
-  //     .catch((error) => console.error(error))
-  //     .finally(() => setLoading(false));
-  // }, []);
-
+  const [recievedData, setRecievedData] = useState(false);
+  
 /* -------------------- Redux State Variables -------------------- */
-  const ingredients = useStoreState(state => state.ingredients)
+  const refresh = useStoreState(state => state.refresh);
+  const setRefresh = useStoreActions(actions => actions.setRefresh);
+  const ingredients = useStoreState(state => state.ingredients);
   const setCategory = useStoreActions(actions => actions.setCategory);  
   const setCategoryList = useStoreActions(actions => actions.setCategoryList); 
   const selectedIngredients = useStoreState(state => state.selectedIngredients);
+  const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+  const haveIngredints = useStoreState(state => state.haveIngredients);
+  const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
+
+  const Recipes = useStoreState(state => state.Recipes);
+  const setRecipes = useStoreActions(actions => actions.setRecipes); 
+  const setCurrentRecipeMacros = useStoreActions(actions => actions.setCurrentRecipeMacros); 
+  const setCurrentRecipeTitle = useStoreActions(actions => actions.setCurrentRecipeTitle); 
+  const setCurrentRecipe = useStoreActions(actions => actions.setCurrentRecipe); 
+  const setIngredientsRequired = useStoreActions(actions => actions.setIngredientsRequired); 
+  const setRecipeDescription = useStoreActions(actions => actions.setRecipeDescription); 
+  const setSteps = useStoreActions(actions => actions.setSteps); 
   
   const generateColor = useStoreState(state => state.generateColor);
   const haveIngredients = useStoreState(state => state.haveIngredients);
@@ -39,29 +43,52 @@ export default function Home({navigation}) {
   
 /* -------------------- Handler Functions -------------------- */
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
-
   const profilePressHandler = () => {navigation.navigate('Account')}
+  const categoryPressHandler = () => {navigation.navigate('Category')}
+  const navToRecipe = () => {navigation.navigate('Recipe');}
 
-  const categoryPressHandler = () => {
-    navigation.navigate('Category');
+  const getRecipes = async (ingredients) => {
+    await axios({
+      method: 'get',
+      url: 'https://recipy-ingredients-backend.herokuapp.com/search/' + ingredients,
+    }).then((response) => {
+      setRecipes(response.data);
+    }).then(() => {
+      console.log(Recipes)
+      setRefresh(!refresh);
+    });
+    setRefresh(!refresh);
   }
 
-  const getRecipes = async () => {
-    try {
-     const response = await fetch('http://127.0.0.1:5000/search/apple');
-     const json = await response.json();
-     console.log(json);
-     Recipes[0] = json;
-   } catch (error) {
-     console.error(error);
-   }
- }
-
-  const pressGenerate = () => {
-    if(haveIngredients){
+  const pressGenerate = async () => {
+    if(haveIngredients && generateRecipes){
       setGenerateRecipes();
     }
+    if(haveIngredients && !generateRecipes){
+      let ingredientString = returnIngredientString(selectedIngredients, 'name')
+      setGenerateRecipes();
+      await getRecipes(ingredientString);
+      setRecievedData(true);
+    }
     return;
+  }
+
+  const returnIngredientString = (ingredients, attr) => {
+    let output = [];
+    for (let i = 0; i < ingredients.length; i++){
+      output.push(ingredients[i][attr]);
+    }
+    return output.join(",");
+  }
+
+  const recipePressHandler = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...') => {
+    setCurrentRecipeTitle(title);
+    setRecipeDescription(desc);
+    setCurrentRecipeMacros(macros);
+    setIngredientsRequired(reqs);
+    setSteps(steps);
+    setCurrentRecipe(recipe);
+    navToRecipe();
   }
 
   const pressFruit = () => {
@@ -93,19 +120,26 @@ export default function Home({navigation}) {
     setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'grains')));
     categoryPressHandler();
   }
+
   const pressHerbs = () => {
     setCategory('Herbs');
     setCategoryList(ingredients.filter((ingredient => ingredient['type'] == 'herbs' || ingredient['type'] == 'nuts')));
     categoryPressHandler();
   }
 
-/* -------------------- Test Data -------------------- */
-  const recipes = [
-    {image: '../img/caesar-salad.jpg', name: 'Caesar Salad'},
-    {image: '../img/chicken-chow-mein.jpg',name: 'Chicken Chow Mein'},
-    {image: '../img/swedish-meatballs.jpeg',name: 'Swedish Meatballs'},
-  ];
+  const selectedListPress = (ingredientObj) => {
+    let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
+    setSelectedIngredients(newList);
+    setHaveIngredients();
+    setRefresh(!refresh);
+    if (newList.length == 0){
+      setGenerateRecipes();
+    }
+    setRefresh(!refresh);
+    console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
+  }
 
+  
 /* -------------------- Render Method -------------------- */
   return (
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
@@ -140,6 +174,7 @@ export default function Home({navigation}) {
           </ImageBackground>
 
           <View style={[styles.container]}>
+
             <Pressable
               onPress={addIngredientHandler}
               style={[styles.addButton, {backgroundColor: headerColor}]}
@@ -148,6 +183,7 @@ export default function Home({navigation}) {
                 style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}
               >Add Ingredient</Text>
             </Pressable>
+
             <Pressable
               onPress={pressGenerate}
               style={[styles.addButton, {backgroundColor: generateColor}]}
@@ -156,6 +192,7 @@ export default function Home({navigation}) {
                 style={[styles.fontMedium, {fontFamily: 'AmaticSC-Bold'}]}
               >Generate Recipes</Text>
             </Pressable>
+
           </View>
 
           <View>
@@ -210,52 +247,82 @@ export default function Home({navigation}) {
             </ImageBackground>
           </View>
 
-          {generateRecipes ?
           <View>
+            <Text style={[styles.fontLarge, styles.recipeText]}>Selected Ingredients: </Text>
+          </View>
+
+          <View style={[styles.selectedIngredients, styles.outline, styles.margins]}>
+            <ScrollView horizontal={true}>
+              {selectedIngredients.map((ingredient) => {
+                return (
+                <Pressable 
+                  key={ingredient.id}
+                  style={[styles.roundBTN, styles.flex]}
+                  onPress={() => selectedListPress({...ingredient})}
+                >
+                  <Text style={[styles.fontSmall, styles.textCenter]}>{ingredient.name.replace('_', ' ')}</Text>
+                </Pressable>)
+              })}
+            </ScrollView>
+          </View>
+
+          { recievedData && generateRecipes ?
+          (<View>
+
             <View>
-              <Text style={[styles.fontLarge, styles.recipeText]}>Recipes: </Text>
+              <Text style={[styles.fontLarge, styles.recipeText]}>You have {Object.values(Recipes["TITLE"]).length} Recipe(s): </Text>
             </View>
-            <Text>{Recipes[0]}</Text>
+
             <View style={[styles.recipeView]}>
               <ScrollView horizontal={true}>
-                <View>
+
+                {/* <Pressable 
+                  style={[styles.outline, styles.card]}
+                  onPress={() => recipePressHandler('Title Loading...', 'Desc Loading...', 'Macros Loading...', 'Reqs Loading...', 'Steps Loading...', 'Recipe Loading...')}
+                >
                   <ImageBackground
-                    source={require('../img/caesar-salad.jpg')}
-                    style={[styles.recipeImages]}
+                    source={require('../img/recipeBack.jpg')}
+                    style={[styles.recipeBack]}
                   >
-                    <Text style={[styles.outline, styles.title, styles.fontSmall]}>Caesar Salad</Text>
+                    <Text style={[styles.recipePressableText]}>Recipe Title</Text>
                   </ImageBackground>
-                </View>
-                <View style={[styles.outline]}>
-                  <ImageBackground
-                    source={require('../img/chicken-chow-mein.jpg')}
-                    style={[styles.recipeImages]}
+                </Pressable> */}
+              
+              
+              {Object.values(Recipes["TITLE"]).map((recipe, index) => {
+                return(
+                  <Pressable 
+                    key={index}
+                    style={[styles.outline, styles.card]}
+                    onPress={() => recipePressHandler(
+                      Object.values(Recipes["TITLE"])[index], 
+                      Object.values(Recipes["DESCRIPTION"])[index], 
+                      Object.values(Recipes["MACROS"])[index].split("\n").join(" ").split(",").join(", "), 
+                      Object.values(Recipes["has_ingredients"])[index].split("['").join("").split("']").join("").split("'").join(""), 
+                      Object.values(Recipes["INGREDIENTS"])[index], 
+                      Object.values(Recipes["DIRECTIONS"])[index]
+                    )}
                   >
-                    <Text style={[styles.outline, styles.title, styles.fontSmall]}>Chicken Chow</Text>
-                  </ImageBackground>
-                </View>
+                    <ImageBackground
+                      source={require('../img/recipeBack.png')}
+                      style={[styles.recipeBack]}
+                    >
+                      <Text style={[styles.recipePressableText]}>{Object.values(Recipes["TITLE"])[index]}</Text>
+                    </ImageBackground>
+                  </Pressable>
+                )})}
+
               </ScrollView>
             </View>
-          </View>
-          : 
-          <View style={[styles.outline, styles.selectedIngredients]}>
-            
-          </View>}
-          
+
+          </View>)  : <View style={[styles.outline, styles.selectedIngredients]}></View>
+        }
           
         </View>
       </TouchableWithoutFeedback> 
 
-      <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <Text>Loading...</Text> : 
-      ( <View style={{ flex: 1, flexDirection: 'column', justifyContent:  'space-between'}}>
-          <Text style={{ fontSize: 18, color: 'green', textAlign: 'center'}}>{data.DESCRIPTION}</Text>
-        </View>
-      )}
-    </View>
-
-
       <View style={[styles.navView]}></View>
+      
     </ScrollView>
     </View>
   );

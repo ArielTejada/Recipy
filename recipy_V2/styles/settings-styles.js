@@ -86,5 +86,8 @@ export default StyleSheet.create({
     },
     
     /* -------------- Custom  --------------*/
-
+    navView: {
+        width: width,
+        height: height/8
+    },
 })

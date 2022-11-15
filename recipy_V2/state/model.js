@@ -5723,11 +5723,12 @@ export default {
     category: '',
     haveIngredients: false,
     generateColor: '#2196F3',
-    generateRecipes: false,
     recentlyUsed: [],
 
+    allRecipes: [],
     
-/* -------------------- Actions -------------------- */
+    
+    /* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
         state.selectedIngredients = list;
     }),
@@ -5752,14 +5753,47 @@ export default {
             state.generateColor = '#60DEF7'
         }
     }),
-    setGenerateRecipes: action((state) => {
-        state.generateRecipes = !state.generateRecipes;
-    }),
     setRecentlyUsed: action((state, addedIngredient) => {
         state.recentlyUsed.unshift(addedIngredient);
         if(state.recentlyUsed.length >= 8){
             state.recentlyUsed.pop();
         }
+    }),
+    
+    
+    /* -------------------- Generate Recipes -------------------- */
+    Recipes: [],
+    generateRecipes: false,
+    currentRecipeMacros: '',
+    currentRecipeTitle: '',
+    currentRecipe: '',
+    ingredientsRequired: '',
+    recipeDescription: '',
+    steps: '',
+    
+    setRecipes: action((state, list) => {
+        state.Recipes = list;
+    }),
+    setGenerateRecipes: action((state) => {
+        state.generateRecipes = !state.generateRecipes;
+    }),
+    setCurrentRecipeMacros: action((state, macros) => {
+        state.currentRecipeMacros = macros;
+    }),
+    setCurrentRecipeTitle: action((state, title) => {
+        state.currentRecipeTitle = title;
+    }),
+    setCurrentRecipe: action((state, recipe) => {
+        state.currentRecipe = recipe;
+    }),
+    setIngredientsRequired: action((state, list) => {
+        state.ingredientsRequired = list;
+    }),
+    setRecipeDescription: action((state, desc) => {
+        state.recipeDescription = desc;
+    }),
+    setSteps: action((state, steps) => {
+        state.steps = steps;
     }),
 
 /* -------------------- Display Settings -------------------- */
