@@ -135,8 +135,4 @@ def load_ingredients():
    return jsonify(ingredients)
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-   app.run(port=12345)
-=======
    app.run(port =12345)
->>>>>>> bb7dd66fbfa07cd7712b61cddbe46341ae089656
