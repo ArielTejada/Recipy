@@ -1,6 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, Dimensions } from "react-native";
 import { useStoreState, useStoreActions } from "easy-peasy";
+import { LinearGradient } from 'expo-linear-gradient';
+
+const {height, width} = Dimensions.get('window');
 
 /* -------------------- Screens -------------------- */
 import Home from "../screens/home";
@@ -24,6 +27,15 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
             tabBarHideOnKeyboard: true,
             tabBarShowLabel: false,
             headerShown: false,
+            // tabBarBackground: () => (
+            //     <View>
+            //         <LinearGradient
+            //             colors={['#E436E3', '#981ABF', '#3563C7', '#31DDF3']}
+            //             style={[{width: width, height: 70, borderTopLeftRadius: 10, borderTopRightRadius: 10}]}
+            //         >
+            //         </LinearGradient>
+            //     </View>
+            // ),
             
             tabBarStyle: {
                 position: 'absolute',

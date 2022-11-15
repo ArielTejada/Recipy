@@ -5,6 +5,7 @@ import HomeScreen from "../screens/home";
 import AddIngredient from '../screens/addIngredient'
 import Account from '../screens/Account'
 import Category from "../screens/category";
+import Recipe from "../screens/recipe";
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ function AddStack(){
         <Stack.Screen name="AddIngredient" component={AddIngredient} />
         <Stack.Screen name="Account" component={Account} />
         <Stack.Screen name="Category" component={Category} />
+        <Stack.Screen name="Recipe" component={Recipe} />
       </Stack.Navigator>
     );
 }

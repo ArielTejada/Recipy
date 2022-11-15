@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import {Text, View, Switch, Pressable} from "react-native";
+import {Text, View, Switch, Pressable, ScrollView} from "react-native";
 import styles from '../styles/settings-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Settings() {
 
@@ -27,6 +28,8 @@ export default function Settings() {
 /* -------------------- Render Method -------------------- */
   return (
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
+
+      <ScrollView>
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
@@ -83,6 +86,20 @@ export default function Settings() {
         </View>
 
       </View>
+
+      <View style={[styles.outline, styles.smallMargins, styles.settingOption, styles.centerItems]}>
+        <Text style={[styles.font1, styles.fontLarge]}>Dietary Preference</Text>
+      </View>
+
+      {/* <LinearGradient
+        colors={['#EB36E3', '#6520CB', '#2724C2', '#1D82F4']}
+        style={[{width: 200, height: 200, justifyContent: 'center', marginHorizontal: '25%'}]}
+      >
+      </LinearGradient> */}
+
+      <View style={[styles.navView]}></View>
+
+      </ScrollView>
 
     </View>
   );

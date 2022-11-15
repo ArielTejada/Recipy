@@ -33,6 +33,11 @@ export default StyleSheet.create({
         textAlign: 'center',
         fontFamily: 'AmaticSC-Bold',
     },
+    recipePressableText: {
+        fontFamily: 'AmaticSC-Bold',
+        fontSize: RFPercentage(4),
+        textAlign: 'center',
+    },
 
     /* -------------- Images --------------*/
     banner: {
@@ -61,13 +66,21 @@ export default StyleSheet.create({
         width: width/2,
         height: height/5, 
     },
+    recipeBack: {
+        width: width/2.25, 
+        height: height/5.2,
+        justifyContent: 'center',
+        // backgroundColor: '#60DEF7'
+    },
 
     /* -------------- Position --------------*/
     center : {
         alignItems: 'center'
     },
     margins: {
-        marginVertical: height/80
+        marginVertical: height/80,
+        marginLeft: width/50,
+        marginRight: width/50,
     },
     tag: {
         top: -90, 
@@ -85,6 +98,9 @@ export default StyleSheet.create({
         width: width,
         height: height/25,
         backgroundColor: 'white',
+    },
+    flex: {
+        display: 'flex'
     },
 
     /* -------------- Styling --------------*/
@@ -149,16 +165,28 @@ export default StyleSheet.create({
         height: width/9,
         textAlign: 'center',
     },
+    roundBTN: {
+        borderWidth: 2,
+        borderRadius: 15,
+        borderColor: 'black',
+        marginHorizontal: width/150,
+        marginVertical: height/200,
+        paddingHorizontal: width/50,
+        marginTop: 2,
+        height: width/12,
+        backgroundColor: '#60DEF7',
+    },
     
     /* -------------- Custom  --------------*/
     card: {
         width: width/2.2, 
-        height: height/4,
-        marginVertical: RFValue(8),
-        marginHorizontal: RFValue(8)
+        height: height/5.1,
+        borderRadius: 5,
+        borderWidth: 2,
+        borderColor: 'black',
     },
     selectedIngredients : {
-        width: width - RFPercentage(1),
+        width: width - RFPercentage(2.2),
         height: width / 10,
         marginLeft: 'auto',
         marginRight: 'auto',
