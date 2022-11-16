@@ -68,10 +68,16 @@ const handleBarCodeScanned = ({type,data}) => {
   //   setBarcodeText("milk");
   // }
   console.log(selectedIngredients);
-  let list =selectedIngredients;
+  // let list =selectedIngredients;
+  let list = []
+  list.push("milk");
+  console.log(list);
+  let together = selectedIngredients.concat(list);
+  console.log(together);
+  // setSelectedIngredients(together);
   // following two give the "undefined is not an object (evaluating 'ingredient.name.replace')"
   // list.push("milk")
-  // list.push({"brand": "Elmhurst", "category": "Food, Beverages & Tobacco > Beverages > Non-Dairy Milk", "color": "", "currency": "", "description": "INGREDIENTS: FILTERED WATER, HAZELNUTS, CANE SUGAR, ALMONDS, NATURAL FLAVORS, SALT.", "dimension": "", "ean": "0018944000048", "elid": "292315447067", "highest_recorded_price": 33.16, "images": ["https://i5.walmartimages.com/asr/a308e2f8-68d9-46fe-aab3-87de3f09e6d4_1.dc3154bdb9655e531ae9f414af2a8e5e.png?odnHeight=450&odnWidth=450&odnBg=ffffff", "https://target.scene7.com/is/image/Target/GUEST_190cb48b-13da-4f1b-8ef9-d94f62282eea?wid=1000&hei=1000"], "lowest_recorded_price": 4.99, "model": "Elmhurst Milked", "offers": [{"availability": "", "condition": "New", "currency": "", "domain": "walmart.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2v223z2y253e494v2&tid=1&seq=1668353399&plt=21a2111ce7087ac209384f8df3c5b822", "list_price": "", "merchant": "Wal-Mart.com", "price": 5.98, "shipping": "5.99", "title": "Elmhurst Milked Hazelnut Milk, 32 fl oz", "updated_t": 1581645909}, {"availability": "", "condition": "New", "currency": "", "domain": "target.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2s263w2x253a484u2&tid=1&seq=1668353399&plt=73fba671d86a72324ecd171da30e2a66", "list_price": "", "merchant": "Target", "price": 4.99, "shipping": "", "title": "Elmhurst Milked Hazelnuts Milk Substitute - 1qt", "updated_t": 1598412001}], "size": "", "title": "MILKED HAZELNUTS", "upc": "018944000048", "weight": ""});
+  // list.push({"id":"1","brand": "Elmhurst", "category": "Food, Beverages & Tobacco > Beverages > Non-Dairy Milk", "color": "", "currency": "", "description": "INGREDIENTS: FILTERED WATER, HAZELNUTS, CANE SUGAR, ALMONDS, NATURAL FLAVORS, SALT.", "dimension": "", "ean": "0018944000048", "elid": "292315447067", "highest_recorded_price": 33.16, "images": ["https://i5.walmartimages.com/asr/a308e2f8-68d9-46fe-aab3-87de3f09e6d4_1.dc3154bdb9655e531ae9f414af2a8e5e.png?odnHeight=450&odnWidth=450&odnBg=ffffff", "https://target.scene7.com/is/image/Target/GUEST_190cb48b-13da-4f1b-8ef9-d94f62282eea?wid=1000&hei=1000"], "lowest_recorded_price": 4.99, "model": "Elmhurst Milked", "offers": [{"availability": "", "condition": "New", "currency": "", "domain": "walmart.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2v223z2y253e494v2&tid=1&seq=1668353399&plt=21a2111ce7087ac209384f8df3c5b822", "list_price": "", "merchant": "Wal-Mart.com", "price": 5.98, "shipping": "5.99", "title": "Elmhurst Milked Hazelnut Milk, 32 fl oz", "updated_t": 1581645909}, {"availability": "", "condition": "New", "currency": "", "domain": "target.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2s263w2x253a484u2&tid=1&seq=1668353399&plt=73fba671d86a72324ecd171da30e2a66", "list_price": "", "merchant": "Target", "price": 4.99, "shipping": "", "title": "Elmhurst Milked Hazelnuts Milk Substitute - 1qt", "updated_t": 1598412001}], "size": "", "title": "MILKED HAZELNUTS", "upc": "018944000048", "weight": ""});
   // setSelectedIngredients(list);
   // setHaveIngredients();
   // setRefresh(!refresh);
