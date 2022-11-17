@@ -55,32 +55,24 @@ const getIngredients = async (data) => {
 const handleBarCodeScanned = ({type,data}) => {
   setScanned(true);
   alert(`Bar code with type ${type} and data ${data} has been scanned!`);
-  // getIngredients(data);
+  getIngredients(data);
+  console.log("CHECK");
   // console.log(json[0]);
   setScanned(false);
   setShouldShow(!shouldShow);
   // console.log(json[0]['title'].toLowerCase());
   // console.log(ingredients.length);
   // console.log(validateIngredient(json[0]['title'].toLowerCase(),ingredients));
-  // result = validateIngredient(json[0]['title'].toLowerCase(),ingredients);
-  // if (true){
-  //   // setBarcodeText(result.name);
-  //   setBarcodeText("milk");
-  // }
+  console.log("This is ingredients" + ingredients.length);
+  result = validateIngredient(json[0]['title'].toLowerCase(),ingredients);
+  console.log(result);
   console.log(selectedIngredients);
   // let list =selectedIngredients;
-  let list = []
-  list.push("milk");
+  let list = selectedIngredients;
+  list.push({"name":result});
   console.log(list);
-  let together = selectedIngredients.concat(list);
-  console.log(together);
-  // setSelectedIngredients(together);
-  // following two give the "undefined is not an object (evaluating 'ingredient.name.replace')"
-  // list.push("milk")
-  // list.push({"id":"1","brand": "Elmhurst", "category": "Food, Beverages & Tobacco > Beverages > Non-Dairy Milk", "color": "", "currency": "", "description": "INGREDIENTS: FILTERED WATER, HAZELNUTS, CANE SUGAR, ALMONDS, NATURAL FLAVORS, SALT.", "dimension": "", "ean": "0018944000048", "elid": "292315447067", "highest_recorded_price": 33.16, "images": ["https://i5.walmartimages.com/asr/a308e2f8-68d9-46fe-aab3-87de3f09e6d4_1.dc3154bdb9655e531ae9f414af2a8e5e.png?odnHeight=450&odnWidth=450&odnBg=ffffff", "https://target.scene7.com/is/image/Target/GUEST_190cb48b-13da-4f1b-8ef9-d94f62282eea?wid=1000&hei=1000"], "lowest_recorded_price": 4.99, "model": "Elmhurst Milked", "offers": [{"availability": "", "condition": "New", "currency": "", "domain": "walmart.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2v223z2y253e494v2&tid=1&seq=1668353399&plt=21a2111ce7087ac209384f8df3c5b822", "list_price": "", "merchant": "Wal-Mart.com", "price": 5.98, "shipping": "5.99", "title": "Elmhurst Milked Hazelnut Milk, 32 fl oz", "updated_t": 1581645909}, {"availability": "", "condition": "New", "currency": "", "domain": "target.com", "link": "https://www.upcitemdb.com/norob/alink/?id=x2s263w2x253a484u2&tid=1&seq=1668353399&plt=73fba671d86a72324ecd171da30e2a66", "list_price": "", "merchant": "Target", "price": 4.99, "shipping": "", "title": "Elmhurst Milked Hazelnuts Milk Substitute - 1qt", "updated_t": 1598412001}], "size": "", "title": "MILKED HAZELNUTS", "upc": "018944000048", "weight": ""});
-  // setSelectedIngredients(list);
-  // setHaveIngredients();
-  // setRefresh(!refresh);
+  setSelectedIngredients(list);
+  setHaveIngredients();
 };
 
 if (hasPermission === null){
@@ -91,12 +83,15 @@ if (hasPermission === false){
   return <Text>No access to camera</Text>;
 }
 
-const validateIngredient = ({ingredient,list}) => {
-  let result = [];
+const validateIngredient = (ingredient,list) => {
+  // let result = [];
+  let result ="";
   for(let i = 0; i < list.length; i++){
     console.log(list[i].name);
     if (ingredient.includes(list[i].name)){
-      result.push(list[i]);
+      // result.push(list[i]);
+      result=list[i].name
+      break;
     }
   }
   return result;
@@ -167,7 +162,7 @@ const recentPressHandler = (ingredientObj) => {
           data={json}
           keyExtractor={({ id }, index) => id}
           renderItem={({ item }) => (
-            <Text>{item.title}, {item.upc}</Text>
+            <Text>{item.title}</Text>
           )}
         />
       <View style={[styles.margins, styles.selected, styles.fontSmall]}>
