@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import {StyleSheet, Button, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground, Pressable} from "react-native";
+import {FlatList, StyleSheet, Button, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground, Pressable} from "react-native";
 import styles from '../styles/add-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
 
 /* -------------------- Components -------------------- */
 import SearchBar from "../components/searchBar"
 import { BarCodeScanner } from 'expo-barcode-scanner';
+import { SafeAreaInsetsContext } from "react-native-safe-area-context";
 
 export default function AddIngredient({navigation}) {
 
@@ -13,10 +14,12 @@ export default function AddIngredient({navigation}) {
 const [hasPermission, setHasPermission] = useState(null);
 const [scanned, setScanned] = useState(false);
 const [shouldShow, setShouldShow] = useState(false);
+const [json, setJson] = useState([]);
 
 /* -------------------- Redux State Variables -------------------- */
+const ingredients = useStoreState(state => state.ingredients);
 const selectedIngredients = useStoreState(state => state.selectedIngredients);
-const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);
+const setSelectedIngredients = useStoreActions(actions => actions.setSelectedIngredients);//use this
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 const setHaveIngredients = useStoreActions(actions => actions.setHaveIngredients);
@@ -39,9 +42,37 @@ useEffect(() => {
   getBarCodeScannerPermissions();
 }, []);
 
+const getIngredients = async (data) => {
+  try {
+   const response = await fetch('https://api.upcitemdb.com/prod/trial/lookup?upc='+data);
+   const json = await response.json();
+   setJson(json.items);
+ } catch (error) {
+   console.error(error);
+ } 
+}
+
 const handleBarCodeScanned = ({type,data}) => {
   setScanned(true);
   alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  getIngredients(data);
+  console.log("CHECK");
+  // console.log(json[0]);
+  setScanned(false);
+  setShouldShow(!shouldShow);
+  // console.log(json[0]['title'].toLowerCase());
+  // console.log(ingredients.length);
+  // console.log(validateIngredient(json[0]['title'].toLowerCase(),ingredients));
+  console.log("This is ingredients" + ingredients.length);
+  result = validateIngredient(json[0]['title'].toLowerCase(),ingredients);
+  console.log(result);
+  console.log(selectedIngredients);
+  // let list =selectedIngredients;
+  let list = selectedIngredients;
+  list.push({"name":result});
+  console.log(list);
+  setSelectedIngredients(list);
+  setHaveIngredients();
 };
 
 if (hasPermission === null){
@@ -52,10 +83,19 @@ if (hasPermission === false){
   return <Text>No access to camera</Text>;
 }
 
-const onPress = () => {
-  setScanned(false);
-  setShouldShow(!shouldShow);
-}
+const validateIngredient = (ingredient,list) => {
+  // let result = [];
+  let result ="";
+  for(let i = 0; i < list.length; i++){
+    console.log(list[i].name);
+    if (ingredient.includes(list[i].name)){
+      // result.push(list[i]);
+      result=list[i].name
+      break;
+    }
+  }
+  return result;
+};
 
 const selectedListPress = (ingredientObj) => {
   let newList = selectedIngredients.filter((ingredient) => ingredient.id != ingredientObj.id);
@@ -118,7 +158,13 @@ const recentPressHandler = (ingredientObj) => {
         title = "Barcode Scanner" 
         onPress={() => setShouldShow(!shouldShow)}
       />
-      
+      <FlatList
+          data={json}
+          keyExtractor={({ id }, index) => id}
+          renderItem={({ item }) => (
+            <Text>{item.title}</Text>
+          )}
+        />
       <View style={[styles.margins, styles.selected, styles.fontSmall]}>
           <View style={[styles.selectedIngredients, styles.outline]}>
             <ScrollView horizontal={true}>
@@ -171,7 +217,6 @@ const recentPressHandler = (ingredientObj) => {
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
       /> : null}
-      {scanned && <Button title = {'Tap to Return'} onPress ={onPress}/>}
     </View>
   );
 }
