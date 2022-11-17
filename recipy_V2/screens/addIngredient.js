@@ -54,7 +54,7 @@ const getIngredients = async (data) => {
 
 const handleBarCodeScanned = ({type,data}) => {
   setScanned(true);
-  alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   getIngredients(data);
   console.log("CHECK");
   // console.log(json[0]);
