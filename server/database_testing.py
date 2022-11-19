@@ -61,7 +61,7 @@ def NearestNeighbor_Reccomendation():
 
 # Paths to useful directories
 # These are some global vars that  are referenced by a lot of the functions here
-
+# They need to be edited upon deploy
 path_to_cwd =(os.getcwd())
 path_to_datasets= os.path.join(path_to_cwd,"datasets")
 
@@ -77,7 +77,11 @@ end_time = time.time()
 ingredient_data_access_time =end_time-start_time
 
 start_time = time.time()
-recipe_data = pd.read_csv(path_to_central_recipe_data)
+#recipe_data = pd.read_csv(path_to_central_recipe_data)
+#We use the picle fil
+with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
+    recipe_data = pickle.load(file)
+
 end_time = time.time()
 recipe_data_access_time =end_time-start_time
 
@@ -130,7 +134,7 @@ def KMEANS_Reccomendation(query_data,pantry):
     # For each recipe in the query list containing recipes we want recconmendations in we want to return all other recipes in the same cluster.
     return
 
-#Converts a list embeded in a string to a list
+# Converts a list embeded in a string to a list. Used to make A list that has be transformed into a string back into a list.
 def convert_list_string_to_string(list_string):
     
     if list_string =="[]":
@@ -143,25 +147,75 @@ def convert_list_string_to_string(list_string):
         """for i in ingredient_list[1:len(ingredient_list)-1].split(","):
             print(i)
             print(ingredient_data['name'].loc[[i,'vegan']] )"""
+
+def standardize_lookup(lookup):
+    lookup['name']= lookup['name'].apply(lambda x: x.replace("_",""))
+    lookup['name']= lookup['name'].apply(lambda x: x.replace(" ",""))
+    return lookup
+
+# looks up if isVegan in lookup table
+def look_up_isVegan(ingredients_list,lookup):
+    if len(ingredients_list)<1:
+        return 1
+    for ingredient in ingredients_list:
+        isVegan=lookup.loc[lookup['name']==ingredient.strip().replace(" ","")].iloc[0]['vegan']
+        if isVegan==0:
+            return 0
+    return 1
+
+def look_up_isVegetarian(ingredients_list,lookup):
+    if len(ingredients_list)<1:
+        return 1
+    for ingredient in ingredients_list:
+        isVegan=lookup.loc[lookup['name']==ingredient.strip()].iloc[0]['vegetarian']
+        if isVegan==0:
+            return 0
+    return 1
+
+#Save recipe data
+def save_pickle_data(df,name="volatile_central_recipe_data.pkl"):
+    
+    with open(os.path.join(path_to_recipe_data,name), 'wb') as f:
+        pickle.dump(df, f)
+#Load recipe data
+def load_pickle_data(name="central_recipe_data.pkl"):
+    with open(os.path.join(path_to_recipe_data,name), 'rb') as file:
+        return pickle.load(file)
+
 #################################
 #       DRIVER CODE             #
 #################################
 
-# TO DO LIST
-# MAKE A REGRESSION MODEL THAT RECCOMENDS RANGES OF FEATURES
-# MAKE A KMEANS MODEL
-#https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
-#https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+#           TO DO LIST
+# ------------------------------
+# - MAKE A REGRESSION MODEL THAT RECCOMENDS RANGES OF FEATURES
+# - MAKE A KMEANS MODEL
+#
+#           Resources
+#  -----------------------------
+#  https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+#  https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+
+# NOTE: 11/19/22 
+# Need to add dietary restriction cols to data.
+# Make Kmeans reccomendation function. Should abceprt a dataset,list of queries and return the clusters of the queried recipe data
+# Add dietary restriction filter
+# Finalize changes in the Deplyed endpoints.
+
 with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
     recipe_data = pickle.load(file)
 print(recipe_data)
 print(recipe_data.columns)
-print(recipe_data['has_ingredients'])
 print(ingredient_data.columns)
 
-
-
-#Has ingredient
+look_up_ingredient_data = standardize_lookup(ingredient_data) # when using ingredient data as lookup we need to remove all spaces and underscore
+print(look_up_ingredient_data['name'])
+recipe_data['isVegan']= recipe_data['has_ingredients'].apply(lambda x:  look_up_isVegan(x,look_up_ingredient_data))
+print(recipe_data['isVegan'])
+save_pickle_data(recipe_data)
+recipe_data=load_pickle_data('volatile_central_recipe_data.pkl')
+print(recipe_data)
+#Has ingredient Col Generation
 """ingredient_names =ingredient_data['name'].apply(lambda x : x.replace(" ",""))
 ingredient_names =ingredient_names.apply(lambda x : x.replace("_"," "))
 print(ingredient_names)
@@ -183,7 +237,8 @@ print(has_ingredients(raw,ingredient_names))
 recipe_data['has_ingredients'] = recipe_data['INGREDIENTS'].apply(lambda x : has_ingredients(x,ingredient_names))
 recipe_data.to_csv("has_ingredient_recipedata.csv")"""
 
-print()
+
+
 
 # Note every thing should be in grams
 NUMERICAL_COLS = ['CALORIES','FAT','CARBS','PROTEIN']
