@@ -6,6 +6,8 @@ import numpy as np
 import os
 import pandas as pd
 import json
+import pickle
+import sklearn
 
 
 app = Flask(__name__)
@@ -67,21 +69,25 @@ ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
 end_time = time.time()
 ingredient_data_access_time =end_time-start_time
 
+
+#recipe_data = pd.read_csv(path_to_central_recipe_data)
+#We use the pickle file to store our data now
 start_time = time.time()
-recipe_data = pd.read_csv(path_to_central_recipe_data)
+path_to_pickle_databases =os.path.join(path_to_cwd,'pickle_database')
+with open(os.path.join(path_to_pickle_databases,'central_recipe_data.pkl'), 'rb') as file:
+    recipe_data = pickle.load(file)
 end_time = time.time()
 recipe_data_access_time =end_time-start_time
 
 
 def load_recipe_data():
-    recipe_data = pd.read_csv(path_to_central_recipe_data)
+    
     # Testing Search Queries
     recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
     recipe_data = remove_duplicates(recipe_data_with_ingredient_list)
     return recipe_data
 
 def query_recipe_data(query):
-    recipe_data = pd.read_csv(path_to_central_recipe_data)
 
     # Testing Search Queries
     recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
@@ -98,6 +104,24 @@ def query_recipe_data(query):
 
 
 # Endpoints
+
+"""
+search_filter(query,filter): queries databse for search but applies filter over that.
+@param query: search query to be used
+@return: json of search results
+"""
+@app.route('/search/<string:query>/<string:filter>/<string:black_list>')
+def search_filter(query,filter,black_list):
+    data = query_recipe_data(query)
+    # Assume Blacklist is list of strings seperated by commas
+    black_list_filter = ingredient_filter(black_list,data)
+    black_list_filter = np.logical_not(black_list_filter)
+    known_filters = ["isVegan","isKeto","isVegetarian"]
+    if filter in known_filters:
+        data =data[data[filter]==1]
+    data = data[black_list_filter]
+
+    return jsonify(data.to_dict())
 
 """
 search(query): preforms webscraping search saving nothing
@@ -127,6 +151,7 @@ def load_ingredients():
    print("Time taken to retrieve:")
    print(end_time-start_time)
    return jsonify(ingredients)
+
 
 if __name__ == '__main__':
    app.run(port =12345)

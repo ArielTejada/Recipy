@@ -294,5 +294,4 @@ COLORS = ['indigo','green','blue','purple','darkorange']
 # We can score recipes by similarity awarding a point if they have: 
 # 1.indredients in common(1 for each)
 # 2.fit diet => We determine if an ingredient fits a diet based on if all of its ingredients are 'vegan', 'vegitarian', 'keto', ;diabetic, or pescaterian 
-#
-# 
+

@@ -55,31 +55,6 @@ def NearestNeighbor_Reccomendation():
     # (SOURCE) https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.BallTree.html#sklearn.neighbors.BallTree
     return
 
-# Paths to useful directories
-# These are some global vars that  are referenced by a lot of the functions here
-# They need to be edited upon deploy
-path_to_cwd =(os.getcwd())
-path_to_datasets= os.path.join(path_to_cwd,"datasets")
-
-path_to_ingredient_data= os.path.join(path_to_datasets,"Manually Combined Dataset.csv")
-
-path_to_server= os.path.join(path_to_cwd,"server")
-path_to_recipe_data = os.path.join(path_to_server,"recipe_data")
-path_to_central_recipe_data = os.path.join(path_to_recipe_data,"central_recipe_data.csv")
-
-start_time = time.time()
-ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
-end_time = time.time()
-ingredient_data_access_time =end_time-start_time
-
-start_time = time.time()
-#recipe_data = pd.read_csv(path_to_central_recipe_data)
-#We use the picle fil
-with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
-    recipe_data = pickle.load(file)
-
-end_time = time.time()
-recipe_data_access_time =end_time-start_time
 
 def load_recipe_data():
     recipe_data = pd.read_csv(path_to_central_recipe_data)
@@ -149,6 +124,11 @@ def standardize_lookup(lookup):
     lookup['name']= lookup['name'].apply(lambda x: x.replace(" ",""))
     return lookup
 
+################################################
+#
+#   Lookup functions: Used to look up vegan,vegetarian,keto...
+#                                  
+################################################
 # looks up if isVegan in lookup table
 def look_up_isVegan(ingredients_list,lookup):
     if len(ingredients_list)<1:
@@ -163,11 +143,19 @@ def look_up_isVegetarian(ingredients_list,lookup):
     if len(ingredients_list)<1:
         return 1
     for ingredient in ingredients_list:
-        isVegan=lookup.loc[lookup['name']==ingredient.strip()].iloc[0]['vegetarian']
+        isVegan=lookup.loc[lookup['name']==ingredient.strip().replace(" ","")].iloc[0]['vegetarian']
         if isVegan==0:
             return 0
     return 1
 
+def look_up_isKeto(ingredients_list,lookup):
+    if len(ingredients_list)<1:
+        return 1
+    for ingredient in ingredients_list:
+        isVegan=lookup.loc[lookup['name']==ingredient.strip().replace(" ","")].iloc[0]['keto']
+        if isVegan==0:
+            return 0
+    return 1
 #Save recipe data
 def save_pickle_data(df,name="volatile_central_recipe_data.pkl"):
     
@@ -177,6 +165,35 @@ def save_pickle_data(df,name="volatile_central_recipe_data.pkl"):
 def load_pickle_data(name="central_recipe_data.pkl"):
     with open(os.path.join(path_to_recipe_data,name), 'rb') as file:
         return pickle.load(file)
+        
+################################## 
+# Paths to useful directories
+##################################
+
+# These are some global vars that  are referenced by a lot of the functions here
+# They need to be edited upon deploy
+path_to_cwd =(os.getcwd())
+path_to_datasets= os.path.join(path_to_cwd,"datasets")
+
+path_to_ingredient_data= os.path.join(path_to_datasets,"Manually Combined Dataset.csv")
+
+path_to_server= os.path.join(path_to_cwd,"server")
+path_to_recipe_data = os.path.join(path_to_server,"recipe_data")
+path_to_central_recipe_data = os.path.join(path_to_recipe_data,"central_recipe_data.csv")
+
+start_time = time.time()
+ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
+end_time = time.time()
+ingredient_data_access_time =end_time-start_time
+
+start_time = time.time()
+#recipe_data = pd.read_csv(path_to_central_recipe_data)
+#We use the picle fil
+with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
+    recipe_data = pickle.load(file)
+
+end_time = time.time()
+recipe_data_access_time =end_time-start_time
 
 #################################
 #       DRIVER CODE             #
@@ -197,3 +214,9 @@ def load_pickle_data(name="central_recipe_data.pkl"):
 # Make Kmeans reccomendation function. Should abceprt a dataset,list of queries and return the clusters of the queried recipe data
 # Add dietary restriction filter
 # Finalize changes in the Deplyed endpoints.
+
+print(recipe_data)
+print(os.listdir(path_to_recipe_data))
+print(recipe_data.loc[recipe_data['isVegan']==1])
+print(recipe_data.loc[recipe_data['isKeto']==1])
+print(recipe_data.loc[recipe_data['isVegetarian']==1])
