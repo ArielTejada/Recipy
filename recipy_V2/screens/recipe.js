@@ -1,5 +1,6 @@
 import React from "react"
 import {Text, View, Image, ImageBackground, TouchableOpacity, ScrollView} from "react-native";
+import PieChart from "react-native-expo-pie-chart";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import styles from '../styles/recipe-styles'
 
@@ -17,6 +18,35 @@ const recipeDescription = useStoreState(state => state.recipeDescription);
 const headerColor = useStoreState(state => state.headerColor);
 const pageColor = useStoreState(state => state.pageColor);
 const bannerColor = useStoreState(state => state.bannerColor);
+
+let macroNumbers = []
+
+const findMacros = () => {
+  let macroString = currentRecipeMacros;
+  let num = ''
+
+  for (let i = 0; i < macroString.length; i++){
+    if (!isNaN(macroString[i])){
+      num += macroString[i]
+    }
+    if (isNaN(macroString[i])){
+      if(num === '' || num === ' '){
+        continue;
+      }
+      macroNumbers.push(num.trim());
+      num = ''
+    }
+  }
+}
+
+findMacros();
+
+const calories = Number(macroNumbers[0])
+const fat = Number(macroNumbers[1])
+const carbs = Number(macroNumbers[2])
+const protein = Number(macroNumbers[3])
+const totalMacros = fat + carbs + protein;
+const percentages =[[(fat/totalMacros).toFixed(2)], [(carbs/totalMacros).toFixed(2)], [(protein/totalMacros).toFixed(2)]]
 
 /* -------------------- Render Method -------------------- */
   return (
@@ -53,6 +83,33 @@ const bannerColor = useStoreState(state => state.bannerColor);
 
         <Text style={[styles.recipeHeaderText]}>Recipe Macros:</Text>
         <Text style={[styles.recipeDataText]}>{currentRecipeMacros}</Text>
+
+        <View style={[styles.macrosView, styles.outline]}>
+          <View style={[]}>
+            <View style={[styles.macroVisual]}>
+              <Text style={[styles.macroVisualText]}>Fat  {percentages[0] * 100}%   </Text>
+              <View style={[styles.box1]}></View>
+            </View>
+            <View style={[styles.macroVisual]}>
+              <Text style={[styles.macroVisualText]}>Carbs  {percentages[1] * 100}%   </Text>
+              <View style={[styles.box2]}></View>
+            </View>
+            <View style={[styles.macroVisual]}>
+              <Text style={[styles.macroVisualText]}>Protein  {percentages[2] * 100}%   </Text>
+              <View style={[styles.box3]}></View>
+            </View>
+          </View>
+          <View style={[styles.pieChart]}>
+            <PieChart
+              data={[
+                {key: 'Fat', count: percentages[0]*100, color: '#1ED760',},
+                {key: 'Carbs', count: percentages[1]*100, color: '#007ACC',},
+                {key: 'Protein', count: percentages[2]*100, color: '#F52727',},
+              ]}
+              length={100}
+            />
+          </View>
+        </View>
 
         <Text style={[styles.recipeHeaderText]}>Ingredients Required:</Text>
         <Text style={[styles.recipeDataText]}>{ingredientsRequired}</Text>

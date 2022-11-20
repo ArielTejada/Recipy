@@ -42,6 +42,39 @@ export default StyleSheet.create({
         height: height/25,
         backgroundColor: '#2196F3',
     },
+    backButtonSection: {
+        width: width,
+        height: 460 * (width / 3043),
+        backgroundColor: '#2196F3',
+    },
+
+    /* -------------- Images --------------*/
+    backIcon: {
+        width: width/9,
+        height: width/9,
+        tintColor: 'white',
+        top: height/50
+    },
+    banner: {
+        width: width,
+        height: 460 * (width / 3043),     // actual height x (width / actual width)
+        // top: -height/23,
+    },
+    uncheckIcon: {
+        width: wp('6%'),
+        height: hp('4%'),
+        marginHorizontal: wp('2%'),
+        marginVertical: hp('1%')
+    },
+    trashIcon: {
+        width: wp('10%'),
+        height: hp('6%'),
+        marginLeft: width/15
+    },
+    deleteIcon: {
+        width: wp('7%'),
+        height: hp('5%'),
+    },
 
     /* -------------- Position --------------*/
     center: {
@@ -62,6 +95,9 @@ export default StyleSheet.create({
     },
     horizontalMargins:{
         marginHorizontal: width/30,
+    },
+    verticalMargins:{
+        marginVertical: height/100,
     },
     flex: {
         display: 'flex',
@@ -91,21 +127,8 @@ export default StyleSheet.create({
         width: width * .3,
         height: height/10.
     },
-    switch: {
-        transform: [{ scaleX: 1.2 }, { scaleY: 1.2 }]
-    },
 
     /* -------------- Buttons  --------------*/
-    removedElement: {
-        borderWidth: 2,
-        borderRadius: 15,
-        marginHorizontal: width/150,
-        marginVertical: height/200,
-        paddingHorizontal: width/50,
-        marginTop: 2,
-        height: width/12,
-        backgroundColor: '#60DEF7',
-    },
     clearButton: {
         alignItems: 'center',
         justifyContent: 'center',
@@ -115,36 +138,32 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 5,
     },
+    deleteButton: {
+        borderWidth: 1,
+        borderRadius: 5,
+        backgroundColor: '#40AAF2',
+        width: width/2
+    },
+    deleteItem: {
+        width: wp('7%'),
+        height: hp('5%'),
+        position: 'absolute',
+        left: width/1.2
+    },
     
     /* -------------- Custom  --------------*/
     navView: {
         width: width,
         height: height/5,
     },
-    dietOptions: {
-        alignItems: 'center',
-    },
-    selectedIngredients : {
-        width: width - RFPercentage(4),
-        height: width / 10,
+    shoppingList: {
+        marginVertical: height/80
     },
     input : {
         backgroundColor: 'white',
-        width: width/1.3,
+        width: width/1.67,
         height: height/15,
         fontSize: RFPercentage(3),
-    },
-    searchBar: {
-
-    },
-    searchElement: {
-        width: width/2,
-        textAlign: 'center',
-        alignItems: 'center'
-    },
-    searchPushUp: {
-        width: width/2,
-        height: height/2
     },
 
 })

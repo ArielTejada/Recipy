@@ -29,6 +29,10 @@ export default StyleSheet.create({
     recipeDataText: {
         fontSize: RFPercentage(2.5),
     },
+    macroVisualText: {
+        fontFamily: 'AmaticSC-Bold',
+        fontSize: RFPercentage(3),
+    },
 
     /* -------------- Headers --------------*/
     backButtonSection: {
@@ -80,6 +84,17 @@ export default StyleSheet.create({
         height: height/25,
         backgroundColor: 'white',
     },
+    macroVisual: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginLeft: wp('5%'),
+        marginTop: hp('1%')
+    },
+    pieChart: {
+        position: 'absolute',
+        left: wp('60%'),
+        top: hp('1%')
+    },
 
     /* -------------- Styling --------------*/
     outline: {
@@ -95,7 +110,12 @@ export default StyleSheet.create({
         width: width,
         height: height
     },
-    
+    macrosView: {
+        width: width/1.12,
+        height: height/6,
+        marginLeft: 0,
+        margin: 0
+    },
     /* -------------- Buttons --------------*/
 
     
@@ -106,5 +126,26 @@ export default StyleSheet.create({
     },
     recipeCard: {
 
+    },
+    box1: {
+        backgroundColor: '#1ED760',
+        width: wp('3%'),
+        height: hp('2%'),
+        marginTop: hp('1.5%'),
+        marginLeft: wp('2%')
+    },
+    box2: {
+        backgroundColor: '#007ACC',
+        width: wp('3%'),
+        height: hp('2%'),
+        marginTop: hp('1.5%'),
+        marginLeft: wp('2%')
+    },
+    box3: {
+        backgroundColor: '#F52727',
+        width: wp('3%'),
+        height: hp('2%'),
+        marginTop: hp('1.5%'),
+        marginLeft: wp('2%')
     },
 })

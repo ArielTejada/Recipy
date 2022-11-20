@@ -11,6 +11,7 @@ import Settings from '../screens/settings'
 import Favorite from '../screens/favorite'
 import Pantry from '../screens/pantry'
 import AddStack from "./addStack";
+import ShoppingList from "../screens/shoppingList";
 
 const Tab = createBottomTabNavigator();
 
@@ -94,8 +95,8 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
                 name="Favorite" 
                 component={Favorite} 
                 options={{
-                tabBarIcon: ({focused}) => (
-                    <View>
+                    tabBarIcon: ({focused}) => (
+                        <View>
                         <Image
                             source={require('../icons/heart3-black.png')}
                             resizeMode='contain'
@@ -108,6 +109,28 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
                             }}
                         />
                         <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Favorite</Text>
+                    </View>
+                )
+            }}/>
+
+            <Tab.Screen 
+                name="ShoppingList" 
+                component={ShoppingList} 
+                options={{
+                tabBarIcon: ({focused}) => (
+                    <View>
+                        <Image
+                            source={require('../icons/list9.png')}
+                            resizeMode='contain'
+                            style={{
+                                width: 25,
+                                height: 25,
+                                justifyContent: 'center',
+                                alignSelf: 'center',
+                                tintColor: focused ? navIconFocusedColor : navIconNotFocusedColor
+                            }}
+                        />
+                        <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Groceries</Text>
                     </View>
                 )
             }}/>

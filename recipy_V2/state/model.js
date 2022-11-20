@@ -5716,6 +5716,7 @@ export default {
                 "pescatarian ": "FALSE"
             }
         ],
+    removedIngredients: [],
     selectedIngredients: [],
     refresh: false,
     categoryList: [],
@@ -5726,6 +5727,7 @@ export default {
     recentlyUsed: [],
 
     allRecipes: [],
+    dietOption: 'Default',
     
     
     /* -------------------- Actions -------------------- */
@@ -5759,7 +5761,24 @@ export default {
             state.recentlyUsed.pop();
         }
     }),
+    setDietOption: action((state, option) => {
+        state.dietOption = option;
+    }),
+    setRemovedIngredients:  action((state, list) => {
+        state.removedIngredients = list;
+    }),
     
+
+    /* -------------------- Shopping List -------------------- */
+    shoppingList: [],
+    setShoppingList: action((state, list) => {
+        state.shoppingList = list;
+    }),
+
+    purchasedList: [],
+    setPurchasedList: action((state, list) => {
+        state.purchasedList = list;
+    }),
     
     /* -------------------- Generate Recipes -------------------- */
     Recipes: [],
@@ -5874,3 +5893,10 @@ bannerDark: '#A4A9AD',
 bannerHalloween: '#09FF00',
 bannerColor: 'white',
 }
+
+
+{/* <LinearGradient
+colors={['#EB36E3', '#6520CB', '#2724C2', '#1D82F4']}
+style={[{width: 200, height: 200, justifyContent: 'center', marginHorizontal: '25%'}]}
+>
+</LinearGradient> */}

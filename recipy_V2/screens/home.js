@@ -134,6 +134,7 @@ export default function Home({navigation}) {
     setRefresh(!refresh);
     if (newList.length == 0){
       setGenerateRecipes();
+      setRecievedData(false);
     }
     setRefresh(!refresh);
     console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
