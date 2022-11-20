@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import {Text, View, Switch, Pressable, ScrollView, TextInput, Keyboard, FlatList, TouchableOpacity} from "react-native";
+import {Text, View, Switch, Pressable, ScrollView, TextInput, Keyboard, FlatList, TouchableOpacity, KeyboardAvoidingView} from "react-native";
 import styles from '../styles/settings-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
 import { LinearGradient } from 'expo-linear-gradient';
 import SelectDropdown from "react-native-select-dropdown";
 import matchFunction from "../components/matchFunction";
 import { SearchBar } from "react-native-screens";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 export default function Settings() {
 
@@ -67,11 +68,13 @@ export default function Settings() {
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
       <Pressable 
-        keyboardShouldPersistTaps='always'
+        keyboardShouldPersistTaps={'always'}
         onPress={() => {Keyboard.dismiss();}}
         style={[styles.wholeScreen]}
       >
-      <ScrollView>
+      <ScrollView
+        keyboardShouldPersistTaps={'always'}
+      >
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
@@ -194,17 +197,20 @@ export default function Settings() {
         <View style={[{alignItems: 'center', zIndex: 2}]}>
           {searching ? 
           <View>
-          <ScrollView style={[styles.searchBar]}>
-              {filteredArray.map((ingredient) => {
-                  return (
-                      <View key={ingredient.id}>
-                          <TouchableOpacity onPress={() => {removePressHandler({...ingredient})}} style={[styles.outline, styles.searchResult]}>
-                              <Text style={[styles.AmaticSCRegular, styles.fontMedium, styles.searchElement]}>{ingredient.name.replace('_', ' ')}</Text>  
-                          </TouchableOpacity>
-                      </View>         
-                  )})}
-          </ScrollView> 
-          <View style={[styles.searchPushUp]}></View>
+            <ScrollView 
+              style={[styles.searchBar]}
+              keyboardShouldPersistTaps={'always'}
+            >
+                {filteredArray.map((ingredient) => {
+                    return (
+                        <View key={ingredient.id}>
+                            <TouchableOpacity onPress={() => {removePressHandler({...ingredient})}} style={[styles.outline, styles.searchResult]}>
+                                <Text style={[styles.AmaticSCRegular, styles.fontMedium, styles.searchElement]}>{ingredient.name.replace('_', ' ')}</Text>  
+                            </TouchableOpacity>
+                        </View>         
+                    )})}
+            </ScrollView> 
+            <View style={[styles.searchPushUp]}></View>
           </View> : <Text></Text>}          
             
         </View>

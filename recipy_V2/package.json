@@ -25,6 +25,7 @@
     "react-dom": "18.0.0",
     "react-native": "0.69.6",
     "react-native-expo-pie-chart": "^1.0.0",
+    "react-native-keyboard-aware-scroll-view": "^0.9.5",
     "react-native-pie": "^1.1.2",
     "react-native-responsive-fontsize": "^0.5.1",
     "react-native-responsive-screen": "^1.4.2",

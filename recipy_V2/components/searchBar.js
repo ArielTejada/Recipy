@@ -68,7 +68,10 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
             <View style={[{alignItems: 'center', zIndex: 2}]}>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
-                <ScrollView style={[styles.searchBar]}>
+                <ScrollView 
+                    style={[styles.searchBar]}
+                    keyboardShouldPersistTaps={'always'}
+                >
                     {filteredArray.map((ingredient) => {
                         return (
                             <View key={ingredient.id}>

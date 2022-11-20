@@ -31,6 +31,9 @@ export default StyleSheet.create({
         fontSize: RFPercentage(7),
         textAlign: 'center',
     },
+    deleteButtonText: {
+        width: width/4
+    },
 
     /* -------------- Headers --------------*/
     header: {
@@ -69,7 +72,7 @@ export default StyleSheet.create({
     trashIcon: {
         width: wp('10%'),
         height: hp('6%'),
-        marginLeft: width/15
+        marginVertical: height/100
     },
     deleteIcon: {
         width: wp('7%'),
@@ -141,8 +144,7 @@ export default StyleSheet.create({
     deleteButton: {
         borderWidth: 1,
         borderRadius: 5,
-        backgroundColor: '#40AAF2',
-        width: width/2
+        width: width/3
     },
     deleteItem: {
         width: wp('7%'),
