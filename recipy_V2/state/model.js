@@ -5727,7 +5727,7 @@ export default {
     recentlyUsed: [],
 
     allRecipes: [],
-    dietOption: 'Default',
+    dietOption: 'default',
     
     
     /* -------------------- Actions -------------------- */

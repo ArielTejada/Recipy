@@ -145,7 +145,7 @@ const deleteItemsPressHandler = () => {
         <ScrollView>
           {shoppingList.map((item) => {
             return(
-              <View>
+              <View key={uuid.v4()}>
 
                 <View style={[styles.flex]}>
 
@@ -192,7 +192,7 @@ const deleteItemsPressHandler = () => {
         <ScrollView>
         {purchasedList.map((item) => {
             return(
-              <View>
+              <View key={uuid.v4()}>
 
                 <View style={[styles.flex]}>
 

@@ -32,7 +32,8 @@ export default StyleSheet.create({
         textAlign: 'center',
     },
     deleteButtonText: {
-        width: width/4
+        width: width/4,
+        textAlign: 'center'
     },
 
     /* -------------- Headers --------------*/

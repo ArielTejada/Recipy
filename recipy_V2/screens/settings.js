@@ -16,9 +16,6 @@ export default function Settings() {
   const [filteredArray, setFilteredArray] = useState([]);
   const match = matchFunction;
 
-  let addIngredient = {name: '', key: ''}
-  let addDate = null;
-
 /* -------------------- Redux State Variables -------------------- */
   const refresh = useStoreState(state => state.refresh);
   const setRefresh = useStoreActions(actions => actions.setRefresh);
@@ -48,7 +45,7 @@ export default function Settings() {
   const darkSwitch = () => {setDarkEnabled(darkEnabled => !darkEnabled);}
   const halloweenSwitch = () => {setHalloweenEnabled(halloweenEnabled => !halloweenEnabled);}
 
-  const dietaryOptions = ['Default', 'Vegan', 'Vegetarian', 'Keto', 'Diabetic', 'Pescatarian']
+  const dietaryOptions = ['default', 'vegan', 'vegetarian', 'keto', 'diabetic', 'pescatarian']
 
   const removePressHandler = (ingredientObj) => {
     if(removedIngredients.find(ingredient => ingredient.name === ingredientObj.name)) {
@@ -60,7 +57,14 @@ export default function Settings() {
     setSearchText('');
     setSearching(false);
     setRefresh(!refresh);
+    Keyboard.dismiss();
     console.log(`added: ${ingredientObj.name} to removedIngredients`);
+  }
+
+  const selectedListPress = (ingredientObj) => {
+    let newList = removedIngredients.filter((ingredient) => ingredient.name != ingredientObj.name);
+    setRemovedIngredients(newList);
+    console.log(`removed ${ingredientObj.name} from removedIngredients   num removed: ${newList.length}`);
   }
 
 /* -------------------- Render Method -------------------- */
@@ -147,7 +151,7 @@ export default function Settings() {
             borderWidth: 1, 
             borderRadius: 5,
           }}
-          defaultValue={'Default'}
+          defaultValue={'default'}
           data={dietaryOptions}
           onSelect={(selectedItem, index) => {
             console.log(selectedItem, index);

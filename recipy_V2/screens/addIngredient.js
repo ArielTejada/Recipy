@@ -28,6 +28,9 @@ const setGenerateRecipes = useStoreActions(actions => actions.setGenerateRecipes
 const recentlyUsed = useStoreState(state => state.recentlyUsed);
 const setRecentlyUsed = useStoreActions(actions => actions.setRecentlyUsed); 
 
+const dietOption = useStoreState(state => state.dietOption);
+const removedIngredients = useStoreState(state => state.removedIngredients);
+
 /* -------------------- Redux State Colors -------------------- */
 const headerColor = useStoreState(state => state.headerColor);
 const pageColor = useStoreState(state => state.pageColor);
@@ -191,7 +194,10 @@ const recentPressHandler = (ingredientObj) => {
         >
 
           <ScrollView style={[]}>
-            {recentlyUsed.map((ingredient) => {
+            {recentlyUsed.filter((ingredient) => {
+              if(dietOption === "default"){return true}
+              return ingredient[dietOption] === "TRUE"
+            }).filter((ingredient) => removedIngredients.some((item) => item.name === ingredient.name) === false).map((ingredient) => {
               return (
                 <TouchableOpacity 
                   key={ingredient.id} 
