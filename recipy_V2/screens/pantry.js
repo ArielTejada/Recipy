@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { View, TextInput, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView, Pressable, Keyboard } from "react-native";
+import { Button,View, TextInput, Text, TouchableOpacity, Image, ImageBackground, FlatList, ScrollView, Pressable, Keyboard } from "react-native";
 import styles from '../styles/pantry-styles';
 import matchFunction from "../components/matchFunction";
 import { useStoreState, useStoreActions } from "easy-peasy";
 
 /* -------------------- Components -------------------- */
 import { SearchBar } from "react-native-screens";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import * as Notifications from 'expo-notifications';
+
 
 export default function Pantry() {
 
@@ -14,6 +17,12 @@ export default function Pantry() {
   const [searching, setSearching] = useState(false);
   const [filteredArray, setFilteredArray] = useState([]);
   const match = matchFunction;
+  const [filler,setFiller]= useState("");
+  const [text,setText] =useState("change me");
+  const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [date,setDate] = useState(new Date(1666870995000));
+  const [output,setOutput]= useState("");
+  const [time,setTime]=useState(0);
 
   let addIngredient = {name: '', key: ''}
   let addDate = null;
@@ -56,6 +65,50 @@ export default function Pantry() {
     setPantryItems(newPantryList);
   }
 
+  Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+      shouldShowAlert: true,
+      shouldPlaySound: false,
+      shouldSetBadge: false,
+    }),
+  });
+  
+  const showDatePicker = () => {
+    setDatePickerVisibility(true);
+  };
+  
+  const hideDatePicker = () => {
+    setDatePickerVisibility(false);
+  };
+  
+  const handleConfirm = (date) => {
+    console.warn("A date has been picked: ", date);
+    setDate(date);
+    // setOutput(date.getTime());
+    // setTime(date.getTime()-Date.now()-(48*60*60*1000))
+    setTime(date.toLocaleDateString())
+    hideDatePicker();
+  };
+
+  const updateText = () => {
+    setText(filler);
+  }
+  async function schedulePushNotification(filler,time) {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "You've got a notification! 📬",
+        body: 'Your '+ filler +' is expiring in two days! Better use it soon!',
+        data: { data: 'goes here' },
+      },
+      trigger: { 
+        // repeats: false,
+        // weekday: 2,
+        // hour: 4,
+        // minute: 2,
+        seconds:2
+      },
+    });
+  }
   /* -------------------- Render Method -------------------- */
 
   return (
@@ -99,6 +152,15 @@ export default function Pantry() {
                   placeholder=" add expiration"
                   style={[styles.input, styles.outline]}
                 />
+                <Button title="Pick Date" onPress={showDatePicker} />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        minimumDate={Date.now()-24*60*60*1000}
+      />
+      <Button onPress={() =>schedulePushNotification(filler,time)}title="click here">Click me</Button>
                 <Pressable 
                     style={styles.button}
                     onPress={() => {
