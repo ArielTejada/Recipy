@@ -5789,6 +5789,7 @@ export default {
     ingredientsRequired: '',
     recipeDescription: '',
     steps: '',
+    recipeLink: '',
     
     setRecipes: action((state, list) => {
         state.Recipes = list;
@@ -5813,6 +5814,9 @@ export default {
     }),
     setSteps: action((state, steps) => {
         state.steps = steps;
+    }),
+    setRecipeLink: action((state, link) => {
+        state.recipeLink = link;
     }),
 
 /* -------------------- Display Settings -------------------- */
