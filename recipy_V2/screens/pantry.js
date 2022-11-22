@@ -94,7 +94,7 @@ export default function Pantry() {
   const updateText = () => {
     setText(filler);
   }
-  
+
   async function schedulePushNotification(filler,time) {
     await Notifications.scheduleNotificationAsync({
       content: {
@@ -176,7 +176,8 @@ export default function Pantry() {
         minimumDate={Date.now()-24*60*60*1000}
       />
       <Button onPress={() =>schedulePushNotification(filler,time)}title="click here">Click me</Button>
-            <Text>{date.toLocaleDateString()}</Text>
+            {/* <Text>{date.toLocaleDateString()}</Text> */}
+            <Text>{time}</Text>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
                 <FlatList
