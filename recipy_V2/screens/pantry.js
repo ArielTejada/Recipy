@@ -43,6 +43,8 @@ export default function Pantry() {
 
   const enterPressHandler = () => {
     let newPantryItems = pantryItems;
+    console.log("ingredient: " + addIngredient);
+    console.log("date: " +addDate);
     newPantryItems.push({addIngredient, addDate})
     setPantryItems(newPantryItems);
     addIngredient = {name: '', key: ''};
