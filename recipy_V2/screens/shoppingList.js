@@ -88,7 +88,10 @@ const deleteItemsPressHandler = () => {
         </ImageBackground>
       </View> 
 
-    <ScrollView style={[styles.smallMargins]}>
+    <ScrollView 
+      style={[styles.smallMargins]}
+      keyboardShouldPersistTaps={'always'}
+    >
 
       <View style={[styles.outline, styles.settingOption, styles.centerItems]}>
         <Text style={[styles.AmaticSCRegular, styles.fontLarge]}>Shopping List</Text>
@@ -142,13 +145,13 @@ const deleteItemsPressHandler = () => {
         <ScrollView>
           {shoppingList.map((item) => {
             return(
-              <View>
+              <View key={uuid.v4()}>
 
                 <View style={[styles.flex]}>
 
                   <Pressable
                     style={[]}
-                    key={item.id}
+                    key={uuid.v4()}
                     onPress={() => {uncheckPressHandler({...item})}}
                   >
                     <Image
@@ -180,8 +183,6 @@ const deleteItemsPressHandler = () => {
         </ScrollView>
       </View>
 
-      
-
       <View>
         <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Purchased:</Text>
       </View>
@@ -191,12 +192,12 @@ const deleteItemsPressHandler = () => {
         <ScrollView>
         {purchasedList.map((item) => {
             return(
-              <View>
+              <View key={uuid.v4()}>
 
                 <View style={[styles.flex]}>
 
                   <Pressable
-                    key={item.id}
+                    key={uuid.v4()}
                     onPress={() => {checkPressHandler({...item})}}
                   >
                     <Image
@@ -212,34 +213,29 @@ const deleteItemsPressHandler = () => {
 
                   {deleteItems ? 
                   <View style={[styles.deleteItem]}>
-                  <Pressable
-                  style={[]}
-                  key={uuid.v4()}
-                  onPress={() => {deleteCheckPressHandler({...item})}}
-                  >
-                    <Image
-                      source={require('../icons/delete.png')}
-                      style={[styles.deleteIcon]}
+                    <Pressable
+                      style={[]}
+                      key={uuid.v4()}
+                      onPress={() => {deleteCheckPressHandler({...item})}}
+                    >
+                      <Image
+                        source={require('../icons/delete.png')}
+                        style={[styles.deleteIcon]}
                       />
-                  </Pressable>
+                    </Pressable>
                   </View> : null}
 
               </View>
-            
-          )})}
+            )})}
         </ScrollView>
       </View>
 
       <Pressable
-        style={[styles.deleteButton]}
+        style={[styles.deleteButton, { backgroundColor: deleteItems ? '#40AAF2' : '#E42323' }]}
         onPress={() => {deleteItemsPressHandler()}}
       >
         <View style={[styles.flex]}>
-          <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.smallMargins]}>Delete Items</Text>
-          <Image
-            source={require('../icons/trash.png')}
-            style={[styles.trashIcon, styles.smallMargins]}
-          />
+          <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.smallMargins, styles.deleteButtonText]}>{ deleteItems ? 'Done!' : 'Delete Items'}</Text>
         </View>
       </Pressable>
 

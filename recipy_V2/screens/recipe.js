@@ -1,8 +1,8 @@
 import React from "react"
-import {Text, View, Image, ImageBackground, TouchableOpacity, ScrollView} from "react-native";
+import {Text, View, Image, ImageBackground, TouchableOpacity, ScrollView, Pressable, Share, Linking} from "react-native";
 import PieChart from "react-native-expo-pie-chart";
 import { useStoreState, useStoreActions } from "easy-peasy";
-import styles from '../styles/recipe-styles'
+import styles from '../styles/recipe-styles';
 
 export default function Recipe({navigation}) {
 
@@ -13,6 +13,7 @@ const ingredientsRequired = useStoreState(state => state.ingredientsRequired);
 const currentRecipe = useStoreState(state => state.currentRecipe);
 const steps = useStoreState(state => state.steps);
 const recipeDescription = useStoreState(state => state.recipeDescription);
+const recipeLink = useStoreState(state => state.recipeLink);
 
 /* -------------------- Redux State Colors -------------------- */
 const headerColor = useStoreState(state => state.headerColor);
@@ -22,15 +23,14 @@ const bannerColor = useStoreState(state => state.bannerColor);
 let macroNumbers = []
 
 const findMacros = () => {
-  let macroString = currentRecipeMacros;
   let num = ''
 
-  for (let i = 0; i < macroString.length; i++){
-    if (!isNaN(macroString[i])){
-      num += macroString[i]
+  for (let i = 0; i < currentRecipeMacros.length; i++){
+    if (!isNaN(currentRecipeMacros[i])){
+      num += currentRecipeMacros[i]
     }
-    if (isNaN(macroString[i])){
-      if(num === '' || num === ' '){
+    if (isNaN(currentRecipeMacros[i])){
+      if(num === ''){
         continue;
       }
       macroNumbers.push(num.trim());
@@ -43,10 +43,21 @@ findMacros();
 
 const calories = Number(macroNumbers[0])
 const fat = Number(macroNumbers[1])
-const carbs = Number(macroNumbers[2])
-const protein = Number(macroNumbers[3])
+const carbs = Number(macroNumbers[3])
+const protein = Number(macroNumbers[5])
 const totalMacros = fat + carbs + protein;
 const percentages =[[(fat/totalMacros).toFixed(2)], [(carbs/totalMacros).toFixed(2)], [(protein/totalMacros).toFixed(2)]]
+
+
+/* -------------------- Handler Functions -------------------- */
+
+const sendLink = () => {
+  Share.share({
+    message: recipeLink,
+  })
+    .then((result) => console.log(result))
+    .catch((errorMsg) => console.log(errorMsg));
+}
 
 /* -------------------- Render Method -------------------- */
   return (
@@ -117,6 +128,17 @@ const percentages =[[(fat/totalMacros).toFixed(2)], [(carbs/totalMacros).toFixed
         <Text style={[styles.recipeHeaderText]}>Directions:</Text>
         <Text style={[styles.recipeDataText]}>{steps}</Text>
         <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
+
+        <Text style={[styles.recipeHeaderText]}>Link:</Text>
+        <Text style={[styles.link]} onPress={() => Linking.openURL(recipeLink)}>{recipeLink}</Text>
+
+        <Pressable 
+          style={[styles.sendLink, styles.outline]}
+          onPress={() => sendLink()}
+        >
+          <Text style={[styles.sendText]}>Send This Link To A Friend!</Text>
+        </Pressable>
+          
       </View>
 
       <View style={[styles.navView]}></View>

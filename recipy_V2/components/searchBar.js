@@ -15,6 +15,9 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
     const recentlyUsed = useStoreState(state => state.recentlyUsed);
     const setRecentlyUsed = useStoreActions(actions => actions.setRecentlyUsed); 
 
+    const dietOption = useStoreState(state => state.dietOption);
+    const removedIngredients = useStoreState(state => state.removedIngredients);
+
 /* -------------------- State Variables -------------------- */
     const ingredients = useStoreState(state => state.ingredients);
     const match = matchFunction;
@@ -68,8 +71,14 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
             <View style={[{alignItems: 'center', zIndex: 2}]}>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
-                <ScrollView style={[styles.searchBar]}>
-                    {filteredArray.map((ingredient) => {
+                <ScrollView 
+                    style={[styles.searchBar]}
+                    keyboardShouldPersistTaps={'always'}
+                >
+                    {filteredArray.filter((ingredient) => {
+                        if(dietOption === "default"){return true}
+                        return ingredient[dietOption] === "TRUE"
+                    }).filter((ingredient) => removedIngredients.some((item) => item.name === ingredient.name) === false).map((ingredient) => {
                         return (
                             <View key={ingredient.id}>
                                 <TouchableOpacity onPress={() => {searchPressHandler({...ingredient})}} style={[styles.outline, styles.searchResult]}>

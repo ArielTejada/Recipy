@@ -37,6 +37,9 @@ export default StyleSheet.create({
         fontFamily: 'AmaticSC-Bold',
         fontSize: RFPercentage(4),
         textAlign: 'center',
+        backgroundColor: 'white',
+        borderWidth: 1,
+        borderRadius: 10,
     },
 
     /* -------------- Images --------------*/

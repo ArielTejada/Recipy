@@ -33,6 +33,17 @@ export default StyleSheet.create({
         fontFamily: 'AmaticSC-Bold',
         fontSize: RFPercentage(3),
     },
+    sendText:{
+        fontFamily: 'AmaticSC-Bold',
+        fontSize: RFPercentage(4),
+        textAlign: 'center',
+        paddingHorizontal: width/100,
+    },
+    link: {
+        textDecorationLine: 'underline',
+        color: '#2196F3',
+        fontSize: RFPercentage(2.5)
+    },
 
     /* -------------- Headers --------------*/
     backButtonSection: {
@@ -117,7 +128,12 @@ export default StyleSheet.create({
         margin: 0
     },
     /* -------------- Buttons --------------*/
-
+    sendLink: {
+        width: width/1.8,
+        height: height/15,
+        marginVertical: height/50,
+        backgroundColor: "#39CD7B"
+    },
     
     /* -------------- Custom  --------------*/
     navView: {
