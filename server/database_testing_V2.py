@@ -118,7 +118,7 @@ def KMEANS_Reccomendation(query_data,pantry):
     # We can make this into a function that works on arbitary samples by replacing sample_data with parameter of favorited users
     # Will need way to select data from database
     
-    query_based_data = mass_get_recipe_data(query_data)
+    query_based_data = mass_get_recipe_data(query_data) # FInish this function and test it!
     pantry_based_data = mass_query_recipe_data(pantry)
 
     sample_data = query_data.concat([query_based_data,pantry_based_data])
