@@ -3,6 +3,7 @@ import { Button,View, TextInput, Text, TouchableOpacity, Image, ImageBackground,
 import styles from '../styles/pantry-styles';
 import matchFunction from "../components/matchFunction";
 import { useStoreState, useStoreActions } from "easy-peasy";
+import uuid from 'react-native-uuid';
 
 /* -------------------- Components -------------------- */
 import { SearchBar } from "react-native-screens";
@@ -23,10 +24,10 @@ export default function Pantry() {
   // const [date,setDate] = useState(new Date(1666870995000));
   const [date,setDate] = useState(new Date());
   const [output,setOutput]= useState("");
-  const [time,setTime]=useState(0);
+  const [time,setTime]=useState('');
 
-  let addIngredient = {name: '', key: ''}
-  let addDate = null;
+  const [addIngredient, setAddIngredient] = useState('')
+  const [addDate, setAddDate] = useState('')
 
 /* -------------------- Redux State Variables -------------------- */
   const refresh = useStoreState(state => state.refresh);
@@ -42,23 +43,33 @@ export default function Pantry() {
   const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
-  const ingredientPressHandler = (name, key) => {  
+  const ingredientPressHandler = (name) => {  
     Keyboard.dismiss();
-    addIngredient.name = name;
-    addIngredient.key = key;
+    setAddIngredient(name);
     setSearchText(name);
     setSearching(false);
     setRefresh(!refresh);
   }
 
   const enterPressHandler = () => {
-    let newPantryItems = pantryItems;
-    console.log("ingredient: " + addIngredient);
-    console.log("date: " +addDate);
-    newPantryItems.push({addIngredient, addDate})
-    setPantryItems(newPantryItems);
-    addIngredient = {name: '', key: ''};
-    addDate = null;
+    if(addIngredient != '' && addDate != ''){
+      if(pantryItems.find(ingredient => ingredient.name === addIngredient)) { 
+        setAddIngredient('');
+        setAddDate('');
+        setSearchText('');
+        setSearching(false);
+        return;
+      }
+      let newPantryItems = pantryItems;
+      console.log("adding: ", addIngredient, ' ', addDate);
+      newPantryItems.push({'name': addIngredient, 'date': addDate, 'key': uuid.v4()})
+      setPantryItems(newPantryItems);
+      setAddIngredient('');
+      setAddDate('');
+      setSearchText('');
+      setSearching(false);
+    }
+  return;
   }
 
   const pantryPressHandler = (key) => {
@@ -85,6 +96,7 @@ export default function Pantry() {
   const handleConfirm = (date) => {
     // console.warn("A date has been picked: ", date);
     setDate(date);
+    setAddDate(date.toLocaleDateString());
     // setOutput(date.getTime());
     // setTime(date.getTime()-Date.now()-(48*60*60*1000))
     setTime(date.toLocaleDateString())
@@ -133,10 +145,8 @@ export default function Pantry() {
       </View>
 
       <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
-      <SearchBar/>
 
       <View>  
-
         <View style={styles.container}>
           <TextInput
             placeholder=' add ingredient'
@@ -144,93 +154,79 @@ export default function Pantry() {
             value={searchText}
             onChangeText={(text) => {
                 setSearchText(text);
-                text === '' ? (setSearching(false), addIngredient = {name: '', key: ''}): setSearching(true);
+                text === '' ? (setSearching(false), setAddIngredient('')) : setSearching(true);
                 text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
             }}
             searchText={searchText}
             setSearchText={setSearchText}
           />
-          <TextInput
-            placeholder=" add expiration"
+
+          <Pressable
             style={[styles.input, styles.outline]}
-          />
+            onPress={showDatePicker}
+          >
+             <Text style={[styles.fontSmall, {color: addDate === '' ? '#9E9E9E' : 'black'}]}> {addDate === '' ? 'add expiration' : addDate}</Text>
+          </Pressable>
+         
           <Pressable 
             style={styles.button}
             onPress={() => {
-                setSearchText('');
-                setSearching(false);
-                enterPressHandler();
+              enterPressHandler();
             }}
           >
               <Text style={styles.clear}>Enter</Text>
           </Pressable>
         </View>
+      </View>
 
-          <View>
-            {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
-            {searching ? 
-            <FlatList
-              keyboardShouldPersistTaps='always'
-              data={filteredArray}
-              renderItem={({ item }) => (
-                <View>
-                  <TouchableOpacity
-                    onPress={() => {
-                        ingredientPressHandler(item.name, item.key);
-                    }}
-                >
-                    <Text style={styles.clear}>Enter</Text>
-                </Pressable>
-            </View>
 
-            <View>
-            <Button title="Pick Date" onPress={showDatePicker} />
+      <View style={[{alignItems: 'center', zIndex: 2}]}>
+        {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
+        {searching ? 
+        <ScrollView 
+            style={[styles.searchBar]}
+            keyboardShouldPersistTaps={'always'}
+        >
+          {filteredArray.map((ingredient) => {
+            return (
+              <View key={ingredient.id}>
+                <TouchableOpacity onPress={() => {ingredientPressHandler(ingredient.name)}} style={[styles.outline, styles.searchResult]}>
+                    <Text style={[styles.AmaticSCBold, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
+                </TouchableOpacity>
+              </View>         
+            )})}
+        </ScrollView> : <Text></Text>}          
+      </View>
+
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
-        minimumDate={Date.now()-24*60*60*1000}
+        // minimumDate={Date.now()-24*60*60*1000}
       />
-      <Button onPress={() =>schedulePushNotification(filler,time)}title="click here">Click me</Button>
-            {/* <Text>{date.toLocaleDateString()}</Text> */}
-            <Text>{time}</Text>
-                {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
-                {searching ? 
-                <FlatList
-                    keyboardShouldPersistTaps='always'
-                    data={filteredArray}
-                    renderItem={({ item }) => (
-                        <View>
-                            <TouchableOpacity
-                                onPress={() => {
-                                    ingredientPressHandler(item.name, item.key);
-                                }}
-                            >
-                               <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.margins, styles.fontMedium]}>{item.name.replace('_', ' ')}</Text> 
-                            </TouchableOpacity>
-                        </View>             
-                    )}
-                /> : <Text></Text>}
-            </View>
-                  >
-                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.margins, styles.fontMedium]}>{item.name.replace('_', ' ')}</Text> 
-                  </TouchableOpacity>
-                </View>             
-              )}
-            /> : <Text></Text>}
-          </View>
 
 
-        </View>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {/* ------------------------------------ Visual Pantry ------------------------------------ */}
 
         <View>
-
           <ImageBackground
             source={require('../img/pantry.png')}
             style={[styles.pantryImage]}
           >
-
             <ScrollView style={[styles.jarsMargin]}>
               <View style={[{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}]}>
                 {pantryItems.map((ingredient) => {
@@ -240,16 +236,14 @@ export default function Pantry() {
                       source={require('../img/glassjar.png')}
                       style={[styles.jar]}
                     >
-                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.name.replace('_', ' ')}</Text>
-                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.date.replace('_', ' ')}</Text>
+                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.name}</Text>
+                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.date}</Text>
                     </ImageBackground>
                   </TouchableOpacity>)
                 })}
               </View>
             </ScrollView>
-
           </ImageBackground>
-
         </View>
 
         </Pressable>

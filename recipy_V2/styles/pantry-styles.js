@@ -16,6 +16,12 @@ export default StyleSheet.create({
     fontLarge: {
         fontSize: RFPercentage(5)
     },
+    AmaticSCRegular: {
+        fontFamily: 'AmaticSC-Regular'
+    },
+    AmaticSCBold: {
+        fontFamily: 'AmaticSC-Bold'
+    },
     textCenter: {
         textAlignVertical: 'center',
         textAlign: 'center',
@@ -67,7 +73,7 @@ export default StyleSheet.create({
     },
     pantryImage: {
         width: width,
-        height: 1700 * (width/1500)
+        height: 1700 * (width/1500),
     },
     jar: {
         width: width/5,
@@ -103,7 +109,8 @@ export default StyleSheet.create({
         width: width/2.5,
         height: height/15,
         fontSize: RFPercentage(3),
-        display: 'flex'
+        display: 'flex',
+        justifyContent: 'center'
     },
     button: {
         alignItems: 'center',
@@ -124,5 +131,10 @@ export default StyleSheet.create({
     clear: {
         fontSize: RFPercentage(3),
         color: 'white',
+    },
+    searchArea: {
+        width: width,
+        height: height/3,
+        backgroundColor: 'white',
     },
 })
