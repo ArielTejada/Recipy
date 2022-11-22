@@ -20,7 +20,8 @@ export default function Pantry() {
   const [filler,setFiller]= useState("");
   const [text,setText] =useState("change me");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-  const [date,setDate] = useState(new Date(1666870995000));
+  // const [date,setDate] = useState(new Date(1666870995000));
+  const [date,setDate] = useState(new Date());
   const [output,setOutput]= useState("");
   const [time,setTime]=useState(0);
 
@@ -82,7 +83,7 @@ export default function Pantry() {
   };
   
   const handleConfirm = (date) => {
-    console.warn("A date has been picked: ", date);
+    // console.warn("A date has been picked: ", date);
     setDate(date);
     // setOutput(date.getTime());
     // setTime(date.getTime()-Date.now()-(48*60*60*1000))
@@ -93,6 +94,7 @@ export default function Pantry() {
   const updateText = () => {
     setText(filler);
   }
+  
   async function schedulePushNotification(filler,time) {
     await Notifications.scheduleNotificationAsync({
       content: {
@@ -152,15 +154,6 @@ export default function Pantry() {
                   placeholder=" add expiration"
                   style={[styles.input, styles.outline]}
                 />
-                <Button title="Pick Date" onPress={showDatePicker} />
-      <DateTimePickerModal
-        isVisible={isDatePickerVisible}
-        mode="date"
-        onConfirm={handleConfirm}
-        onCancel={hideDatePicker}
-        minimumDate={Date.now()-24*60*60*1000}
-      />
-      <Button onPress={() =>schedulePushNotification(filler,time)}title="click here">Click me</Button>
                 <Pressable 
                     style={styles.button}
                     onPress={() => {
@@ -174,6 +167,16 @@ export default function Pantry() {
             </View>
 
             <View>
+            <Button title="Pick Date" onPress={showDatePicker} />
+      <DateTimePickerModal
+        isVisible={isDatePickerVisible}
+        mode="date"
+        onConfirm={handleConfirm}
+        onCancel={hideDatePicker}
+        minimumDate={Date.now()-24*60*60*1000}
+      />
+      <Button onPress={() =>schedulePushNotification(filler,time)}title="click here">Click me</Button>
+            <Text>{date.toLocaleDateString()}</Text>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
                 <FlatList
