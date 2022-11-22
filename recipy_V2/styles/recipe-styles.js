@@ -129,7 +129,7 @@ export default StyleSheet.create({
     },
     /* -------------- Buttons --------------*/
     sendLink: {
-        width: width/1.8,
+        width: width/1.5,
         height: height/15,
         marginVertical: height/50,
         backgroundColor: "#39CD7B"

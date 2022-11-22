@@ -5720,7 +5720,7 @@ export default {
     selectedIngredients: [],
     refresh: false,
     categoryList: [],
-    pantryItems: [{name: 'apple', date: '11/1/22', key: '7'}, {name: 'avacado', date: '11/2/22', key: '8'}],
+    pantryItems: [],
     category: '',
     haveIngredients: false,
     generateColor: '#2196F3',

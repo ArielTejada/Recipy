@@ -68,6 +68,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                     <Text style={styles.text}>clear</Text>
                 </Pressable>
             </View>
+            
             <View style={[{alignItems: 'center', zIndex: 2}]}>
                 {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
@@ -87,9 +88,8 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
                             </View>         
                         )})}
                 </ScrollView> : <Text></Text>}          
-                
-                  
             </View>
+
         </View>
     );
 }
