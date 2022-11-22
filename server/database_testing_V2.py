@@ -57,14 +57,16 @@ def NearestNeighbor_Reccomendation():
 
 
 def load_recipe_data():
-    recipe_data = pd.read_csv(path_to_central_recipe_data)
+    with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
+        recipe_data = pickle.load(file)
     # Testing Search Queries
     recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
     recipe_data = remove_duplicates(recipe_data_with_ingredient_list)
     return recipe_data
 
 def query_recipe_data(query):
-    recipe_data = pd.read_csv(path_to_central_recipe_data)
+    with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
+        recipe_data = pickle.load(file)
 
     # Testing Search Queries
     recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
@@ -79,12 +81,33 @@ def query_recipe_data(query):
     # We can apply this to the original dataframe to filter it down
     return recipe_data_with_ingredient_list[filter]
 
-def mass_query_recipe_data(query_data):
+def mass_query_recipe_data(recipe_data, query_data):
     # Assume query_data is a list
     data = query_recipe_data(query_data[0])
     for q in range(1,len(query_data)):
-        data.concat(data,query_recipe_data(q))
+        pd.concat(data,query_recipe_data(q))
     return data
+
+def get_recipe_data(recipe_data,recipe_ID):
+    return recipe_data.iloc[recipe_ID]
+
+def mass_get_recipe_data(query_data):
+    
+    query_list = query_data.split(',')
+    data = get_recipe_data(query_list[0])
+    if len(query_list)>1:
+        for i in range(2,len(query_list)):
+            pd.concat([data,get_recipe_data(query_list[i])])
+    return 
+
+#
+#   KMEANS_Reccomendation(query_data,pantry):
+#
+#       query_data  : comma seperated list of recipes
+#       pantry      : comma seperated list of pantry ingredients
+#
+#       Returns     : A dictionary with reccomendations corresponding to the index.
+#                     example: dict[query_data[0]] = {list of recipes recomended based on query_data[0]}
 
 def KMEANS_Reccomendation(query_data,pantry):
     # Note every thing should be in grams
@@ -94,10 +117,11 @@ def KMEANS_Reccomendation(query_data,pantry):
 
     # We can make this into a function that works on arbitary samples by replacing sample_data with parameter of favorited users
     # Will need way to select data from database
-    mass_query_recipe_data
+    
+    query_based_data = mass_get_recipe_data(query_data)
+    pantry_based_data = mass_query_recipe_data(pantry)
 
-    pantry_based_data = query_recipe_data
-
+    sample_data = query_data.concat([query_based_data,pantry_based_data])
     #sample_data = # Data we are using to do K means
     sample_model = KMeans(3, random_state=0).fit(sample_data[NUMERICAL_COLS])
     sample_data['LABEL'] = sample_model.predict(sample_data)
@@ -188,7 +212,7 @@ ingredient_data_access_time =end_time-start_time
 
 start_time = time.time()
 #recipe_data = pd.read_csv(path_to_central_recipe_data)
-#We use the picle fil
+#We use the pickle file to store our data now
 with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
     recipe_data = pickle.load(file)
 
