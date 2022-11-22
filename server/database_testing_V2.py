@@ -64,9 +64,7 @@ def load_recipe_data():
     recipe_data = remove_duplicates(recipe_data_with_ingredient_list)
     return recipe_data
 
-def query_recipe_data(query):
-    with open(os.path.join(path_to_recipe_data,'central_recipe_data.pkl'), 'rb') as file:
-        recipe_data = pickle.load(file)
+def query_recipe_data(recipe_data,query):
 
     # Testing Search Queries
     recipe_data_with_ingredient_list =get_ingredients_list(recipe_data)
@@ -83,22 +81,21 @@ def query_recipe_data(query):
 
 def mass_query_recipe_data(recipe_data, query_data):
     # Assume query_data is a list
-    data = query_recipe_data(query_data[0])
+    data = query_recipe_data(recipe_data,query_data[0])
     for q in range(1,len(query_data)):
-        pd.concat(data,query_recipe_data(q))
+        pd.concat([data,query_recipe_data(recipe_data,query_data[q])], axis=1)
     return data
 
 def get_recipe_data(recipe_data,recipe_ID):
+    recipe_ID = int(recipe_ID)
     return recipe_data.iloc[recipe_ID]
 
-def mass_get_recipe_data(query_data):
+def mass_get_recipe_data(recipe_data,query_data):
     
     query_list = query_data.split(',')
-    data = get_recipe_data(query_list[0])
-    if len(query_list)>1:
-        for i in range(2,len(query_list)):
-            pd.concat([data,get_recipe_data(query_list[i])])
-    return 
+    query_list = list(map(int, query_list))
+    data = recipe_data.iloc[query_list]
+    return data
 
 #
 #   KMEANS_Reccomendation(query_data,pantry):
@@ -109,7 +106,7 @@ def mass_get_recipe_data(query_data):
 #       Returns     : A dictionary with reccomendations corresponding to the index.
 #                     example: dict[query_data[0]] = {list of recipes recomended based on query_data[0]}
 
-def KMEANS_Reccomendation(query_data,pantry):
+def KMEANS_Reccomendation(query_data,pantry,recipe_data):
     # Note every thing should be in grams
     NUMERICAL_COLS = ['CALORIES','FAT','CARBS','PROTEIN']
     
@@ -118,16 +115,21 @@ def KMEANS_Reccomendation(query_data,pantry):
     # We can make this into a function that works on arbitary samples by replacing sample_data with parameter of favorited users
     # Will need way to select data from database
     
-    query_based_data = mass_get_recipe_data(query_data) # FInish this function and test it!
-    pantry_based_data = mass_query_recipe_data(pantry)
-
-    sample_data = query_data.concat([query_based_data,pantry_based_data])
-    #sample_data = # Data we are using to do K means
+    query_based_data = mass_get_recipe_data(recipe_data,query_data) # FInished
+    pantry_based_data = mass_query_recipe_data(recipe_data,pantry)  # FInish this function and test it!
+    sample_data = pd.concat([query_based_data,pantry_based_data])
+    # Data we are using to do K means
+    #sample_data = sample_data[NUMERICAL_COLS]
     sample_model = KMeans(3, random_state=0).fit(sample_data[NUMERICAL_COLS])
-    sample_data['LABEL'] = sample_model.predict(sample_data)
+    sample_data['LABEL'] = sample_model.predict(sample_data[NUMERICAL_COLS])
 
     # For each recipe in the query list containing recipes we want recconmendations in we want to return all other recipes in the same cluster.
-    return
+    reccomendations = dict()
+    for q in query_data.split(','):
+        #Look up the cluster of q and set it equal to the value at index q.
+        q =int(q)
+        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']]['TITLE'].to_list()
+    return reccomendations
 
 # Converts a list embeded in a string to a list. Used to make A list that has be transformed into a string back into a list.
 def convert_list_string_to_string(list_string):
@@ -239,8 +241,15 @@ recipe_data_access_time =end_time-start_time
 # Add dietary restriction filter
 # Finalize changes in the Deplyed endpoints.
 
-print(recipe_data)
-print(os.listdir(path_to_recipe_data))
-print(recipe_data.loc[recipe_data['isVegan']==1])
-print(recipe_data.loc[recipe_data['isKeto']==1])
-print(recipe_data.loc[recipe_data['isVegetarian']==1])
+#print(recipe_data)
+#print(os.listdir(path_to_recipe_data))
+
+pantry_data =["onion","pork"]
+query_data ="12,13,5"
+# print(mass_query_recipe_data(recipe_data,pantry_data))
+# print(mass_get_recipe_data(recipe_data,query_data))
+
+reccomendation =(KMEANS_Reccomendation(query_data,pantry_data,recipe_data))
+for r in reccomendation.keys():
+    print(r)
+    print(reccomendation[r])
