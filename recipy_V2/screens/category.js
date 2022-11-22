@@ -15,6 +15,9 @@ export default function Category({navigation}) {
   const refresh = useStoreState(state => state.refresh);
   const setRefresh = useStoreActions(actions => actions.setRefresh);
 
+  const dietOption = useStoreState(state => state.dietOption);
+  const removedIngredients = useStoreState(state => state.removedIngredients);
+
 /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState(state => state.headerColor);
   const pageColor = useStoreState(state => state.pageColor);
@@ -122,7 +125,10 @@ const selectedListPress = (ingredientObj) => {
 
         <ScrollView style={[styles.ingredientMargins]}>
           <View style={[styles.flexRow, styles.centerItems]}>
-            {categoryList.map((ingredient) => {
+            {categoryList.filter((ingredient) => {
+              if(dietOption === "default"){return true}
+              return ingredient[dietOption] === "TRUE"
+            }).filter((ingredient) => removedIngredients.some((item) => item.name === ingredient.name) === false).map((ingredient) => {
               return (
               <TouchableOpacity 
                 key={ingredient.id}

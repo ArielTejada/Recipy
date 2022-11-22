@@ -30,11 +30,15 @@ export default function Home({navigation}) {
   const setIngredientsRequired = useStoreActions(actions => actions.setIngredientsRequired); 
   const setRecipeDescription = useStoreActions(actions => actions.setRecipeDescription); 
   const setSteps = useStoreActions(actions => actions.setSteps); 
+  const setRecipeLink = useStoreActions(actions => actions.setRecipeLink); 
   
   const generateColor = useStoreState(state => state.generateColor);
   const haveIngredients = useStoreState(state => state.haveIngredients);
   const generateRecipes = useStoreState(state => state.generateRecipes);
   const setGenerateRecipes = useStoreActions(actions => actions.setGenerateRecipes); 
+
+  const dietOption = useStoreState(state => state.dietOption);
+  const removedIngredients = useStoreState(state => state.removedIngredients);
 
 /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState(state => state.headerColor);
@@ -66,8 +70,8 @@ export default function Home({navigation}) {
     }
     if(haveIngredients && !generateRecipes){
       let ingredientString = returnIngredientString(selectedIngredients, 'name')
-      setGenerateRecipes();
       await getRecipes(ingredientString);
+      setGenerateRecipes();
       setRecievedData(true);
     }
     return;
@@ -81,13 +85,14 @@ export default function Home({navigation}) {
     return output.join(",");
   }
 
-  const recipePressHandler = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...') => {
+  const recipePressHandler = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...', link='Loading...') => {
     setCurrentRecipeTitle(title);
     setRecipeDescription(desc);
     setCurrentRecipeMacros(macros);
     setIngredientsRequired(reqs);
     setSteps(steps);
     setCurrentRecipe(recipe);
+    setRecipeLink(link);
     navToRecipe();
   }
 
@@ -134,6 +139,7 @@ export default function Home({navigation}) {
     setRefresh(!refresh);
     if (newList.length == 0){
       setGenerateRecipes();
+      setRecievedData(false);
     }
     setRefresh(!refresh);
     console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
@@ -288,7 +294,6 @@ export default function Home({navigation}) {
                   </ImageBackground>
                 </Pressable> */}
               
-              
               {Object.values(Recipes["TITLE"]).map((recipe, index) => {
                 return(
                   <Pressable 
@@ -298,13 +303,14 @@ export default function Home({navigation}) {
                       Object.values(Recipes["TITLE"])[index], 
                       Object.values(Recipes["DESCRIPTION"])[index], 
                       Object.values(Recipes["MACROS"])[index].split("\n").join(" ").split(",").join(", "), 
-                      Object.values(Recipes["has_ingredients"])[index].split("['").join("").split("']").join("").split("'").join(""), 
+                      Object.values(Recipes["has_ingredients"])[index], 
                       Object.values(Recipes["INGREDIENTS"])[index], 
-                      Object.values(Recipes["DIRECTIONS"])[index]
+                      Object.values(Recipes["DIRECTIONS"])[index],
+                      Object.values(Recipes["LINK"])[index],
                     )}
                   >
                     <ImageBackground
-                      source={require('../img/recipeBack.png')}
+                      source={require('../img/recipe2.png')}
                       style={[styles.recipeBack]}
                     >
                       <Text style={[styles.recipePressableText]}>{Object.values(Recipes["TITLE"])[index]}</Text>

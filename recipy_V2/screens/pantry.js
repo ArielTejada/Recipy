@@ -132,34 +132,51 @@ export default function Pantry() {
         <Text style={[styles.headerText]}>Pantry</Text>
       </View>
 
-        <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
-        <SearchBar/>
+      <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
+      <SearchBar/>
 
       <View>  
 
-            <View style={styles.container}>
-                <TextInput
-                    placeholder=' add ingredient'
-                    style={[styles.input, styles.outline]}
-                    value={searchText}
-                    onChangeText={(text) => {
-                        setSearchText(text);
-                        text === '' ? (setSearching(false), addIngredient = {name: '', key: ''}): setSearching(true);
-                        text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
-                    }}
-                    searchText={searchText}
-                    setSearchText={setSearchText}
-                />
-                <TextInput
-                  placeholder=" add expiration"
-                  style={[styles.input, styles.outline]}
-                />
-                <Pressable 
-                    style={styles.button}
+        <View style={styles.container}>
+          <TextInput
+            placeholder=' add ingredient'
+            style={[styles.input, styles.outline]}
+            value={searchText}
+            onChangeText={(text) => {
+                setSearchText(text);
+                text === '' ? (setSearching(false), addIngredient = {name: '', key: ''}): setSearching(true);
+                text != '' ? setFilteredArray(match(text.toLowerCase(), ingredients)) : setFilteredArray([]);
+            }}
+            searchText={searchText}
+            setSearchText={setSearchText}
+          />
+          <TextInput
+            placeholder=" add expiration"
+            style={[styles.input, styles.outline]}
+          />
+          <Pressable 
+            style={styles.button}
+            onPress={() => {
+                setSearchText('');
+                setSearching(false);
+                enterPressHandler();
+            }}
+          >
+              <Text style={styles.clear}>Enter</Text>
+          </Pressable>
+        </View>
+
+          <View>
+            {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
+            {searching ? 
+            <FlatList
+              keyboardShouldPersistTaps='always'
+              data={filteredArray}
+              renderItem={({ item }) => (
+                <View>
+                  <TouchableOpacity
                     onPress={() => {
-                        setSearchText('');
-                        setSearching(false);
-                        enterPressHandler();
+                        ingredientPressHandler(item.name, item.key);
                     }}
                 >
                     <Text style={styles.clear}>Enter</Text>
@@ -196,6 +213,14 @@ export default function Pantry() {
                     )}
                 /> : <Text></Text>}
             </View>
+                  >
+                    <Text style={[styles.searchResult, styles.outline, styles.textCenter, styles.margins, styles.fontMedium]}>{item.name.replace('_', ' ')}</Text> 
+                  </TouchableOpacity>
+                </View>             
+              )}
+            /> : <Text></Text>}
+          </View>
+
 
         </View>
 
