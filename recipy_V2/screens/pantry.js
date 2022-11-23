@@ -61,9 +61,10 @@ export default function Pantry() {
         return;
       }
       let newPantryItems = pantryItems;
-      console.log("adding: ", addIngredient, ' ', addDate);
+      console.log("adding: ", addIngredient, ' ', addDate.toLocaleDateString());
       newPantryItems.push({'name': addIngredient, 'date': addDate, 'key': uuid.v4()})
       setPantryItems(newPantryItems);
+      schedulePushNotification(addIngredient, time);
       setAddIngredient('');
       setAddDate('');
       setSearchText('');
@@ -96,7 +97,7 @@ export default function Pantry() {
   const handleConfirm = (date) => {
     // console.warn("A date has been picked: ", date);
     setDate(date);
-    setAddDate(date.toLocaleDateString());
+    setAddDate(date);
     // setOutput(date.getTime());
     // setTime(date.getTime()-Date.now()-(48*60*60*1000))
     setTime(date.toLocaleDateString())
@@ -107,18 +108,18 @@ export default function Pantry() {
     setText(filler);
   }
 
-  async function schedulePushNotification(filler,time) {
+  async function schedulePushNotification(filler, time) {
     await Notifications.scheduleNotificationAsync({
       content: {
-        title: "You've got a notification! 📬",
-        body: 'Your '+ filler +' is expiring in two days! Better use it soon!',
+        title: "Recipy notification! 📬",
+        body: `Your ${filler} is expiring in two days! Expiring on: ${date.toLocaleDateString()}`,
         data: { data: 'goes here' },
       },
       trigger: { 
         // repeats: false,
         // weekday: 2,
         // hour: 4,
-        // minute: 2,
+        // minute: 2,  //Date - Date.now()
         seconds:2
       },
     });
@@ -133,6 +134,7 @@ export default function Pantry() {
         onPress={() => {Keyboard.dismiss();}}
         style={[styles.wholeScreen]}
       >
+      <ScrollView>
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
@@ -144,10 +146,13 @@ export default function Pantry() {
         <Text style={[styles.headerText]}>Pantry</Text>
       </View>
 
+      {/* ------------------------------------ Input Fields ------------------------------------ */}
+
       <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
 
       <View>  
         <View style={styles.container}>
+
           <TextInput
             placeholder=' add ingredient'
             style={[styles.input, styles.outline]}
@@ -165,26 +170,26 @@ export default function Pantry() {
             style={[styles.input, styles.outline]}
             onPress={showDatePicker}
           >
-             <Text style={[styles.fontSmall, {color: addDate === '' ? '#9E9E9E' : 'black'}]}> {addDate === '' ? 'add expiration' : addDate}</Text>
+             <Text style={[styles.fontSmall, {color: addDate === '' ? '#9E9E9E' : 'black'}]}> {addDate === '' ? 'add expiration' : addDate.toLocaleDateString()}</Text>
           </Pressable>
          
           <Pressable 
             style={styles.button}
-            onPress={() => {
-              enterPressHandler();
-            }}
+            onPress={() => {enterPressHandler()}}
           >
-              <Text style={styles.clear}>Enter</Text>
+            <Text style={styles.clear}>Enter</Text>
           </Pressable>
+
         </View>
       </View>
 
+    {/* ------------------------------------ Search Bar ------------------------------------ */}
 
       <View style={[{alignItems: 'center', zIndex: 2}]}>
         {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
         {searching ? 
         <ScrollView 
-            style={[styles.searchBar]}
+            style={[]}
             keyboardShouldPersistTaps={'always'}
         >
           {filteredArray.map((ingredient) => {
@@ -198,46 +203,34 @@ export default function Pantry() {
         </ScrollView> : <Text></Text>}          
       </View>
 
+      {/* ------------------------------------ Date Picker ------------------------------------ */}
+
       <DateTimePickerModal
         isVisible={isDatePickerVisible}
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
-        // minimumDate={Date.now()-24*60*60*1000}
       />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     {/* ------------------------------------ Visual Pantry ------------------------------------ */}
 
         <View>
+          <View style={[]}></View>
           <ImageBackground
-            source={require('../img/pantry.png')}
+            source={require('../img/pantry2.png')}
             style={[styles.pantryImage]}
           >
-            <ScrollView style={[styles.jarsMargin]}>
+            <ScrollView style={[]}>
               <View style={[{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}]}>
                 {pantryItems.map((ingredient) => {
                   return (
-                  <TouchableOpacity style={[styles.jar]} key={ingredient.key} onPress={() => {pantryPressHandler(ingredient.key)}}>
+                  <TouchableOpacity style={[]} key={ingredient.key} onPress={() => {pantryPressHandler(ingredient.key)}}>
                     <ImageBackground
                       source={require('../img/glassjar.png')}
                       style={[styles.jar]}
                     >
-                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.name}</Text>
-                        <Text style={[styles.fontSmall, styles.jarLabel]}>{ingredient.date}</Text>
+                        <Text style={[styles.fontSmall, styles.jarLabel, {backgroundColor: ingredient.date < Date.now() ? 'red' : '#25AEF3'}]}>{ingredient.name.length > 8 ? ingredient.name.slice(0, 8).replace('_', ' ') + '..' : ingredient.name.replace('_', ' ')}</Text>
+                        <Text style={[styles.fontSmall, styles.jarLabel, {backgroundColor: ingredient.date < Date.now() ? 'red' : '#25AEF3'}]}>{ingredient.date.toLocaleDateString()}</Text>
                     </ImageBackground>
                   </TouchableOpacity>)
                 })}
@@ -246,6 +239,8 @@ export default function Pantry() {
           </ImageBackground>
         </View>
 
+        <View style={[styles.navView]}></View>
+        </ScrollView>
         </Pressable>
     </View>
   );

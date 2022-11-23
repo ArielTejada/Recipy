@@ -73,22 +73,23 @@ export default StyleSheet.create({
     },
     pantryImage: {
         width: width,
-        height: 1700 * (width/1500),
+        height: 2682 * (width/1358),
     },
     jar: {
         width: width/5,
         height: (580 * (width/400))/5,
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: height/14,
     },
     jarLabel: {
         width: width/6,
         height: height/25,
-        backgroundColor: '#2196F3',
         textAlignVertical: 'center',
         textAlign: 'center',
         color: 'black',
-        fontSize: RFPercentage(2.5),
+        fontSize: RFPercentage(2.2),
+        borderRadius: 5
     },
 
     /* -------------- Styling --------------*/
@@ -136,5 +137,9 @@ export default StyleSheet.create({
         width: width,
         height: height/3,
         backgroundColor: 'white',
+    },
+    navView: {
+        width: width,
+        height: height/8
     },
 })
