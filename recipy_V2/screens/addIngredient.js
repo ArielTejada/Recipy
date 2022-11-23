@@ -59,23 +59,31 @@ const handleBarCodeScanned = ({type,data}) => {
   setScanned(true);
   alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   getIngredients(data);
-  // console.log("CHECK");
-  // // console.log(json[0]);
-  // setScanned(false);
-  // setShouldShow(!shouldShow);
-  // // console.log(json[0]['title'].toLowerCase());
-  // // console.log(ingredients.length);
-  // // console.log(validateIngredient(json[0]['title'].toLowerCase(),ingredients));
-  // console.log("This is ingredients" + ingredients.length);
-  // result = validateIngredient(json[0]['title'].toLowerCase(),ingredients);
-  // console.log(result);
-  // console.log(selectedIngredients);
-  // // let list =selectedIngredients;
-  // let list = selectedIngredients;
-  // list.push({"name":result});
-  // console.log(list);
-  // setSelectedIngredients(list);
-  // setHaveIngredients();
+  // console.log(json[0]===undefined);
+  if(json[0]===undefined){//sometimes the async function fires a bit too late so the variable doesn't get assigned properly
+    alert('An error has occured.\n Please rescan your barcode');
+    setScanned(false);
+    setShouldShow(!shouldShow);
+    return;
+  }
+  setScanned(false);
+  setShouldShow(!shouldShow);
+  // console.log(json[0]['title'].toLowerCase());
+  // console.log(ingredients.length);
+  // console.log(validateIngredient(json[0]['title'].toLowerCase(),ingredients));
+  console.log("This is ingredients" + ingredients.length);
+  const result = validateIngredient(json[0]['title'].toLowerCase(),ingredients);
+  console.log(result);
+  if(selectedIngredients.find(ingredient => ingredient.name === result)) {
+    return;
+  }
+  console.log(selectedIngredients);
+  // let list =selectedIngredients;
+  let list = selectedIngredients;
+  list.push({"name":result});
+  console.log(list);
+  setSelectedIngredients(list);
+  setHaveIngredients();
 };
 
 if (hasPermission === null){
