@@ -136,8 +136,8 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
     # We can make this into a function that works on arbitary samples by replacing sample_data with parameter of favorited users
     # Will need way to select data from database
     
-    query_based_data = mass_get_recipe_data(recipe_data,query_data) # FInished
-    pantry_based_data = mass_query_recipe_data(recipe_data,pantry)  # FInish this function and test it!
+    query_based_data = mass_get_recipe_data(recipe_data,query_data) 
+    pantry_based_data = mass_query_recipe_data(recipe_data,pantry)  
     sample_data = pd.concat([query_based_data,pantry_based_data])
     # Data we are using to do K means
     #sample_data = sample_data[NUMERICAL_COLS]
@@ -149,7 +149,7 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
     for q in query_data.split(','):
         #Look up the cluster of q and set it equal to the value at index q.
         q =int(q)
-        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']]['TITLE'].to_list()
+        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']].to_dict()
     return reccomendations
 
 # Endpoints
@@ -165,8 +165,8 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
 #                     example: dict[query_data[0]] = {list of recipes recomended based on query_data[0]}
 @app.route('/reccomend/<string:query_data>/<string:pantry_data>')
 def reccomend(query_data,pantry_data):
-    query_data=query_data.split(",")
-    pantry_data=pantry_data.split(",")
+    #query_data=query_data.split(",")
+    #pantry_data=pantry_data.split(",")
     data = KMEANS_Reccomendation(query_data,pantry_data,recipe_data)
 
     return jsonify(data)

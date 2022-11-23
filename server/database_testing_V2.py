@@ -128,7 +128,7 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
     for q in query_data.split(','):
         #Look up the cluster of q and set it equal to the value at index q.
         q =int(q)
-        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']]['TITLE'].to_list()
+        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']].to_dict()
     return reccomendations
 
 # Converts a list embeded in a string to a list. Used to make A list that has be transformed into a string back into a list.
@@ -205,7 +205,7 @@ path_to_ingredient_data= os.path.join(path_to_datasets,"Manually Combined Datase
 
 path_to_server= os.path.join(path_to_cwd,"server")
 path_to_recipe_data = os.path.join(path_to_server,"recipe_data")
-path_to_central_recipe_data = os.path.join(path_to_recipe_data,"central_recipe_data.csv")
+#path_to_central_recipe_data = os.path.join(path_to_recipe_data,"central_recipe_data.csv")
 
 start_time = time.time()
 ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
@@ -227,8 +227,8 @@ recipe_data_access_time =end_time-start_time
 
 #           TO DO LIST
 # ------------------------------
-# - MAKE A REGRESSION MODEL THAT RECCOMENDS RANGES OF FEATURES
-# - MAKE A KMEANS MODEL
+# 
+# - MAKE A KMEANS MODEL return dataframe
 #
 #           Resources
 #  -----------------------------
