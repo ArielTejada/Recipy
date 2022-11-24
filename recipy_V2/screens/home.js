@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {Text, View, Image, Pressable, TouchableWithoutFeedback, Keyboard, ScrollView, TouchableOpacity, ImageBackground, FlatList} from "react-native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import axios from 'axios';
 
@@ -31,6 +30,7 @@ export default function Home({navigation}) {
   const setRecipeDescription = useStoreActions(actions => actions.setRecipeDescription); 
   const setSteps = useStoreActions(actions => actions.setSteps); 
   const setRecipeLink = useStoreActions(actions => actions.setRecipeLink); 
+  const setRecipeID = useStoreActions(actions => actions.setRecipeID); 
   
   const generateColor = useStoreState(state => state.generateColor);
   const haveIngredients = useStoreState(state => state.haveIngredients);
@@ -39,6 +39,12 @@ export default function Home({navigation}) {
 
   const dietOption = useStoreState(state => state.dietOption);
   const removedIngredients = useStoreState(state => state.removedIngredients);
+
+  const pantryItems = useStoreState(state => state.pantryItems);
+  const likedRecipeIds = useStoreState(state => state.likedRecipeIds);
+  const recommendedRecipes = useStoreState(state => state.recommendedRecipes);
+  const setRecommendedRecipes = useStoreActions(actions => actions.setRecommendedRecipes); 
+  const setRenderedRecommended = useStoreActions(actions => actions.setRenderedRecommended); 
 
 /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState(state => state.headerColor);
@@ -49,7 +55,7 @@ export default function Home({navigation}) {
   const addIngredientHandler = () => {navigation.navigate('AddIngredient')}
   const profilePressHandler = () => {navigation.navigate('Account')}
   const categoryPressHandler = () => {navigation.navigate('Category')}
-  const navToRecipe = () => {navigation.navigate('Recipe');}
+  const navToRecipe = () => {navigation.navigate('Recipe')}
 
   const getRecipes = async (ingredients) => {
     await axios({
@@ -85,7 +91,7 @@ export default function Home({navigation}) {
     return output.join(",");
   }
 
-  const recipePressHandler = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...', link='Loading...') => {
+  const recipePressHandler = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...', link='Loading...', id='Loading...') => {
     setCurrentRecipeTitle(title);
     setRecipeDescription(desc);
     setCurrentRecipeMacros(macros);
@@ -93,6 +99,7 @@ export default function Home({navigation}) {
     setSteps(steps);
     setCurrentRecipe(recipe);
     setRecipeLink(link);
+    setRecipeID(id);
     navToRecipe();
   }
 
@@ -145,16 +152,26 @@ export default function Home({navigation}) {
     console.log(`removed ${ingredientObj.name} num ingredients: ${newList.length}`);
   }
 
+  useEffect(() => {
+    axios({
+      method: 'get',
+      url: 'http://recipy-ingredients-backend.herokuapp.com/recommend/1538,6,43/rice,lemon',
+    }).then((response) => {
+      setRecommendedRecipes(response.data);
+    }).then(() => {
+      console.log(recommendedRecipes)
+      setRefresh(!refresh);
+    });
+    setRefresh(!refresh);
+    setRenderedRecommended();
+  }, []); 
   
 /* -------------------- Render Method -------------------- */
   return (
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
     <ScrollView>
-      <TouchableWithoutFeedback 
-        onPress={() => {
-        Keyboard.dismiss();
-      }}>
+      <TouchableWithoutFeedback onPress={() => { Keyboard.dismiss() }}>
         <View>
 
         <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
@@ -307,6 +324,7 @@ export default function Home({navigation}) {
                       Object.values(Recipes["INGREDIENTS"])[index], 
                       Object.values(Recipes["DIRECTIONS"])[index],
                       Object.values(Recipes["LINK"])[index],
+                      Object.keys(Recipes["LINK"])[index],
                     )}
                   >
                     <ImageBackground

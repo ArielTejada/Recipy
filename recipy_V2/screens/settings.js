@@ -71,13 +71,14 @@ export default function Settings() {
   return (
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
+      <ScrollView
+        keyboardShouldPersistTaps={'always'}
+        showsVerticalScrollIndicator={false}
+      >
       <Pressable 
         keyboardShouldPersistTaps={'always'}
         onPress={() => {Keyboard.dismiss();}}
-        style={[styles.wholeScreen]}
-      >
-      <ScrollView
-        keyboardShouldPersistTaps={'always'}
+        style={[]}
       >
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
@@ -243,8 +244,8 @@ export default function Settings() {
       
       <View style={[styles.navView]}></View>
 
-      </ScrollView>
       </Pressable>
+      </ScrollView>
     </View>
   );
 }

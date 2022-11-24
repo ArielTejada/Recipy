@@ -124,17 +124,20 @@ export default function Pantry() {
       },
     });
   }
+  
   /* -------------------- Render Method -------------------- */
 
   return (
     <View style={[styles.wholeScreen, {backgroundColor: pageColor}]}>
 
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={[]}
+      >
       <Pressable 
         keyboardShouldPersistTaps='always'
         onPress={() => {Keyboard.dismiss();}}
-        style={[styles.wholeScreen]}
       >
-      <ScrollView>
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
@@ -240,8 +243,8 @@ export default function Pantry() {
         </View>
 
         <View style={[styles.navView]}></View>
-        </ScrollView>
         </Pressable>
+        </ScrollView>
     </View>
   );
 }

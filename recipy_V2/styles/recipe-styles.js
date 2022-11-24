@@ -35,14 +35,16 @@ export default StyleSheet.create({
     },
     sendText:{
         fontFamily: 'AmaticSC-Bold',
-        fontSize: RFPercentage(4),
+        fontSize: RFPercentage(3.8),
         textAlign: 'center',
+        textAlignVertical: 'center',
         paddingHorizontal: width/100,
     },
     link: {
         textDecorationLine: 'underline',
         color: '#2196F3',
-        fontSize: RFPercentage(2.5)
+        fontSize: RFPercentage(2.5),
+        paddingBottom: height/40
     },
 
     /* -------------- Headers --------------*/
@@ -128,11 +130,19 @@ export default StyleSheet.create({
         margin: 0
     },
     /* -------------- Buttons --------------*/
-    sendLink: {
-        width: width/1.5,
+    linkButton: {
+        backgroundColor: "#39CD7B",
+        paddingHorizontal: width/50
+    },
+    likeButton: {
+        paddingHorizontal: width/50
+    },
+    buttonsSection: {
+        width: width/1.1,
         height: height/15,
-        marginVertical: height/50,
-        backgroundColor: "#39CD7B"
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-evenly'
     },
     
     /* -------------- Custom  --------------*/

@@ -8,7 +8,7 @@ const {height, width} = Dimensions.get('window');
 /* -------------------- Screens -------------------- */
 import Home from "../screens/home";
 import Settings from '../screens/settings'
-import Favorite from '../screens/favorite'
+import LikedStack from "./likedStack";
 import Pantry from '../screens/pantry'
 import AddStack from "./addStack";
 import ShoppingList from "../screens/shoppingList";
@@ -93,7 +93,7 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
 
             <Tab.Screen 
                 name="Favorite" 
-                component={Favorite} 
+                component={LikedStack} 
                 options={{
                     tabBarIcon: ({focused}) => (
                         <View>
@@ -108,7 +108,7 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
                                 tintColor: focused ? navIconFocusedColor : navIconNotFocusedColor
                             }}
                         />
-                        <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Favorite</Text>
+                        <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Liked</Text>
                     </View>
                 )
             }}/>

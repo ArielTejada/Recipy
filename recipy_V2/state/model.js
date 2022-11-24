@@ -2,7 +2,7 @@ import { action } from "easy-peasy";
 
 export default {
 
-/* -------------------- State Variables -------------------- */
+    /* -------------------- State Variables -------------------- */
     ingredients: [
             {
                 "id": "1",
@@ -5729,7 +5729,6 @@ export default {
     allRecipes: [],
     dietOption: 'default',
     
-    
     /* -------------------- Actions -------------------- */
     setSelectedIngredients: action((state, list) => {
         state.selectedIngredients = list;
@@ -5767,7 +5766,22 @@ export default {
     setRemovedIngredients:  action((state, list) => {
         state.removedIngredients = list;
     }),
-    
+
+    /* -------------------- Liked Recipes -------------------- */
+    likedRecipes: [],
+    setLikedRecipes: action((state, recipes) => {
+        state.likedRecipes = recipes;
+    }),
+
+    /* -------------------- Recommended Recipes -------------------- */
+    recommendedRecipes: [],
+    setRecommendedRecipes: action((state, recipes) => {
+        state.recommendedRecipes = recipes;
+    }),
+    renderedRecommended: false,
+    setRenderedRecommended: action((state) => {
+        state.renderedRecommended = true;
+    }),
 
     /* -------------------- Shopping List -------------------- */
     shoppingList: [],
@@ -5790,6 +5804,7 @@ export default {
     recipeDescription: '',
     steps: '',
     recipeLink: '',
+    recipeID: '',
     
     setRecipes: action((state, list) => {
         state.Recipes = list;
@@ -5817,6 +5832,9 @@ export default {
     }),
     setRecipeLink: action((state, link) => {
         state.recipeLink = link;
+    }),
+    setRecipeID: action((state, id) => {
+        state.recipeID = id;
     }),
 
 /* -------------------- Display Settings -------------------- */

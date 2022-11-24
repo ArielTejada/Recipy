@@ -91,6 +91,11 @@ const deleteItemsPressHandler = () => {
     <ScrollView 
       style={[styles.smallMargins]}
       keyboardShouldPersistTaps={'always'}
+      showsVerticalScrollIndicator={false}
+    >
+    <Pressable 
+      keyboardShouldPersistTaps='always'
+      onPress={() => {Keyboard.dismiss();}}
     >
 
       <View style={[styles.outline, styles.settingOption, styles.centerItems]}>
@@ -241,6 +246,7 @@ const deleteItemsPressHandler = () => {
 
       <View style={[styles.navView]}></View>
 
+    </Pressable>
     </ScrollView>
     </View>
   );

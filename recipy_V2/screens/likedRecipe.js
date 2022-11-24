@@ -4,7 +4,7 @@ import PieChart from "react-native-expo-pie-chart";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import styles from '../styles/recipe-styles';
 
-export default function Recipe({navigation}) {
+export default function LikedRecipe({navigation}) {
 
 /* -------------------- Redux State Variables -------------------- */
 const refresh = useStoreState(state => state.refresh);
@@ -103,7 +103,7 @@ const likeRecipePress = () => {
             imageStyle={[{tintColor: bannerColor}]}
             >
             <TouchableOpacity
-                onPress={() => {navigation.navigate('HomeScreen')}}
+                onPress={() => {navigation.navigate('FavoriteScreen')}}
                 style={[styles.backIconTouch]}
                 >
             <Image
