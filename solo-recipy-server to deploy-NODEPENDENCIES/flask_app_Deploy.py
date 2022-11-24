@@ -59,11 +59,11 @@ def ingredient_filter(query_string,recipe_data):
 # Paths to useful directories
 
 path_to_cwd =(os.getcwd())
-path_to_ingredient_data= os.path.join(path_to_cwd,"Manually Combined Dataset.csv")
+
 path_to_central_recipe_data = os.path.join(path_to_cwd,"central_recipe_data.csv")
 
 start_time = time.time()
-ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
+#ingredient_data = pd.read_csv(path_to_ingredient_data, encoding="latin-1")
 end_time = time.time()
 ingredient_data_access_time =end_time-start_time
 
@@ -147,9 +147,9 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
     # For each recipe in the query list containing recipes we want recconmendations in we want to return all other recipes in the same cluster.
     reccomendations = dict()
     for q in query_data.split(','):
-        #Look up the cluster of q and set it equal to the value at index q.
-        q =int(q)
-        reccomendations[q] = sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']].to_dict()
+         #Look up the cluster of q and set it equal to the value at index q.
+         q =int(q)
+         reccomendations[q] = (sample_data[sample_data['LABEL'] ==sample_data.iloc[q]['LABEL']].sample(n=10)).to_dict()
     return reccomendations
 
 # Endpoints
@@ -164,7 +164,7 @@ def KMEANS_Reccomendation(query_data,pantry,recipe_data):
 #       Returns     : A dictionary with reccomendations corresponding to the index.
 #                     example: dict[query_data[0]] = {list of recipes recomended based on query_data[0]}
 @app.route('/reccomend/<string:query_data>/<string:pantry_data>')
-def reccomend(query_data,pantry_data):
+def recomend(query_data,pantry_data):
     #query_data=query_data.split(",")
     #pantry_data=pantry_data.split(",")
     data = KMEANS_Reccomendation(query_data,pantry_data,recipe_data)
@@ -221,4 +221,4 @@ def load_ingredients():
 
 
 if __name__ == '__main__':
-   app.run(port =12345)
+   app.run()

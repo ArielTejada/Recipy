@@ -13,4 +13,3 @@ aioflask
 bcrypt
 sklearn
 flask
-pickle
