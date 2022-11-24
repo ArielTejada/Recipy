@@ -142,4 +142,11 @@ export default StyleSheet.create({
         width: width,
         height: height/8
     },
+    datePicker: {
+        width: width/1.1,
+        height: height/5,
+        marginHorizontal: width/20,
+        marginVertical: height/10,
+        // backgroundColor: "white",
+    },
 })

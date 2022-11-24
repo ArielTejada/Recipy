@@ -8,6 +8,7 @@ import uuid from 'react-native-uuid';
 /* -------------------- Components -------------------- */
 import { SearchBar } from "react-native-screens";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
+import DateTimePicker from "react-native-modal-datetime-picker";
 import * as Notifications from 'expo-notifications';
 
 
@@ -151,7 +152,7 @@ export default function Pantry() {
 
       {/* ------------------------------------ Input Fields ------------------------------------ */}
 
-      <Text style={[styles.fontSmall, styles.margins]}>Add ingredients to your pantry:</Text>
+      <Text style={[styles.fontMedium, styles.margins, styles.AmaticSCBold]}>Add ingredients to your pantry:</Text>
 
       <View>  
         <View style={styles.container}>
@@ -180,7 +181,7 @@ export default function Pantry() {
             style={styles.button}
             onPress={() => {enterPressHandler()}}
           >
-            <Text style={styles.clear}>Enter</Text>
+            <Text style={[styles.clear, styles.AmaticSCBold, styles.fontMedium]}>Enter</Text>
           </Pressable>
 
         </View>
@@ -213,6 +214,9 @@ export default function Pantry() {
         mode="date"
         onConfirm={handleConfirm}
         onCancel={hideDatePicker}
+        minimumDate={new Date}
+        modalStyleIOS={[styles.datePicker]}
+        display="default"
       />
 
     {/* ------------------------------------ Visual Pantry ------------------------------------ */}

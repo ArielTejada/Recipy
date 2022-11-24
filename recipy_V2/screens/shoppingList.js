@@ -239,9 +239,7 @@ const deleteItemsPressHandler = () => {
         style={[styles.deleteButton, { backgroundColor: deleteItems ? '#40AAF2' : '#E42323' }]}
         onPress={() => {deleteItemsPressHandler()}}
       >
-        <View style={[styles.flex]}>
-          <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.smallMargins, styles.deleteButtonText]}>{ deleteItems ? 'Done!' : 'Delete Items'}</Text>
-        </View>
+        <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.smallMargins, styles.deleteButtonText]}>{ deleteItems ? 'Done!' : 'Delete Items'}</Text>
       </Pressable>
 
       <View style={[styles.navView]}></View>

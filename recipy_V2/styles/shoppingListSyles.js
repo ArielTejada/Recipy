@@ -145,7 +145,8 @@ export default StyleSheet.create({
     deleteButton: {
         borderWidth: 1,
         borderRadius: 5,
-        width: width/3
+        width: width/3,
+        height: height/13
     },
     deleteItem: {
         width: wp('7%'),

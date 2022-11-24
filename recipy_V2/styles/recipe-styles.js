@@ -132,10 +132,14 @@ export default StyleSheet.create({
     /* -------------- Buttons --------------*/
     linkButton: {
         backgroundColor: "#39CD7B",
-        paddingHorizontal: width/50
+        paddingHorizontal: width/50,
+        width: width/2.2,
+        height: height/16
     },
     likeButton: {
-        paddingHorizontal: width/50
+        paddingHorizontal: width/50,
+        width: width/2.5,
+        height: height/16
     },
     buttonsSection: {
         width: width/1.1,

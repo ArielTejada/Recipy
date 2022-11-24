@@ -169,7 +169,7 @@ const likeRecipePress = () => {
           style={[styles.linkButton, styles.outline]}
           onPress={() => sendLink()}
         >
-          <Text style={[styles.sendText]}>Send This Link To A Friend!</Text>
+          <Text style={[styles.sendText]}>Send To A Friend!</Text>
         </Pressable>
           <Pressable 
             style={[styles.likeButton, styles.outline, {backgroundColor: likedRecipes.some(recipe => recipe.id === recipeID) ? '#2196F3' : "#39CD7B"}]}
