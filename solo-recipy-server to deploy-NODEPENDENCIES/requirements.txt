@@ -11,5 +11,5 @@ sortedcontainers
 requests_html
 aioflask
 bcrypt
-sklearn
+scikit-learn
 flask
