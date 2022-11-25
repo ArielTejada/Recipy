@@ -41,7 +41,7 @@ export default function Home({navigation}) {
   const removedIngredients = useStoreState(state => state.removedIngredients);
 
   const pantryItems = useStoreState(state => state.pantryItems);
-  const likedRecipeIds = useStoreState(state => state.likedRecipeIds);
+  const likedRecipes = useStoreState(state => state.likedRecipes);
   const recommendedRecipes = useStoreState(state => state.recommendedRecipes);
   const setRecommendedRecipes = useStoreActions(actions => actions.setRecommendedRecipes); 
   const setRenderedRecommended = useStoreActions(actions => actions.setRenderedRecommended); 
@@ -155,16 +155,18 @@ export default function Home({navigation}) {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://recipy-ingredients-backend.herokuapp.com/recommend/1538,6,43/rice,lemon',
+      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${returnIngredientString(likedRecipes, 'id')}/${returnIngredientString(pantryItems, 'name')}`,
     }).then((response) => {
       setRecommendedRecipes(response.data);
     }).then(() => {
-      console.log(recommendedRecipes)
+      console.log("Response: ", recommendedRecipes)
       setRefresh(!refresh);
     });
     setRefresh(!refresh);
     setRenderedRecommended();
   }, []); 
+
+  // console.log("Test names: ", returnIngredientString(pantryItems, 'name'))
   
 /* -------------------- Render Method -------------------- */
   return (

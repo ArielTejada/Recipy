@@ -51,7 +51,14 @@ const navToRecipe = () => {navigation.navigate('LikedRecipe')}
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
 
       <View style={[styles.header, {backgroundColor: headerColor}]}>
-        <Text style={[styles.headerText]}>Recommendations</Text>
+        <ImageBackground
+          source={require('../img/banner81.png')}
+          style={[styles.bannerImage]}
+          imageStyle={[{tintColor: 'white'}]}
+        >
+          <Text style={[styles.headerText]}>Favorites</Text> 
+        </ImageBackground>
+        
       </View>
 
       <ScrollView
@@ -78,7 +85,7 @@ const navToRecipe = () => {navigation.navigate('LikedRecipe')}
             >
               <ImageBackground
                 source={require('../img/banner71.png')}
-                style={[styles.recipeBack]}
+                style={[styles.recipeBack2]}
               >
                 <Text style={[styles.AmaticSCBold, styles.fontLarge, styles.textCenter]}>{recipe.title}</Text>
               </ImageBackground>
@@ -88,13 +95,36 @@ const navToRecipe = () => {navigation.navigate('LikedRecipe')}
       </View>
 
       <View>
-        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: {renderedRecommended ? "TRUE" : "FALSE"}</Text>
+        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: </Text>
       </View>
 
-      {renderedRecommended ?  
+      {renderedRecommended  && Object.keys(Object.values(Object.values(recommendedRecipes))[0]["CARBS"]).length > 0 ?  
       <View style={[styles.outline, styles.recommededScrollView]}>
         <ScrollView horizontal={true}>
-  
+          {Object.keys(Object.values(Object.values(recommendedRecipes))[0]["CARBS"]).map((key, index) => {
+            return(
+              <Pressable 
+                style={[styles.outline]}
+                key={key}
+                onPress={() => likedRecipePress(
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["TITLE"])[index], 
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["DESCRIPTION"])[index], 
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["MACROS"])[index].split("\n").join(" ").split(",").join(", "), 
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["has_ingredients"])[index], 
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["INGREDIENTS_LIST"])[index],
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["DIRECTIONS"])[index], 
+                  Object.values(Object.values(Object.values(recommendedRecipes))[0]["LINK"])[index], 
+                  Object.keys(Object.values(Object.values(recommendedRecipes))[0]["TITLE"])[index],
+                )} 
+              >
+                <ImageBackground
+                  source={require('../img/recipe2.png')}
+                  style={[styles.recipeBack]}
+                >
+                  <Text style={[styles.recipePressableText]}>{Object.values(Object.values(Object.values(recommendedRecipes))[0]["TITLE"])[index] }</Text>
+                </ImageBackground>
+              </Pressable>
+            )})}
         </ScrollView>
       </View> : <View></View>}
 

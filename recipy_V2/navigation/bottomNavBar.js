@@ -108,7 +108,7 @@ const navIconNotFocusedColor = useStoreState(state => state.navIconNotFocusedCol
                                 tintColor: focused ? navIconFocusedColor : navIconNotFocusedColor
                             }}
                         />
-                        <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Liked</Text>
+                        <Text style={{color: focused ? navIconFocusedColor : navIconNotFocusedColor}}>Favorites</Text>
                     </View>
                 )
             }}/>

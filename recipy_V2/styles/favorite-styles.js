@@ -74,7 +74,7 @@ export default StyleSheet.create({
     likedRecipeScrollView: {
         width: width/1.12,
         height: height/3,
-        marginVertical: height/30,
+        marginBottom: height/30,
         borderWidth: 2,
         borderRadius: 5,
     },
@@ -91,10 +91,21 @@ export default StyleSheet.create({
 
     /* -------------- Images --------------*/
     recipeBack: {
+        width: width/2.25, 
+        height: height/5.2,
+        justifyContent: 'center',
+        // backgroundColor: '#60DEF7'
+    },
+    recipeBack2: {
         width: width/1.12, 
         height: 190 * (width/1200),
         justifyContent: 'center',
         // backgroundColor: '#60DEF7'
+    },
+    bannerImage: {
+        width: width,
+        height: 460 * (width/3043),   // actual height * (width / actual width)
+        tintColor: 'white'
     },
 
     /* -------------- Custom  --------------*/
