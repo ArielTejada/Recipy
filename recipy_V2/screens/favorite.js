@@ -129,11 +129,11 @@ const generateRecommended = () => {
         onPress={generateRecommended}
         style={[styles.generateButton, styles.outline, {backgroundColor: showRecommended ? "#4FC1FF" : '#2196F3'}]}
       >
-        <Text style={[styles.fontMedium, styles.AmaticSCBold]}>Generate Recommended Recipes</Text>
+        <Text style={[styles.generateButtonText]}>Generate Recommended Recipes</Text>
       </Pressable>
 
       <View>
-        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: {renderedRecommended ? "TRUE" : "FALSE"}</Text>
+        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: </Text>
       </View>
 
       <View style={[styles.outline, styles.recommededScrollView]}>
