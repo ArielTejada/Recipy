@@ -86,6 +86,11 @@ export default StyleSheet.create({
         top: '20%',
         left: '100%'
     },
+    scanImage: {
+        width: width/6,
+        height: height/10,
+        tintColor: 'white'
+    },
 
     /* -------------- Position --------------*/
     center: {
@@ -137,6 +142,10 @@ export default StyleSheet.create({
         flexDirection:"row",
         flexWrap:"wrap",
     },
+    flexRow2: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
     absolute: {
         position: 'absolute',
         top: height/3.5
@@ -157,13 +166,45 @@ export default StyleSheet.create({
         height: width/12,
     },
     searchBar: {
-        position: 'absolute'
+        width: width,
+        height: height/2
     },
 
     /* -------------- Size --------------*/
     wholeScreen: {
         width: width,
         height: height
+    },
+
+    /* -------------- Barcode --------------*/
+    barcodeView:{
+        borderWidth: 1,
+        paddingHorizontal: width/50,
+        width: width,
+        height: height/8,
+        display: 'flex',
+        flexDirection: 'row',
+        marginBottom: height/30
+    },
+    barcodeButtonText: {
+        width: width/4,
+        height: height/8,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    barcodeButton: {
+        width: width/2,
+        height: height/8.2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#2196f3',
+    },
+    barcodeAreaText: {
+        width: width/2.1,
+        height: height/8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: width/50,
     },
     
     /* -------------- Custom  --------------*/
@@ -181,9 +222,11 @@ export default StyleSheet.create({
         width: 60
     },
     searchResult: {
-        width: width/2.3,
+        width: width/1.8,
         height: height/20,
         backgroundColor: 'white',
+        marginLeft: 'auto',
+        marginRight: 'auto'
     },
     notfocused: {
         backgroundColor: 'white'

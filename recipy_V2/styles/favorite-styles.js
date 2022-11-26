@@ -39,6 +39,10 @@ export default StyleSheet.create({
         borderWidth: 1,
         borderRadius: 10,
     },
+    generateButtonText: {
+        fontFamily: 'AmaticSC-Bold',
+        fontSize: RFPercentage(4)
+    },
 
     /* -------------- Headers --------------*/
     header: {
@@ -68,12 +72,13 @@ export default StyleSheet.create({
 
     /* -------------- Buttons --------------*/
     generateButton: {
-        width: width/1.6,
+        width: width/1.3,
         height: height/16,
         justifyContent: 'center',
         alignItems: 'center',
         marginLeft: "auto",
-        marginRight: "auto"
+        marginRight: "auto",
+        marginBottom: height/80
     },
 
     /* -------------- Size --------------*/

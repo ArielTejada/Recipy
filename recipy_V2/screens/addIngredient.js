@@ -165,10 +165,25 @@ const recentPressHandler = (ingredientObj) => {
         setSelectedIngredients={setSelectedIngredients}
       />
 
-      <Button 
-        title = "Barcode Scanner" 
-        onPress={() => setShouldShow(!shouldShow)}
-      />
+      <View style={[styles.barcodeView]}>
+        <View style={[styles.barcodeAreaText]}>
+          <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Add Ingredients with our scanner!</Text>
+        </View>
+        <Pressable 
+          style={[styles.barcodeButton, styles.outline, styles.flexRow2]}
+          onPress={() => setShouldShow(!shouldShow)}
+        >
+          <View style={[styles.barcodeButtonText]}>
+            <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: 'white'}]}>Barcode Scanner</Text>
+          </View>
+          
+          <Image
+            source={require('../icons/scan2-black.png')}
+            style={[styles.scanImage]}
+          />
+        </Pressable>
+      </View>
+
       <FlatList
           data={json}
           keyExtractor={({ id }, index) => id}
