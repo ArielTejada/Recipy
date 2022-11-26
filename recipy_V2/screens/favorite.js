@@ -1,18 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {Text, View, ScrollView, Pressable, ImageBackground, Image, Dimensions} from "react-native";
 import styles from '../styles/favorite-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
 const {height, width} = Dimensions.get('window');
+import axios from 'axios';
 
 export default function Favorite({navigation}) {
+
+/* -------------------- Local State Variables -------------------- */
+const [showRecommended, setShowRecommended] = useState(false)
 
 /* -------------------- Redux State Variables -------------------- */
 const refresh = useStoreState(state => state.refresh);
 const setRefresh = useStoreActions(actions => actions.setRefresh);
 
 const likedRecipes = useStoreState(state => state.likedRecipes);
+const pantryItems = useStoreState(state => state.pantryItems);
 const recommendedRecipes = useStoreState(state => state.recommendedRecipes);
 const renderedRecommended = useStoreState(state => state.renderedRecommended);
+const setRecommendedRecipes = useStoreActions(actions => actions.setRecommendedRecipes); 
+const setRenderedRecommended = useStoreActions(actions => actions.setRenderedRecommended); 
 
 const setCurrentRecipeMacros = useStoreActions(actions => actions.setCurrentRecipeMacros); 
 const setCurrentRecipeTitle = useStoreActions(actions => actions.setCurrentRecipeTitle); 
@@ -29,6 +36,13 @@ const pageColor = useStoreState(state => state.pageColor);
 const bannerColor = useStoreState(state => state.bannerColor);
 
 /* -------------------- Handler Functions -------------------- */
+const returnIngredientString = (ingredients, attr) => {
+  let output = [];
+  for (let i = 0; i < ingredients.length; i++){
+    output.push(ingredients[i][attr]);
+  }
+  return output.join(",");
+}
 
 const likedRecipePress  = (title = 'Loading...', desc = 'Loading...', macros = 'Loading...', reqs = 'Loading...', steps = 'Loading...', recipe = 'Loading...', link='Loading...', id='Loading...') => {
   setCurrentRecipeTitle(title);
@@ -43,6 +57,23 @@ const likedRecipePress  = (title = 'Loading...', desc = 'Loading...', macros = '
 }
 
 const navToRecipe = () => {navigation.navigate('LikedRecipe')}
+
+const generateRecommended = () => {
+  if(likedRecipes.length > 0 && pantryItems.length > 0){
+    axios({
+      method: 'get',
+      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${returnIngredientString(likedRecipes, 'id')}/${returnIngredientString(pantryItems, 'name')}`,
+    }).then((response) => {
+      setRecommendedRecipes(response.data);
+    }).then(() => {
+      console.log("Response: ", recommendedRecipes)
+      setRefresh(!refresh);
+    });
+    setRefresh(!refresh);
+    setRenderedRecommended(true);
+  }
+  setShowRecommended(!showRecommended)
+}
 
 /* -------------------- Render Method -------------------- */
   return (
@@ -94,12 +125,19 @@ const navToRecipe = () => {navigation.navigate('LikedRecipe')}
         </ScrollView>
       </View>
 
+      <Pressable
+        onPress={generateRecommended}
+        style={[styles.generateButton, styles.outline]}
+      >
+        <Text style={[styles.fontMedium, styles.AmaticSCBold]}>Generate Recommended Recipes</Text>
+      </Pressable>
+
       <View>
-        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: </Text>
+        <Text style={[styles.AmaticSCBold, styles.fontLarge]}>Recommended Recipes: {renderedRecommended ? "TRUE" : "FALSE"}</Text>
       </View>
 
-      {renderedRecommended  && Object.keys(Object.values(Object.values(recommendedRecipes))[0]["CARBS"]).length > 0 ?  
       <View style={[styles.outline, styles.recommededScrollView]}>
+      {renderedRecommended && showRecommended ? (
         <ScrollView horizontal={true}>
           {Object.keys(Object.values(Object.values(recommendedRecipes))[0]["CARBS"]).map((key, index) => {
             return(
@@ -126,7 +164,9 @@ const navToRecipe = () => {navigation.navigate('LikedRecipe')}
               </Pressable>
             )})}
         </ScrollView>
-      </View> : <View></View>}
+      ) : <View></View>}
+        
+      </View>
 
       </View>
       <View style={[styles.navView]}></View>

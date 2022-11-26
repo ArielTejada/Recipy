@@ -155,7 +155,7 @@ export default function Home({navigation}) {
   useEffect(() => {
     axios({
       method: 'get',
-      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${returnIngredientString(likedRecipes, 'id')}/${returnIngredientString(pantryItems, 'name')}`,
+      url: 'http://recipy-ingredients-backend.herokuapp.com/recommend/1538,6,43/rice,lemon',
     }).then((response) => {
       setRecommendedRecipes(response.data);
     }).then(() => {
@@ -163,10 +163,12 @@ export default function Home({navigation}) {
       setRefresh(!refresh);
     });
     setRefresh(!refresh);
-    setRenderedRecommended();
+    if(recommendedRecipes != []){
+      setRenderedRecommended(true); 
+      setRefresh(!refresh);
+    }
+    setRefresh(!refresh);
   }, []); 
-
-  // console.log("Test names: ", returnIngredientString(pantryItems, 'name'))
   
 /* -------------------- Render Method -------------------- */
   return (

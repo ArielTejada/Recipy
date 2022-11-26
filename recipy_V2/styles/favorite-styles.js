@@ -66,6 +66,16 @@ export default StyleSheet.create({
         borderRadius: 5,
     },
 
+    /* -------------- Buttons --------------*/
+    generateButton: {
+        width: width/1.6,
+        height: height/16,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: "auto",
+        marginRight: "auto"
+    },
+
     /* -------------- Size --------------*/
     wholeScreen: {
         width: width,
