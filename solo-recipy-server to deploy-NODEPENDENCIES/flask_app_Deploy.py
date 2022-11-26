@@ -215,8 +215,8 @@ def search(query):
    return jsonify(data.to_dict())
 
 """
-search(query): preforms webscraping search saving nothing
-@param query: search query to be used
+keyword_search(query): preforms keyword search
+@param query: some string to look up in the titles and descriptions
 @return: json of search results
 """
 @app.route('/key_word_search/<string:keyword>')
