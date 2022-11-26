@@ -155,7 +155,7 @@ export default function Home({navigation}) {
   useEffect(() => {
     axios({
       method: 'get',
-      url: 'http://recipy-ingredients-backend.herokuapp.com/recommend/1538,6,43/rice,lemon',
+      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${likedRecipes.length === 0 ? "1538,6,43" : returnIngredientString(likedRecipes, 'id')}/${pantryItems.length === 0 ? "rice,lemon" : returnIngredientString(pantryItems, 'name')}`,
     }).then((response) => {
       setRecommendedRecipes(response.data);
     }).then(() => {

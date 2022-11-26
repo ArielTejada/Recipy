@@ -59,7 +59,7 @@ const likedRecipePress  = (title = 'Loading...', desc = 'Loading...', macros = '
 const navToRecipe = () => {navigation.navigate('LikedRecipe')}
 
 const generateRecommended = () => {
-  if(likedRecipes.length > 0 && pantryItems.length > 0){
+  if(likedRecipes.length > 0 && pantryItems.length > 0 && showRecommended === false){
     axios({
       method: 'get',
       url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${returnIngredientString(likedRecipes, 'id')}/${returnIngredientString(pantryItems, 'name')}`,
@@ -127,7 +127,7 @@ const generateRecommended = () => {
 
       <Pressable
         onPress={generateRecommended}
-        style={[styles.generateButton, styles.outline]}
+        style={[styles.generateButton, styles.outline, {backgroundColor: showRecommended ? "#4FC1FF" : '#2196F3'}]}
       >
         <Text style={[styles.fontMedium, styles.AmaticSCBold]}>Generate Recommended Recipes</Text>
       </Pressable>
@@ -164,7 +164,15 @@ const generateRecommended = () => {
               </Pressable>
             )})}
         </ScrollView>
-      ) : <View></View>}
+      ) : 
+      <View>
+        <ImageBackground
+          source={require('../img/recipylogo.png')}
+          style={[styles.tempLogo]}
+        >
+
+        </ImageBackground>
+      </View>}
         
       </View>
 

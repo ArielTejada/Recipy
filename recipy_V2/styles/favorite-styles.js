@@ -83,7 +83,7 @@ export default StyleSheet.create({
     },
     likedRecipeScrollView: {
         width: width/1.12,
-        height: height/3,
+        height: height/3.6,
         marginBottom: height/30,
         borderWidth: 2,
         borderRadius: 5,
@@ -116,6 +116,10 @@ export default StyleSheet.create({
         width: width,
         height: 460 * (width/3043),   // actual height * (width / actual width)
         tintColor: 'white'
+    },
+    tempLogo: {
+        width: width/1.1,
+        height: height/5,
     },
 
     /* -------------- Custom  --------------*/
