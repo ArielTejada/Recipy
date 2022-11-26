@@ -43,7 +43,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
 
     return (
         <View>    
-            <View style={styles.container}>
+            <View style={[styles.container]}>
                 <TextInput
                     placeholder=' add ingredient...'
                     style={[styles.input, styles.outline]}
@@ -70,7 +70,6 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
             </View>
             
             <View style={[{alignItems: 'center', zIndex: 2}]}>
-                {searching ? <Text>Searching : True</Text> : <Text>Searching : False</Text>}
                 {searching ? 
                 <ScrollView 
                     style={[styles.searchBar]}
