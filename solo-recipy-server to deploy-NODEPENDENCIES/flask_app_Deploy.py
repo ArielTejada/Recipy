@@ -184,7 +184,7 @@ def keyword_search(keyword, recipe_data):
     description_search =(recipe_data.loc[recipe_data['DESCRIPTION'].str.lower().str.contains(keyword.lower())])
     result = pd.concat([title_search,description_search])
     result = remove_duplicates(result)
-    return result
+    return result.dropna()
 
 """
 search_filter(query,filter): queries databse for search but applies filter over that.
@@ -202,7 +202,7 @@ def search_filter(query,filter,black_list):
         data =data[data[filter]==1]
     data = data[black_list_filter]
 
-    return jsonify(data.to_dict())
+    return jsonify(data.dropna().to_dict())
 
 """
 search(query): preforms webscraping search saving nothing
@@ -212,7 +212,7 @@ search(query): preforms webscraping search saving nothing
 @app.route('/search/<string:query>')
 def search(query):
    data = query_recipe_data(recipe_data,query)
-   return jsonify(data.to_dict())
+   return jsonify(data.dropna().to_dict())
 
 """
 keyword_search(query): preforms keyword search
@@ -222,7 +222,7 @@ keyword_search(query): preforms keyword search
 @app.route('/key_word_search/<string:keyword>')
 def key_word_search(keyword):
    data = keyword_search(keyword,recipe_data)
-   return jsonify(data.to_dict())
+   return jsonify(data.dropna().to_dict())
 
 """
 load_ingredients(): Gets ingredients from database
