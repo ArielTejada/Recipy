@@ -45,11 +45,11 @@ export default function Pantry() {
 
 /* -------------------- Handler Functions -------------------- */
   const ingredientPressHandler = (name) => {  
-    Keyboard.dismiss();
     setAddIngredient(name);
     setSearchText(name);
     setSearching(false);
     setRefresh(!refresh);
+    Keyboard.dismiss();
   }
 
   const enterPressHandler = () => {

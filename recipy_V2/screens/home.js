@@ -60,11 +60,11 @@ export default function Home({navigation}) {
   const getRecipes = async (ingredients) => {
     await axios({
       method: 'get',
-      url: 'https://recipy-ingredients-backend.herokuapp.com/search/' + ingredients,
+      url: `https://recipy-ingredients-backend.herokuapp.com/search/${ingredients}`,
     }).then((response) => {
       setRecipes(response.data);
     }).then(() => {
-      console.log(Recipes)
+      // console.log(Recipes)
       setRefresh(!refresh);
     });
     setRefresh(!refresh);
@@ -75,8 +75,8 @@ export default function Home({navigation}) {
       setGenerateRecipes();
     }
     if(haveIngredients && !generateRecipes){
-      let ingredientString = returnIngredientString(selectedIngredients, 'name')
-      await getRecipes(ingredientString);
+      let ingredientString = returnIngredientString(selectedIngredients, 'name');
+      await getRecipes(ingredientString.trim());
       setGenerateRecipes();
       setRecievedData(true);
     }
