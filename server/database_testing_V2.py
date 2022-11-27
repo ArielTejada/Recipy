@@ -244,7 +244,10 @@ recipe_data_access_time =end_time-start_time
 #print(recipe_data)
 #print(os.listdir(path_to_recipe_data))
 
-pantry_data =["onion","pork"]
+##############################
+# Reccomendation Test
+##############################
+"""pantry_data =["onion","pork"]
 query_data ="12,13,5"
 # print(mass_query_recipe_data(recipe_data,pantry_data))
 # print(mass_get_recipe_data(recipe_data,query_data))
@@ -252,4 +255,24 @@ query_data ="12,13,5"
 reccomendation =(KMEANS_Reccomendation(query_data,pantry_data,recipe_data))
 for r in reccomendation.keys():
     print(r)
-    print(reccomendation[r])
+    print(reccomendation[r])"""
+
+print(recipe_data)
+
+# Need to search keywords in titles and description
+# Combining these conditions
+# title_search =(recipe_data.loc[recipe_data['TITLE'].str.lower().str.contains(keyword.lower())])
+#     description_search =(recipe_data.loc[recipe_data['DESCRIPTION'].str.lower().str.contains(keyword.lower())])
+def keyword_search(keyword, recipe_data):
+    title_search =(recipe_data.loc[recipe_data['TITLE'].str.lower().str.contains(keyword.lower())])
+    description_search =(recipe_data.loc[recipe_data['DESCRIPTION'].str.lower().str.contains(keyword.lower())])
+    result = pd.concat([title_search,description_search])
+    result = remove_duplicates(result)
+    return result
+
+"""start_time=time.time_ns() 
+print(keyword_search("pasta",recipe_data)) 
+end_time=time.time_ns() 
+print(end_time-start_time)"""
+
+
