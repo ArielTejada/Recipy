@@ -38,6 +38,7 @@ const SearchBar = ({selectedIngredients, setSelectedIngredients}) => {
         setSearchText('');
         setSearching(false);
         setRefresh(!refresh);
+        Keyboard.dismiss();
         console.log(`added: ${ingredientObj.name} num ingredients: ${newList.length}`);
     }
 
