@@ -45,11 +45,11 @@ export default function Pantry() {
 
 /* -------------------- Handler Functions -------------------- */
   const ingredientPressHandler = (name) => {  
+    Keyboard.dismiss();
     setAddIngredient(name);
     setSearchText(name);
     setSearching(false);
     setRefresh(!refresh);
-    Keyboard.dismiss();
   }
 
   const enterPressHandler = () => {
@@ -71,7 +71,7 @@ export default function Pantry() {
       setSearchText('');
       setSearching(false);
     }
-  return;
+    return;
   }
 
   const pantryPressHandler = (key) => {
@@ -137,7 +137,7 @@ export default function Pantry() {
       >
       <Pressable 
         keyboardShouldPersistTaps='always'
-        onPress={() => {Keyboard.dismiss();}}
+        onPress={() => {Keyboard.dismiss()}}
       >
 
       <View style={[styles.pushDown, {backgroundColor: headerColor}]}></View>
@@ -199,7 +199,10 @@ export default function Pantry() {
           {filteredArray.map((ingredient) => {
             return (
               <View key={ingredient.id}>
-                <TouchableOpacity onPress={() => {ingredientPressHandler(ingredient.name)}} style={[styles.outline, styles.searchResult]}>
+                <TouchableOpacity 
+                  onPress={() => {ingredientPressHandler(ingredient.name)}} 
+                  style={[styles.outline, styles.searchResult]}
+                >
                     <Text style={[styles.AmaticSCBold, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace('_', ' ')}</Text>  
                 </TouchableOpacity>
               </View>         

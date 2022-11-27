@@ -58,11 +58,11 @@ const likedRecipePress  = (title = 'Loading...', desc = 'Loading...', macros = '
 
 const navToRecipe = () => {navigation.navigate('LikedRecipe')}
 
-const generateRecommended = () => {
+const generateRecommended = async () => {
   if(likedRecipes.length > 0 && pantryItems.length > 0 && showRecommended === false){
-    axios({
+    await axios({
       method: 'get',
-      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${returnIngredientString(likedRecipes, 'id')}/${returnIngredientString(pantryItems, 'name')}`,
+      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${likedRecipes.length === 0 ? "1538,6,43" : returnIngredientString(likedRecipes, 'id')}/${pantryItems.length === 0 ? "rice,lemon" : returnIngredientString(pantryItems, 'name')}`,
     }).then((response) => {
       setRecommendedRecipes(response.data);
     }).then(() => {
