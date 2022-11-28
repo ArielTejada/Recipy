@@ -212,7 +212,7 @@ search(query): preforms webscraping search saving nothing
 @app.route('/search/<string:query>')
 def search(query):
    data = query_recipe_data(recipe_data,query)
-   return jsonify(data.dropna().to_dict())
+   return jsonify(data.dropna().to_dict()) # NaN values cause the front end to break so must be removed
 
 """
 keyword_search(query): preforms keyword search
