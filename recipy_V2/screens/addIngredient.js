@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import {FlatList, StyleSheet, Button, Text, View, Image, TouchableWithoutFeedback, TouchableOpacity, Keyboard, ScrollView, ImageBackground, Pressable} from "react-native";
 import styles from '../styles/add-styles';
 import { useStoreState, useStoreActions } from "easy-peasy";
+const {height, width} = Dimensions.get('window');
+import {Dimensions} from "react-native";
+
 
 /* -------------------- Components -------------------- */
 import SearchBar from "../components/searchBar"
@@ -242,10 +245,20 @@ const recentPressHandler = (ingredientObj) => {
       
       </Pressable>}
       {shouldShow ?
+      <>
       <BarCodeScanner
         onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
         style={StyleSheet.absoluteFillObject}
-      /> : null}
+      /> 
+      <Pressable 
+          style={[styles.barcodeCloseButton]}
+          onPress={() => setShouldShow(!shouldShow)}
+        >
+          <View style={[styles.barcodeButtonText]}>
+            <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: 'white'}]}>Tap To Close</Text>
+          </View>
+          </Pressable>
+        </>: null}
     </View>
   );
 }

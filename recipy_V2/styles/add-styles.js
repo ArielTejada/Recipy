@@ -206,6 +206,13 @@ export default StyleSheet.create({
         alignItems: 'center',
         paddingHorizontal: width/50,
     },
+    barcodeCloseButton:{
+        justifyContent: 'center',
+        alignItems:'center',
+        height:height/11,
+        bottom:-height/1.175,
+        backgroundColor: '#2196f3',
+    },
     
     /* -------------- Custom  --------------*/
     input : {
