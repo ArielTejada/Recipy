@@ -1,0 +1,13 @@
+{
+  "resourceName": "RecipyContent",
+  "policyUUID": "75b8a027",
+  "bucketName": "navtestrecipy",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
