@@ -146,7 +146,7 @@ export default function Recipe({ navigation }) {
 
           <Text style={[styles.recipeHeaderText]}>Recipe Macros:</Text>
 
-          <Text style={[styles.recipeDataText]}>{currentRecipeMacros}</Text>
+          <Text style={[styles.recipeDataText]}>{currentRecipeMacros.replace(/[\r\n]/gm, '')}</Text>
 
           <View style={[styles.macrosView, styles.outline]}>
             <View style={[styles.macroBoxArea]}>
