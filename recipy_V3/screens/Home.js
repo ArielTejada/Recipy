@@ -10,6 +10,8 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
+  KeyboardAvoidingView,
+  Dimensions
 } from "react-native";
 
 import uuid from "react-native-uuid";
@@ -17,6 +19,8 @@ import uuid from "react-native-uuid";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import axios from "axios";
 import * as Animatable from "react-native-animatable";
+const { height, width } = Dimensions.get("window");
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 import styles from "../styles/home-styles";
 
@@ -314,7 +318,7 @@ export default function Home({ navigation }) {
       style={[styles.wholeScreen, { backgroundColor: pageColor }]}
       animation="fadeInRightBig"
     >
-      <ScrollView>
+      <KeyboardAwareScrollView>
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss();
@@ -566,6 +570,7 @@ export default function Home({ navigation }) {
                 </Pressable>
               </View>
 
+
               {showRecipeSearch && recievedRecipeSearchData ? (
                 <View>
                   <View>
@@ -639,7 +644,7 @@ export default function Home({ navigation }) {
         </TouchableWithoutFeedback>
 
         <View style={[styles.navView]}></View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </Animatable.View>
   );
 }

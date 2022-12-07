@@ -104,9 +104,11 @@ export default function Settings({ navigation }) {
       style={[styles.wholeScreen, { backgroundColor: pageColor }]}
       animation="fadeInRightBig"
     >
-      <ScrollView
+      <KeyboardAwareScrollView
         keyboardShouldPersistTaps={"always"}
         showsVerticalScrollIndicator={false}
+        enableOnAndroid={true}
+        extraScrollHeight={300}
       >
       <Pressable
         keyboardShouldPersistTaps={"always"}
@@ -368,9 +370,9 @@ export default function Settings({ navigation }) {
             </ScrollView>
           </View>
 
-          <View style={[{ width: width, height: searchText === '' ? height / 5 : height / 2}]}></View>
+          <View style={[styles.navView]}></View>
       </Pressable>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </Animatable.View>
   );
 }
