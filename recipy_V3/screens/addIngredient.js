@@ -179,6 +179,10 @@ export default function AddIngredient({ navigation }) {
             Keyboard.dismiss();
           }}
         >
+          <ScrollView 
+            keyboardShouldPersistTaps={'always'}
+            showsVerticalScrollIndicator={false}
+          >
           <View
             style={[styles.pushDown, { backgroundColor: headerColor }]}
           ></View>
@@ -328,6 +332,7 @@ export default function AddIngredient({ navigation }) {
               </ScrollView>
             </ImageBackground>
           </View>
+          </ScrollView>
         </Pressable>
       )}
       {shouldShow ? (

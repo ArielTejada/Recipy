@@ -33,10 +33,6 @@ export default StyleSheet.create({
     // backgroundColor: "blue",
     fontSize: RFPercentage(2.5),
   },
-  macroVisualText: {
-    fontFamily: "AmaticSC-Bold",
-    fontSize: RFPercentage(3),
-  },
   sendText: {
     fontFamily: "AmaticSC-Bold",
     fontSize: RFPercentage(3.8),
@@ -101,17 +97,6 @@ export default StyleSheet.create({
     height: height / 25,
     backgroundColor: "white",
   },
-  macroVisual: {
-    display: "flex",
-    flexDirection: "row",
-    marginLeft: wp("5%"),
-    marginTop: hp("1.5%"),
-  },
-  pieChart: {
-    position: "absolute",
-    left: wp("60%"),
-    top: hp("2.7%"),
-  },
 
   /* -------------- Styling --------------*/
   outline: {
@@ -126,12 +111,6 @@ export default StyleSheet.create({
   wholeScreen: {
     width: width,
     height: height,
-  },
-  macrosView: {
-    width: width / 1.12,
-    height: height / 6,
-    marginLeft: 0,
-    margin: 0,
   },
   /* -------------- Buttons --------------*/
   linkButton: {
@@ -158,7 +137,31 @@ export default StyleSheet.create({
     width: width,
     height: height / 4.5,
   },
-  recipeCard: {},
+
+  /* -------------- Macros Visual  --------------*/
+  macrosView: {
+    width: width / 1.12,
+    height: height / 5.8,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-start'
+  },
+  macroBoxArea: {
+    width: width/2.8,
+    height: height/5.8,
+  },
+  macroVisual: {
+    width: width/2.8,
+    height: height/25,
+    display: "flex",
+    flexDirection: "row",
+    marginLeft: wp("5%"),
+    marginTop: hp("1.1%"),
+  },
+  macroVisualText: {
+    fontFamily: "AmaticSC-Bold",
+    fontSize: RFPercentage(3),
+  },
   box1: {
     backgroundColor: "#1ED760",
     width: wp("3%"),
@@ -179,5 +182,8 @@ export default StyleSheet.create({
     height: hp("2%"),
     marginTop: hp("1.5%"),
     marginLeft: wp("2%"),
+  },
+  pieChart: {
+    marginLeft: width/4.5
   },
 });
