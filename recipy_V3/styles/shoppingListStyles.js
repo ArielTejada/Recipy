@@ -67,8 +67,8 @@ export default StyleSheet.create({
     // top: -height/23,
   },
   uncheckIcon: {
-    width: wp("6%"),
-    height: hp("4%"),
+    width: width/15,
+    height: 90 * ((width/90)/15),
     marginHorizontal: wp("2%"),
     marginVertical: hp("1%"),
   },

@@ -217,8 +217,7 @@ export default function ShoppingList({ navigation }) {
                       >
                         <Image
                           source={require("../assets/icons/check.png")}
-                          style={[styles.uncheckIcon]}
-                          tintColor="#40AAF2"
+                          style={[styles.uncheckIcon, {tintColor: "#40AAF2"}]}
                         />
                       </Pressable>
 
