@@ -90,7 +90,7 @@ export default StyleSheet.create({
   },
   scanImage: {
     width: width / 6,
-    height: height / 10,
+    height: 96 * ((width/96)/6),
     tintColor: "white",
   },
 
