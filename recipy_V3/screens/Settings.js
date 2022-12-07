@@ -10,6 +10,7 @@ import {
   FlatList,
   TouchableOpacity,
   Image,
+  Dimensions
 } from "react-native";
 import styles from "../styles/settings-styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
@@ -19,6 +20,7 @@ import matchFunction from "../components/matchFunction";
 import { SearchBar } from "react-native-screens";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import * as Animatable from "react-native-animatable";
+const { height, width } = Dimensions.get("window");
 
 export default function Settings({ navigation }) {
   /* -------------------- Local State Variables -------------------- */
@@ -365,7 +367,7 @@ export default function Settings({ navigation }) {
             </ScrollView>
           </View>
 
-          <View style={[styles.navView]}></View>
+          <View style={[{ width: width, height: searchText === '' ? height / 5 : height / 2}]}></View>
       </Pressable>
       </ScrollView>
     </Animatable.View>
