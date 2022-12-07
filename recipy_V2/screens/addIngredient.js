@@ -60,10 +60,13 @@ const getIngredients = async (data) => {
 
 const handleBarCodeScanned = ({type,data}) => {
   setScanned(true);
-  alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+  console.log("HERE")
+  // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
   getIngredients(data);
+  console.log("This is what the barcode holds")
+  console.log(json)
   // console.log(json[0]===undefined);
-  if(json[0]===undefined){//sometimes the async function fires a bit too late so the variable doesn't get assigned properly
+  if(json===undefined || json.length===0){//sometimes the async function fires a bit too late so the variable doesn't get assigned properly
     alert('An error has occured.\n Please rescan your barcode');
     setScanned(false);
     setShouldShow(!shouldShow);
