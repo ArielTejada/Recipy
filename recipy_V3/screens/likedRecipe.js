@@ -145,26 +145,20 @@ export default function LikedRecipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{recipeDescription}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Recipe Macros:</Text>
-          <Text style={[styles.recipeDataText]}>{currentRecipeMacros}</Text>
+          <Text style={[styles.recipeDataText]}>{currentRecipeMacros.replace(/[\r\n]/gm, '')}</Text>
 
           <View style={[styles.macrosView, styles.outline]}>
-            <View style={[]}>
+            <View style={[styles.macroBoxArea]}>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>
-                  Fat {percentages[0] * 100}%{" "}
-                </Text>
+                <Text style={[styles.macroVisualText]}>Fat {(percentages[0] * 100).toFixed(0)}%{" "}</Text>
                 <View style={[styles.box1]}></View>
               </View>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>
-                  Carbs {percentages[1] * 100}%{" "}
-                </Text>
+                <Text style={[styles.macroVisualText]}>Carbs {(percentages[1] * 100).toFixed(0)}%{" "}</Text>
                 <View style={[styles.box2]}></View>
               </View>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>
-                  Protein {percentages[2] * 100}%{" "}
-                </Text>
+                <Text style={[styles.macroVisualText]}>Protein {(percentages[2] * 100).toFixed(0)}%{" "}</Text>
                 <View style={[styles.box3]}></View>
               </View>
             </View>
@@ -172,16 +166,8 @@ export default function LikedRecipe({ navigation }) {
               <PieChart
                 data={[
                   { key: "Fat", count: percentages[0] * 100, color: "#1ED760" },
-                  {
-                    key: "Carbs",
-                    count: percentages[1] * 100,
-                    color: "#007ACC",
-                  },
-                  {
-                    key: "Protein",
-                    count: percentages[2] * 100,
-                    color: "#F52727",
-                  },
+                  { key: "Carbs", count: percentages[1] * 100, color: "#007ACC"},
+                  { key: "Protein", count: percentages[2] * 100, color: "#F52727"},
                 ]}
                 length={100}
               />
@@ -204,11 +190,11 @@ export default function LikedRecipe({ navigation }) {
           </Text>
 
           <View style={[styles.buttonsSection]}>
-            <Pressable
+          <Pressable
               style={[styles.linkButton, styles.outline]}
               onPress={() => sendLink()}
             >
-              <Text style={[styles.sendText]}>Send This Link To A Friend!</Text>
+              <Text style={[styles.sendText]}>Send To A Friend!</Text>
             </Pressable>
             <Pressable
               style={[

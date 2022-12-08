@@ -93,7 +93,7 @@ export default function Favorite({ navigation }) {
     navigation.navigate("LikedRecipe");
   };
 
-  const generateRecommended = async () => {
+const generateRecommended = async () => {
     if (
       likedRecipes.length > 0 &&
       pantryItems.length > 0 &&
