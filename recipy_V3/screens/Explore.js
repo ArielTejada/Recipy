@@ -46,10 +46,8 @@ const Explore = (props) => {
     );
   } else {
     return (
-      <Animatable.View animation="fadeInRightBig" style={{ flex: 1 }}>
-        <View style={styles.container}>
-          <Feed />
-        </View>
+      <Animatable.View animation="bounceInDown">
+        <Feed />
       </Animatable.View>
     );
   }

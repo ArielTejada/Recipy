@@ -9,11 +9,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   name: {
+    marginLeft: -5,
     marginRight: 5,
     fontWeight: "bold",
   },
   username: {
-    marginRight: 5,
+    marginLeft: -3,
+    marginRight: 2,
     color: "grey",
   },
   smallDot: {
@@ -25,6 +27,7 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   content: {
+    marginLeft: -4,
     marginTop: 10,
     lineHeight: 22,
     fontSize: 17,

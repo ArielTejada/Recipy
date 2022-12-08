@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "flex-start",
-    backgroundColor: "white",
+    backgroundColor: "f2f2f2",
   },
   headerContainer: {
     width: "100%",
