@@ -81,37 +81,11 @@ const AppNav = (props) => {
     ),
   };
 
-  // const [isDarkTheme, setIsDarkTheme] = useState(false);
-
   const initLoginState = {
     isLoading: true,
     email: null,
     userToken: null,
   };
-
-  // const CustomDefaultTheme = {
-  //   ...NavigationDefaultTheme,
-  //   ...PaperDefaultTheme,
-  //   colors: {
-  //     ...NavigationDefaultTheme.colors,
-  //     ...PaperDefaultTheme.colors,
-  //     background: "#ffffff",
-  //     text: "#333333",
-  //   },
-  // };
-
-  // const CustomDarkTheme = {
-  //   ...NavigationDarkTheme,
-  //   ...PaperDarkTheme,
-  //   colors: {
-  //     ...NavigationDarkTheme.colors,
-  //     ...PaperDarkTheme.colors,
-  //     background: "#333333",
-  //     text: "#ffffff",
-  //   },
-  // };
-
-  // const theme = isDarkTheme ? CustomDarkTheme : CustomDefaultTheme;
 
   const loginReducer = (prevState, action) => {
     switch (action.type) {
