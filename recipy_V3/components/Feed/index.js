@@ -34,8 +34,6 @@ const Feed = () => {
   return (
     <View style={{ width: "100%", marginTop: -5, marginBottom: 82.5 }}>
       <FlatList
-        // data={posts}
-        // data={posts.sort()}
         data={posts.sort((a, b) => sortFunction(b, a))}
         renderItem={({ item }) => <Post post={item} />}
         keyExtractor={(item) => item.id}
