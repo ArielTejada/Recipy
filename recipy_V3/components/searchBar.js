@@ -17,12 +17,8 @@ const SearchBar = ({ selectedIngredients, setSelectedIngredients }) => {
   /* -------------------- Redux State Variables -------------------- */
   const refresh = useStoreState((state) => state.refresh);
   const setRefresh = useStoreActions((actions) => actions.setRefresh);
-  const setHaveIngredients = useStoreActions(
-    (actions) => actions.setHaveIngredients
-  );
-  const setGenerateRecipes = useStoreActions(
-    (actions) => actions.setGenerateRecipes
-  );
+  const setHaveIngredients = useStoreActions((actions) => actions.setHaveIngredients);
+  const setGenerateRecipes = useStoreActions((actions) => actions.setGenerateRecipes);
 
   const recentlyUsed = useStoreState((state) => state.recentlyUsed);
   const setRecentlyUsed = useStoreActions((actions) => actions.setRecentlyUsed);
@@ -97,16 +93,12 @@ const SearchBar = ({ selectedIngredients, setSelectedIngredients }) => {
             {filteredArray
               .filter((ingredient) => {
                 if (dietOption === "default") {
+                  console.log(filteredArray)
                   return true;
                 }
                 return ingredient[dietOption] === "TRUE";
               })
-              .filter(
-                (ingredient) =>
-                  removedIngredients.some(
-                    (item) => item.name === ingredient.name
-                  ) === false
-              )
+              .filter((ingredient) => removedIngredients.some((item) => item.name === ingredient.name) === false)
               .map((ingredient) => {
                 return (
                   <View key={ingredient.id}>
@@ -116,23 +108,13 @@ const SearchBar = ({ selectedIngredients, setSelectedIngredients }) => {
                       }}
                       style={[styles.outline, styles.searchResult]}
                     >
-                      <Text
-                        style={[
-                          styles.AmaticSCRegular,
-                          styles.textCenter,
-                          styles.fontMedium,
-                        ]}
-                      >
-                        {ingredient.name.replace(/[\r_]/gm, ' ')}
-                      </Text>
+                      <Text style={[styles.AmaticSCRegular, styles.textCenter, styles.fontMedium]}>{ingredient.name.replace(/[\r_]/gm, ' ')}</Text>
                     </TouchableOpacity>
                   </View>
                 );
               })}
           </ScrollView>
-        ) : (
-          <Text></Text>
-        )}
+        ) : (<Text></Text>)}
       </View>
     </View>
   );

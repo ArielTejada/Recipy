@@ -4133,7 +4133,7 @@ export default {
     },
     {
       id: "259",
-      name: "  garlic  ",
+      name: "garlic",
       type: "vegetable",
       portion: "3g",
       calories: "4.5",
@@ -4149,7 +4149,7 @@ export default {
     },
     {
       id: "260",
-      name: "  onion  ",
+      name: "onion",
       type: "vegetable",
       portion: "94g",
       calories: "41",
@@ -4165,7 +4165,7 @@ export default {
     },
     {
       id: "261",
-      name: "  bell pepper  ",
+      name: "bell pepper",
       type: "vegetable",
       portion: "114g",
       calories: "32",
@@ -4181,7 +4181,7 @@ export default {
     },
     {
       id: "262",
-      name: "  carrot  ",
+      name: "carrot",
       type: "vegetable",
       portion: "46g",
       calories: "16",
@@ -4196,7 +4196,7 @@ export default {
     },
     {
       id: "263",
-      name: "  tomato  ",
+      name: "tomato",
       type: "vegetable",
       portion: "123g",
       calories: "22",
@@ -4212,7 +4212,7 @@ export default {
     },
     {
       id: "264",
-      name: "  scallion  ",
+      name: "scallion",
       type: "vegetable",
       portion: "15g",
       calories: "4.8",
@@ -4228,7 +4228,7 @@ export default {
     },
     {
       id: "265",
-      name: "  potato  ",
+      name: "potato",
       type: "vegetable",
       portion: "173g",
       calories: "161",
@@ -4244,7 +4244,7 @@ export default {
     },
     {
       id: "266",
-      name: "  red onion  ",
+      name: "red onion",
       type: "vegetable",
       portion: "94g",
       calories: "41",
@@ -4260,7 +4260,7 @@ export default {
     },
     {
       id: "267",
-      name: "  celery  ",
+      name: "celery",
       type: "vegetable",
       portion: "40g",
       calories: "6.4",
@@ -4276,7 +4276,7 @@ export default {
     },
     {
       id: "268",
-      name: "  chili pepper  ",
+      name: "chili pepper",
       type: "vegetable",
       portion: "45g",
       calories: "18",
@@ -4292,7 +4292,7 @@ export default {
     },
     {
       id: "269",
-      name: "  canned tomato  ",
+      name: "canned tomato",
       type: "vegetable",
       portion: "190g",
       calories: "30",
@@ -4308,7 +4308,7 @@ export default {
     },
     {
       id: "270",
-      name: "  jalapeno  ",
+      name: "jalapeno",
       type: "vegetable",
       portion: "14g",
       calories: "4.1",
@@ -4324,7 +4324,7 @@ export default {
     },
     {
       id: "271",
-      name: "  avocado  ",
+      name: "avocado",
       type: "vegetable",
       portion: "201g",
       calories: "322",
@@ -4340,7 +4340,7 @@ export default {
     },
     {
       id: "272",
-      name: "  zucchini  ",
+      name: "zucchini",
       type: "vegetable",
       portion: "200g",
       calories: "30",
@@ -4356,7 +4356,7 @@ export default {
     },
     {
       id: "273",
-      name: "  shallot  ",
+      name: "shallot",
       type: "vegetable",
       portion: "43g",
       calories: "31",
@@ -4372,7 +4372,7 @@ export default {
     },
     {
       id: "274",
-      name: "  cherry tomato  ",
+      name: "cherry tomato",
       type: "vegetable",
       portion: "17g",
       calories: "3.1",
@@ -4388,7 +4388,7 @@ export default {
     },
     {
       id: "275",
-      name: "  sweet corn  ",
+      name: "sweet corn",
       type: "vegetable",
       portion: "100g",
       calories: "80",
@@ -4404,7 +4404,7 @@ export default {
     },
     {
       id: "276",
-      name: "  cucumber  ",
+      name: "cucumber",
       type: "vegetable",
       portion: "201g",
       calories: "30",
@@ -4420,7 +4420,7 @@ export default {
     },
     {
       id: "277",
-      name: "  spinach  ",
+      name: "spinach",
       type: "vegetable",
       portion: "180g",
       calories: "41",
@@ -4436,7 +4436,7 @@ export default {
     },
     {
       id: "278",
-      name: "  sweet potato  ",
+      name: "sweet potato",
       type: "vegetable",
       portion: "114g",
       calories: "103",
@@ -4452,7 +4452,7 @@ export default {
     },
     {
       id: "279",
-      name: "  broccoli  ",
+      name: "broccoli",
       type: "vegetable",
       portion: "10g",
       calories: "3.5",
@@ -4468,7 +4468,7 @@ export default {
     },
     {
       id: "280",
-      name: "  pumpkin  ",
+      name: "pumpkin",
       type: "vegetable",
       portion: "245g",
       calories: "49",
@@ -4484,7 +4484,7 @@ export default {
     },
     {
       id: "281",
-      name: "  baby greens  ",
+      name: "baby greens",
       type: "vegetable",
       portion: "190g",
       calories: "63",
@@ -4500,7 +4500,7 @@ export default {
     },
     {
       id: "282",
-      name: "  cabbage  ",
+      name: "cabbage",
       type: "vegetable",
       portion: "75g",
       calories: "17",
@@ -4516,7 +4516,7 @@ export default {
     },
     {
       id: "283",
-      name: "  cauliflower  ",
+      name: "cauliflower",
       type: "vegetable",
       portion: "575g",
       calories: "132",
@@ -4532,7 +4532,7 @@ export default {
     },
     {
       id: "284",
-      name: "  asparagus  ",
+      name: "asparagus",
       type: "vegetable",
       portion: "75g",
       calories: "17",
@@ -4548,7 +4548,7 @@ export default {
     },
     {
       id: "285",
-      name: "  kale  ",
+      name: "kale",
       type: "vegetable",
       portion: "4.7g",
       calories: "36",
@@ -4564,7 +4564,7 @@ export default {
     },
     {
       id: "286",
-      name: "  arugula  ",
+      name: "arugula",
       type: "vegetable",
       portion: "10g",
       calories: "2.5",
@@ -4580,7 +4580,7 @@ export default {
     },
     {
       id: "287",
-      name: "  leek  ",
+      name: "leek",
       type: "vegetable",
       portion: "124g",
       calories: "38",
@@ -4596,7 +4596,7 @@ export default {
     },
     {
       id: "288",
-      name: "  eggplant  ",
+      name: "eggplant",
       type: "vegetable",
       portion: "566g",
       calories: "198",
@@ -4612,7 +4612,7 @@ export default {
     },
     {
       id: "289",
-      name: "  lettuce  ",
+      name: "lettuce",
       type: "vegetable",
       portion: "94g",
       calories: "16",
@@ -4628,7 +4628,7 @@ export default {
     },
     {
       id: "290",
-      name: "  butternut squash  ",
+      name: "butternut squash",
       type: "vegetable",
       portion: "205g",
       calories: "82",
@@ -4644,7 +4644,7 @@ export default {
     },
     {
       id: "291",
-      name: "  green olives  ",
+      name: "green olives",
       type: "vegetable",
       portion: "2.7g",
       calories: "3.9",
@@ -4660,7 +4660,7 @@ export default {
     },
     {
       id: "292",
-      name: "  sweet onion  ",
+      name: "sweet onion",
       type: "vegetable",
       portion: "331g",
       calories: "106",
@@ -4676,7 +4676,7 @@ export default {
     },
     {
       id: "293",
-      name: "  beetroot  ",
+      name: "beetroot",
       type: "vegetable",
       portion: "50g",
       calories: "22",
@@ -4692,7 +4692,7 @@ export default {
     },
     {
       id: "294",
-      name: "  romaine  ",
+      name: "romaine",
       type: "vegetable",
       portion: "94g",
       calories: "16",
@@ -4708,7 +4708,7 @@ export default {
     },
     {
       id: "295",
-      name: "  black olives  ",
+      name: "black olives",
       type: "vegetable",
       portion: "3.8g",
       calories: "4.4",
@@ -4724,7 +4724,7 @@ export default {
     },
     {
       id: "296",
-      name: "  artichoke  ",
+      name: "artichoke",
       type: "vegetable",
       portion: "120g",
       calories: "64",
@@ -4740,7 +4740,7 @@ export default {
     },
     {
       id: "297",
-      name: "  brussels sprout  ",
+      name: "brussels sprout",
       type: "vegetable",
       portion: "168g",
       calories: "60",
@@ -4756,7 +4756,7 @@ export default {
     },
     {
       id: "298",
-      name: "  fennel  ",
+      name: "fennel",
       type: "vegetable",
       portion: "87g",
       calories: "27",
@@ -4772,7 +4772,7 @@ export default {
     },
     {
       id: "299",
-      name: "  radish  ",
+      name: "radish",
       type: "vegetable",
       portion: "4.5g",
       calories: "0.7",
@@ -4788,7 +4788,7 @@ export default {
     },
     {
       id: "300",
-      name: "  canned pumpkin  ",
+      name: "canned pumpkin",
       type: "vegetable",
       portion: "245g",
       calories: "83",
@@ -4804,7 +4804,7 @@ export default {
     },
     {
       id: "301",
-      name: "  kalamata olives  ",
+      name: "kalamata olives",
       type: "vegetable",
       portion: "2.9g",
       calories: "6.2",
@@ -4820,7 +4820,7 @@ export default {
     },
     {
       id: "302",
-      name: "  summer squash  ",
+      name: "summer squash",
       type: "vegetable",
       portion: "342g",
       calories: "68",
@@ -4836,7 +4836,7 @@ export default {
     },
     {
       id: "303",
-      name: "  red cabbage  ",
+      name: "red cabbage",
       type: "vegetable",
       portion: "150g",
       calories: "44",
@@ -4852,7 +4852,7 @@ export default {
     },
     {
       id: "304",
-      name: "  mixed greens  ",
+      name: "mixed greens",
       type: "vegetable",
       portion: "85g",
       calories: "20",
@@ -4868,7 +4868,7 @@ export default {
     },
     {
       id: "305",
-      name: "  horseradish  ",
+      name: "horseradish",
       type: "vegetable",
       portion: "5g",
       calories: "2.4",
@@ -4884,7 +4884,7 @@ export default {
     },
     {
       id: "306",
-      name: "  parsnip  ",
+      name: "parsnip",
       type: "vegetable",
       portion: "98g",
       calories: "70",
@@ -4900,7 +4900,7 @@ export default {
     },
     {
       id: "307",
-      name: "  mixed vegetable  ",
+      name: "mixed vegetable",
       type: "vegetable",
       portion: "140g",
       calories: "45",
@@ -4916,7 +4916,7 @@ export default {
     },
     {
       id: "308",
-      name: "  poblano pepper  ",
+      name: "poblano pepper",
       type: "vegetable",
       portion: "64g",
       calories: "13",
@@ -4932,7 +4932,7 @@ export default {
     },
     {
       id: "309",
-      name: "  bean sprouts  ",
+      name: "bean sprouts",
       type: "vegetable",
       portion: "124g",
       calories: "26",
@@ -4948,7 +4948,7 @@ export default {
     },
     {
       id: "310",
-      name: "  serrano pepper  ",
+      name: "serrano pepper",
       type: "vegetable",
       portion: "6.1g",
       calories: "2",
@@ -4964,7 +4964,7 @@ export default {
     },
     {
       id: "311",
-      name: "  sweet pepper  ",
+      name: "sweet pepper",
       type: "vegetable",
       portion: "114g",
       calories: "32",
@@ -4980,7 +4980,7 @@ export default {
     },
     {
       id: "312",
-      name: "  watercress  ",
+      name: "watercress",
       type: "vegetable",
       portion: "34g",
       calories: "3.7",
@@ -4996,7 +4996,7 @@ export default {
     },
     {
       id: "313",
-      name: "  bok choy  ",
+      name: "bok choy",
       type: "vegetable",
       portion: "170g",
       calories: "20",
@@ -5012,7 +5012,7 @@ export default {
     },
     {
       id: "314",
-      name: "  iceberg  ",
+      name: "iceberg",
       type: "vegetable",
       portion: "57g",
       calories: "8",
@@ -5028,7 +5028,7 @@ export default {
     },
     {
       id: "315",
-      name: "  chard  ",
+      name: "chard",
       type: "vegetable",
       portion: "175g",
       calories: "35",
@@ -5044,7 +5044,7 @@ export default {
     },
     {
       id: "316",
-      name: "  green tomato  ",
+      name: "green tomato",
       type: "vegetable",
       portion: "123g",
       calories: "28",
@@ -5060,7 +5060,7 @@ export default {
     },
     {
       id: "317",
-      name: "  pimiento  ",
+      name: "pimiento",
       type: "vegetable",
       portion: "12g",
       calories: "2.8",
@@ -5076,7 +5076,7 @@ export default {
     },
     {
       id: "318",
-      name: "  butter lettuce  ",
+      name: "butter lettuce",
       type: "vegetable",
       portion: "163g",
       calories: "21",
@@ -5092,7 +5092,7 @@ export default {
     },
     {
       id: "319",
-      name: "  spaghetti squash  ",
+      name: "spaghetti squash",
       type: "vegetable",
       portion: "958g",
       calories: "259",
@@ -5108,7 +5108,7 @@ export default {
     },
     {
       id: "320",
-      name: "  sauerkraut  ",
+      name: "sauerkraut",
       type: "vegetable",
       portion: "142g",
       calories: "27",
@@ -5124,7 +5124,7 @@ export default {
     },
     {
       id: "321",
-      name: "  celeriac  ",
+      name: "celeriac",
       type: "vegetable",
       portion: "155g",
       calories: "42",
@@ -5140,7 +5140,7 @@ export default {
     },
     {
       id: "322",
-      name: "  napa cabbage  ",
+      name: "napa cabbage",
       type: "vegetable",
       portion: "109g",
       calories: "13",
@@ -5156,7 +5156,7 @@ export default {
     },
     {
       id: "323",
-      name: "  water chestnut  ",
+      name: "water chestnut",
       type: "vegetable",
       portion: "62g",
       calories: "60",
@@ -5172,7 +5172,7 @@ export default {
     },
     {
       id: "324",
-      name: "  turnip  ",
+      name: "turnip",
       type: "vegetable",
       portion: "120g",
       calories: "26",
@@ -5188,7 +5188,7 @@ export default {
     },
     {
       id: "325",
-      name: "  okra  ",
+      name: "okra",
       type: "vegetable",
       portion: "80g",
       calories: "18",
@@ -5204,7 +5204,7 @@ export default {
     },
     {
       id: "326",
-      name: "  acorn squash  ",
+      name: "acorn squash",
       type: "vegetable",
       portion: "205g",
       calories: "115",
@@ -5220,7 +5220,7 @@ export default {
     },
     {
       id: "327",
-      name: "  radicchio  ",
+      name: "radicchio",
       type: "vegetable",
       portion: "40g",
       calories: "9.2",
@@ -5236,7 +5236,7 @@ export default {
     },
     {
       id: "328",
-      name: "  corn cob  ",
+      name: "corn cob",
       type: "vegetable",
       portion: "89g",
       calories: "85",
@@ -5252,7 +5252,7 @@ export default {
     },
     {
       id: "329",
-      name: "  pearl onion  ",
+      name: "pearl onion",
       type: "vegetable",
       portion: "15g",
       calories: "6.6",
@@ -5268,7 +5268,7 @@ export default {
     },
     {
       id: "330",
-      name: "  thai chili  ",
+      name: "thai chili",
       type: "vegetable",
       portion: "3g",
       calories: "1.2",
@@ -5284,7 +5284,7 @@ export default {
     },
     {
       id: "331",
-      name: "  plantain  ",
+      name: "plantain",
       type: "vegetable",
       portion: "240g",
       calories: "278",
@@ -5300,7 +5300,7 @@ export default {
     },
     {
       id: "332",
-      name: "  tenderstem broccoli  ",
+      name: "tenderstem broccoli",
       type: "vegetable",
       portion: "10g",
       calories: "3.5",
@@ -5316,7 +5316,7 @@ export default {
     },
     {
       id: "333",
-      name: "  leaf lettuce  ",
+      name: "leaf lettuce",
       type: "vegetable",
       portion: "17g",
       calories: "2.9",
@@ -5332,7 +5332,7 @@ export default {
     },
     {
       id: "334",
-      name: "  endive  ",
+      name: "endive",
       type: "vegetable",
       portion: "53g",
       calories: "9",
@@ -5348,7 +5348,7 @@ export default {
     },
     {
       id: "335",
-      name: "  jicama  ",
+      name: "jicama",
       type: "vegetable",
       portion: "120g",
       calories: "46",
@@ -5364,7 +5364,7 @@ export default {
     },
     {
       id: "336",
-      name: "  corn husk  ",
+      name: "corn husk",
       type: "vegetable",
       portion: "103g",
       calories: "99",
@@ -5380,7 +5380,7 @@ export default {
     },
     {
       id: "337",
-      name: "  habanero pepper  ",
+      name: "habanero pepper",
       type: "vegetable",
       portion: "45g",
       calories: "18",
@@ -5396,7 +5396,7 @@ export default {
     },
     {
       id: "338",
-      name: "  canned whole tomato  ",
+      name: "canned whole tomato",
       type: "vegetable",
       portion: "123g",
       calories: "22",
@@ -5412,7 +5412,7 @@ export default {
     },
     {
       id: "339",
-      name: "  collard greens  ",
+      name: "collard greens",
       type: "vegetable",
       portion: "190g",
       calories: "63",
@@ -5428,7 +5428,7 @@ export default {
     },
     {
       id: "340",
-      name: "  baby corn  ",
+      name: "baby corn",
       type: "vegetable",
       portion: "85g",
       calories: "19",
@@ -5444,7 +5444,7 @@ export default {
     },
     {
       id: "341",
-      name: "  daikon  ",
+      name: "daikon",
       type: "vegetable",
       portion: "357g",
       calories: "61",
@@ -5460,7 +5460,7 @@ export default {
     },
     {
       id: "342",
-      name: "  belgian endive  ",
+      name: "belgian endive",
       type: "vegetable",
       portion: "53g",
       calories: "9",
@@ -5476,7 +5476,7 @@ export default {
     },
     {
       id: "343",
-      name: "  broccoli rabe  ",
+      name: "broccoli rabe",
       type: "vegetable",
       portion: "10g",
       calories: "3.5",
@@ -5492,7 +5492,7 @@ export default {
     },
     {
       id: "344",
-      name: "  rutabaga  ",
+      name: "rutabaga",
       type: "vegetable",
       portion: "140g",
       calories: "52",
@@ -5508,7 +5508,7 @@ export default {
     },
     {
       id: "345",
-      name: "  ancho chili pepper  ",
+      name: "ancho chili pepper",
       type: "vegetable",
       portion: "17g",
       calories: "48",
@@ -5524,7 +5524,7 @@ export default {
     },
     {
       id: "346",
-      name: "  bamboo shoot  ",
+      name: "bamboo shoot",
       type: "vegetable",
       portion: "131g",
       calories: "25",
@@ -5540,7 +5540,7 @@ export default {
     },
     {
       id: "347",
-      name: "  boston lettuce  ",
+      name: "boston lettuce",
       type: "vegetable",
       portion: "163g",
       calories: "21",
@@ -5556,7 +5556,7 @@ export default {
     },
     {
       id: "348",
-      name: "  yam  ",
+      name: "yam",
       type: "vegetable",
       portion: "136g",
       calories: "158",
@@ -5572,7 +5572,7 @@ export default {
     },
     {
       id: "349",
-      name: "  kohlrabi  ",
+      name: "kohlrabi",
       type: "vegetable",
       portion: "135g",
       calories: "36",
@@ -5588,7 +5588,7 @@ export default {
     },
     {
       id: "350",
-      name: "  guajillo pepper  ",
+      name: "guajillo pepper",
       type: "vegetable",
       portion: "2.3g",
       calories: "5.8",
@@ -5604,7 +5604,7 @@ export default {
     },
     {
       id: "351",
-      name: "  frisee  ",
+      name: "frisee",
       type: "vegetable",
       portion: "29g",
       calories: "6.7",
@@ -5620,7 +5620,7 @@ export default {
     },
     {
       id: "352",
-      name: "  delicata squash  ",
+      name: "delicata squash",
       type: "vegetable",
       portion: "205g",
       calories: "76",
@@ -5636,7 +5636,7 @@ export default {
     },
     {
       id: "353",
-      name: "  anaheim pepper  ",
+      name: "anaheim pepper",
       type: "vegetable",
       portion: "64g",
       calories: "13",
@@ -5652,7 +5652,7 @@ export default {
     },
     {
       id: "354",
-      name: "  cress  ",
+      name: "cress",
       type: "vegetable",
       portion: "50g",
       calories: "16",
@@ -5668,7 +5668,7 @@ export default {
     },
     {
       id: "355",
-      name: "  golden beet  ",
+      name: "golden beet",
       type: "vegetable",
       portion: "50g",
       calories: "22",
@@ -5684,7 +5684,7 @@ export default {
     },
     {
       id: "356",
-      name: "  gem lettuce  ",
+      name: "gem lettuce",
       type: "vegetable",
       portion: "94g",
       calories: "16",
@@ -5700,7 +5700,7 @@ export default {
     },
     {
       id: "357",
-      name: "  alfalfa  ",
+      name: "alfalfa",
       type: "vegetable",
       portion: "33g",
       calories: "7.6",

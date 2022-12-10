@@ -89,6 +89,15 @@ export default function Home({ navigation }) {
     navigation.navigate("Recipe");
   };
 
+  const returnIngredientString = (ingredients, attr) => {
+    let output = [];
+    for (let i = 0; i < ingredients.length; i++) {
+      output.push(ingredients[i][attr].trim().replace(/[\r_]/gm, ' '));
+    }
+    console.log("string returned: ", output.join(","))
+    return output.join(",");
+  };
+
   const getRecipes = async (ingredients) => {
     await axios({
       method: "get",
@@ -132,13 +141,6 @@ export default function Home({ navigation }) {
     return;
   };
 
-  const returnIngredientString = (ingredients, attr) => {
-    let output = [];
-    for (let i = 0; i < ingredients.length; i++) {
-      output.push(ingredients[i][attr]);
-    }
-    return output.join(",");
-  };
 
   const recipePressHandler = (
     title = "Loading...",
@@ -458,7 +460,7 @@ export default function Home({ navigation }) {
               </View>
             ) : (
               <View style={[styles.outline, styles.selectedIngredients]}>
-                <Text style={[styles.fontMedium, styles.AmaticSCBold]}>{Recipes.length == 0 ? " No Search Results..." : " Search Error... Try other combinations!"}</Text>
+                <Text style={[styles.fontMedium, styles.AmaticSCBold]}>{Recipes.length == 0 ? " No Search Results..." : " No Search Results...."}</Text>
               </View>
             )}
 
