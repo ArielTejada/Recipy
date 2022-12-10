@@ -231,7 +231,9 @@ export default function Favorite({ navigation }) {
           </View>
 
           <View style={[styles.outline, styles.recommededScrollView]}>
-            {renderedRecommended && showRecommended && recommendedRecipes != undefined && recommendedRecipes.length != 0 ? (
+            {renderedRecommended && showRecommended && Object.values(Object.values(recommendedRecipes))[0][
+                        "CARBS"
+                      ] != undefined && recommendedRecipes.length != 0 ? (
               <View>
                 <Animatable.View animation="zoomInRight">
                   <ScrollView horizontal={true}>
