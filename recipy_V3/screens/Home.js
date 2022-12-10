@@ -94,7 +94,6 @@ export default function Home({ navigation }) {
     for (let i = 0; i < ingredients.length; i++) {
       output.push(ingredients[i][attr].trim().replace(/[\r_]/gm, ' '));
     }
-    console.log("string returned: ", output.join(","))
     return output.join(",");
   };
 
