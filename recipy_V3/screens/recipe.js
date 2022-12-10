@@ -177,7 +177,7 @@ export default function Recipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{ingredientsRequired}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Directions:</Text>
-          <Text style={[styles.recipeDataText]}>{steps}</Text>
+          <Text style={[styles.recipeDataText]}>{steps.replace(/[\r,]/gm, '\n')}</Text>
           <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Link:</Text>
