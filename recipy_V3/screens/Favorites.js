@@ -54,14 +54,14 @@ export default function Favorite({ navigation }) {
   };
 
   const likedRecipePress = (
-    title = "Loading...",
-    desc = "Loading...",
-    macros = "Loading...",
-    reqs = "Loading...",
-    steps = "Loading...",
-    recipe = "Loading...",
-    link = "Loading...",
-    id = "Loading..."
+    title = "Loading Title...",
+    desc = "Loading Description...",
+    macros = "Loading Macros...",
+    reqs = "Loading Required Ingredients...",
+    steps = "Loading Steps...",
+    recipe = "Loading Recipe...",
+    link = "Loading Link...",
+    id = "Loading ID..."
   ) => {
     setCurrentRecipeTitle(title);
     setRecipeDescription(desc);
@@ -133,7 +133,7 @@ export default function Favorite({ navigation }) {
                   <Pressable
                     style={[styles.outline]}
                     key={recipe.id}
-                    onPress={() => likedRecipePress( recipe.title, recipe.desc, recipe.macros, recipe.reqs, recipe.recipe, recipe.link, recipe.id)}
+                    onPress={() => likedRecipePress( recipe.title, recipe.desc, recipe.macros, recipe.reqs, recipe.steps, recipe.recipe, recipe.link, recipe.id)}
                   >
                     <ImageBackground
                       source={require("../assets/img/banner71.png")}

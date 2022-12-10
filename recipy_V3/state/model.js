@@ -5755,7 +5755,7 @@ export default {
   }),
   setRecentlyUsed: action((state, addedIngredient) => {
     state.recentlyUsed.unshift(addedIngredient);
-    if (state.recentlyUsed.length >= 8) {
+    if (state.recentlyUsed.length >= 6) {
       state.recentlyUsed.pop();
     }
   }),

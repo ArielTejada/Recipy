@@ -177,7 +177,7 @@ export default function Recipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{ingredientsRequired}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Directions:</Text>
-          <Text style={[styles.recipeDataText]}>{steps}</Text>
+          <Text style={[styles.recipeDataText]}>{steps.replace(/[\r,]/gm, '\n')}</Text>
           <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Link:</Text>
@@ -195,32 +195,13 @@ export default function Recipe({ navigation }) {
             >
               <Text style={[styles.sendText]}>Send To A Friend!</Text>
             </Pressable>
-            <Pressable
-              style={[
-                styles.likeButton,
-                styles.outline,
-                {
-                  backgroundColor: likedRecipes.some(
-                    (recipe) => recipe.id === recipeID
-                  )
-                    ? "#2196F3"
-                    : "#39CD7B",
-                },
-              ]}
+            <Pressable 
+              style={[styles.likeButton, styles.outline, {backgroundColor: likedRecipes.some((recipe) => recipe.id === recipeID) ? "#2196F3" : "#39CD7B"}]}
               onPress={() => {
                 likeRecipePress();
               }}
             >
-              <Text
-                style={[
-                  styles.sendText,
-                  {
-                    color: likedRecipes.some((recipe) => recipe.id === recipeID)
-                      ? "white"
-                      : "black",
-                  },
-                ]}
-              >
+              <Text style={[styles.sendText, {color: likedRecipes.some((recipe) => recipe.id === recipeID) ? "white" : "black"}]}>
                 {likedRecipes.some((recipe) => recipe.id === recipeID)
                   ? "Liked!"
                   : "Like This Recipe"}
