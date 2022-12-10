@@ -151,68 +151,69 @@ export default function Category({ navigation }) {
               >
                 <Text
                   style={[
-                    styles.fontSmall,
+                    styles.fontMedium,
                     styles.textCenter,
+                    styles.AmaticSCBold,
                     { color: "black" },
                   ]}
                 >
-                  {ingredient.name.replace("_", " ")}
+                  {ingredient.name.replace(/[\r_]/gm, ' ')}
                 </Text>
               </Pressable>
             );
           })}
         </ScrollView>
       </View>
-
-      <View style={[styles.absolute]}>
-        <ImageBackground
-          source={require("../assets/img/searchItems.png")}
-          style={[styles.backImage]}
-          resizeMode="contain"
-          imageStyle={[{ tintColor: headerColor }]}
-        ></ImageBackground>
-      </View>
-
-      <ScrollView style={[styles.ingredientMargins]}>
-        <View style={[styles.flexRow, styles.centerItems]}>
-          {categoryList
-            .filter((ingredient) => {
-              if (dietOption === "default") {
-                return true;
-              }
-              return ingredient[dietOption] === "TRUE";
-            })
-            .filter(
-              (ingredient) =>
-                removedIngredients.some(
-                  (item) => item.name === ingredient.name
-                ) === false
-            )
-            .map((ingredient) => {
-              return (
-                <TouchableOpacity
-                  key={ingredient.id}
-                  style={[styles.roundBTN]}
-                  onPress={() => {
-                    categoryPressHandler({ ...ingredient });
-                  }}
-                  onPressIn={() => fadeIn}
-                  onPressOut={() => fadeOut}
-                >
-                  <Text
-                    style={[
-                      styles.fontSmall,
-                      styles.textCenter,
-                      { color: "black" },
-                    ]}
+                    
+      <ImageBackground
+        source={require('../assets/img/searchItems.png')}
+        style={[styles.backImage]}
+        resizeMode='contain'
+        imageStyle={[{tintColor: headerColor}]}
+      >
+        <ScrollView style={[styles.ingredientMargins]}  showsVerticalScrollIndicator={false}>
+          <View style={[styles.flexRow, styles.centerItems]}>
+            {categoryList
+              .filter((ingredient) => {
+                if (dietOption === "default") {
+                  return true;
+                }
+                return ingredient[dietOption] === "TRUE";
+              })
+              .filter(
+                (ingredient) =>
+                  removedIngredients.some(
+                    (item) => item.name === ingredient.name
+                  ) === false
+              )
+              .map((ingredient) => {
+                return (
+                  <TouchableOpacity
+                    key={ingredient.id}
+                    style={[styles.roundBTN]}
+                    onPress={() => {
+                      categoryPressHandler({ ...ingredient });
+                    }}
+                    onPressIn={() => fadeIn}
+                    onPressOut={() => fadeOut}
                   >
-                    {ingredient.name.replace("_", " ")}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-        </View>
-      </ScrollView>
+                    <Text
+                      style={[
+                        styles.fontMedium,
+                        styles.textCenter,
+                        styles.AmaticSCBold,
+                        { color: "black" },
+                      ]}
+                    >
+                      {ingredient.name.replace(/[\r_]/gm, ' ')}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+          <View style={[styles.navView]}></View>
+          </View>
+        </ScrollView>
+      </ImageBackground>
     </Animatable.View>
   );
 }

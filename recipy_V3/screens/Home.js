@@ -10,7 +10,6 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
-  KeyboardAvoidingView,
   Dimensions
 } from "react-native";
 
@@ -29,10 +28,11 @@ export default function Home({ navigation }) {
   const [recievedData, setRecievedData] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [showRecipeSearch, setShowRecipeSearch] = useState(false);
-  const [recievedRecipeSearchData, setRecievedRecipeSearchData] =
-    useState(false);
+  const [recievedRecipeSearchData, setRecievedRecipeSearchData] = useState(false);
   const [recipeSearchData, setRecipeSearchData] = useState([]);
   const [recipeSearchFailed, setRecipeSearchFailed] = useState(false);
+  const [generatingRecipes, setGeneratingRecipes] = useState(false);
+  const [generatingSearch, setGeneratingSearch] = useState(false);
 
   /* -------------------- Redux State Variables -------------------- */
   const refresh = useStoreState((state) => state.refresh);
@@ -40,34 +40,18 @@ export default function Home({ navigation }) {
   const ingredients = useStoreState((state) => state.ingredients);
   const setCategory = useStoreActions((actions) => actions.setCategory);
   const setCategoryList = useStoreActions((actions) => actions.setCategoryList);
-  const selectedIngredients = useStoreState(
-    (state) => state.selectedIngredients
-  );
-  const setSelectedIngredients = useStoreActions(
-    (actions) => actions.setSelectedIngredients
-  );
+  const selectedIngredients = useStoreState((state) => state.selectedIngredients);
+  const setSelectedIngredients = useStoreActions((actions) => actions.setSelectedIngredients);
   const haveIngredints = useStoreState((state) => state.haveIngredients);
-  const setHaveIngredients = useStoreActions(
-    (actions) => actions.setHaveIngredients
-  );
+  const setHaveIngredients = useStoreActions((actions) => actions.setHaveIngredients);
 
   const Recipes = useStoreState((state) => state.Recipes);
   const setRecipes = useStoreActions((actions) => actions.setRecipes);
-  const setCurrentRecipeMacros = useStoreActions(
-    (actions) => actions.setCurrentRecipeMacros
-  );
-  const setCurrentRecipeTitle = useStoreActions(
-    (actions) => actions.setCurrentRecipeTitle
-  );
-  const setCurrentRecipe = useStoreActions(
-    (actions) => actions.setCurrentRecipe
-  );
-  const setIngredientsRequired = useStoreActions(
-    (actions) => actions.setIngredientsRequired
-  );
-  const setRecipeDescription = useStoreActions(
-    (actions) => actions.setRecipeDescription
-  );
+  const setCurrentRecipeMacros = useStoreActions((actions) => actions.setCurrentRecipeMacros);
+  const setCurrentRecipeTitle = useStoreActions((actions) => actions.setCurrentRecipeTitle);
+  const setCurrentRecipe = useStoreActions((actions) => actions.setCurrentRecipe);
+  const setIngredientsRequired = useStoreActions((actions) => actions.setIngredientsRequired);
+  const setRecipeDescription = useStoreActions((actions) => actions.setRecipeDescription);
   const setSteps = useStoreActions((actions) => actions.setSteps);
   const setRecipeLink = useStoreActions((actions) => actions.setRecipeLink);
   const setRecipeID = useStoreActions((actions) => actions.setRecipeID);
@@ -75,9 +59,7 @@ export default function Home({ navigation }) {
   const generateColor = useStoreState((state) => state.generateColor);
   const haveIngredients = useStoreState((state) => state.haveIngredients);
   const generateRecipes = useStoreState((state) => state.generateRecipes);
-  const setGenerateRecipes = useStoreActions(
-    (actions) => actions.setGenerateRecipes
-  );
+  const setGenerateRecipes = useStoreActions((actions) => actions.setGenerateRecipes);
 
   const dietOption = useStoreState((state) => state.dietOption);
   const removedIngredients = useStoreState((state) => state.removedIngredients);
@@ -85,12 +67,8 @@ export default function Home({ navigation }) {
   const pantryItems = useStoreState((state) => state.pantryItems);
   const likedRecipes = useStoreState((state) => state.likedRecipes);
   const recommendedRecipes = useStoreState((state) => state.recommendedRecipes);
-  const setRecommendedRecipes = useStoreActions(
-    (actions) => actions.setRecommendedRecipes
-  );
-  const setRenderedRecommended = useStoreActions(
-    (actions) => actions.setRenderedRecommended
-  );
+  const setRecommendedRecipes = useStoreActions((actions) => actions.setRecommendedRecipes);
+  const setRenderedRecommended = useStoreActions((actions) => actions.setRenderedRecommended);
 
   /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState((state) => state.headerColor);
@@ -134,6 +112,7 @@ export default function Home({ navigation }) {
       })
       .then(() => {
         console.log(Recipes);
+        setGeneratingRecipes(false);
         setRefresh(!refresh);
       });
     setRefresh(!refresh);
@@ -144,10 +123,8 @@ export default function Home({ navigation }) {
       setGenerateRecipes();
     }
     if (haveIngredients && !generateRecipes) {
-      let ingredientString = returnIngredientString(
-        selectedIngredients,
-        "name"
-      );
+      setGeneratingRecipes(true);
+      let ingredientString = returnIngredientString(selectedIngredients,"name");
       await getRecipes(ingredientString);
       setGenerateRecipes();
       setRecievedData(true);
@@ -243,45 +220,21 @@ export default function Home({ navigation }) {
       (ingredient) => ingredient.id != ingredientObj.id
     );
     setSelectedIngredients(newList);
-    setHaveIngredients();
     setRefresh(!refresh);
     if (newList.length == 0) {
       setGenerateRecipes();
       setRecievedData(false);
     }
+    setHaveIngredients();
     setRefresh(!refresh);
     console.log(
       `removed ${ingredientObj.name} num ingredients: ${newList.length}`
     );
-  };
-
-  useEffect(() => {
-    axios({
-      method: "get",
-      url: `http://recipy-ingredients-backend.herokuapp.com/recommend/${
-        likedRecipes.length === 0
-          ? "1538,6,43"
-          : returnIngredientString(likedRecipes, "id")
-      }/${
-        pantryItems.length === 0
-          ? "rice,lemon"
-          : returnIngredientString(pantryItems, "name")
-      }`,
-    })
-      .then((response) => {
-        setRecommendedRecipes(response.data);
-      })
-      .then(() => {
-        // console.log("Response: ", recommendedRecipes)
-        setRefresh(!refresh);
-      });
-    setRefresh(!refresh);
-    if (recommendedRecipes != []) {
-      setRenderedRecommended(true);
-      setRefresh(!refresh);
+    if(newList.length === 0) {
+      setRecievedData(false);
+      setRecipes([]);
     }
-    setRefresh(!refresh);
-  }, []);
+  };
 
   const getSearchRecipes = async (text) => {
     await axios({
@@ -293,6 +246,7 @@ export default function Home({ navigation }) {
       })
       .then(() => {
         console.log(recipeSearchData);
+        setGeneratingSearch(false);
         setRefresh(!refresh);
       })
       .catch(function (error) {
@@ -307,6 +261,7 @@ export default function Home({ navigation }) {
   };
 
   const recipeSearchEnterPress = async (text) => {
+    setGeneratingSearch(true);
     await getSearchRecipes(text);
     setRecievedRecipeSearchData(true);
     setShowRecipeSearch(true);
@@ -318,7 +273,12 @@ export default function Home({ navigation }) {
       style={[styles.wholeScreen, { backgroundColor: pageColor }]}
       animation="fadeInRightBig"
     >
-      <KeyboardAwareScrollView>
+      <KeyboardAwareScrollView
+        keyboardShouldPersistTaps={"always"}
+        showsVerticalScrollIndicator={false}
+        enableOnAndroid={true}
+        extraScrollHeight={height/5}
+      >
         <TouchableWithoutFeedback
           onPress={() => {
             Keyboard.dismiss();
@@ -341,22 +301,14 @@ export default function Home({ navigation }) {
                 onPress={addIngredientHandler}
                 style={[styles.addButton, { backgroundColor: headerColor }]}
               >
-                <Text
-                  style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}
-                >
-                  Add Ingredient
-                </Text>
+                <Text style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}>Add Ingredient</Text>
               </Pressable>
 
               <Pressable
                 onPress={pressGenerate}
                 style={[styles.addButton, { backgroundColor: generateColor }]}
               >
-                <Text
-                  style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}
-                >
-                  Generate Recipes
-                </Text>
+                <Text style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}>Generate Recipes</Text>
               </Pressable>
             </View>
 
@@ -440,31 +392,29 @@ export default function Home({ navigation }) {
               </Text>
             </View>
 
-            <View
-              style={[
-                styles.selectedIngredients,
-                styles.outline,
-                styles.margins,
-              ]}
-            >
+            <View style={[styles.selectedIngredients, styles.outline, styles.margins]}>
               <ScrollView horizontal={true}>
                 {selectedIngredients.map((ingredient) => {
                   return (
                     <Pressable
                       key={ingredient.id}
-                      style={[styles.roundBTN, styles.flex]}
+                      style={[styles.roundBTN]}
                       onPress={() => selectedListPress({ ...ingredient })}
                     >
-                      <Text style={[styles.fontSmall, styles.textCenter]}>
-                        {ingredient.name.replace("_", " ")}
-                      </Text>
+                      <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.textCenter]}>{ingredient.name.replace(/[\r_]/gm, ' ')}</Text>
                     </Pressable>
                   );
                 })}
               </ScrollView>
             </View>
 
-            {recievedData && generateRecipes ? (
+            {generatingRecipes ? (
+              <View>
+                <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Generating...</Text>
+              </View>
+            ) : null}
+
+            {recievedData && generateRecipes && Recipes["TITLE"] != undefined ? (
               <View>
                 <View>
                   <Text style={[styles.fontLarge, styles.recipeText]}>
@@ -483,11 +433,7 @@ export default function Home({ navigation }) {
                             recipePressHandler(
                               Object.values(Recipes["TITLE"])[index],
                               Object.values(Recipes["DESCRIPTION"])[index],
-                              Object.values(Recipes["MACROS"])
-                                [index].split("\n")
-                                .join(" ")
-                                .split(",")
-                                .join(", "),
+                              Object.values(Recipes["MACROS"])[index],
                               Object.values(Recipes["has_ingredients"])[index],
                               Object.values(Recipes["INGREDIENTS"])[index],
                               Object.values(Recipes["DIRECTIONS"])[index],
@@ -511,7 +457,9 @@ export default function Home({ navigation }) {
                 </View>
               </View>
             ) : (
-              <View style={[styles.outline, styles.selectedIngredients]}></View>
+              <View style={[styles.outline, styles.selectedIngredients]}>
+                <Text style={[styles.fontMedium, styles.AmaticSCBold]}>{Recipes.length == 0 ? " No Search Results..." : " Search Error... Try other combinations!"}</Text>
+              </View>
             )}
 
             <View>
@@ -523,7 +471,7 @@ export default function Home({ navigation }) {
 
               <View style={[styles.recipeSearchInput]}>
                 <TextInput
-                  placeholder=" search for recipe by name..."
+                  placeholder=" Enter Recipe Name..."
                   style={[styles.outline, styles.recipeSearchTextInput]}
                   value={searchText}
                   onChangeText={(text) => {
@@ -540,15 +488,7 @@ export default function Home({ navigation }) {
                     Keyboard.dismiss();
                   }}
                 >
-                  <Text
-                    style={[
-                      styles.AmaticSCBold,
-                      styles.fontLarge,
-                      { color: "white" },
-                    ]}
-                  >
-                    Clear
-                  </Text>
+                  <Text style={[ styles.AmaticSCBold, styles.fontLarge, { color: "white" } ]}>Clear</Text>
                 </Pressable>
 
                 <Pressable
@@ -558,18 +498,15 @@ export default function Home({ navigation }) {
                     Keyboard.dismiss();
                   }}
                 >
-                  <Text
-                    style={[
-                      styles.AmaticSCBold,
-                      styles.fontLarge,
-                      { color: "white" },
-                    ]}
-                  >
-                    Enter
-                  </Text>
+                  <Text style={[ styles.AmaticSCBold, styles.fontLarge, { color: "white" }]}>Enter</Text>
                 </Pressable>
               </View>
 
+              {generatingSearch ? (
+                <View>
+                  <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Generating...</Text>
+                </View>
+              ) : null}
 
               {showRecipeSearch && recievedRecipeSearchData ? (
                 <View>
@@ -638,7 +575,6 @@ export default function Home({ navigation }) {
                 </View>
               ) : null}
 
-              {recipeSearchFailed ? <Text>Search Failed!</Text> : null}
             </View>
           </View>
         </TouchableWithoutFeedback>

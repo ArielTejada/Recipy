@@ -18,6 +18,12 @@ export default StyleSheet.create({
   fontLarge: {
     fontSize: RFPercentage(5),
   },
+  AmaticSCRegular: {
+    fontFamily: "AmaticSC-Regular",
+  },
+  AmaticSCBold: {
+    fontFamily: "AmaticSC-Bold",
+  },
   textCenter: {
     textAlignVertical: "center",
     textAlign: "center",
@@ -73,7 +79,6 @@ export default StyleSheet.create({
   backImage: {
     width: width,
     height: 1060 * (width / 1060), // actual height x (width / actual width)
-    top: height / 50,
   },
 
   /* -------------- Position --------------*/
@@ -146,17 +151,23 @@ export default StyleSheet.create({
   },
   roundBTN: {
     borderWidth: 2,
-    borderRadius: 15,
+    borderRadius: 20,
     borderColor: "black",
     marginHorizontal: width / 150,
     marginVertical: height / 200,
     paddingHorizontal: width / 50,
-    marginTop: 2,
-    height: width / 12,
-    backgroundColor: "white",
+    height: width / 10,
+    backgroundColor: "#7CDCFE",
   },
 
   /* -------------- Custom  --------------*/
+  selectedScrollView: {
+    height: height/8
+  },
+  navView: {
+    width: width,
+    height: height / 8,
+  },
   input: {
     backgroundColor: "white",
     width: width - 80,
@@ -185,8 +196,8 @@ export default StyleSheet.create({
     backgroundColor: "#2196f3",
   },
   selectedIngredients: {
-    width: width - RFPercentage(1),
-    height: width / 10,
+    width: width / 1.05,
+    height: height/14,
     marginLeft: "auto",
     marginRight: "auto",
   },

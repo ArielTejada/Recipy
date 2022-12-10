@@ -108,7 +108,7 @@ export default function Settings({ navigation }) {
         keyboardShouldPersistTaps={"always"}
         showsVerticalScrollIndicator={false}
         enableOnAndroid={true}
-        extraScrollHeight={300}
+        extraScrollHeight={height/1.4}
       >
       <Pressable
         keyboardShouldPersistTaps={"always"}

@@ -183,15 +183,12 @@ export default StyleSheet.create({
   },
   roundBTN: {
     borderWidth: 2,
-    borderRadius: 15,
-    borderColor: "black",
+    borderRadius: 20,
     marginHorizontal: width / 150,
     marginVertical: height / 200,
     paddingHorizontal: width / 50,
-    marginTop: 2,
-    height: width / 12,
-    backgroundColor: "#60DEF7",
-    overflow: "hidden",
+    height: width / 10,
+    backgroundColor: "#7CDCFE",
   },
   recipeButton: {
     width: width / 6,
@@ -212,7 +209,7 @@ export default StyleSheet.create({
   },
   selectedIngredients: {
     width: width - RFPercentage(2.2),
-    height: width / 10,
+    height: width / 8,
     marginLeft: "auto",
     marginRight: "auto",
   },

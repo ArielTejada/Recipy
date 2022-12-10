@@ -42,7 +42,6 @@ export default StyleSheet.create({
   },
   link: {
     textDecorationLine: "underline",
-    color: "#2196F3",
     fontSize: RFPercentage(2.5),
     paddingBottom: height / 40,
   },
@@ -58,8 +57,8 @@ export default StyleSheet.create({
   /* -------------- Images --------------*/
   banner: {
     width: width,
-    height: height / 8,
-    top: -height / 23,
+    height: 280 * (width / 1442),
+    top: -height / 22,
   },
   backIcon: {
     width: width / 9,

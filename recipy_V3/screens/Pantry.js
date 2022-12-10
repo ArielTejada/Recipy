@@ -132,6 +132,7 @@ export default function Pantry() {
         title: "Recipy notification! 📬",
         body: `Your ${filler} is expiring in two days! Expiring on: ${date.toLocaleDateString()}`,
         data: { data: "goes here" },
+        vibrate: true
       },
       trigger: {
         // repeats: false,

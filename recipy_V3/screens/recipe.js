@@ -111,13 +111,12 @@ export default function Recipe({ navigation }) {
   /* -------------------- Render Method -------------------- */
   return (
     <Animatable.View animation="fadeInRight">
-      <View style={[styles.pushDown, { backgroundColor: "#2694f9" }]}></View>
+      <View style={[styles.pushDown, { backgroundColor: headerColor }]}></View>
 
-      <View style={[styles.backButtonSection, { backgroundColor: "#2694f9" }]}>
+      <View style={[styles.backButtonSection, { backgroundColor: headerColor }]}>
         <ImageBackground
           source={require("../assets/img/banner1.png")}
-          style={[styles.banner, { overflow: "hidden" }]}
-          resizeMode="contain"
+          style={[styles.banner]}
           imageStyle={[{ tintColor: bannerColor }]}
         >
           <TouchableOpacity
@@ -137,7 +136,7 @@ export default function Recipe({ navigation }) {
         </ImageBackground>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={[{backgroundColor: pageColor}]}>
         <View style={[styles.pageMargins]}>
           <Text style={styles.recipeTitle}>{currentRecipeTitle}</Text>
 
@@ -145,7 +144,7 @@ export default function Recipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{recipeDescription}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Recipe Macros:</Text>
-          <Text style={[styles.recipeDataText]}>{currentRecipeMacros.replace(/[\r\n]/gm, '')}</Text>
+          <Text style={[styles.recipeDataText]}>{currentRecipeMacros.replace(/[\r\n]/gm, ' ').replace(/[,]/gm, ', ')}</Text>
 
           <View style={[styles.macrosView, styles.outline]}>
             <View style={[styles.macroBoxArea]}>
@@ -183,7 +182,7 @@ export default function Recipe({ navigation }) {
 
           <Text style={[styles.recipeHeaderText]}>Link:</Text>
           <Text
-            style={[styles.link]}
+            style={[styles.link, {color: headerColor}]}
             onPress={() => Linking.openURL(recipeLink)}
           >
             {recipeLink}

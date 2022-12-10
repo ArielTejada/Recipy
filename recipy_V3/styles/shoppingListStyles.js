@@ -16,7 +16,7 @@ export default StyleSheet.create({
     fontSize: RFPercentage(4),
   },
   fontLarge: {
-    fontSize: RFPercentage(5),
+    fontSize: RFPercentage(6),
   },
   AmaticSCRegular: {
     fontFamily: "AmaticSC-Regular",
@@ -36,6 +36,11 @@ export default StyleSheet.create({
   deleteButtonText: {
     width: width / 3,
     textAlign: "center",
+  },
+  title: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginVertical: height / 50
   },
 
   /* -------------- Headers --------------*/
@@ -139,7 +144,6 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
-    backgroundColor: "#2196f3",
     width: width / 6,
     borderWidth: 1,
     borderRadius: 5,
@@ -165,6 +169,7 @@ export default StyleSheet.create({
   },
   shoppingList: {
     marginVertical: height / 80,
+    backgroundColor: "white"
   },
   input: {
     backgroundColor: "white",

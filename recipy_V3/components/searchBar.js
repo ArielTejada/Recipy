@@ -123,7 +123,7 @@ const SearchBar = ({ selectedIngredients, setSelectedIngredients }) => {
                           styles.fontMedium,
                         ]}
                       >
-                        {ingredient.name.replace("_", " ")}
+                        {ingredient.name.replace(/[\r_]/gm, ' ')}
                       </Text>
                     </TouchableOpacity>
                   </View>

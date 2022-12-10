@@ -83,7 +83,7 @@ export default function ShoppingList({ navigation }) {
 
   /* -------------------- Render Method -------------------- */
   return (
-    <Animatable.View style={[styles.wholeScreen]} animation="fadeInRightBig">
+    <Animatable.View style={[styles.wholeScreen, { backgroundColor: pageColor }]} animation="fadeInRightBig">
       <ScrollView
         style={[styles.smallMargins]}
         keyboardShouldPersistTaps={"always"}
@@ -96,9 +96,9 @@ export default function ShoppingList({ navigation }) {
           }}
         >
           <View
-            style={[styles.outline, styles.settingOption, styles.centerItems]}
+            style={[styles.outline, styles.title, {backgroundColor: headerColor}]}
           >
-            <Text style={[styles.AmaticSCRegular, styles.fontLarge]}>
+            <Text style={[styles.AmaticSCRegular, styles.fontLarge, {color: bannerColor}]}>
               Shopping List
             </Text>
           </View>
@@ -118,20 +118,20 @@ export default function ShoppingList({ navigation }) {
             />
 
             <Pressable
-              style={[styles.clearButton]}
+              style={[styles.clearButton, {backgroundColor: headerColor}]}
               onPress={() => {
                 setSearchText("");
                 setSearching(false);
                 Keyboard.dismiss();
               }}
             >
-              <Text style={[styles.AmaticSCBold, styles.fontMedium]}>
+              <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: bannerColor}]}>
                 Clear
               </Text>
             </Pressable>
 
             <Pressable
-              style={[styles.clearButton]}
+              style={[styles.clearButton, {backgroundColor: headerColor}]}
               onPress={() => {
                 setSearchText("");
                 setSearching(false);
@@ -139,7 +139,7 @@ export default function ShoppingList({ navigation }) {
                 Keyboard.dismiss();
               }}
             >
-              <Text style={[styles.AmaticSCBold, styles.fontMedium]}>
+              <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: bannerColor}]}>
                 Enter
               </Text>
             </Pressable>
