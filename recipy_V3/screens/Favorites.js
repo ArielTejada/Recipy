@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import Lottie from "lottie-react-native";
+import LoadingDots from "react-native-loading-dots";
 
 import styles from "../styles/favorite-styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
@@ -216,10 +217,18 @@ export default function Favorite({ navigation }) {
           </Pressable>
 
           {generating ? (
-            <View>
-              <Text style={[styles.AmaticSCBold, styles.fontMedium]}>
-                Generating...
-              </Text>
+            <View
+              style={{
+                flex: 1,
+                display: "flex",
+                marginVertical: 30,
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <View style={{ width: 125 }}>
+                <LoadingDots dots={4} />
+              </View>
             </View>
           ) : null}
 
