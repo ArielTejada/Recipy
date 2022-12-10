@@ -231,9 +231,11 @@ export default function Favorite({ navigation }) {
           </View>
 
           <View style={[styles.outline, styles.recommededScrollView]}>
-            {renderedRecommended && showRecommended && Object.values(Object.values(recommendedRecipes))[0][
-                        "CARBS"
-                      ] != undefined && recommendedRecipes.length != 0 ? (
+            {renderedRecommended &&
+            showRecommended &&
+            Object.values(Object.values(recommendedRecipes))[0]["CARBS"] !=
+              undefined &&
+            recommendedRecipes.length != 0 ? (
               <View>
                 <Animatable.View animation="zoomInRight">
                   <ScrollView horizontal={true}>
@@ -323,13 +325,13 @@ export default function Favorite({ navigation }) {
                     flex: 1,
                     justifyContent: "center",
                     alignItems: "center",
-                    top: 75,
+                    top: 80,
                   }}
                 >
                   <Lottie
                     ref={cmAnimation}
                     source={require("../assets/img/fruits-bouncing.json")}
-                    style={{ width: 250, height: 250 }}
+                    style={{ width: 260, height: 260 }}
                     loop={true}
                     speed={1.25}
                     renderMode={"SOFTWARE"}
