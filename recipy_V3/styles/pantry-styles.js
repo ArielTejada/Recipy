@@ -75,7 +75,7 @@ export default StyleSheet.create({
   },
   pantryImage: {
     width: width,
-    height: 2682 * (width / 1358),
+    height: 2682 * (width / 1170),
   },
   jar: {
     width: width / 5,
@@ -119,7 +119,7 @@ export default StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 5,
-    backgroundColor: "#2196f3",
+    backgroundColor: "#ff5349",
     width: width / 6.6,
     borderWidth: 1,
     borderRadius: 5,

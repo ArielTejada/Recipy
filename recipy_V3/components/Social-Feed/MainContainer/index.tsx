@@ -23,7 +23,7 @@ const MainContainer = ({ post }: MainContainerProps) => (
       <Text style={styles.name}>{post.user.name}</Text>
       <Text style={styles.username}>@{post.user.username}</Text>
 
-      <Text style={styles.smallDot}> • </Text>
+      <Text style={styles.smallDot}>•</Text>
       <Text style={styles.createdAt}> {moment(post.createdAt).fromNow()} </Text>
     </View>
     <View>

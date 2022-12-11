@@ -43,7 +43,8 @@ export default StyleSheet.create({
   },
   generateButtonText: {
     fontFamily: "AmaticSC-Bold",
-    fontSize: RFPercentage(4),
+    fontSize: RFPercentage(4.2),
+    color: "white",
   },
 
   /* -------------- Headers --------------*/

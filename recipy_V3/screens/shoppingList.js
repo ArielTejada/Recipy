@@ -83,7 +83,10 @@ export default function ShoppingList({ navigation }) {
 
   /* -------------------- Render Method -------------------- */
   return (
-    <Animatable.View style={[styles.wholeScreen, { backgroundColor: pageColor }]} animation="fadeInRightBig">
+    <Animatable.View
+      style={[styles.wholeScreen, { backgroundColor: pageColor }]}
+      animation="fadeInRightBig"
+    >
       <ScrollView
         style={[styles.smallMargins]}
         keyboardShouldPersistTaps={"always"}
@@ -96,10 +99,20 @@ export default function ShoppingList({ navigation }) {
           }}
         >
           <View
-            style={[styles.outline, styles.title, {backgroundColor: headerColor}]}
+            style={[
+              styles.outline,
+              styles.title,
+              { backgroundColor: "#3DBE29" },
+            ]}
           >
-            <Text style={[styles.AmaticSCRegular, styles.fontLarge, {color: bannerColor}]}>
-              Shopping List
+            <Text
+              style={[
+                styles.AmaticSCRegular,
+                styles.fontLarge,
+                { color: bannerColor },
+              ]}
+            >
+              Add To Your Shopping List!
             </Text>
           </View>
 
@@ -118,20 +131,26 @@ export default function ShoppingList({ navigation }) {
             />
 
             <Pressable
-              style={[styles.clearButton, {backgroundColor: headerColor}]}
+              style={[styles.clearButton, { backgroundColor: "#3DBE29" }]}
               onPress={() => {
                 setSearchText("");
                 setSearching(false);
                 Keyboard.dismiss();
               }}
             >
-              <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: bannerColor}]}>
+              <Text
+                style={[
+                  styles.AmaticSCBold,
+                  styles.fontMedium,
+                  { color: bannerColor },
+                ]}
+              >
                 Clear
               </Text>
             </Pressable>
 
             <Pressable
-              style={[styles.clearButton, {backgroundColor: headerColor}]}
+              style={[styles.clearButton, { backgroundColor: "#3DBE29" }]}
               onPress={() => {
                 setSearchText("");
                 setSearching(false);
@@ -139,7 +158,13 @@ export default function ShoppingList({ navigation }) {
                 Keyboard.dismiss();
               }}
             >
-              <Text style={[styles.AmaticSCBold, styles.fontMedium, {color: bannerColor}]}>
+              <Text
+                style={[
+                  styles.AmaticSCBold,
+                  styles.fontMedium,
+                  { color: bannerColor },
+                ]}
+              >
                 Enter
               </Text>
             </Pressable>
@@ -217,7 +242,7 @@ export default function ShoppingList({ navigation }) {
                       >
                         <Image
                           source={require("../assets/icons/check.png")}
-                          style={[styles.uncheckIcon, {tintColor: "#40AAF2"}]}
+                          style={[styles.uncheckIcon, { tintColor: "#40AAF2" }]}
                         />
                       </Pressable>
 
@@ -251,7 +276,7 @@ export default function ShoppingList({ navigation }) {
           <Pressable
             style={[
               styles.deleteButton,
-              { backgroundColor: deleteItems ? "#40AAF2" : "#E42323" },
+              { backgroundColor: deleteItems ? "#3DBE29" : "#E42323" },
             ]}
             onPress={() => {
               deleteItemsPressHandler();
@@ -263,6 +288,7 @@ export default function ShoppingList({ navigation }) {
                 styles.AmaticSCBold,
                 styles.smallMargins,
                 styles.deleteButtonText,
+                { color: "white" },
               ]}
             >
               {deleteItems ? "Done!" : "Delete Items"}
