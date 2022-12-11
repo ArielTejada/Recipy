@@ -227,7 +227,10 @@ export default function Favorite({ navigation }) {
               }}
             >
               <View style={{ width: 125 }}>
-                <LoadingDots dots={4} />
+                <LoadingDots
+                  dots={4}
+                  colors={["", "#4ec73e", "#ff7c09", "#e02c2b"]}
+                />
               </View>
             </View>
           ) : null}
