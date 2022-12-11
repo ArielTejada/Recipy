@@ -199,7 +199,11 @@ export default function LikedRecipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{ingredientsRequired}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Directions:</Text>
-          <Text style={[styles.recipeDataText]}>{steps}</Text>
+          <Text style={[styles.recipeDataText]}>
+            {steps.map((line) => {
+              return line + "\n";
+            })}
+          </Text>
           <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Link:</Text>
