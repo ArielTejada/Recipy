@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
-  Dimensions
+  Dimensions,
 } from "react-native";
 
 import uuid from "react-native-uuid";
@@ -28,7 +28,8 @@ export default function Home({ navigation }) {
   const [recievedData, setRecievedData] = useState(false);
   const [searchText, setSearchText] = useState("");
   const [showRecipeSearch, setShowRecipeSearch] = useState(false);
-  const [recievedRecipeSearchData, setRecievedRecipeSearchData] = useState(false);
+  const [recievedRecipeSearchData, setRecievedRecipeSearchData] =
+    useState(false);
   const [recipeSearchData, setRecipeSearchData] = useState([]);
   const [recipeSearchFailed, setRecipeSearchFailed] = useState(false);
   const [generatingRecipes, setGeneratingRecipes] = useState(false);
@@ -40,18 +41,34 @@ export default function Home({ navigation }) {
   const ingredients = useStoreState((state) => state.ingredients);
   const setCategory = useStoreActions((actions) => actions.setCategory);
   const setCategoryList = useStoreActions((actions) => actions.setCategoryList);
-  const selectedIngredients = useStoreState((state) => state.selectedIngredients);
-  const setSelectedIngredients = useStoreActions((actions) => actions.setSelectedIngredients);
+  const selectedIngredients = useStoreState(
+    (state) => state.selectedIngredients
+  );
+  const setSelectedIngredients = useStoreActions(
+    (actions) => actions.setSelectedIngredients
+  );
   const haveIngredints = useStoreState((state) => state.haveIngredients);
-  const setHaveIngredients = useStoreActions((actions) => actions.setHaveIngredients);
+  const setHaveIngredients = useStoreActions(
+    (actions) => actions.setHaveIngredients
+  );
 
   const Recipes = useStoreState((state) => state.Recipes);
   const setRecipes = useStoreActions((actions) => actions.setRecipes);
-  const setCurrentRecipeMacros = useStoreActions((actions) => actions.setCurrentRecipeMacros);
-  const setCurrentRecipeTitle = useStoreActions((actions) => actions.setCurrentRecipeTitle);
-  const setCurrentRecipe = useStoreActions((actions) => actions.setCurrentRecipe);
-  const setIngredientsRequired = useStoreActions((actions) => actions.setIngredientsRequired);
-  const setRecipeDescription = useStoreActions((actions) => actions.setRecipeDescription);
+  const setCurrentRecipeMacros = useStoreActions(
+    (actions) => actions.setCurrentRecipeMacros
+  );
+  const setCurrentRecipeTitle = useStoreActions(
+    (actions) => actions.setCurrentRecipeTitle
+  );
+  const setCurrentRecipe = useStoreActions(
+    (actions) => actions.setCurrentRecipe
+  );
+  const setIngredientsRequired = useStoreActions(
+    (actions) => actions.setIngredientsRequired
+  );
+  const setRecipeDescription = useStoreActions(
+    (actions) => actions.setRecipeDescription
+  );
   const setSteps = useStoreActions((actions) => actions.setSteps);
   const setRecipeLink = useStoreActions((actions) => actions.setRecipeLink);
   const setRecipeID = useStoreActions((actions) => actions.setRecipeID);
@@ -59,7 +76,9 @@ export default function Home({ navigation }) {
   const generateColor = useStoreState((state) => state.generateColor);
   const haveIngredients = useStoreState((state) => state.haveIngredients);
   const generateRecipes = useStoreState((state) => state.generateRecipes);
-  const setGenerateRecipes = useStoreActions((actions) => actions.setGenerateRecipes);
+  const setGenerateRecipes = useStoreActions(
+    (actions) => actions.setGenerateRecipes
+  );
 
   const dietOption = useStoreState((state) => state.dietOption);
   const removedIngredients = useStoreState((state) => state.removedIngredients);
@@ -67,8 +86,12 @@ export default function Home({ navigation }) {
   const pantryItems = useStoreState((state) => state.pantryItems);
   const likedRecipes = useStoreState((state) => state.likedRecipes);
   const recommendedRecipes = useStoreState((state) => state.recommendedRecipes);
-  const setRecommendedRecipes = useStoreActions((actions) => actions.setRecommendedRecipes);
-  const setRenderedRecommended = useStoreActions((actions) => actions.setRenderedRecommended);
+  const setRecommendedRecipes = useStoreActions(
+    (actions) => actions.setRecommendedRecipes
+  );
+  const setRenderedRecommended = useStoreActions(
+    (actions) => actions.setRenderedRecommended
+  );
 
   /* -------------------- Redux State Colors -------------------- */
   const headerColor = useStoreState((state) => state.headerColor);
@@ -92,7 +115,7 @@ export default function Home({ navigation }) {
   const returnIngredientString = (ingredients, attr) => {
     let output = [];
     for (let i = 0; i < ingredients.length; i++) {
-      output.push(ingredients[i][attr].trim().replace(/[\r_]/gm, ' '));
+      output.push(ingredients[i][attr].trim().replace(/[\r_]/gm, " "));
     }
     return output.join(",");
   };
@@ -132,14 +155,16 @@ export default function Home({ navigation }) {
     }
     if (haveIngredients && !generateRecipes) {
       setGeneratingRecipes(true);
-      let ingredientString = returnIngredientString(selectedIngredients,"name");
+      let ingredientString = returnIngredientString(
+        selectedIngredients,
+        "name"
+      );
       await getRecipes(ingredientString);
       setGenerateRecipes();
       setRecievedData(true);
     }
     return;
   };
-
 
   const recipePressHandler = (
     title = "Loading...",
@@ -231,7 +256,7 @@ export default function Home({ navigation }) {
     console.log(
       `removed ${ingredientObj.name} num ingredients: ${newList.length}`
     );
-    if(newList.length === 0) {
+    if (newList.length === 0) {
       setRecievedData(false);
       setRecipes([]);
     }
@@ -278,7 +303,7 @@ export default function Home({ navigation }) {
         keyboardShouldPersistTaps={"always"}
         showsVerticalScrollIndicator={false}
         enableOnAndroid={true}
-        extraScrollHeight={height/5}
+        extraScrollHeight={height / 5}
       >
         <TouchableWithoutFeedback
           onPress={() => {
@@ -302,14 +327,22 @@ export default function Home({ navigation }) {
                 onPress={addIngredientHandler}
                 style={[styles.addButton, { backgroundColor: headerColor }]}
               >
-                <Text style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}>Add Ingredient</Text>
+                <Text
+                  style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}
+                >
+                  Add Ingredient
+                </Text>
               </Pressable>
 
               <Pressable
                 onPress={pressGenerate}
                 style={[styles.addButton, { backgroundColor: generateColor }]}
               >
-                <Text style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}>Generate Recipes</Text>
+                <Text
+                  style={[styles.fontMedium, { fontFamily: "AmaticSC-Bold" }]}
+                >
+                  Generate Recipes
+                </Text>
               </Pressable>
             </View>
 
@@ -393,7 +426,13 @@ export default function Home({ navigation }) {
               </Text>
             </View>
 
-            <View style={[styles.selectedIngredients, styles.outline, styles.margins]}>
+            <View
+              style={[
+                styles.selectedIngredients,
+                styles.outline,
+                styles.margins,
+              ]}
+            >
               <ScrollView horizontal={true}>
                 {selectedIngredients.map((ingredient) => {
                   return (
@@ -402,7 +441,15 @@ export default function Home({ navigation }) {
                       style={[styles.roundBTN]}
                       onPress={() => selectedListPress({ ...ingredient })}
                     >
-                      <Text style={[styles.fontMedium, styles.AmaticSCBold, styles.textCenter]}>{ingredient.name.replace(/[\r_]/gm, ' ')}</Text>
+                      <Text
+                        style={[
+                          styles.fontMedium,
+                          styles.AmaticSCBold,
+                          styles.textCenter,
+                        ]}
+                      >
+                        {ingredient.name.replace(/[\r_]/gm, " ")}
+                      </Text>
                     </Pressable>
                   );
                 })}
@@ -411,11 +458,15 @@ export default function Home({ navigation }) {
 
             {generatingRecipes ? (
               <View>
-                <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Generating...</Text>
+                <Text style={[styles.AmaticSCBold, styles.fontMedium]}>
+                  Generating...
+                </Text>
               </View>
             ) : null}
 
-            {recievedData && generateRecipes && Recipes["TITLE"] != undefined ? (
+            {recievedData &&
+            generateRecipes &&
+            Recipes["TITLE"] != undefined ? (
               <View>
                 <View>
                   <Text style={[styles.fontLarge, styles.recipeText]}>
@@ -459,7 +510,11 @@ export default function Home({ navigation }) {
               </View>
             ) : (
               <View style={[styles.outline, styles.selectedIngredients]}>
-                <Text style={[styles.fontMedium, styles.AmaticSCBold]}>{Recipes.length == 0 ? " No Search Results..." : " No Search Results...."}</Text>
+                <Text style={[styles.fontMedium, styles.AmaticSCBold]}>
+                  {Recipes.length == 0
+                    ? " No Search Results..."
+                    : " No Search Results...."}
+                </Text>
               </View>
             )}
 
@@ -489,7 +544,15 @@ export default function Home({ navigation }) {
                     Keyboard.dismiss();
                   }}
                 >
-                  <Text style={[ styles.AmaticSCBold, styles.fontLarge, { color: "white" } ]}>Clear</Text>
+                  <Text
+                    style={[
+                      styles.AmaticSCBold,
+                      styles.fontLarge,
+                      { color: "white" },
+                    ]}
+                  >
+                    Clear
+                  </Text>
                 </Pressable>
 
                 <Pressable
@@ -499,13 +562,23 @@ export default function Home({ navigation }) {
                     Keyboard.dismiss();
                   }}
                 >
-                  <Text style={[ styles.AmaticSCBold, styles.fontLarge, { color: "white" }]}>Enter</Text>
+                  <Text
+                    style={[
+                      styles.AmaticSCBold,
+                      styles.fontLarge,
+                      { color: "white" },
+                    ]}
+                  >
+                    Enter
+                  </Text>
                 </Pressable>
               </View>
 
               {generatingSearch ? (
                 <View>
-                  <Text style={[styles.AmaticSCBold, styles.fontMedium]}>Generating...</Text>
+                  <Text style={[styles.AmaticSCBold, styles.fontMedium]}>
+                    Generating...
+                  </Text>
                 </View>
               ) : null}
 
@@ -575,7 +648,6 @@ export default function Home({ navigation }) {
                   </View>
                 </View>
               ) : null}
-
             </View>
           </View>
         </TouchableWithoutFeedback>

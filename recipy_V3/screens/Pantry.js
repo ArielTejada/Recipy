@@ -24,7 +24,6 @@ import { SearchBar } from "react-native-screens";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import DateTimePicker from "react-native-modal-datetime-picker";
 import * as Notifications from "expo-notifications";
-import {Notifications as IOSNotifications} from 'react-native-notifications';
 
 export default function Pantry() {
   /* -------------------- Local State Variables -------------------- */
@@ -82,11 +81,10 @@ export default function Pantry() {
         key: uuid.v4(),
       });
       setPantryItems(newPantryItems);
-      if (Platform.OS==='ios'){
+      if (Platform.OS === "ios") {
         handleIOSNotifications(addIngredient, time);
-      }
-      else if (Platform.OS==='android'){
-      schedulePushNotification(addIngredient, time);
+      } else if (Platform.OS === "android") {
+        schedulePushNotification(addIngredient, time);
       }
       setAddIngredient("");
       setAddDate("");
@@ -133,13 +131,13 @@ export default function Pantry() {
     setText(filler);
   };
 
-  const handleIOSNotifications = (filler,time) =>{
+  const handleIOSNotifications = (filler, time) => {
     IOSNotifications.postLocalNotification({
       title: "Recipy notification! 📬",
       body: `Your ${filler} is expiring in two days! Expiring on: ${date.toLocaleDateString()}`,
-      fireDate: new Date(Date.now()+2*1000),
-    })
-  }
+      fireDate: new Date(Date.now() + 2 * 1000),
+    });
+  };
 
   async function schedulePushNotification(filler, time) {
     await Notifications.scheduleNotificationAsync({
