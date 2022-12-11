@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Image,
   Dimensions,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 import styles from "../styles/settings-styles";
 import { useStoreState, useStoreActions } from "easy-peasy";
@@ -73,12 +73,12 @@ export default function Settings({ navigation }) {
   };
 
   const dietaryOptions = [
-    "Default",
-    "Vegan",
-    "Vegetarian",
-    "Keto",
-    "Diabetic",
-    "Pescatarian",
+    "default",
+    "vegan",
+    "vegetarian",
+    "keto",
+    "diabetic",
+    "pescatarian",
   ];
 
   const removePressHandler = (ingredientObj) => {
@@ -98,6 +98,14 @@ export default function Settings({ navigation }) {
     console.log(`added: ${ingredientObj.name} to removedIngredients`);
   };
 
+  const selectedListPress = (ingredientObj) => {
+    let newList = removedIngredients.filter(
+      (item) => item.name != ingredientObj.name
+    );
+    setRemovedIngredients(newList);
+    setRefresh(!refresh);
+  };
+
   /* -------------------- Render Method -------------------- */
   return (
     <Animatable.View
@@ -108,14 +116,14 @@ export default function Settings({ navigation }) {
         keyboardShouldPersistTaps={"always"}
         showsVerticalScrollIndicator={false}
         enableOnAndroid={true}
-        extraScrollHeight={height/1.4}
+        extraScrollHeight={height / 1.4}
       >
-      <Pressable
-        keyboardShouldPersistTaps={"always"}
-        onPress={() => {
-          Keyboard.dismiss();
-        }}
-      >
+        <Pressable
+          keyboardShouldPersistTaps={"always"}
+          onPress={() => {
+            Keyboard.dismiss();
+          }}
+        >
           <View
             style={[styles.pushDown, { backgroundColor: headerColor }]}
           ></View>
@@ -371,7 +379,7 @@ export default function Settings({ navigation }) {
           </View>
 
           <View style={[styles.navView]}></View>
-      </Pressable>
+        </Pressable>
       </KeyboardAwareScrollView>
     </Animatable.View>
   );
