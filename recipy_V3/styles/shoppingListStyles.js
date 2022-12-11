@@ -38,9 +38,9 @@ export default StyleSheet.create({
     textAlign: "center",
   },
   title: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: height / 50
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: height / 50,
   },
 
   /* -------------- Headers --------------*/
@@ -72,8 +72,8 @@ export default StyleSheet.create({
     // top: -height/23,
   },
   uncheckIcon: {
-    width: width/15,
-    height: 90 * ((width/90)/15),
+    width: width / 15,
+    height: 90 * (width / 90 / 15),
     marginHorizontal: wp("2%"),
     marginVertical: hp("1%"),
   },
@@ -83,8 +83,10 @@ export default StyleSheet.create({
     marginVertical: height / 100,
   },
   deleteIcon: {
-    width: wp("7%"),
-    height: hp("5%"),
+    width: width / 15,
+    height: 90 * (width / 90 / 15),
+    marginHorizontal: wp("1.5%"),
+    marginVertical: hp("1%"),
   },
 
   /* -------------- Position --------------*/
@@ -169,7 +171,7 @@ export default StyleSheet.create({
   },
   shoppingList: {
     marginVertical: height / 80,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   input: {
     backgroundColor: "white",
