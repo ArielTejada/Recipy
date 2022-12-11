@@ -1,11 +1,6 @@
 import React from "react";
 import { TouchableOpacity, Button } from "react-native";
-import {
-  Ionicons,
-  AntDesign,
-  SimpleLineIcons,
-  FontAwesome5,
-} from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
@@ -18,7 +13,7 @@ const NewPostButton = () => {
 
   return (
     <TouchableOpacity
-      style={styles.button}
+      style={[styles.button, styles.shadowProp]}
       onPress={onPress}
       activeOpacity={0.4}
     >

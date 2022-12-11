@@ -147,7 +147,7 @@ export default function Pantry() {
         title: "Recipy notification! 📬",
         body: `Your ${filler} is expiring in two days! Expiring on: ${date.toLocaleDateString()}`,
         data: { data: "goes here" },
-        vibrate: true
+        vibrate: true,
       },
       trigger: {
         // repeats: false,
@@ -163,7 +163,7 @@ export default function Pantry() {
 
   return (
     <Animatable.View
-      style={[styles.wholeScreen, { backgroundColor: pageColor }]}
+      style={[styles.wholeScreen, { backgroundColor: "#ff5349" }]}
       animation="fadeInRightBig"
     >
       <ScrollView showsVerticalScrollIndicator={false} style={[]}>
@@ -186,12 +186,18 @@ export default function Pantry() {
           </View> */}
 
           {/* ------------------------------------ Input Fields ------------------------------------ */}
-          <View></View>
-          <Text
-            style={[styles.fontMedium, styles.margins, styles.AmaticSCBold]}
-          >
-            Add to your virtual pantry!
-          </Text>
+          <View style={{ alignItems: "center", justifyContent: "center" }}>
+            <Text
+              style={[
+                styles.fontLarge,
+                styles.margins,
+                styles.AmaticSCBold,
+                { color: "white" },
+              ]}
+            >
+              Add to your virtual pantry!
+            </Text>
+          </View>
 
           <View>
             <View style={styles.container}>

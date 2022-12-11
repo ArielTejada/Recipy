@@ -113,7 +113,9 @@ export default function Recipe({ navigation }) {
     <Animatable.View animation="fadeInRight">
       <View style={[styles.pushDown, { backgroundColor: headerColor }]}></View>
 
-      <View style={[styles.backButtonSection, { backgroundColor: headerColor }]}>
+      <View
+        style={[styles.backButtonSection, { backgroundColor: headerColor }]}
+      >
         <ImageBackground
           source={require("../assets/img/banner1.png")}
           style={[styles.banner]}
@@ -136,7 +138,10 @@ export default function Recipe({ navigation }) {
         </ImageBackground>
       </View>
 
-      <ScrollView showsVerticalScrollIndicator={false} style={[{backgroundColor: pageColor}]}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={[{ backgroundColor: pageColor }]}
+      >
         <View style={[styles.pageMargins]}>
           <Text style={styles.recipeTitle}>{currentRecipeTitle}</Text>
 
@@ -144,20 +149,30 @@ export default function Recipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{recipeDescription}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Recipe Macros:</Text>
-          <Text style={[styles.recipeDataText]}>{currentRecipeMacros.replace(/[\r\n]/gm, ' ').replace(/[,]/gm, ', ')}</Text>
+          <Text style={[styles.recipeDataText]}>
+            {currentRecipeMacros
+              .replace(/[\r\n]/gm, " ")
+              .replace(/[,]/gm, ", ")}
+          </Text>
 
           <View style={[styles.macrosView, styles.outline]}>
             <View style={[styles.macroBoxArea]}>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>Fat {(percentages[0] * 100).toFixed(0)}%{" "}</Text>
+                <Text style={[styles.macroVisualText]}>
+                  Fat {(percentages[0] * 100).toFixed(0)}%{" "}
+                </Text>
                 <View style={[styles.box1]}></View>
               </View>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>Carbs {(percentages[1] * 100).toFixed(0)}%{" "}</Text>
+                <Text style={[styles.macroVisualText]}>
+                  Carbs {(percentages[1] * 100).toFixed(0)}%{" "}
+                </Text>
                 <View style={[styles.box2]}></View>
               </View>
               <View style={[styles.macroVisual]}>
-                <Text style={[styles.macroVisualText]}>Protein {(percentages[2] * 100).toFixed(0)}%{" "}</Text>
+                <Text style={[styles.macroVisualText]}>
+                  Protein {(percentages[2] * 100).toFixed(0)}%{" "}
+                </Text>
                 <View style={[styles.box3]}></View>
               </View>
             </View>
@@ -165,8 +180,16 @@ export default function Recipe({ navigation }) {
               <PieChart
                 data={[
                   { key: "Fat", count: percentages[0] * 100, color: "#1ED760" },
-                  { key: "Carbs", count: percentages[1] * 100, color: "#007ACC"},
-                  { key: "Protein", count: percentages[2] * 100, color: "#F52727"},
+                  {
+                    key: "Carbs",
+                    count: percentages[1] * 100,
+                    color: "#007ACC",
+                  },
+                  {
+                    key: "Protein",
+                    count: percentages[2] * 100,
+                    color: "#F52727",
+                  },
                 ]}
                 length={100}
               />
@@ -177,12 +200,14 @@ export default function Recipe({ navigation }) {
           <Text style={[styles.recipeDataText]}>{ingredientsRequired}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Directions:</Text>
-          <Text style={[styles.recipeDataText]}>{steps.replace(/[\r,]/gm, '\n')}</Text>
+          <Text style={[styles.recipeDataText]}>
+            {steps.replace(/[\r,]/gm, "\n")}
+          </Text>
           <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
 
           <Text style={[styles.recipeHeaderText]}>Link:</Text>
           <Text
-            style={[styles.link, {color: headerColor}]}
+            style={[styles.link, { color: headerColor }]}
             onPress={() => Linking.openURL(recipeLink)}
           >
             {recipeLink}
@@ -195,13 +220,32 @@ export default function Recipe({ navigation }) {
             >
               <Text style={[styles.sendText]}>Send To A Friend!</Text>
             </Pressable>
-            <Pressable 
-              style={[styles.likeButton, styles.outline, {backgroundColor: likedRecipes.some((recipe) => recipe.id === recipeID) ? "#2196F3" : "#39CD7B"}]}
+            <Pressable
+              style={[
+                styles.likeButton,
+                styles.outline,
+                {
+                  backgroundColor: likedRecipes.some(
+                    (recipe) => recipe.id === recipeID
+                  )
+                    ? "#2196F3"
+                    : "#39CD7B",
+                },
+              ]}
               onPress={() => {
                 likeRecipePress();
               }}
             >
-              <Text style={[styles.sendText, {color: likedRecipes.some((recipe) => recipe.id === recipeID) ? "white" : "black"}]}>
+              <Text
+                style={[
+                  styles.sendText,
+                  {
+                    color: likedRecipes.some((recipe) => recipe.id === recipeID)
+                      ? "white"
+                      : "black",
+                  },
+                ]}
+              >
                 {likedRecipes.some((recipe) => recipe.id === recipeID)
                   ? "Liked!"
                   : "Like This Recipe"}
