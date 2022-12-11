@@ -11,14 +11,12 @@ import {
   ScrollView,
   Pressable,
   Keyboard,
-  Platform,
 } from "react-native";
 import styles from "../styles/pantry-styles";
 import matchFunction from "../components/matchFunction";
 import { useStoreState, useStoreActions } from "easy-peasy";
 import uuid from "react-native-uuid";
 import * as Animatable from "react-native-animatable";
-//something
 
 /* -------------------- Components -------------------- */
 import { SearchBar } from "react-native-screens";
@@ -82,11 +80,7 @@ export default function Pantry() {
         key: uuid.v4(),
       });
       setPantryItems(newPantryItems);
-      if (Platform.OS === "ios") {
-        handleIOSNotifications(addIngredient, time);
-      } else if (Platform.OS === "android") {
-        schedulePushNotification(addIngredient, time);
-      }
+      schedulePushNotification(addIngredient, time);
       setAddIngredient("");
       setAddDate("");
       setSearchText("");
@@ -132,14 +126,6 @@ export default function Pantry() {
     setText(filler);
   };
 
-  const handleIOSNotifications = (filler, time) => {
-    IOSNotifications.postLocalNotification({
-      title: "Recipy notification! 📬",
-      body: `Your ${filler} is expiring in two days! Expiring on: ${date.toLocaleDateString()}`,
-      fireDate: new Date(Date.now() + 2 * 1000),
-    });
-  };
-
   async function schedulePushNotification(filler, time) {
     await Notifications.scheduleNotificationAsync({
       content: {
@@ -175,7 +161,6 @@ export default function Pantry() {
           {/* <View
             style={[styles.pushDown, { backgroundColor: headerColor }]}
           ></View>
-
           <View style={[styles.header, { backgroundColor: headerColor }]}>
             <Image
               source={require("../assets/img/bakeryV2.png")}
@@ -347,6 +332,7 @@ export default function Pantry() {
                             </Text>
                             <Text
                               style={[
+                                { marginBottom: -5 },
                                 styles.fontSmall,
                                 styles.jarLabel,
                                 {
@@ -357,7 +343,11 @@ export default function Pantry() {
                                 },
                               ]}
                             >
-                              {ingredient.date.toLocaleDateString()}
+                              {ingredient.date.toLocaleDateString("en-us", {
+                                month: "numeric",
+                                day: "numeric",
+                                year: "2-digit",
+                              })}
                             </Text>
                           </ImageBackground>
                         </TouchableOpacity>

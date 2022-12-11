@@ -200,9 +200,10 @@ export default function LikedRecipe({ navigation }) {
 
           <Text style={[styles.recipeHeaderText]}>Directions:</Text>
           <Text style={[styles.recipeDataText]}>
-            {steps.map((line) => {
+            {/* {steps.map((line) => {
               return line + "\n";
-            })}
+            })} */}
+            {String(steps).replace(/[\r,]/gm, "\n")}
           </Text>
           <Text style={[styles.recipeDataText]}>{currentRecipe}</Text>
 

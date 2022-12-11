@@ -85,13 +85,15 @@ export default StyleSheet.create({
     marginTop: height / 14,
   },
   jarLabel: {
-    width: width / 6,
-    height: height / 25,
+    marginTop: 5,
+    width: width / 6.2,
+    height: height / 24,
     textAlignVertical: "center",
     textAlign: "center",
     color: "black",
     fontSize: RFPercentage(2.2),
-    borderRadius: 5,
+    borderRadius: 8,
+    overflow: "hidden",
   },
 
   /* -------------- Styling --------------*/
