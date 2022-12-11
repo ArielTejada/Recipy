@@ -208,7 +208,7 @@ export default function Favorite({ navigation }) {
             style={[
               styles.generateButton,
               styles.outline,
-              { backgroundColor: showRecommended ? "#4FC1FF" : "#2196F3" },
+              { backgroundColor: showRecommended ? "#f172c8" : "#b71282" },
             ]}
           >
             <Text style={[styles.generateButtonText]}>

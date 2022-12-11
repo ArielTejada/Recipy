@@ -49,7 +49,7 @@ const MainTab = () => (
     barStyle={{
       backgroundColor: "transparent",
       position: "absolute",
-      overflow: "hidden",
+      // overflow: "hidden",
       borderTopLeftRadius: 30,
       borderTopRightRadius: 30,
 
