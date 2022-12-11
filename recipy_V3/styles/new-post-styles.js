@@ -93,12 +93,13 @@ export default StyleSheet.create({
   },
 
   imagePreview: {
-    marginLeft: -83,
-    width: 350,
-    height: 300,
+    marginLeft: -75,
+    width: 348,
+    height: 260,
+    resizeMode: "cover",
     borderRadius: 20,
     overflow: "hidden",
-    marginTop: -15,
+    marginTop: -20,
   },
   imageSelectPic: {
     marginLeft: 25,

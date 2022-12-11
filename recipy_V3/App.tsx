@@ -152,7 +152,7 @@ const customTheme = {
     alignItems: "center",
     borderRadius: 50,
     flexDirection: "row",
-    marginLeft: 0,
+    marginLeft: 5,
     shadowColor: "#171717",
     shadowOffset: { width: -3, height: 5 },
     shadowOpacity: 0.3,

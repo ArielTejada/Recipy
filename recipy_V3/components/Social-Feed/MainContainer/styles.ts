@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
     fontFamily: "Nunito-Regular",
   },
   image: {
-    marginLeft: -78,
-    width: 350,
-    height: 300,
+    marginLeft: -70,
+    width: 348,
+    height: 260,
     resizeMode: "cover",
     borderRadius: 20,
     overflow: "hidden",
