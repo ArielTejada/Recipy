@@ -90,15 +90,15 @@ export default StyleSheet.create({
     fontSize: 20,
     fontFamily: "Quicksand-SemiBold",
     color: "#6a0dad",
-    marginVertical: 15,
   },
 
   imagePreview: {
     marginLeft: -83,
-    width: 390,
-    height: 310,
+    width: 350,
+    height: 300,
     borderRadius: 20,
     overflow: "hidden",
+    marginTop: -15,
   },
   imageSelectPic: {
     marginLeft: 25,

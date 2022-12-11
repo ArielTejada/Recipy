@@ -48,7 +48,6 @@ function App() {
         const userData = await API.graphql(
           graphqlOperation(getUser, { id: userInfo.attributes.sub })
         );
-        console.log(userData);
         if (!userData.data.getUser) {
           const user = {
             id: userInfo.attributes.sub,
@@ -144,7 +143,6 @@ const customTheme = {
     width: "100%",
     backgroundColor: "#FFF",
   },
-
   button: {
     ...AmplifyTheme.button,
     backgroundColor: "#2694F9",
@@ -154,7 +152,7 @@ const customTheme = {
     alignItems: "center",
     borderRadius: 50,
     flexDirection: "row",
-    marginLeft: 18,
+    marginLeft: 0,
     shadowColor: "#171717",
     shadowOffset: { width: -3, height: 5 },
     shadowOpacity: 0.3,
@@ -168,7 +166,7 @@ const customTheme = {
     alignItems: "center",
     borderRadius: 50,
     flexDirection: "row",
-    marginLeft: 35,
+    marginLeft: 15,
     shadowColor: "#171717",
     shadowOffset: { width: -3, height: 5 },
     shadowOpacity: 0.3,
