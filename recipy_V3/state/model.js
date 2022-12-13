@@ -17,7 +17,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "2",
@@ -33,7 +33,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "3",
@@ -49,7 +49,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "4",
@@ -65,7 +65,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "5",
@@ -81,7 +81,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "6",
@@ -97,7 +97,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "7",
@@ -113,7 +113,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "8",
@@ -129,7 +129,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "9",
@@ -145,7 +145,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "10",
@@ -161,7 +161,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "11",
@@ -177,7 +177,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "12",
@@ -193,7 +193,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "13",
@@ -209,7 +209,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "14",
@@ -225,7 +225,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "15",
@@ -241,7 +241,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "16",
@@ -257,7 +257,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "17",
@@ -273,7 +273,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "18",
@@ -289,7 +289,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "19",
@@ -305,7 +305,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "20",
@@ -321,7 +321,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "21",
@@ -337,7 +337,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "22",
@@ -353,7 +353,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "23",
@@ -369,7 +369,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "24",
@@ -385,7 +385,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "25",
@@ -401,7 +401,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "26",
@@ -417,7 +417,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "27",
@@ -433,7 +433,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "28",
@@ -449,7 +449,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "29",
@@ -465,7 +465,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "30",
@@ -481,7 +481,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "31",
@@ -497,7 +497,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "32",
@@ -513,7 +513,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "33",
@@ -529,7 +529,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "34",
@@ -545,7 +545,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "35",
@@ -561,7 +561,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "36",
@@ -577,7 +577,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "37",
@@ -593,7 +593,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "38",
@@ -609,7 +609,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "39",
@@ -625,7 +625,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "40",
@@ -641,7 +641,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "41",
@@ -657,7 +657,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "42",
@@ -673,7 +673,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "43",
@@ -689,7 +689,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "44",
@@ -705,7 +705,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "45",
@@ -721,7 +721,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "FALSE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "46",
@@ -737,7 +737,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "47",
@@ -753,7 +753,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "48",
@@ -769,7 +769,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "49",
@@ -785,7 +785,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "50",
@@ -801,7 +801,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "51",
@@ -817,7 +817,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "52",
@@ -833,7 +833,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "53",
@@ -849,7 +849,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "54",
@@ -865,7 +865,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "55",
@@ -881,7 +881,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "56",
@@ -897,7 +897,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "57",
@@ -913,7 +913,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "58",
@@ -929,7 +929,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "59",
@@ -945,7 +945,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "60",
@@ -961,7 +961,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "61",
@@ -977,7 +977,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "62",
@@ -993,7 +993,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "63",
@@ -1009,7 +1009,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "64",
@@ -1025,7 +1025,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "65",
@@ -1041,7 +1041,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "66",
@@ -1057,7 +1057,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "67",
@@ -1073,7 +1073,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "68",
@@ -1089,7 +1089,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "69",
@@ -1105,7 +1105,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "70",
@@ -1121,7 +1121,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "71",
@@ -1137,7 +1137,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "72",
@@ -1153,7 +1153,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "73",
@@ -1169,7 +1169,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "74",
@@ -1185,7 +1185,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "75",
@@ -1201,7 +1201,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "76",
@@ -1217,7 +1217,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "77",
@@ -1233,7 +1233,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "78",
@@ -1249,7 +1249,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "79",
@@ -1265,7 +1265,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "80",
@@ -1281,7 +1281,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "81",
@@ -1297,7 +1297,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "82",
@@ -1313,7 +1313,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "83",
@@ -1329,7 +1329,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "84",
@@ -1345,7 +1345,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "85",
@@ -1361,7 +1361,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "86",
@@ -1377,7 +1377,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "87",
@@ -1393,7 +1393,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "88",
@@ -1409,7 +1409,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "89",
@@ -1425,7 +1425,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "90",
@@ -1441,7 +1441,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "91",
@@ -1457,7 +1457,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "92",
@@ -1473,7 +1473,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "93",
@@ -1489,7 +1489,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "94",
@@ -1505,7 +1505,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "95",
@@ -1521,7 +1521,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "96",
@@ -1537,7 +1537,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "97",
@@ -1553,7 +1553,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "98",
@@ -1569,7 +1569,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "99",
@@ -1585,7 +1585,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "100",
@@ -1601,7 +1601,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "101",
@@ -1617,7 +1617,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "102",
@@ -1633,7 +1633,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "103",
@@ -1649,7 +1649,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "104",
@@ -1665,7 +1665,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "105",
@@ -1681,7 +1681,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "106",
@@ -1697,7 +1697,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "107",
@@ -1713,7 +1713,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "108",
@@ -1729,7 +1729,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "109",
@@ -1745,7 +1745,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "110",
@@ -1761,7 +1761,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "111",
@@ -1777,7 +1777,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "112",
@@ -1793,7 +1793,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "113",
@@ -1809,7 +1809,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "114",
@@ -1825,7 +1825,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "115",
@@ -1841,7 +1841,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "116",
@@ -1857,7 +1857,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "117",
@@ -1873,7 +1873,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "118",
@@ -1889,7 +1889,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "119",
@@ -1905,7 +1905,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "120",
@@ -1921,7 +1921,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "121",
@@ -1937,7 +1937,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "122",
@@ -1953,7 +1953,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "123",
@@ -1969,7 +1969,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "124",
@@ -1985,7 +1985,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "125",
@@ -2001,7 +2001,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "126",
@@ -2017,7 +2017,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "127",
@@ -2033,7 +2033,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "128",
@@ -2049,7 +2049,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "129",
@@ -2065,7 +2065,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "130",
@@ -2081,7 +2081,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "131",
@@ -2097,7 +2097,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "132",
@@ -2113,7 +2113,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "133",
@@ -2129,7 +2129,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "134",
@@ -2145,7 +2145,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "135",
@@ -2161,7 +2161,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "136",
@@ -2177,7 +2177,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "137",
@@ -2193,7 +2193,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "138",
@@ -2209,7 +2209,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "139",
@@ -2225,7 +2225,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "140",
@@ -2241,7 +2241,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "141",
@@ -2257,7 +2257,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "142",
@@ -2273,7 +2273,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "143",
@@ -2289,7 +2289,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "144",
@@ -2305,7 +2305,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "145",
@@ -2321,7 +2321,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "146",
@@ -2337,7 +2337,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "147",
@@ -2353,7 +2353,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "148",
@@ -2369,7 +2369,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "149",
@@ -2385,7 +2385,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "150",
@@ -2401,7 +2401,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "151",
@@ -2417,7 +2417,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "152",
@@ -2433,7 +2433,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "153",
@@ -2449,7 +2449,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "154",
@@ -2465,7 +2465,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "155",
@@ -2481,7 +2481,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "156",
@@ -2497,7 +2497,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "157",
@@ -2513,7 +2513,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "158",
@@ -2529,7 +2529,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "159",
@@ -2545,7 +2545,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "160",
@@ -2561,7 +2561,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "161",
@@ -2577,7 +2577,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "162",
@@ -2593,7 +2593,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "163",
@@ -2609,7 +2609,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "164",
@@ -2625,7 +2625,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "165",
@@ -2641,7 +2641,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "166",
@@ -2657,7 +2657,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "167",
@@ -2673,7 +2673,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "168",
@@ -2689,7 +2689,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "169",
@@ -2705,7 +2705,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "170",
@@ -2721,7 +2721,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "171",
@@ -2737,7 +2737,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "172",
@@ -2753,7 +2753,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "173",
@@ -2769,7 +2769,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "174",
@@ -2785,7 +2785,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "175",
@@ -2801,7 +2801,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "176",
@@ -2817,7 +2817,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "177",
@@ -2833,7 +2833,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "178",
@@ -2849,7 +2849,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "179",
@@ -2865,7 +2865,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "180",
@@ -2881,7 +2881,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "181",
@@ -2897,7 +2897,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "182",
@@ -2913,7 +2913,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "183",
@@ -2929,7 +2929,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "184",
@@ -2945,7 +2945,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "185",
@@ -2961,7 +2961,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "186",
@@ -2977,7 +2977,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "187",
@@ -2993,7 +2993,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "188",
@@ -3009,7 +3009,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "189",
@@ -3025,7 +3025,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "190",
@@ -3041,7 +3041,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "191",
@@ -3057,7 +3057,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "192",
@@ -3073,7 +3073,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "193",
@@ -3089,7 +3089,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "194",
@@ -3105,7 +3105,7 @@ export default {
       vegetarian: "TRUE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "195",
@@ -3121,7 +3121,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "196",
@@ -3137,7 +3137,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "197",
@@ -3153,7 +3153,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "198",
@@ -3169,7 +3169,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "199",
@@ -3185,7 +3185,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "200",
@@ -3201,7 +3201,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "201",
@@ -3217,7 +3217,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "202",
@@ -3233,7 +3233,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "203",
@@ -3249,7 +3249,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "204",
@@ -3265,7 +3265,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "205",
@@ -3281,7 +3281,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "206",
@@ -3297,7 +3297,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "207",
@@ -3313,7 +3313,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "208",
@@ -3329,7 +3329,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "209",
@@ -3345,7 +3345,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "210",
@@ -3361,7 +3361,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "211",
@@ -3377,7 +3377,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "212",
@@ -3393,7 +3393,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "213",
@@ -3409,7 +3409,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "214",
@@ -3425,7 +3425,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "215",
@@ -3441,7 +3441,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "216",
@@ -3457,7 +3457,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "217",
@@ -3473,7 +3473,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "218",
@@ -3489,7 +3489,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "219",
@@ -3505,7 +3505,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "220",
@@ -3521,7 +3521,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "221",
@@ -3537,7 +3537,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "222",
@@ -3553,7 +3553,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "223",
@@ -3569,7 +3569,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "224",
@@ -3585,7 +3585,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "225",
@@ -3601,7 +3601,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "226",
@@ -3617,7 +3617,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "227",
@@ -3633,7 +3633,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "228",
@@ -3649,7 +3649,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "229",
@@ -3665,7 +3665,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "230",
@@ -3681,7 +3681,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "231",
@@ -3697,7 +3697,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "232",
@@ -3713,7 +3713,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "233",
@@ -3729,7 +3729,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "234",
@@ -3745,7 +3745,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "235",
@@ -3761,7 +3761,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "236",
@@ -3777,7 +3777,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "237",
@@ -3793,7 +3793,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "238",
@@ -3809,7 +3809,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "239",
@@ -3825,7 +3825,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "240",
@@ -3841,7 +3841,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "241",
@@ -3857,7 +3857,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "242",
@@ -3873,7 +3873,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "243",
@@ -3889,7 +3889,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "244",
@@ -3905,7 +3905,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "245",
@@ -3921,7 +3921,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "TRUE",
+      pescatarian: "TRUE",
     },
     {
       id: "246",
@@ -3937,7 +3937,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "247",
@@ -3953,7 +3953,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "248",
@@ -3969,7 +3969,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "249",
@@ -3985,7 +3985,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "250",
@@ -4001,7 +4001,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "251",
@@ -4017,7 +4017,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "252",
@@ -4033,7 +4033,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "253",
@@ -4049,7 +4049,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "254",
@@ -4065,7 +4065,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "255",
@@ -4081,7 +4081,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "256",
@@ -4097,7 +4097,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "257",
@@ -4113,7 +4113,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "258",
@@ -4129,7 +4129,7 @@ export default {
       vegetarian: "FALSE",
       keto: "TRUE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "259",
@@ -4145,7 +4145,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "260",
@@ -4161,7 +4161,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "261",
@@ -4177,7 +4177,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "262",
@@ -4192,7 +4192,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "263",
@@ -4208,7 +4208,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "264",
@@ -4224,7 +4224,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "265",
@@ -4240,7 +4240,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "266",
@@ -4256,7 +4256,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "267",
@@ -4272,7 +4272,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "268",
@@ -4288,7 +4288,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "269",
@@ -4304,7 +4304,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "270",
@@ -4320,7 +4320,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "271",
@@ -4336,7 +4336,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "272",
@@ -4352,7 +4352,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "273",
@@ -4368,7 +4368,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "274",
@@ -4384,7 +4384,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "275",
@@ -4400,7 +4400,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "276",
@@ -4416,7 +4416,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "277",
@@ -4432,7 +4432,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "278",
@@ -4448,7 +4448,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "279",
@@ -4464,7 +4464,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "280",
@@ -4480,7 +4480,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "281",
@@ -4496,7 +4496,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "282",
@@ -4512,7 +4512,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "283",
@@ -4528,7 +4528,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "284",
@@ -4544,7 +4544,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "285",
@@ -4560,7 +4560,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "286",
@@ -4576,7 +4576,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "287",
@@ -4592,7 +4592,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "288",
@@ -4608,7 +4608,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "289",
@@ -4624,7 +4624,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "290",
@@ -4640,7 +4640,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "291",
@@ -4656,7 +4656,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "292",
@@ -4672,7 +4672,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "293",
@@ -4688,7 +4688,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "294",
@@ -4704,7 +4704,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "295",
@@ -4720,7 +4720,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "296",
@@ -4736,7 +4736,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "297",
@@ -4752,7 +4752,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "298",
@@ -4768,7 +4768,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "299",
@@ -4784,7 +4784,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "300",
@@ -4800,7 +4800,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "301",
@@ -4816,7 +4816,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "302",
@@ -4832,7 +4832,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "303",
@@ -4848,7 +4848,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "304",
@@ -4864,7 +4864,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "305",
@@ -4880,7 +4880,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "306",
@@ -4896,7 +4896,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "307",
@@ -4912,7 +4912,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "308",
@@ -4928,7 +4928,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "309",
@@ -4944,7 +4944,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "310",
@@ -4960,7 +4960,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "311",
@@ -4976,7 +4976,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "312",
@@ -4992,7 +4992,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "313",
@@ -5008,7 +5008,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "314",
@@ -5024,7 +5024,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "315",
@@ -5040,7 +5040,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "316",
@@ -5056,7 +5056,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "317",
@@ -5072,7 +5072,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "318",
@@ -5088,7 +5088,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "319",
@@ -5104,7 +5104,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "320",
@@ -5120,7 +5120,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "321",
@@ -5136,7 +5136,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "322",
@@ -5152,7 +5152,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "323",
@@ -5168,7 +5168,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "324",
@@ -5184,7 +5184,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "325",
@@ -5200,7 +5200,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "326",
@@ -5216,7 +5216,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "327",
@@ -5232,7 +5232,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "328",
@@ -5248,7 +5248,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "329",
@@ -5264,7 +5264,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "330",
@@ -5280,7 +5280,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "331",
@@ -5296,7 +5296,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "332",
@@ -5312,7 +5312,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "333",
@@ -5328,7 +5328,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "334",
@@ -5344,7 +5344,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "335",
@@ -5360,7 +5360,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "336",
@@ -5376,7 +5376,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "337",
@@ -5392,7 +5392,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "338",
@@ -5408,7 +5408,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "339",
@@ -5424,7 +5424,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "340",
@@ -5440,7 +5440,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "341",
@@ -5456,7 +5456,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "342",
@@ -5472,7 +5472,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "343",
@@ -5488,7 +5488,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "344",
@@ -5504,7 +5504,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "345",
@@ -5520,7 +5520,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "346",
@@ -5536,7 +5536,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "347",
@@ -5552,7 +5552,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "348",
@@ -5568,7 +5568,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "349",
@@ -5584,7 +5584,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "350",
@@ -5600,7 +5600,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "351",
@@ -5616,7 +5616,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "352",
@@ -5632,7 +5632,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "353",
@@ -5648,7 +5648,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "354",
@@ -5664,7 +5664,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "355",
@@ -5680,7 +5680,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "356",
@@ -5696,7 +5696,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
     {
       id: "357",
@@ -5712,7 +5712,7 @@ export default {
       vegetarian: "TRUE",
       keto: "FALSE",
       diabetic: "TRUE",
-      "pescatarian ": "FALSE",
+      pescatarian: "FALSE",
     },
   ],
   removedIngredients: [],
