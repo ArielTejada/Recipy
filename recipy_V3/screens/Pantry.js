@@ -127,6 +127,7 @@ export default function Pantry() {
   };
 
   async function schedulePushNotification(filler, time) {
+    const { status } = await Notifications.requestPermissionsAsync();
     await Notifications.scheduleNotificationAsync({
       content: {
         title: "Recipy notification! 📬",
