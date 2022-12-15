@@ -21,10 +21,10 @@ Amplify.configure(awsconfig);
 
 const store = createStore(model);
 
-Font.loadAsync({
-  // The following fonts are loaded successfully
-  Quicksand: require("./assets/fonts/Quicksand-SemiBold.ttf"),
-});
+// Font.loadAsync({
+//   // The following fonts are loaded successfully
+//   Quicksand: require("./assets/fonts/Quicksand-SemiBold.ttf"),
+// });
 
 function App() {
   const getRandImg = () => {
@@ -178,14 +178,12 @@ const customTheme = {
     color: "#fff",
     fontWeight: "bold",
     fontSize: 22,
-    fontFamily: "Quicksand",
   },
   sectionFooterLink: {
     fontSize: 16,
     color: "#2694f9",
     alignItems: "baseline",
     textAlign: "center",
-    fontFamily: "Quicksand",
     opacity: 0.9,
   },
   sectionHeaderText: {
