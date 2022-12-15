@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     width: 65,
     height: 65,
     bottom: 80,
-    left: 305,
+    left: 315,
     backgroundColor: "#6a0dad",
     alignItems: "center",
     justifyContent: "center",
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 7,
     },
-    shadowOpacity: 0.7,
+    shadowOpacity: 0.8,
     shadowRadius: 16.0,
 
     elevation: 12,
